@@ -1,0 +1,27 @@
+# Local credentials and environment settings
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+.claude/settings.local.json
+.codex/
+
+# Generated build and test files
+build/
+cmake-build-*/
+node_modules/
+*.o
+*.obj
+*.exe
+*.gcda
+*.gcno
+*.gcov
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
