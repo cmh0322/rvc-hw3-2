@@ -12,11 +12,8 @@ bool track_power_up(MovementStatus movement_status, bool dust_existence)
     bool power_up_active = false;
 
     if (movement_status == MOVEMENT_STATUS_FORWARD) {
-        /*
-         * B5, C3. Dust detected while a power-up is running leaves the count
-         * unchanged; whether it should restart is open (Q4).
-         */
-        if (dust_existence && (remaining_power_up_ticks == 0)) {
+        /* B5, C3. Dust during a running power-up restarts the 5 ticks (C10). */
+        if (dust_existence) {
             remaining_power_up_ticks = POWER_UP_DURATION_TICKS;
         }
         if (remaining_power_up_ticks > 0) {
@@ -25,8 +22,8 @@ bool track_power_up(MovementStatus movement_status, bool dust_existence)
         }
     } else {
         /*
-         * Avoiding: no powered-up cleaning (B3). The count is kept; whether it
-         * should be cleared is open (Q5).
+         * Avoiding: no powered-up cleaning (B3). The count is kept and
+         * continues when the RVC moves forward again (C11).
          */
     }
 

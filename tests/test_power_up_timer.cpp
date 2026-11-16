@@ -1,6 +1,6 @@
 // Power-Up Timer group: Track Power-Up, Reset Power-Up Timer
 // (SA Process 4.1, Data Store D3)
-// Source: Process Specification 4.1; requirements B5, C3; open questions Q4, Q5.
+// Source: Process Specification 4.1; requirements B5, C3, C10, C11.
 #include <gtest/gtest.h>
 
 #include "power_up_timer.h"
@@ -90,23 +90,25 @@ TEST_F(PowerUpTimerTest, ResetEndsARunningPowerUp) {
     EXPECT_FALSE(track_power_up(MOVEMENT_STATUS_FORWARD, kNoDust));
 }
 
-// ---- Provisional: open questions --------------------------------------------
-// Q4 and Q5 are undecided. These tests record the behavior of the pseudocode
-// in Process Specification 4.1 as written. They are not requirements.
-
-// Q4: dust detected again during a running power-up does not restart the count.
-TEST_F(PowerUpTimerTest, Provisional_Q4_DustDuringARunningPowerUpDoesNotRestartIt) {
+// C10: dust detected again during a running power-up restarts the 5 ticks.
+TEST_F(PowerUpTimerTest, C10_DustDuringARunningPowerUpRestartsTheFiveTicks) {
     EXPECT_TRUE(track_power_up(MOVEMENT_STATUS_FORWARD, kDust));    // tick 1
     EXPECT_TRUE(track_power_up(MOVEMENT_STATUS_FORWARD, kNoDust));  // tick 2
     EXPECT_TRUE(track_power_up(MOVEMENT_STATUS_FORWARD, kDust));    // tick 3: dust again
-    EXPECT_EQ(2, get_remaining_power_up_ticks()) << "count continues, not reset to 5";
-    EXPECT_TRUE(track_power_up(MOVEMENT_STATUS_FORWARD, kNoDust));  // tick 4
-    EXPECT_TRUE(track_power_up(MOVEMENT_STATUS_FORWARD, kNoDust));  // tick 5
-    EXPECT_FALSE(track_power_up(MOVEMENT_STATUS_FORWARD, kNoDust)); // tick 6
+    EXPECT_EQ(4, get_remaining_power_up_ticks()) << "5 again, the first one already used";
+    ExpectTicks(4, MOVEMENT_STATUS_FORWARD, kNoDust, true);         // ticks 4-7
+    EXPECT_FALSE(track_power_up(MOVEMENT_STATUS_FORWARD, kNoDust)); // tick 8
 }
 
-// Q5: the remaining count is kept while avoiding and continues afterwards.
-TEST_F(PowerUpTimerTest, Provisional_Q5_RemainingCountIsKeptWhileAvoiding) {
+// C10: dust on every tick keeps the cleaning powered up.
+TEST_F(PowerUpTimerTest, C10_ContinuousDustKeepsThePowerUpRunning) {
+    ExpectTicks(12, MOVEMENT_STATUS_FORWARD, kDust, true);
+    ExpectTicks(4, MOVEMENT_STATUS_FORWARD, kNoDust, true);
+    EXPECT_FALSE(track_power_up(MOVEMENT_STATUS_FORWARD, kNoDust));
+}
+
+// C11: the remaining count is kept while avoiding and continues afterwards.
+TEST_F(PowerUpTimerTest, C11_RemainingCountIsKeptWhileAvoiding) {
     EXPECT_TRUE(track_power_up(MOVEMENT_STATUS_FORWARD, kDust));
     EXPECT_TRUE(track_power_up(MOVEMENT_STATUS_FORWARD, kNoDust));
     ASSERT_EQ(3, get_remaining_power_up_ticks());

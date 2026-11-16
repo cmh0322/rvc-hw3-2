@@ -11,6 +11,7 @@
 #include "detect_dust.h"
 #include "detect_obstacle.h"
 #include "fake_hw.h"
+#include "situations.h"
 #include "get_inputs.h"
 
 namespace {
@@ -92,19 +93,22 @@ TEST_F(InputsTest, GetInputs_ClearPathAndNoDust) {
     SetObstacleSensors(false, false, false);
     fake_hw.dust = false;
     const Inputs inputs = get_inputs();
-    EXPECT_EQ(OBSTACLE_SITUATION_CLEAR, inputs.obstacle_situation);
+    EXPECT_EQ(kClear, inputs.obstacle_situation);
     EXPECT_FALSE(inputs.dust_existence);
 }
 
 TEST_F(InputsTest, GetInputs_ReturnsTheSituationAssessedFromTheSensors) {
     SetObstacleSensors(true, true, false);
-    EXPECT_EQ(OBSTACLE_SITUATION_RIGHT_OPEN, get_inputs().obstacle_situation);
+    EXPECT_EQ(kRightOpen, get_inputs().obstacle_situation);
 
     SetObstacleSensors(true, false, true);
-    EXPECT_EQ(OBSTACLE_SITUATION_LEFT_OPEN, get_inputs().obstacle_situation);
+    EXPECT_EQ(kLeftOpen, get_inputs().obstacle_situation);
 
     SetObstacleSensors(true, true, true);
-    EXPECT_EQ(OBSTACLE_SITUATION_ALL_BLOCKED, get_inputs().obstacle_situation);
+    EXPECT_EQ(kAllBlocked, get_inputs().obstacle_situation);
+
+    SetObstacleSensors(false, true, true);
+    EXPECT_EQ(kFrontClearSidesBlocked, get_inputs().obstacle_situation);
 }
 
 TEST_F(InputsTest, GetInputs_ReturnsTheDustExistence) {
@@ -116,7 +120,7 @@ TEST_F(InputsTest, GetInputs_DustAndObstaclesAreReportedIndependently) {
     SetObstacleSensors(true, true, true);
     fake_hw.dust = true;
     const Inputs inputs = get_inputs();
-    EXPECT_EQ(OBSTACLE_SITUATION_ALL_BLOCKED, inputs.obstacle_situation);
+    EXPECT_EQ(kAllBlocked, inputs.obstacle_situation);
     EXPECT_TRUE(inputs.dust_existence);
 }
 

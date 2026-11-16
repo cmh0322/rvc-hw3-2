@@ -2,7 +2,7 @@
 
 Current coverage: DFD Levels 0-3.
 
-Requirement references: B1-B7 are bullets of `docs/preliminary_requirements.md`, by order. C1-C8 and Q1-Q6 are entries of `docs/requirements_clarifications.md`. Q1-Q3 were resolved by C5-C7 on 2026-11-08; earlier levels keep their Q references and note the resolution.
+Requirement references: B1-B7 are bullets of `docs/preliminary_requirements.md`, by order. C1-C11 and Q1-Q6 are entries of `docs/requirements_clarifications.md`. Q1-Q3 were resolved by C5-C7 on 2026-11-08; earlier levels keep their Q references and note the resolution.
 
 # DFD Level 0
 
@@ -300,31 +300,34 @@ Classify the current obstacles into one Obstacle Situation.
 - Executes on every Tick.
 
 ### Processing Logic
+Revised 2026-11-16 for C9: the sides are classified whether or not the front is blocked.
+
 1. Read Obstacle Location from D1.
-2. If the front is clear, the situation is Clear. Left and right are ignored (Q6 assumption).
-3. If the front is blocked and the right is clear, the situation is Right Open (C1: right has priority).
-4. If the front and right are blocked and the left is clear, the situation is Left Open.
-5. If front, left, and right are all blocked, the situation is All Blocked (B4).
+2. Front Blocked is TRUE when the front sensor detects an obstacle.
+3. Side Situation is Right Open when the right is clear (C1: right has priority).
+4. Otherwise it is Left Open when the left is clear.
+5. Otherwise it is Sides Blocked.
+
+With Front Blocked, Sides Blocked means front, left, and right are all blocked (B4).
 
 ### Pseudocode
 
 ```text
 ON Tick:
     READ Obstacle Location FROM D1
-    IF Front Obstacle == FALSE THEN
-        Obstacle Situation = Clear                    (Q6)
-    ELSE IF Right Obstacle == FALSE THEN
-        Obstacle Situation = Right Open               (C1)
+    Obstacle Situation.Front Blocked = Front Obstacle
+    IF Right Obstacle == FALSE THEN
+        Obstacle Situation.Side Situation = Right Open        (C1)
     ELSE IF Left Obstacle == FALSE THEN
-        Obstacle Situation = Left Open
+        Obstacle Situation.Side Situation = Left Open
     ELSE
-        Obstacle Situation = All Blocked              (B4)
+        Obstacle Situation.Side Situation = Sides Blocked
     END IF
 ```
 
 ### Relevant Requirements
-- B3, B4, C1
-- Assumption: Q6
+- B3, B4, C1, C9
+- Assumption: Q6 (while going forward the Controller uses Front Blocked only)
 
 ## Process 3.2: Decide Movement
 
@@ -420,10 +423,12 @@ Run the 5-tick powered-up cleaning period started by dust detection.
 - Executes on every Tick, after Movement Status for the tick is available.
 
 ### Processing Logic
+Revised 2026-11-16 for C10 and C11.
+
 1. Read Dust Existence from D2 and Remaining Power-Up Ticks from D3.
-2. If moving forward and dust is detected with no power-up running, set the count to 5 (B5, C3).
+2. If moving forward and dust is detected, set the count to 5 (B5, C3). This also restarts a power-up that is already running (C10).
 3. If moving forward and the count is above 0, report Power-Up Active and count down by 1.
-4. Otherwise report Power-Up Active = FALSE.
+4. Otherwise report Power-Up Active = FALSE. While avoiding, the count is kept (C11).
 5. Write the count back to D3.
 
 A power-up starting on tick t runs on ticks t to t+4, which is 5 ticks.
@@ -435,10 +440,9 @@ ON Tick:
     READ Dust Existence FROM D2
     READ Remaining Power-Up Ticks FROM D3
     IF Movement Status == Forward THEN
-        IF Dust Detected == TRUE AND Remaining Power-Up Ticks == 0 THEN
-            Remaining Power-Up Ticks = 5               (C3)
+        IF Dust Detected == TRUE THEN
+            Remaining Power-Up Ticks = 5               (C3, C10)
         END IF
-        (dust while Remaining > 0: restart or continue?  Q4)
         IF Remaining Power-Up Ticks > 0 THEN
             Power-Up Active = TRUE
             Remaining Power-Up Ticks = Remaining Power-Up Ticks - 1
@@ -446,15 +450,13 @@ ON Tick:
             Power-Up Active = FALSE
         END IF
     ELSE
-        Power-Up Active = FALSE
-        (Remaining Power-Up Ticks: keep or clear?  Q5)
+        Power-Up Active = FALSE                        (count kept, C11)
     END IF
     WRITE Remaining Power-Up Ticks TO D3
 ```
 
 ### Relevant Requirements
-- B5, C3
-- Open: Q4, Q5
+- B5, C3, C10, C11
 
 ## Process 4.2: Decide Cleaning
 
@@ -575,14 +577,14 @@ The Controller has five states: Forward (initial), Stopping, Backing, Turning Ri
 
 | Current State | Tick condition | Actions | Next State | Source |
 |---|---|---|---|---|
-| Forward | Clear | Forward | Forward | B2 |
-| Forward | not Clear | Stop, Start Step Timer | Stopping | B3, C2, C7 |
+| Forward | not Front Blocked | Forward | Forward | B2 |
+| Forward | Front Blocked | Stop, Start Step Timer | Stopping | B3, C2, C7 |
 | Stopping | not Step Done | Stop | Stopping | C7 |
 | Stopping | Step Done and Right Open | Turn Right, Start Step Timer | Turning Right | C1, C8 |
 | Stopping | Step Done and Left Open | Turn Left, Start Step Timer | Turning Left | B3, C8 |
-| Stopping | Step Done and All Blocked | Backward, Start Step Timer | Backing | B4, C6 |
+| Stopping | Step Done and Sides Blocked | Backward, Start Step Timer | Backing | B4, C6 |
 | Backing | not Step Done | Backward | Backing | C6 |
-| Backing | Step Done and All Blocked | Backward, Start Step Timer | Backing | C5, C6 |
+| Backing | Step Done and Sides Blocked | Backward, Start Step Timer | Backing | C5, C6, C9 |
 | Backing | Step Done and Right Open | Turn Right, Start Step Timer | Turning Right | C5, C8 |
 | Backing | Step Done and Left Open | Turn Left, Start Step Timer | Turning Left | C5, C8 |
 | Turning Right | not Step Done | Turn Right | Turning Right | C8 |
@@ -590,10 +592,10 @@ The Controller has five states: Forward (initial), Stopping, Backing, Turning Ri
 | Turning Left | not Step Done | Turn Left | Turning Left | C8 |
 | Turning Left | Step Done | Forward | Forward | B3, B4, C8 |
 
-Clear cannot arrive in Stopping or Backing (C4). The full state model, with transition IDs and validation, is the Level 4 FSM (`artifacts/SA/DFD/dfd_level_4_fsm.md`).
+When a stop or backward step ends, only the Side Situation decides (C9). The full state model, with transition IDs and validation, is the Level 4 FSM (`artifacts/SA/DFD/dfd_level_4_fsm.md`).
 
 ### Relevant Requirements
-- B2, B3, B4, C1, C2, C4, C5, C6, C7, C8
+- B2, B3, B4, C1, C2, C4, C5, C6, C7, C8, C9
 
 ## Process 3.2.3: Issue Movement Output
 

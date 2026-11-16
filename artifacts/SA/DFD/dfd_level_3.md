@@ -2,7 +2,7 @@
 
 System: RVC Controller
 Parent: DFD Level 2, `artifacts/SA/DFD/dfd_level_2.md`
-Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarifications.md` (C1-C8, Q4-Q6), `artifacts/SA/DFD/dfd_level_0.md`, `artifacts/SA/DFD/dfd_level_1.md`, `artifacts/SA/DFD/dfd_level_2.md`
+Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarifications.md` (C1-C11, Q6), `artifacts/SA/DFD/dfd_level_0.md`, `artifacts/SA/DFD/dfd_level_1.md`, `artifacts/SA/DFD/dfd_level_2.md`
 
 ## Decomposition Scope
 
@@ -68,7 +68,7 @@ Solid arrows are data flows. Dashed arrows are control flows. `3.2.2 Movement Co
 | Item | Kind | Values |
 |---|---|---|
 | Tick | Input event (control) | — |
-| Situation Signal | Input condition (control) | Clear, Right Open, Left Open, All Blocked |
+| Situation Signal | Input condition (control) | Front Blocked (yes or no) and Side Situation (Right Open, Left Open, Sides Blocked) |
 | Step Done | Input condition (control) | Present on the tick when the running stop, backward, or turn step has lasted 5 ticks |
 | Movement Command | Output action (control) | Forward, Stop, Turn Right, Turn Left, Backward |
 | Start Step Timer | Output action (control) | — |
@@ -78,14 +78,14 @@ Solid arrows are data flows. Dashed arrows are control flows. `3.2.2 Movement Co
 
 | Current State | Tick condition | Actions | Next State | Source |
 |---|---|---|---|---|
-| Forward | Clear | Forward | Forward | B2 |
-| Forward | not Clear | Stop, Start Step Timer | Stopping | B3, C2, C7 |
+| Forward | not Front Blocked | Forward | Forward | B2 |
+| Forward | Front Blocked | Stop, Start Step Timer | Stopping | B3, C2, C7 |
 | Stopping | not Step Done | Stop | Stopping | C7 |
 | Stopping | Step Done and Right Open | Turn Right, Start Step Timer | Turning Right | B3, C1, C8 |
 | Stopping | Step Done and Left Open | Turn Left, Start Step Timer | Turning Left | B3, C8 |
-| Stopping | Step Done and All Blocked | Backward, Start Step Timer | Backing | B4, C6 |
+| Stopping | Step Done and Sides Blocked | Backward, Start Step Timer | Backing | B4, C6 |
 | Backing | not Step Done | Backward | Backing | C6 |
-| Backing | Step Done and All Blocked | Backward, Start Step Timer | Backing | C5, C6 |
+| Backing | Step Done and Sides Blocked | Backward, Start Step Timer | Backing | C5, C6, C9 |
 | Backing | Step Done and Right Open | Turn Right, Start Step Timer | Turning Right | C5, C8 |
 | Backing | Step Done and Left Open | Turn Left, Start Step Timer | Turning Left | C5, C8 |
 | Turning Right | not Step Done | Turn Right | Turning Right | C8 |
@@ -93,7 +93,8 @@ Solid arrows are data flows. Dashed arrows are control flows. `3.2.2 Movement Co
 | Turning Left | not Step Done | Turn Left | Turning Left | C8 |
 | Turning Left | Step Done | Forward | Forward | B3, B4, C8 |
 
-- **C4 applied:** obstacles do not disappear, and moving straight backward keeps the front obstacle ahead. So Clear cannot arrive in Stopping or Backing, and "left and right still both blocked" (C5) equals All Blocked.
+- **C4 applied:** obstacles do not disappear, so while the RVC is stopped the front stays blocked. Sides Blocked at the end of a stop therefore means front, left, and right are blocked (B4).
+- **C9 applied (2026-11-16):** at the end of a backward step only the Side Situation decides. The front is not consulted, because moving backward takes the RVC away from the obstacle and the front sensor may read clear.
 - **Durations:** stop, backward, and turn each last 5 ticks (C7, C6, C8). Turning is split into two states so that the same turn direction is issued for all 5 ticks.
 
 ## Balancing with Process 3.2
@@ -138,5 +139,6 @@ No external flow was added or removed.
 | Q3 → C7 | 3.2.2, 3.2.4 | Resolved: stop lasts 5 ticks. |
 | C5 edge | 3.2.2 | Resolved: after backing, Left Open turns left (C5 updated). |
 | C8 | 3.2.2, 3.2.4 | Resolved: a turn lasts 5 ticks. |
-| Q4, Q5 | 4.1 | Still open. |
+| Q4 → C10, Q5 → C11 | 4.1 | Resolved: dust during a power-up restarts the 5 ticks; the remaining count is kept while avoiding. |
+| C9 | 3.1, 3.2.2 | Resolved: Obstacle Situation carries Front Blocked and Side Situation; after backing the sides decide. |
 | Q6 | 3.1 | Assumption unchanged: left/right ignored while the front is clear. |

@@ -1,18 +1,14 @@
 // Movement Controller group: Movement Controller, Reset Movement Controller
 // (SA Process 3.2.2)
 // Source: Level 4 FSM, transitions T0-T14 (artifacts/SA/DFD/dfd_level_4_fsm.md);
-// requirements B2, B3, B4, C1, C2, C4-C8.
+// requirements B2, B3, B4, C1, C2, C4-C9.
 #include <gtest/gtest.h>
 
 #include "movement_controller.h"
+#include "situations.h"
 #include "step_timer.h"
 
 namespace {
-
-const SituationSignal kClear = OBSTACLE_SITUATION_CLEAR;
-const SituationSignal kRightOpen = OBSTACLE_SITUATION_RIGHT_OPEN;
-const SituationSignal kLeftOpen = OBSTACLE_SITUATION_LEFT_OPEN;
-const SituationSignal kAllBlocked = OBSTACLE_SITUATION_ALL_BLOCKED;
 
 class MovementControllerTest : public ::testing::Test {
 protected:
@@ -261,19 +257,34 @@ TEST_F(MovementControllerTest, ObstacleRightAfterATurnIsHandledOnTheNextTick) {
     EXPECT_EQ(CONTROLLER_STATE_STOPPING, get_controller_state());
 }
 
-// ---- Not a requirement ------------------------------------------------------
+// ---- C9: after moving backward, only left and right decide ------------------
+// Moving backward takes the RVC away from the obstacle, so the front sensor may
+// read clear when the backward step ends.
 
-// The FSM defines no transition for Clear when a stop or backward step ends:
-// C4 (obstacles do not disappear) rules that input out. This test only records
-// what the code does if it happens anyway: it turns right, the default of C1
-// and C5. It needs a decision by the project owner (see the test report).
-TEST_F(MovementControllerTest, Undefined_ClearWhenAStopOrBackwardStepEndsTurnsRight) {
-    StopForFiveTicks(kRightOpen);
-    EXPECT_EQ(MOVEMENT_COMMAND_TURN_RIGHT, Tick(kClear));
-
-    reset_movement_controller();
+TEST_F(MovementControllerTest, T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear) {
     StopThenBackForFiveTicks();
     EXPECT_EQ(MOVEMENT_COMMAND_TURN_RIGHT, Tick(kClear));
+    EXPECT_EQ(CONTROLLER_STATE_TURNING_RIGHT, get_controller_state());
+}
+
+TEST_F(MovementControllerTest, T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear) {
+    StopThenBackForFiveTicks();
+    EXPECT_EQ(MOVEMENT_COMMAND_TURN_LEFT, Tick(kFrontClearLeftOpen));
+    EXPECT_EQ(CONTROLLER_STATE_TURNING_LEFT, get_controller_state());
+}
+
+TEST_F(MovementControllerTest, T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear) {
+    StopThenBackForFiveTicks();
+    EXPECT_EQ(MOVEMENT_COMMAND_BACKWARD, Tick(kFrontClearSidesBlocked));
+    EXPECT_EQ(CONTROLLER_STATE_BACKING, get_controller_state());
+    EXPECT_EQ(0, get_step_ticks_elapsed());
+}
+
+// Q6 assumption: while going forward, obstacles on the sides alone do not stop the RVC.
+TEST_F(MovementControllerTest, T1_SidesAreIgnoredWhileGoingForward) {
+    ExpectTicks(3, kFrontClearLeftOpen, MOVEMENT_COMMAND_FORWARD);
+    ExpectTicks(3, kFrontClearSidesBlocked, MOVEMENT_COMMAND_FORWARD);
+    EXPECT_EQ(CONTROLLER_STATE_FORWARD, get_controller_state());
 }
 
 }  // namespace

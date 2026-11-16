@@ -1,8 +1,9 @@
 // Module: Assess Obstacle Situation (SA Process 3.1)
-// Source: Process Specification 3.1; requirements B3, B4, C1; assumption Q6.
+// Source: Process Specification 3.1; requirements B3, B4, C1, C9.
 #include <gtest/gtest.h>
 
 #include "assess_obstacle_situation.h"
+#include "situations.h"
 
 namespace {
 
@@ -14,32 +15,40 @@ ObstacleLocation Location(bool front, bool left, bool right) {
     return location;
 }
 
-// Q6 assumption: left and right are ignored while the front is clear.
-TEST(AssessObstacleSituation, FrontClearIsClearWhateverTheSides) {
-    EXPECT_EQ(OBSTACLE_SITUATION_CLEAR, assess_obstacle_situation(Location(false, false, false)));
-    EXPECT_EQ(OBSTACLE_SITUATION_CLEAR, assess_obstacle_situation(Location(false, true, false)));
-    EXPECT_EQ(OBSTACLE_SITUATION_CLEAR, assess_obstacle_situation(Location(false, false, true)));
-    EXPECT_EQ(OBSTACLE_SITUATION_CLEAR, assess_obstacle_situation(Location(false, true, true)));
+TEST(AssessObstacleSituation, ReportsWhetherTheFrontIsBlocked) {
+    EXPECT_FALSE(assess_obstacle_situation(Location(false, false, false)).front_blocked);
+    EXPECT_FALSE(assess_obstacle_situation(Location(false, true, true)).front_blocked);
+    EXPECT_TRUE(assess_obstacle_situation(Location(true, false, false)).front_blocked);
+    EXPECT_TRUE(assess_obstacle_situation(Location(true, true, true)).front_blocked);
 }
 
-// C1: with a front obstacle and both sides clear, right has priority.
-TEST(AssessObstacleSituation, FrontBlockedBothSidesClearIsRightOpen) {
-    EXPECT_EQ(OBSTACLE_SITUATION_RIGHT_OPEN, assess_obstacle_situation(Location(true, false, false)));
+// C1: with both sides clear, right has priority.
+TEST(AssessObstacleSituation, BothSidesClearIsRightOpen) {
+    EXPECT_EQ(kRightOpen, assess_obstacle_situation(Location(true, false, false)));
 }
 
-// B3: front and left blocked, right clear.
-TEST(AssessObstacleSituation, FrontAndLeftBlockedIsRightOpen) {
-    EXPECT_EQ(OBSTACLE_SITUATION_RIGHT_OPEN, assess_obstacle_situation(Location(true, true, false)));
+// B3: left blocked, right clear.
+TEST(AssessObstacleSituation, LeftBlockedIsRightOpen) {
+    EXPECT_EQ(kRightOpen, assess_obstacle_situation(Location(true, true, false)));
 }
 
-// B3: front and right blocked, left clear.
-TEST(AssessObstacleSituation, FrontAndRightBlockedIsLeftOpen) {
-    EXPECT_EQ(OBSTACLE_SITUATION_LEFT_OPEN, assess_obstacle_situation(Location(true, false, true)));
+// B3: right blocked, left clear.
+TEST(AssessObstacleSituation, RightBlockedIsLeftOpen) {
+    EXPECT_EQ(kLeftOpen, assess_obstacle_situation(Location(true, false, true)));
 }
 
 // B4: obstacles in front, left, and right.
 TEST(AssessObstacleSituation, FrontLeftAndRightBlockedIsAllBlocked) {
-    EXPECT_EQ(OBSTACLE_SITUATION_ALL_BLOCKED, assess_obstacle_situation(Location(true, true, true)));
+    EXPECT_EQ(kAllBlocked, assess_obstacle_situation(Location(true, true, true)));
+}
+
+// C9: the sides are classified even when the front is clear, so that the
+// decision after moving backward can use left and right only.
+TEST(AssessObstacleSituation, SidesAreClassifiedWhenTheFrontIsClear) {
+    EXPECT_EQ(kClear, assess_obstacle_situation(Location(false, false, false)));
+    EXPECT_EQ(kClear, assess_obstacle_situation(Location(false, true, false)));
+    EXPECT_EQ(kFrontClearLeftOpen, assess_obstacle_situation(Location(false, false, true)));
+    EXPECT_EQ(kFrontClearSidesBlocked, assess_obstacle_situation(Location(false, true, true)));
 }
 
 }  // namespace

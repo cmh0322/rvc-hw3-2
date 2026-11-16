@@ -8,11 +8,11 @@ Design basis: `artifacts/SD/structure_chart.md`, `artifacts/SA/DFD/dfd_level_4_f
 
 | Item | Result |
 |---|---|
-| Unit tests (GoogleTest) | 121 passed, 0 failed |
+| Unit tests (GoogleTest) | 129 passed, 0 failed |
 | Call hierarchy check | Passed: 26 of 26 calls match the Structure Chart |
-| Total (CTest) | 122 passed, 0 failed |
-| Line coverage | 116 / 116 (100.0%) |
-| Branch coverage | 40 / 40 (100.0%) |
+| Total (CTest) | 130 passed, 0 failed |
+| Line coverage | 115 / 115 (100.0%) |
+| Branch coverage | 36 / 36 (100.0%) |
 | Compiler warnings | 0 (`-Wall -Wextra -Wpedantic -Werror`) |
 
 These numbers are from a clean build (build directory deleted first). Coverage detail is in `coverage_report.md`.
@@ -60,30 +60,32 @@ Each cycle: write the tests and an empty stub, build, run CTest and see the test
 | 8 | Decide Actions | 6 / 92 | 92 / 92 |
 | 9 | Initialize RVC, Controller, requirement scenarios | 22 / 116 | 116 / 116 |
 | 10 | Main | 5 / 121 | 121 / 121 |
+| 11 | C9, C10, C11 (decisions of 2026-11-16) | 6 / 130 | 130 / 130 |
 
 - In every RED run the earlier tests still passed; only tests of the new modules failed.
 - Some new tests passed already in RED, because the empty stub happens to return the expected value (for example, a stub that returns Forward satisfies "keeps going forward while clear"). In cycle 4, 2 of the 27 new tests did so.
 - No refactoring step changed behavior. The code was written in its final form in each GREEN step.
+- Cycle 11 counts include the call hierarchy check. Its RED run first changed the type of Obstacle Situation while keeping the old behavior, so that only the 6 tests of the new decisions failed. One test of an undefined case and two provisional tests were replaced by requirement tests.
 - The call hierarchy check and the coverage script were added after cycle 10. Each failed on its first run because of an error in the script, not in the production code, and was corrected.
 
 ## 5. Tests by module
 
 | Test suite | Tests | Module(s) | Derived from |
 |---|---|---|---|
-| AssessObstacleSituation | 5 | Assess Obstacle Situation | Process Specification 3.1 |
+| AssessObstacleSituation | 6 | Assess Obstacle Situation | Process Specification 3.1 |
 | DeriveMovementStatus | 4 | Derive Movement Status | Process Specification 3.2.3 |
 | DecideCleaning | 4 | Decide Cleaning | Process Specification 4.2 |
 | StepTimerTest | 9 | Advance / Start / Reset Step Timer | Process Specification 3.2.4 |
-| MovementControllerTest | 27 | Movement Controller, Reset Movement Controller | FSM T0-T14 |
-| PowerUpTimerTest | 12 | Track Power-Up, Reset Power-Up Timer | Process Specification 4.1 |
+| MovementControllerTest | 30 | Movement Controller, Reset Movement Controller | FSM T0-T14 |
+| PowerUpTimerTest | 13 | Track Power-Up, Reset Power-Up Timer | Process Specification 4.1 |
 | InputsTest | 14 | Detect Obstacle, Detect Dust, Get Inputs | Process Specifications 1, 2; Structure Chart |
 | OutputsTest | 9 | Issue Movement Output, Put Outputs | Process Specification 3.2.3; Structure Chart |
 | DecideActionsTest | 8 | Decide Actions | Structure Chart |
 | InitializeRvcTest | 4 | Initialize RVC | FSM T0 |
 | ControllerTest | 6 | Controller | Structure Chart; Event List |
 | MainTest | 5 | Main | Structure Chart; Event List |
-| RequirementsTest | 14 | Whole system through Controller | Requirements B1-B5, C1-C8 |
-| **Total** | **121** | | |
+| RequirementsTest | 17 | Whole system through Controller | Requirements B1-B5, C1-C11 |
+| **Total** | **129** | | |
 
 ### FSM transitions
 
@@ -99,9 +101,9 @@ Every transition has at least one test in `tests/test_movement_controller.cpp`, 
 | T5 | `T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen` |
 | T6 | `T6_AfterTheStopMovesBackwardWhenAllBlocked` |
 | T7 | `T7_BackwardLastsFiveTicks` |
-| T8 | `T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked`, `T8_TheSecondBackwardStepAlsoLastsFiveTicks` |
-| T9 | `T9_AfterBackingTurnsRightWhenTheRightIsOpen` |
-| T10 | `T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen` |
+| T8 | `T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked`, `T8_TheSecondBackwardStepAlsoLastsFiveTicks`, `T8_C9_...WhenBothSidesAreBlockedAndTheFrontIsClear` |
+| T9 | `T9_AfterBackingTurnsRightWhenTheRightIsOpen`, `T9_C9_...AndTheFrontIsClear` |
+| T10 | `T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen`, `T10_C9_...AndTheFrontIsClear` |
 | T11 | `T11_RightTurnLastsFiveTicks` |
 | T12 | `T12_AfterTheRightTurnGoesForward` |
 | T13 | `T13_LeftTurnLastsFiveTicks` |
@@ -124,41 +126,27 @@ Tests are in `tests/test_requirements.cpp` unless another file is named.
 | C1 Both sides clear: turn right | `B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear` |
 | C2 Stop moving at an obstacle | `B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle` |
 | C3 Power-up lasts 5 ticks | `B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected` |
-| C4 Obstacles do not disappear | An assumption about the surroundings, not a behavior. No test. See G1 below. |
+| C4 Obstacles do not disappear | An assumption about the surroundings, not a behavior. No test. |
 | C5 After moving backward: right, else left, else backward again | `B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward`, `C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear`, `C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked` |
 | C6 Backward lasts 5 ticks | `B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked` |
 | C7 Stop lasts 5 ticks | `B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle` |
 | C8 Turn lasts 5 ticks | `B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear`, `B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked` |
+| C9 After moving backward, only left and right decide | `C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear` |
+| C10 Dust during a power-up restarts the 5 ticks | `C10_DustDuringAPowerUpRestartsTheFiveTicks` |
+| C11 An interrupted power-up continues | `C11_PowerUpContinuesAfterAnAvoidance` |
 
 Event List: Tick, Direction, and Clean are verified by `ControllerTest` and `MainTest` (one Direction and one Clean per Tick; every sensor read once per Tick).
 
-### Tests that are not requirements
+### Test that is not a requirement
 
-Four tests record what the code does where the approved artifacts give no rule. They pass, but passing proves nothing about a requirement. They exist so that a later decision shows up as a deliberate test change.
+`RequirementsTest.Assumption_Q6_SideObstaclesAloneDoNotTriggerAvoidance` and `MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward` record the Q6 assumption: side obstacles are ignored while the front is clear. Q6 is still open.
 
-| Test | Records | Open item |
-|---|---|---|
-| `MovementControllerTest.Undefined_ClearWhenAStopOrBackwardStepEndsTurnsRight` | Clear at the end of a stop or backward step turns right | G1 |
-| `PowerUpTimerTest.Provisional_Q4_DustDuringARunningPowerUpDoesNotRestartIt` | Count is not restarted | Q4 |
-| `PowerUpTimerTest.Provisional_Q5_RemainingCountIsKeptWhileAvoiding` | Count is kept while avoiding | Q5 |
-| `RequirementsTest.Assumption_Q6_SideObstaclesAloneDoNotTriggerAvoidance` | Side obstacles are ignored while the front is clear | Q6 |
+### Gap found during implementation, now closed
 
-### G1: a gap found during implementation
-
-The FSM defines no transition for "a stop or backward step ends and the Situation Signal is Clear". The SA states that C4 makes this impossible.
-
-For the stop this holds: the RVC does not move, so the front obstacle stays in front. For the backward step it depends on the sensor range. After the RVC has moved backward for 5 ticks, a front sensor with a short range no longer detects the obstacle, and the signal is Clear. The simulator will produce this case in every dead-end scenario.
-
-C5 states the rule after moving backward in terms of left and right only. The Situation Signal cannot express that when the front is clear, because Assess Obstacle Situation then ignores left and right (Q6 assumption).
-
-The code currently turns right in this case. A decision is needed before system testing. The choice affects the FSM, and one option changes the Situation Signal:
-
-1. Keep it: Clear after backing turns right.
-2. After backing, decide by left and right only, as C5 reads. This needs the Situation Signal to carry left and right when the front is clear.
-3. Clear after backing goes forward.
+The first TDD round found that the FSM had no transition for "a backward step ends and the front reads clear". Moving backward takes the RVC away from the obstacle, so this happens in every dead end. The project owner decided C9 on 2026-11-16: after moving backward, only left and right decide. The same day Q4 and Q5 were decided as C10 and C11. Cycle 11 implemented the three decisions test first, and the FSM, the Data Dictionary, and Process Specifications 3.1, 3.2.2, and 4.1 were revised.
 
 ## 7. Limits of this verification
 
 - The hardware interface is replaced by a fake. No real sensor, clock, motor, or cleaner was involved.
 - The tests check the commands sent on each Tick. They do not check where the RVC ends up on a floor; that is the purpose of the simulator.
-- 100% coverage means every line and branch outcome ran in a test. It does not show that the undefined cases above behave as the project owner wants.
+- 100% coverage means every line and branch outcome ran in a test. It does not show that the behavior is what the project owner wants; that is the purpose of the system test.
