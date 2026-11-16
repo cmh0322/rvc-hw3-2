@@ -88,3 +88,15 @@ if(RVC_COVERAGE)
         DEPENDS rvc_tests rvc_main
         VERBATIM)
 endif()
+
+# ---------------------------------------------------------------------------
+# Simulator host: the unchanged production code, including main(), linked with
+# the hardware interface of the web simulator (simulator/host/sim_host.c).
+# Built without coverage instrumentation.
+# ---------------------------------------------------------------------------
+add_executable(rvc_sim_host simulator/host/sim_host.c src/main.c ${RVC_SOURCES})
+target_include_directories(rvc_sim_host PRIVATE include)
+target_compile_options(rvc_sim_host PRIVATE ${RVC_C_WARNINGS})
+if(MINGW)
+    target_link_options(rvc_sim_host PRIVATE -static)
+endif()
