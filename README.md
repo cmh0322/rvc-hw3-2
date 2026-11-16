@@ -10,8 +10,8 @@
 |---|---|---|
 | 구조적 분석 (SA) | 완료, 승인됨 | [artifacts/SA/](artifacts/SA/) |
 | 구조적 설계 (SD) | 완료, 승인됨 | [artifacts/SD/](artifacts/SD/) |
-| TDD 구현 (C11) | 완료, 승인 대기 | [src/](src/) · [include/](include/) · [tests/](tests/) · [artifacts/Implementation/](artifacts/Implementation/) |
-| 시스템 테스트 (웹 시뮬레이터) | 시작 전 | — |
+| TDD 구현 (C11) | 완료 | [src/](src/) · [include/](include/) · [tests/](tests/) · [artifacts/Implementation/](artifacts/Implementation/) |
+| 시스템 테스트 (웹 시뮬레이터) | 시뮬레이터와 시나리오 21개 완성, 사람의 평가 대기 | [simulator/](simulator/) · [artifacts/SystemTest/](artifacts/SystemTest/) |
 
 ## 구조적 분석 (SA)
 
@@ -35,6 +35,9 @@
 | C4 | 장애물은 사라지지 않는다. |
 | C5 | 후진한 뒤 오른쪽이 비면 우회전, 왼쪽만 비면 좌회전, 둘 다 막혀 있으면 다시 후진한다. |
 | C6, C7, C8 | 후진, 정지, 회전은 각각 5틱 동안 한다. |
+| C9 | 후진한 뒤에는 좌우만 보고 결정한다. 전방 센서는 보지 않는다. |
+| C10 | 파워업 도중 먼지를 다시 감지하면 5틱을 다시 센다. |
+| C11 | 회피로 끊긴 파워업은 남은 틱을 유지했다가 전진을 재개하면 이어간다. |
 
 ## 구조적 설계 (SD)
 
@@ -60,14 +63,14 @@ Structure Chart의 모듈 하나를 C 함수 하나로 구현했습니다. 하�
 
 | 항목 | 결과 |
 |---|---|
-| 단위 테스트 (GoogleTest) | 121개 통과, 실패 0 |
+| 단위 테스트 (GoogleTest) | 129개 통과, 실패 0 |
 | 호출 계층 검사 | Structure Chart의 호출 26개와 컴파일된 코드의 호출 26개가 일치 |
-| 라인 커버리지 | 116 / 116 (100%) |
-| 분기 커버리지 | 40 / 40 (100%) |
+| 라인 커버리지 | 115 / 115 (100%) |
+| 분기 커버리지 | 36 / 36 (100%) |
 | 컴파일 경고 | 0 (`-Wall -Wextra -Wpedantic -Werror`) |
 
-- 10개 사이클로 나눠 테스트를 먼저 쓰고 실패를 확인한 뒤 구현했습니다. 사이클별 기록은 [test_report.md](artifacts/Implementation/test_report.md)에 있습니다.
-- FSM 전이 T0–T14와 요구사항 B1–B5, C1–C3, C5–C8에 각각 대응하는 테스트가 있습니다.
+- 11개 사이클로 나눠 테스트를 먼저 쓰고 실패를 확인한 뒤 구현했습니다. 사이클별 기록은 [test_report.md](artifacts/Implementation/test_report.md)에 있습니다.
+- FSM 전이 T0–T14와 요구사항 B1–B5, C1–C3, C5–C11에 각각 대응하는 테스트가 있습니다.
 - 관련 문서: [coverage_report.md](artifacts/Implementation/coverage_report.md), [module_traceability.md](artifacts/Implementation/module_traceability.md)
 
 ### 빌드와 테스트
@@ -83,18 +86,28 @@ cmake --build build --target coverage     # build/coverage/summary.md 생성
 
 프로젝트 경로에 한글이 있으면 `ctest`만으로는 커버리지 데이터가 생기지 않습니다. 커버리지는 `coverage` 타깃으로 측정하세요.
 
-## 결정이 필요한 것
+## 시스템 테스트 (웹 시뮬레이터)
 
-시스템 테스트 전에 정해야 합니다. 지금 코드의 동작은 임시이고, "요구사항 아님"으로 표시한 테스트로만 기록되어 있습니다.
+실제 C 컨트롤러(`main()` 포함)를 백엔드 프로세스로 띄우고, 브라우저의 10x10 지도와 Tick마다 한 줄씩 주고받습니다. 제어 판단은 모두 C 코드가 하고, 브라우저는 지도와 표시만 맡습니다.
+
+```sh
+cmake --build build --target rvc_sim_host
+node simulator/server.js          # http://localhost:8765
+```
+
+- 지도 편집(장애물, 먼지, 시작 위치와 방향), Start / Pause / Step / Step back / Reset / Restart, 재생 속도, 최대 100틱
+- 틱마다 위치, 방향, 센서 입력, FSM 상태와 전이, Motor·Cleaner 출력, 두 타이머 값을 표시하고 이력으로 저장
+- 시나리오 21개([test_scenarios.md](artifacts/SystemTest/test_scenarios.md)), 요구사항 추적표([requirement_traceability.md](artifacts/SystemTest/requirement_traceability.md))
+- PASS / FAIL / INCONCLUSIVE는 사람이 판정합니다. 시뮬레이터는 자동으로 판정하지 않습니다. 현재 21개 모두 평가 대기 상태입니다([test_results.md](artifacts/SystemTest/test_results.md)).
+- 지도 규칙(한 틱에 한 칸, 센서는 인접 한 칸, 회전 5틱에 90도)과 한계는 [simulator/README.md](simulator/README.md)에 있습니다.
+
+## 남은 가정
 
 | 항목 | 내용 | 현재 동작 |
 |---|---|---|
-| G1 | 후진이 끝났을 때 전방 센서가 비어 있음으로 읽히는 경우. FSM에 전이가 없다. | 우회전 |
-| Q4 | 파워업 도중 먼지를 다시 감지한 경우 | 카운트를 다시 세지 않음 |
-| Q5 | 장애물 회피로 파워업이 끊긴 경우 | 남은 카운트를 유지 |
-| Q6 | 전방은 비었고 좌우에만 장애물이 있는 경우 | 무시하고 전진 |
+| Q6 | 전방은 비었고 좌우에만 장애물이 있는 경우 | 무시하고 전진 (가정) |
 
-G1의 배경과 선택지는 [test_report.md](artifacts/Implementation/test_report.md) 6절에 있습니다.
+요구사항이 정하지 않은 상황도 시뮬레이터에서 드러납니다. 좌우가 계속 막힌 통로(ST-06)나 사방이 막힌 칸(ST-21)에서는 C5에 따라 후진 명령을 5틱씩 계속 반복합니다.
 
 ## Claude Code 단계별 토큰 사용량
 
