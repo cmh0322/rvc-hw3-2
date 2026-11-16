@@ -25,7 +25,7 @@ MovementCommand movement_controller(SituationSignal situation_signal)
     bool step_begins = false;
 
     if (controller_state == CONTROLLER_STATE_FORWARD) {
-        if (situation_signal != OBSTACLE_SITUATION_CLEAR) {
+        if (situation_signal.front_blocked) {
             controller_state = CONTROLLER_STATE_STOPPING; /* T2 */
             step_begins = true;
         } /* else T1: keep going forward */
@@ -34,17 +34,18 @@ MovementCommand movement_controller(SituationSignal situation_signal)
             (controller_state == CONTROLLER_STATE_TURNING_LEFT)) {
             controller_state = CONTROLLER_STATE_FORWARD; /* T12, T14 */
         } else {
-            /* A stop (T4-T6) or a backward step (T8-T10) has ended. */
-            if (situation_signal == OBSTACLE_SITUATION_LEFT_OPEN) {
+            /*
+             * A stop (T4-T6) or a backward step (T8-T10) has ended. Left and
+             * right decide. The front is not consulted: after a stop it is
+             * still blocked (C4), and after moving backward it may read clear
+             * although the obstacle is still there (C9).
+             */
+            if (situation_signal.side_situation == SIDE_SITUATION_LEFT_OPEN) {
                 controller_state = CONTROLLER_STATE_TURNING_LEFT; /* T5, T10 */
-            } else if (situation_signal == OBSTACLE_SITUATION_ALL_BLOCKED) {
+            } else if (situation_signal.side_situation == SIDE_SITUATION_BOTH_BLOCKED) {
                 controller_state = CONTROLLER_STATE_BACKING; /* T6, T8 */
             } else {
-                /*
-                 * T4, T9: Right Open. Clear also ends up here; the FSM defines
-                 * no transition for it because C4 rules it out.
-                 */
-                controller_state = CONTROLLER_STATE_TURNING_RIGHT;
+                controller_state = CONTROLLER_STATE_TURNING_RIGHT; /* T4, T9 */
             }
             step_begins = true;
         }

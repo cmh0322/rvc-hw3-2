@@ -9,8 +9,8 @@ extern "C" {
 #endif
 
 /*
- * Classifies an Obstacle Location as Clear, Right Open, Left Open, or
- * All Blocked. Left and right are considered only when the front is blocked.
+ * Classifies an Obstacle Location: whether the front is blocked, and whether
+ * the right is open, only the left is open, or both sides are blocked.
  */
 ObstacleSituation assess_obstacle_situation(ObstacleLocation obstacle_location);
 

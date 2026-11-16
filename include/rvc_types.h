@@ -18,12 +18,17 @@ typedef struct {
     bool right_obstacle;
 } ObstacleLocation;
 
-/* Obstacle Situation: classification of an Obstacle Location. */
+/* Side Situation: what the left and right sensors allow. Right has priority (C1). */
 typedef enum {
-    OBSTACLE_SITUATION_CLEAR,       /* no front obstacle */
-    OBSTACLE_SITUATION_RIGHT_OPEN,  /* front blocked, right clear */
-    OBSTACLE_SITUATION_LEFT_OPEN,   /* front and right blocked, left clear */
-    OBSTACLE_SITUATION_ALL_BLOCKED  /* front, left, and right blocked */
+    SIDE_SITUATION_RIGHT_OPEN,   /* right clear */
+    SIDE_SITUATION_LEFT_OPEN,    /* right blocked, left clear */
+    SIDE_SITUATION_BOTH_BLOCKED  /* left and right blocked */
+} SideSituation;
+
+/* Obstacle Situation: classification of an Obstacle Location. */
+typedef struct {
+    bool front_blocked;            /* an obstacle is detected in front */
+    SideSituation side_situation;  /* classified whether or not the front is blocked */
 } ObstacleSituation;
 
 /* Situation Signal: the Obstacle Situation as seen by the Movement Controller. */

@@ -23,8 +23,8 @@ No internal flows exist at DFD Level 0.
 | Obstacle Location | Latest obstacle detection result for front, left, and right. | Front Obstacle + Left Obstacle + Right Obstacle | Data | Process 1; D1 Obstacle Location | D1 Obstacle Location; Process 3 (L1), 3.1 (L2) | 1, 2 |
 | Dust Existence | Latest dust detection result. | Dust Detected | Data | Process 2; D2 Dust Existence | D2 Dust Existence; Process 4 (L1), 4.1 (L2) | 1, 2 |
 | Movement Status | Whether the RVC is moving forward or avoiding an obstacle. | Enum | Data | Process 3 (L1), 3.2 (L2), 3.2.3 (L3) | Process 4 (L1), 4.1 and 4.2 (L2, L3) | 1, 2, 3 |
-| Obstacle Situation | Classification of the current obstacles. | Enum | Data | Process 3.1 | Process 3.2 (L2), 3.2.1 (L3) | 2, 3 |
-| Situation Signal | Obstacle Situation delivered to the Controller as a control signal. | Enum | Control | Process 3.2.1 | Process 3.2.2 | 3 |
+| Obstacle Situation | Classification of the current obstacles: Front Blocked and Side Situation. | Record | Data | Process 3.1 | Process 3.2 (L2), 3.2.1 (L3) | 2, 3 |
+| Situation Signal | Obstacle Situation delivered to the Controller as a control signal. | Record | Control | Process 3.2.1 | Process 3.2.2 | 3 |
 | Movement Command | Action chosen by the Controller for the current tick. | Enum | Control | Process 3.2.2 | Process 3.2.3 | 3 |
 | Start Step Timer | Tells the step timer to begin counting a 5-tick stop, backward, or turn step. | Event | Control | Process 3.2.2 | Process 3.2.4 | 3 |
 | Step Done | Signals that the current stop, backward, or turn step has lasted 5 ticks. | Event | Control | Process 3.2.4 | Process 3.2.2 | 3 |
@@ -164,14 +164,14 @@ No Data Stores exist at DFD Level 0.
 - Requirement Reference: B5
 
 ### Obstacle Situation
-- Description: Classification of the obstacles read from D1, used to choose the avoidance action. Left and right are considered only when the front is blocked (Q6 assumption).
-- Format / Type: Enum
-- Possible Values: Clear (no front obstacle), Right Open (front blocked, right clear), Left Open (front and right blocked, left clear), All Blocked (front, left, and right blocked)
+- Description: Classification of the obstacles read from D1. It has two parts. Front Blocked says whether an obstacle is detected in front. Side Situation classifies left and right, whether or not the front is blocked (C9).
+- Format / Type: Record = Front Blocked (Boolean) + Side Situation (Enum)
+- Possible Values: Front Blocked: TRUE or FALSE. Side Situation: Right Open (right clear), Left Open (right blocked, left clear), Sides Blocked (left and right blocked)
 - Flow Category: Data
 - Source: Process 3.1
 - Destination: Process 3.2 (Level 2); Process 3.2.1 (Level 3)
 - DFD Level: 2, 3
-- Requirement Reference: B3, B4, C1, Q6
+- Requirement Reference: B3, B4, C1, Q6, C9
 
 ### Power-Up Active
 - Description: Whether powered-up cleaning applies on the current tick.
@@ -186,12 +186,12 @@ No Data Stores exist at DFD Level 0.
 ### Remaining Power-Up Ticks
 - Description: Number of powered-up cleaning ticks still to run, including the current tick before it is counted down.
 - Format / Type: Integer
-- Possible Values: 0-5 (0 = no power-up in progress; set to 5 on dust detection)
+- Possible Values: 0-5 (0 = no power-up in progress; set to 5 on every dust detection while moving forward, C10; kept while avoiding, C11)
 - Flow Category: Data
 - Source: Process 4.1 (write); D3 Power-Up Timer (read)
 - Destination: D3 Power-Up Timer; Process 4.1
 - DFD Level: 2
-- Requirement Reference: B5, C3, Q4, Q5
+- Requirement Reference: B5, C3, C10, C11
 
 ### D3 Power-Up Timer (Data Store)
 - Description: Holds Remaining Power-Up Ticks so that the 5-tick power-up persists across ticks.
@@ -203,14 +203,14 @@ No Data Stores exist at DFD Level 0.
 - Requirement Reference: B5, C3
 
 ### Situation Signal
-- Description: The Obstacle Situation delivered to the Movement Controller as a control signal. The Controller uses it as the condition of its Tick transitions.
-- Format / Type: Enum
-- Possible Values: Clear, Right Open, Left Open, All Blocked (same meaning as Obstacle Situation)
+- Description: The Obstacle Situation delivered to the Movement Controller as a control signal. The Controller uses Front Blocked while going forward and the Side Situation when a stop or backward step ends.
+- Format / Type: Record = Front Blocked (Boolean) + Side Situation (Enum)
+- Possible Values: Same as Obstacle Situation: Front Blocked (TRUE or FALSE) and Side Situation (Right Open, Left Open, Sides Blocked)
 - Flow Category: Control
 - Source: Process 3.2.1
 - Destination: Process 3.2.2
 - DFD Level: 3
-- Requirement Reference: B3, B4, C1, C4, Q6
+- Requirement Reference: B3, B4, C1, C4, Q6, C9
 
 ### Movement Command
 - Description: The action chosen by the Movement Controller for the current tick. It triggers Process 3.2.3.

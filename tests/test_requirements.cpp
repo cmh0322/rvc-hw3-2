@@ -1,7 +1,7 @@
 // Requirement-level tests. Each test drives the whole system through
 // Controller, one call per Tick, and checks what reaches the Motor and Cleaner.
 // Source: docs/preliminary_requirements.md (B1-B7),
-// docs/requirements_clarifications.md (C1-C8, Q6).
+// docs/requirements_clarifications.md (C1-C11, Q6).
 #include "rvc_system_fixture.h"
 
 namespace {
@@ -122,6 +122,44 @@ TEST_F(RequirementsTest, B3_B5_ObstacleStopsTheCleaningEvenWithDust) {
     SetSensors(true, false, false, true);
     ExpectCycles(5, DIRECTION_STOP, CLEAN_STOP);
     ExpectCycles(5, DIRECTION_TURN_RIGHT, CLEAN_STOP);
+}
+
+// C9: after moving backward the front may read clear; left and right decide.
+TEST_F(RequirementsTest, C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear) {
+    SetObstacles(true, true, true);
+    StopForFiveTicks();
+    ExpectCycles(5, DIRECTION_BACKWARD, CLEAN_STOP);
+    SetObstacles(false, true, true);                      // still between two walls
+    ExpectCycles(5, DIRECTION_BACKWARD, CLEAN_STOP);
+    SetObstacles(false, false, true);                     // the left has opened
+    ExpectCycles(5, DIRECTION_TURN_LEFT, CLEAN_STOP);
+    SetObstacles(false, false, false);
+    ExpectCycles(2, DIRECTION_FORWARD, CLEAN_START);
+}
+
+// C10: dust detected again during a power-up restarts the 5 ticks.
+TEST_F(RequirementsTest, C10_DustDuringAPowerUpRestartsTheFiveTicks) {
+    SetSensors(false, false, false, true);
+    ExpectCycles(1, DIRECTION_FORWARD, CLEAN_POWER_UP);
+    SetSensors(false, false, false, false);
+    ExpectCycles(2, DIRECTION_FORWARD, CLEAN_POWER_UP);
+    SetSensors(false, false, false, true);
+    ExpectCycles(1, DIRECTION_FORWARD, CLEAN_POWER_UP);
+    SetSensors(false, false, false, false);
+    ExpectCycles(4, DIRECTION_FORWARD, CLEAN_POWER_UP);
+    ExpectCycles(2, DIRECTION_FORWARD, CLEAN_START);
+}
+
+// C11: a power-up interrupted by an avoidance continues afterwards.
+TEST_F(RequirementsTest, C11_PowerUpContinuesAfterAnAvoidance) {
+    SetSensors(false, false, false, true);
+    ExpectCycles(1, DIRECTION_FORWARD, CLEAN_POWER_UP);   // 4 ticks remain
+    SetSensors(true, false, false, false);
+    ExpectCycles(5, DIRECTION_STOP, CLEAN_STOP);
+    ExpectCycles(5, DIRECTION_TURN_RIGHT, CLEAN_STOP);
+    SetSensors(false, false, false, false);
+    ExpectCycles(4, DIRECTION_FORWARD, CLEAN_POWER_UP);
+    ExpectCycles(2, DIRECTION_FORWARD, CLEAN_START);
 }
 
 // ---- Assumption, not a requirement ------------------------------------------

@@ -14,6 +14,9 @@ Decisions made by the project owner on 2026-11-06. They supplement `preliminary_
 | C6 | B4, Q2 | Moving backward lasts 5 ticks. (Decided 2026-11-08.) |
 | C7 | C2, Q3 | The stop before avoidance lasts 5 ticks. (Decided 2026-11-08.) |
 | C8 | B3, B4 | A turn (left or right) lasts 5 ticks. (Decided 2026-11-08.) |
+| C9 | B4, C5 | After moving backward, only left and right decide (as C5 states); the front sensor is not consulted. Moving backward takes the RVC away from the obstacle, so the front may read clear. (Decided 2026-11-16.) |
+| C10 | B5, C3, Q4 | Dust detected again during a running power-up restarts the 5 ticks. (Decided 2026-11-16.) |
+| C11 | B3, C3, Q5 | A power-up interrupted by an avoidance keeps its remaining ticks and continues when the RVC moves forward again. (Decided 2026-11-16.) |
 
 ## Open Questions
 
@@ -22,6 +25,6 @@ Decisions made by the project owner on 2026-11-06. They supplement `preliminary_
 | Q1 | B4 | After moving backward, which way does the RVC turn, and what happens if left and right are still both blocked? **Resolved by C5.** |
 | Q2 | B4 | How far or how many ticks does the RVC move backward? **Resolved by C6.** |
 | Q3 | C2 | How many ticks does the stop last? **Resolved by C7.** |
-| Q4 | B5, C3 | If dust is detected again during the 5 ticks, does the count restart or continue? |
-| Q5 | B3, C3 | If an obstacle interrupts powered-up cleaning, is the remaining count kept or cancelled? |
+| Q4 | B5, C3 | If dust is detected again during the 5 ticks, does the count restart or continue? **Resolved by C10.** |
+| Q5 | B3, C3 | If an obstacle interrupts powered-up cleaning, is the remaining count kept or cancelled? **Resolved by C11.** |
 | Q6 | B3 | Does an obstacle on the left or right trigger avoidance when the front is clear? This analysis assumes it does not. |

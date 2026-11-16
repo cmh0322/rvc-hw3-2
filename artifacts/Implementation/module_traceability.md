@@ -1,7 +1,7 @@
 # Module Traceability (SD to Implementation)
 
 System: RVC Controller
-Design basis: `artifacts/SD/structure_chart.md` (approved 2026-11-15)
+Design basis: `artifacts/SD/structure_chart.md` (approved 2026-11-15; C9-C11 added 2026-11-16)
 Language: C11, compiled with GCC 15.2.0 (`-std=c11 -Wall -Wextra -Wpedantic -Werror`, no warnings)
 
 ## 1. Modules
@@ -100,15 +100,12 @@ There are no differences in modules, interfaces, or calls. The following are add
 | `Inputs`, `Actions` | Return structures | See section 2. |
 | No executable | `main.c` is compiled and tested, but no program is linked | The hardware interface has no implementation (B6). The simulator phase supplies one. |
 
-## 6. Behavior the approved artifacts leave undefined
+## 6. Decisions made after the first TDD round (2026-11-16)
 
-The code must do something in these cases. Each is isolated in one place and has a test that is marked as not being a requirement.
+| ID | Decision | Code |
+|---|---|---|
+| C9 | After moving backward, only left and right decide. | `ObstacleSituation` is a record: `front_blocked` and `side_situation`. `assess_obstacle_situation` classifies the sides whether or not the front is blocked. `movement_controller` uses the front in Forward and the sides when a stop or backward step ends. |
+| C10 | Dust during a running power-up restarts the 5 ticks. | `track_power_up` |
+| C11 | A power-up interrupted by avoidance keeps its remaining ticks. | `track_power_up` (unchanged behavior, now a requirement) |
 
-| ID | Case | What the code does | Where | Needs |
-|---|---|---|---|---|
-| G1 | A stop or backward step ends and the Situation Signal is Clear. The FSM has no transition, because C4 rules this out. | Turns right, the default of C1 and C5. | `movement_controller`, final `else` | Decision. After moving backward, the front may no longer be detected. See test report section 6. |
-| Q4 | Dust detected while a power-up is running | Count continues; it is not restarted. | `track_power_up` | Decision |
-| Q5 | Avoidance interrupts a power-up | Remaining count is kept and continues afterwards. | `track_power_up` | Decision |
-| Q6 | Left or right obstacle while the front is clear | Ignored (assumption of the SA). | `assess_obstacle_situation` | Confirmation |
-
-Q4 and Q5 follow the pseudocode of Process Specification 4.1 as written.
+No module, call, or function signature changed. One assumption remains: Q6, side obstacles are ignored while going forward.

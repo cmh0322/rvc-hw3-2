@@ -8,6 +8,7 @@
 
 #include "decide_actions.h"
 #include "fake_hw.h"
+#include "situations.h"
 #include "initialize_rvc.h"
 #include "movement_controller.h"
 #include "power_up_timer.h"
@@ -41,9 +42,9 @@ TEST_F(InitializeRvcTest, PutsTheHiddenDataIntoItsInitialCondition) {
 
 TEST_F(InitializeRvcTest, ResetsASystemThatHasAlreadyRun) {
     initialize_rvc();
-    decide_actions(OBSTACLE_SITUATION_CLEAR, true);         // a power-up is running
-    decide_actions(OBSTACLE_SITUATION_ALL_BLOCKED, false);  // stopping, step timer running
-    decide_actions(OBSTACLE_SITUATION_ALL_BLOCKED, false);
+    decide_actions(kClear, true);         // a power-up is running
+    decide_actions(kAllBlocked, false);  // stopping, step timer running
+    decide_actions(kAllBlocked, false);
     ASSERT_EQ(CONTROLLER_STATE_STOPPING, get_controller_state());
     ASSERT_NE(STEP_TIMER_IDLE, get_step_ticks_elapsed());
     ASSERT_NE(0, get_remaining_power_up_ticks());

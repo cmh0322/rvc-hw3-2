@@ -258,7 +258,7 @@ flowchart TB
 | Controller | Root | Runs one control cycle: obtains the inputs, decides the actions, delivers the outputs. Coordinates Process 0 for one Tick. | Get Inputs, Decide Actions, Put Outputs |
 | Get Inputs | Afferent | Obtains the two inputs the decisions need: Obstacle Situation and Dust Existence. | Detect Obstacle, Assess Obstacle Situation, Detect Dust |
 | Detect Obstacle | Afferent | Reads the three obstacle sensors and returns them as one Obstacle Location. | Read Front Sensor, Read Left Sensor, Read Right Sensor |
-| Assess Obstacle Situation | Afferent | Classifies an Obstacle Location as Clear, Right Open, Left Open, or All Blocked (C1; Q6 assumption). | — |
+| Assess Obstacle Situation | Afferent | Classifies an Obstacle Location: whether the front is blocked, and whether the right is open, only the left is open, or both sides are blocked (C1, C9). | — |
 | Detect Dust | Afferent | Reads the dust sensor and returns Dust Existence. | Read Dust Sensor |
 | Decide Actions | Central | Decides the Movement Command and the Clean command for this cycle. | Movement Controller, Derive Movement Status, Track Power-Up, Decide Cleaning |
 | Movement Controller | Central | Takes one FSM transition (T1-T14) for this Tick and returns the Movement Command. Keeps the controller state. | Advance Step Timer, Start Step Timer |
@@ -419,10 +419,15 @@ One consequence of the approved SA is kept as it is: at power on, only Direction
 | Fan-out and fan-in | Largest fan-out is 4 (Decide Actions). Issue Movement Output has fan-in 2. |
 | No unsupported modules or behavior | The additions are the coordinating modules, the reset modules, and the library modules. Their origins are in 6.1; the choices behind them are in section 7. |
 
-### Open issues carried from SA
+### Decisions made after approval (2026-11-16)
+
+C9, C10, and C11 changed the inside of three modules. No module, call, or interface name changed.
 
 | ID | Affects | Effect on the design |
 |---|---|---|
-| Q4 | Track Power-Up | Whether dust during a running power-up restarts the count. Only the inside of the module changes; its interface does not. |
-| Q5 | Track Power-Up | Whether the remaining count is kept or cleared while avoiding. Only the inside of the module changes. |
-| Q6 | Assess Obstacle Situation | Assumption kept: left and right are ignored while the front is clear. Only the inside of the module would change. |
+| C9 | Assess Obstacle Situation, Movement Controller | Obstacle Situation (and so the Situation Signal) is now a record: Front Blocked plus Side Situation. After a backward step the Controller decides by the sides only. |
+| C10 | Track Power-Up | Dust during a running power-up restarts the 5 ticks. |
+| C11 | Track Power-Up | The remaining count is kept while avoiding. Confirms what the module already did. |
+| Q6 | Movement Controller | Assumption kept: while going forward only Front Blocked is used. |
+
+The open issues listed at approval time (Q4, Q5) are resolved by C10 and C11. Q6 remains an assumption.
