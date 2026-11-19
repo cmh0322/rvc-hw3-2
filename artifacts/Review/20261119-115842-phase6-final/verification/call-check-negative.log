@@ -1,0 +1,12 @@
+CMake Error at tests/check_call_hierarchy.cmake:59 (message):
+  Call hierarchy differs from the Structure Chart.
+
+  In the chart but not in the code:
+
+    
+
+  In the code but not in the chart:
+
+    acquire_initial_inputs -> dispatch_sensor_input
+
+

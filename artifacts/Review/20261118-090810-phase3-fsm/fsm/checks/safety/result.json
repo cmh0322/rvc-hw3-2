@@ -1,0 +1,45 @@
+{
+  "status": "inconclusive",
+  "started_utc": "2026-11-18T00:09:04.446317+00:00",
+  "commands": [
+    {
+      "stage": "spin-version",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-V"
+      ],
+      "cwd": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\checks\\safety",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler-version",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "--version"
+      ],
+      "cwd": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\checks\\safety",
+      "exit_code": 0
+    },
+    {
+      "stage": "generate",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-a",
+        "model.pml"
+      ],
+      "cwd": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\checks\\safety",
+      "exit_code": 1
+    }
+  ],
+  "scope": "one property/check on the supplied model only",
+  "ltl": null,
+  "depth": 100000,
+  "fairness": "none",
+  "search": "full-state",
+  "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\model.pml",
+  "model_sha256": "ba64daae78b2b2416c0de3188ec28b496bb4f903449e96cc29e03dc8c0691d22",
+  "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+  "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+  "reason": "Model generation failed; inspect generate.log",
+  "finished_utc": "2026-11-18T00:09:06.061201+00:00"
+}

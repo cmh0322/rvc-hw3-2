@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><body><script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@12.3.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',flowchart:{htmlLabels:true,useMaxWidth:false}});
+window.renderDiagram=async(code)=>{const {svg}=await mermaid.render('diagram',code);document.body.innerHTML=svg;return svg;};
+window.ready=true;
+</script>

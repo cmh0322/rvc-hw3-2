@@ -2,7 +2,7 @@
 
 System: RVC Controller
 Parent: DFD Level 2, `artifacts/SA/DFD/dfd_level_2.md`
-Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarifications.md` (C1-C11, Q6), `artifacts/SA/DFD/dfd_level_0.md`, `artifacts/SA/DFD/dfd_level_1.md`, `artifacts/SA/DFD/dfd_level_2.md`
+Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarifications.md` (C1-C16), `artifacts/SA/DFD/dfd_level_0.md`, `artifacts/SA/DFD/dfd_level_1.md`, `artifacts/SA/DFD/dfd_level_2.md`
 
 ## Decomposition Scope
 
@@ -12,7 +12,7 @@ Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarific
 | 2 Detect Dust | No | Primitive since Level 2. |
 | 3.1 Assess Obstacle Situation | No | Primitive. A single stateless classification of D1 (see its Process Specification). |
 | 3.2 Decide Movement | Yes → 3.2.1, 3.2.2, 3.2.3, 3.2.4 | It mixes control and data processing: it keeps the avoidance step across ticks (control state), counts the 5-tick stop, backward, and turn periods (C6, C7, C8), and produces the Direction and Movement Status data. Level 3 separates the control part as the Controller (sa-dfd Step 5.4). |
-| 4.1 Track Power-Up | No | Primitive. Its only state is a number (Remaining Power-Up Ticks) kept in D3 and handled by arithmetic, not by mode sequencing. |
+| 4.1 Track Power-Up | No | Primitive. It handles the numeric count in D3 and consumes the pending-dust Boolean in D2; these are data updates, not movement mode sequencing (C15). |
 | 4.2 Decide Cleaning | No | Primitive. A stateless choice among three Clean values. |
 
 ## Diagram 3.2: Decide Movement
@@ -52,8 +52,8 @@ Solid arrows are data flows. Dashed arrows are control flows. `3.2.2 Movement Co
 
 | Process ID | Process Name | Type | Responsibility | Requirements |
 |---|---|---|---|---|
-| 3.2.1 | Signal Obstacle Situation | Data | Converts the Obstacle Situation data from 3.1 into a Situation Signal control flow for the Controller. | B3, B4, C1 |
-| 3.2.2 | Movement Controller | Control | Keeps the current state (Forward, Stopping, Backing, Turning Right, Turning Left). On each Tick, uses Situation Signal and Step Done to choose the next state, issues one Movement Command, and starts the step timer when a 5-tick step begins. Specified by the Level 4 FSM. | B2, B3, B4, C1, C2, C4-C8 |
+| 3.2.1 | Signal Obstacle Situation | Data | Converts the Obstacle Situation data from 3.1 into a Situation Signal control flow for the Controller. | B3, B4, C1, C9 |
+| 3.2.2 | Movement Controller | Control | Keeps the current state (Forward, Stopping, Backing, Turning Right, Turning Left). On each Tick, uses Situation Signal and Step Done to choose the next state, issues one Movement Command, and starts the step timer when a 5-tick step begins. Specified by the Level 4 FSM. | B2, B3, B4, C1, C2, C4-C9, C13 |
 | 3.2.3 | Issue Movement Output | Data | When a Movement Command arrives, sends the matching Direction to the Motor and the matching Movement Status to Process 4. | B2, B3, B4 |
 | 3.2.4 | Time Movement Step | Data | Counts the ticks of the current stop, backward, or turn step in D4 and signals Step Done when 5 ticks have elapsed. | C6, C7, C8 |
 
@@ -124,11 +124,14 @@ No external flow was added or removed.
 
 ## Execution Order Within One Tick
 
+0. Complete initial sampling before the first Tick (C12). Process sensor inputs received before this Tick through 1 and 2; retain pending dust even if a later FALSE input arrived. Input receipt and this Tick are logically serialized.
 1. 3.1 reads D1 and produces Obstacle Situation; 3.2.1 converts it to Situation Signal.
 2. 3.2.4 advances D4 and, if 5 ticks have elapsed, emits Step Done.
 3. 3.2.2 takes its transition and issues Movement Command (and Start Step Timer when a step begins).
 4. 3.2.3 produces Direction and Movement Status.
-5. 4.1, then 4.2, use Movement Status to produce Clean.
+5. 4.1 uses Movement Status, the current/pending dust in D2 and D3. While Avoiding it preserves both pending dust and remaining ticks. On Forward it starts/restarts five ticks for current or pending dust, clears the consumed pending flag, then reports active and decrements D3. 4.2 produces Clean with C14 semantics.
+
+Initialization before sampling: Forward state, D3=0, D4=Idle, pending dust=FALSE. No Movement Command, Direction or Clean is emitted on initialization (C13). The first Tick may issue Stop if its front sample is blocked.
 
 ## Open Issues Affecting Level 3 and Level 4
 
@@ -141,4 +144,6 @@ No external flow was added or removed.
 | C8 | 3.2.2, 3.2.4 | Resolved: a turn lasts 5 ticks. |
 | Q4 → C10, Q5 → C11 | 4.1 | Resolved: dust during a power-up restarts the 5 ticks; the remaining count is kept while avoiding. |
 | C9 | 3.1, 3.2.2 | Resolved: Obstacle Situation carries Front Blocked and Side Situation; after backing the sides decide. |
-| Q6 | 3.1 | Assumption unchanged: left/right ignored while the front is clear. |
+| C16 (resolves Q6) | 3.1, 3.2.2 | Confirmed by the project owner: only while Forward, side obstacles alone do not initiate avoidance when the front is clear. Side classification is always provided (C9). |
+
+C12-C15 are the 2026-11-17 Phase 1 decisions: initial sampling, initialization without output, suction-only power-up, and remembered avoidance dust. They do not add states to the Movement Controller; D2/4.1 handle the remembered detection.

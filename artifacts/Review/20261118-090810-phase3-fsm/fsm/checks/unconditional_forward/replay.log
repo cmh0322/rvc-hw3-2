@@ -1,0 +1,1164 @@
+ltl unconditional_forward: [] (<> ((stable) && ((state==Forward))))
+starting claim 1
+Never claim moves to line 3	[(!((stable&&(state==Forward))))]
+  2:	proc  0 (Controller:1) model.pml:51 (state 1)	[state = Forward]
+		state = Forward
+  2:	proc  0 (Controller:1) model.pml:52 (state 2)	[previous = Forward]
+		state = Forward
+		previous = Forward
+  2:	proc  0 (Controller:1) model.pml:53 (state 3)	[assert(((state==Forward)&&(elapsed==6)))]
+		state = Forward
+		previous = Forward
+  2:	proc  0 (Controller:1) model.pml:54 (state 4)	[assert(((command==NoCommand)&&(direction==NoCommand)))]
+		state = Forward
+		previous = Forward
+  2:	proc  0 (Controller:1) model.pml:55 (state 5)	[assert(((!(clean_emitted)&&!(start_timer))&&(emitted==0)))]
+		state = Forward
+		previous = Forward
+          INIT T0 state=Forward command=NoCommand elapsed=6
+  2:	proc  0 (Controller:1) model.pml:56 (state 6)	[printf('INIT T0 state=%e command=%e elapsed=%d\\n',state,command,elapsed)]
+		state = Forward
+		previous = Forward
+  2:	proc  0 (Controller:1) model.pml:57 (state 7)	[assert((transition!=255))]
+		state = Forward
+		previous = Forward
+  2:	proc  0 (Controller:1) model.pml:58 (state 8)	[assert((state!=0))]
+		state = Forward
+		previous = Forward
+  3:	proc  0 (Controller:1) model.pml:25 (state 9)	[sampled = 0]
+  4:	proc  0 (Controller:1) model.pml:28 (state 12)	[(!((1&&(state==Stopping))))]
+  5:	proc  0 (Controller:1) model.pml:29 (state 14)	[front = 1]
+		front = 1
+  5:	proc  0 (Controller:1) model.pml:31 (state 19)	[sampled = (sampled|1)]
+		front = 1
+		sampled = 1
+  6:	proc  0 (Controller:1) model.pml:32 (state 20)	[left = 0]
+  6:	proc  0 (Controller:1) model.pml:33 (state 24)	[sampled = (sampled|2)]
+		sampled = 3
+  7:	proc  0 (Controller:1) model.pml:34 (state 25)	[right = 0]
+  7:	proc  0 (Controller:1) model.pml:35 (state 29)	[sampled = (sampled|4)]
+		sampled = 7
+  8:	proc  0 (Controller:1) model.pml:36 (state 30)	[dust = 0]
+  8:	proc  0 (Controller:1) model.pml:37 (state 34)	[sampled = (sampled|8)]
+		sampled = 15
+  8:	proc  0 (Controller:1) model.pml:60 (state 36)	[assert((sampled==15))]
+		sampled = 15
+Never claim moves to line 8	[(!((stable&&(state==Forward))))]
+ 10:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+ 11:	proc  0 (Controller:1) model.pml:65 (state 39)	[(first_tick)]
+ 11:	proc  0 (Controller:1) model.pml:65 (state 40)	[first_tick = 0]
+		first_tick = 0
+ 11:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		first_tick = 0
+ 11:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		first_tick = 0
+ 11:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		first_tick = 0
+ 11:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		first_tick = 0
+ 11:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		first_tick = 0
+ 12:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+ 12:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+		side = RightOpen
+ 12:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+		side = RightOpen
+ 12:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+		side = RightOpen
+ 12:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+		side = RightOpen
+ 13:	proc  0 (Controller:1) model.pml:83 (state 89)	[else]
+ 14:	proc  0 (Controller:1) model.pml:83 (state 90)	[(1)]
+ 15:	proc  0 (Controller:1) model.pml:89 (state 102)	[else]
+ 16:	proc  0 (Controller:1) model.pml:89 (state 103)	[(1)]
+ 16:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+ 16:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+		guards = 1
+ 16:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+		guards = 1
+ 17:	proc  0 (Controller:1) model.pml:111 (state 116)	[(((previous==Forward)&&front))]
+ 18:	proc  0 (Controller:1) model.pml:41 (state 117)	[transition = 2]
+		transition = 2
+ 18:	proc  0 (Controller:1) model.pml:42 (state 118)	[state = 13]
+		state = Stopping
+		transition = 2
+ 18:	proc  0 (Controller:1) model.pml:43 (state 119)	[command = 8]
+		state = Stopping
+		command = Stop
+		transition = 2
+ 18:	proc  0 (Controller:1) model.pml:44 (state 120)	[start_timer = 1]
+		state = Stopping
+		command = Stop
+		start_timer = 1
+		transition = 2
+ 18:	proc  0 (Controller:1) model.pml:45 (state 121)	[emitted = (emitted+1)]
+		state = Stopping
+		command = Stop
+		start_timer = 1
+		transition = 2
+		emitted = 1
+ 18:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		state = Stopping
+		command = Stop
+		start_timer = 1
+		transition = 2
+		emitted = 1
+ 19:	proc  0 (Controller:1) model.pml:129 (state 210)	[((previous==Forward))]
+ 19:	proc  0 (Controller:1) model.pml:131 (state 211)	[assert((((front&&(state==Stopping))&&start_timer)||((!(front)&&(state==Forward))&&!(start_timer))))]
+ 20:	proc  0 (Controller:1) model.pml:143 (state 221)	[(start_timer)]
+ 20:	proc  0 (Controller:1) model.pml:144 (state 222)	[assert((remaining==0))]
+ 20:	proc  0 (Controller:1) model.pml:145 (state 223)	[elapsed = 0]
+		elapsed = 0
+ 20:	proc  0 (Controller:1) model.pml:146 (state 224)	[remaining = 5]
+		elapsed = 0
+		remaining = 5
+ 20:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+		direction = Stop
+		elapsed = 0
+		remaining = 5
+ 20:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+		direction = Stop
+		avoiding = 1
+		elapsed = 0
+		remaining = 5
+ 20:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+		direction = Stop
+		avoiding = 1
+		elapsed = 0
+		remaining = 5
+ 20:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+		direction = Stop
+		avoiding = 1
+		elapsed = 0
+		remaining = 5
+ 20:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+		direction = Stop
+		avoiding = 1
+		elapsed = 0
+		remaining = 5
+          T2 prev=Forward f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=0 remaining=5
+ 20:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+		direction = Stop
+		avoiding = 1
+		elapsed = 0
+		remaining = 5
+ 20:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		direction = Stop
+		stable = 1
+		avoiding = 1
+		elapsed = 0
+		remaining = 5
+ 20:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		direction = Stop
+		stable = 1
+		avoiding = 1
+		elapsed = 0
+		remaining = 5
+ 20:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		direction = Stop
+		stable = 1
+		avoiding = 1
+		elapsed = 0
+		remaining = 5
+ 22:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+ 23:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+ 24:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+ 25:	proc  0 (Controller:1) model.pml:27 (state 43)	[((1&&(state==Stopping)))]
+ 25:	proc  0 (Controller:1) model.pml:27 (state 44)	[front = 1]
+ 25:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+ 26:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+ 26:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		sampled = 3
+ 27:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+ 27:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		sampled = 7
+ 28:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+ 28:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+ 28:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+ 28:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		previous = Stopping
+		sampled = 15
+ 28:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		previous = Stopping
+		sampled = 15
+		emitted = 0
+ 28:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		previous = Stopping
+		start_timer = 0
+		sampled = 15
+		emitted = 0
+ 28:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		previous = Stopping
+		start_timer = 0
+		sampled = 15
+		emitted = 0
+ 29:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+ 29:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+ 29:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+ 29:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+ 29:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+ 30:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+ 30:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 4
+ 31:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+ 31:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 1
+ 32:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+ 33:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+ 33:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+ 33:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+ 33:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+ 34:	proc  0 (Controller:1) model.pml:112 (state 123)	[(((previous==Stopping)&&!(done)))]
+ 35:	proc  0 (Controller:1) model.pml:41 (state 124)	[transition = 3]
+		transition = 3
+ 35:	proc  0 (Controller:1) model.pml:42 (state 125)	[state = 13]
+		transition = 3
+ 35:	proc  0 (Controller:1) model.pml:43 (state 126)	[command = 8]
+		transition = 3
+ 35:	proc  0 (Controller:1) model.pml:44 (state 127)	[start_timer = 0]
+		transition = 3
+ 35:	proc  0 (Controller:1) model.pml:45 (state 128)	[emitted = (emitted+1)]
+		transition = 3
+		emitted = 1
+ 35:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		transition = 3
+		emitted = 1
+ 36:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+ 36:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+ 37:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+ 38:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+ 38:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+ 38:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+ 38:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+ 38:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+ 38:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T3 prev=Stopping f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=1 remaining=4
+ 38:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+ 38:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+ 38:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+ 38:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+ 40:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+ 41:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+ 42:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+ 43:	proc  0 (Controller:1) model.pml:27 (state 43)	[((1&&(state==Stopping)))]
+ 43:	proc  0 (Controller:1) model.pml:27 (state 44)	[front = 1]
+ 43:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+ 44:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+ 44:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		sampled = 3
+ 45:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+ 45:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		sampled = 7
+ 46:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+ 46:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+ 46:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+ 46:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+ 46:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+ 46:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		sampled = 15
+		emitted = 0
+ 46:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		sampled = 15
+		emitted = 0
+ 47:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+ 47:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+ 47:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+ 47:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+ 47:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+ 48:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+ 48:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 3
+ 49:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+ 49:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 2
+ 50:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+ 51:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+ 51:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+ 51:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+ 51:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+ 52:	proc  0 (Controller:1) model.pml:112 (state 123)	[(((previous==Stopping)&&!(done)))]
+ 53:	proc  0 (Controller:1) model.pml:41 (state 124)	[transition = 3]
+ 53:	proc  0 (Controller:1) model.pml:42 (state 125)	[state = 13]
+ 53:	proc  0 (Controller:1) model.pml:43 (state 126)	[command = 8]
+ 53:	proc  0 (Controller:1) model.pml:44 (state 127)	[start_timer = 0]
+ 53:	proc  0 (Controller:1) model.pml:45 (state 128)	[emitted = (emitted+1)]
+		emitted = 1
+ 53:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		emitted = 1
+ 54:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+ 54:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+ 55:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+ 56:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+ 56:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+ 56:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+ 56:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+ 56:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+ 56:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T3 prev=Stopping f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=2 remaining=3
+ 56:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+ 56:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+ 56:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+ 56:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+ 58:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+ 59:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+ 60:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+ 61:	proc  0 (Controller:1) model.pml:27 (state 43)	[((1&&(state==Stopping)))]
+ 61:	proc  0 (Controller:1) model.pml:27 (state 44)	[front = 1]
+ 61:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+ 62:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+ 62:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		sampled = 3
+ 63:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+ 63:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		sampled = 7
+ 64:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+ 64:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+ 64:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+ 64:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+ 64:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+ 64:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		sampled = 15
+		emitted = 0
+ 64:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		sampled = 15
+		emitted = 0
+ 65:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+ 65:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+ 65:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+ 65:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+ 65:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+ 66:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+ 66:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 2
+ 67:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+ 67:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 3
+ 68:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+ 69:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+ 69:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+ 69:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+ 69:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+ 70:	proc  0 (Controller:1) model.pml:112 (state 123)	[(((previous==Stopping)&&!(done)))]
+ 71:	proc  0 (Controller:1) model.pml:41 (state 124)	[transition = 3]
+ 71:	proc  0 (Controller:1) model.pml:42 (state 125)	[state = 13]
+ 71:	proc  0 (Controller:1) model.pml:43 (state 126)	[command = 8]
+ 71:	proc  0 (Controller:1) model.pml:44 (state 127)	[start_timer = 0]
+ 71:	proc  0 (Controller:1) model.pml:45 (state 128)	[emitted = (emitted+1)]
+		emitted = 1
+ 71:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		emitted = 1
+ 72:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+ 72:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+ 73:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+ 74:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+ 74:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+ 74:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+ 74:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+ 74:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+ 74:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T3 prev=Stopping f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=3 remaining=2
+ 74:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+ 74:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+ 74:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+ 74:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+ 76:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+ 77:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+ 78:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+ 79:	proc  0 (Controller:1) model.pml:27 (state 43)	[((1&&(state==Stopping)))]
+ 79:	proc  0 (Controller:1) model.pml:27 (state 44)	[front = 1]
+ 79:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+ 80:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+ 80:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		sampled = 3
+ 81:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+ 81:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		sampled = 7
+ 82:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+ 82:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+ 82:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+ 82:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+ 82:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+ 82:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		sampled = 15
+		emitted = 0
+ 82:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		sampled = 15
+		emitted = 0
+ 83:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+ 83:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+ 83:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+ 83:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+ 83:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+ 84:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+ 84:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 1
+ 85:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+ 85:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 4
+ 86:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+ 87:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+ 87:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+ 87:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+ 87:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+ 88:	proc  0 (Controller:1) model.pml:112 (state 123)	[(((previous==Stopping)&&!(done)))]
+ 89:	proc  0 (Controller:1) model.pml:41 (state 124)	[transition = 3]
+ 89:	proc  0 (Controller:1) model.pml:42 (state 125)	[state = 13]
+ 89:	proc  0 (Controller:1) model.pml:43 (state 126)	[command = 8]
+ 89:	proc  0 (Controller:1) model.pml:44 (state 127)	[start_timer = 0]
+ 89:	proc  0 (Controller:1) model.pml:45 (state 128)	[emitted = (emitted+1)]
+		emitted = 1
+ 89:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		emitted = 1
+ 90:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+ 90:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+ 91:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+ 92:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+ 92:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+ 92:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+ 92:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+ 92:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+ 92:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T3 prev=Stopping f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=4 remaining=1
+ 92:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+ 92:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+ 92:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+ 92:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+ 94:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+ 95:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+ 96:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+ 97:	proc  0 (Controller:1) model.pml:27 (state 43)	[((1&&(state==Stopping)))]
+ 97:	proc  0 (Controller:1) model.pml:27 (state 44)	[front = 1]
+ 97:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+ 98:	proc  0 (Controller:1) model.pml:32 (state 54)	[left = 1]
+		left = 1
+ 98:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		left = 1
+		sampled = 3
+ 99:	proc  0 (Controller:1) model.pml:34 (state 59)	[right = 1]
+		right = 1
+ 99:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		right = 1
+		sampled = 7
+100:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+100:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+100:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+100:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+100:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+100:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		sampled = 15
+		emitted = 0
+100:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		sampled = 15
+		emitted = 0
+101:	proc  0 (Controller:1) model.pml:76 (state 80)	[((right&&left))]
+101:	proc  0 (Controller:1) model.pml:76 (state 81)	[side = SidesBlocked]
+		side = SidesBlocked
+101:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+		side = SidesBlocked
+101:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+		side = SidesBlocked
+101:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+		side = SidesBlocked
+102:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+102:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 0
+103:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+103:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 5
+104:	proc  0 (Controller:1) model.pml:88 (state 95)	[((elapsed==5))]
+104:	proc  0 (Controller:1) model.pml:88 (state 96)	[done = 1]
+		done = 1
+104:	proc  0 (Controller:1) model.pml:88 (state 97)	[elapsed = 6]
+		done = 1
+		elapsed = 6
+104:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+		done = 1
+		elapsed = 6
+104:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+		done = 1
+		elapsed = 6
+104:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+		done = 1
+		elapsed = 6
+105:	proc  0 (Controller:1) model.pml:115 (state 144)	[((((previous==Stopping)&&done)&&(side==SidesBlocked)))]
+106:	proc  0 (Controller:1) model.pml:41 (state 145)	[transition = 6]
+		transition = 6
+106:	proc  0 (Controller:1) model.pml:42 (state 146)	[state = 12]
+		state = Backing
+		transition = 6
+106:	proc  0 (Controller:1) model.pml:43 (state 147)	[command = 7]
+		state = Backing
+		command = GoBackward
+		transition = 6
+106:	proc  0 (Controller:1) model.pml:44 (state 148)	[start_timer = 1]
+		state = Backing
+		command = GoBackward
+		start_timer = 1
+		transition = 6
+106:	proc  0 (Controller:1) model.pml:45 (state 149)	[emitted = (emitted+1)]
+		state = Backing
+		command = GoBackward
+		start_timer = 1
+		transition = 6
+		emitted = 1
+106:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		state = Backing
+		command = GoBackward
+		start_timer = 1
+		transition = 6
+		emitted = 1
+107:	proc  0 (Controller:1) model.pml:133 (state 214)	[((((previous==Stopping)||(previous==Backing))&&done))]
+107:	proc  0 (Controller:1) model.pml:134 (state 215)	[assert(start_timer)]
+107:	proc  0 (Controller:1) model.pml:137 (state 216)	[assert((((!(right)&&(state==TurningRight))||((right&&!(left))&&(state==TurningLeft)))||((right&&left)&&(state==Backing))))]
+108:	proc  0 (Controller:1) model.pml:143 (state 221)	[(start_timer)]
+108:	proc  0 (Controller:1) model.pml:144 (state 222)	[assert((remaining==0))]
+108:	proc  0 (Controller:1) model.pml:145 (state 223)	[elapsed = 0]
+		elapsed = 0
+108:	proc  0 (Controller:1) model.pml:146 (state 224)	[remaining = 5]
+		elapsed = 0
+		remaining = 5
+108:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+		direction = GoBackward
+		elapsed = 0
+		remaining = 5
+108:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+		direction = GoBackward
+		elapsed = 0
+		remaining = 5
+108:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+		direction = GoBackward
+		elapsed = 0
+		remaining = 5
+108:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+		direction = GoBackward
+		elapsed = 0
+		remaining = 5
+108:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+		direction = GoBackward
+		elapsed = 0
+		remaining = 5
+          T6 prev=Stopping f=1 l=1 r=1 done=1 state=Backing cmd=GoBackward elapsed=0 remaining=5
+108:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+		direction = GoBackward
+		elapsed = 0
+		remaining = 5
+108:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		direction = GoBackward
+		stable = 1
+		elapsed = 0
+		remaining = 5
+108:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		direction = GoBackward
+		stable = 1
+		elapsed = 0
+		remaining = 5
+108:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		direction = GoBackward
+		stable = 1
+		elapsed = 0
+		remaining = 5
+110:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+111:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+112:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+113:	proc  0 (Controller:1) model.pml:28 (state 45)	[(!((1&&(state==Stopping))))]
+114:	proc  0 (Controller:1) model.pml:29 (state 46)	[front = 0]
+		front = 0
+114:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		front = 0
+		sampled = 1
+115:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+		left = 0
+115:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		left = 0
+		sampled = 3
+116:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+		right = 0
+116:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		right = 0
+		sampled = 7
+117:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+117:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+117:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+117:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		previous = Backing
+		sampled = 15
+117:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		previous = Backing
+		sampled = 15
+		emitted = 0
+117:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		previous = Backing
+		start_timer = 0
+		sampled = 15
+		emitted = 0
+117:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		previous = Backing
+		done = 0
+		start_timer = 0
+		sampled = 15
+		emitted = 0
+118:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+118:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+		side = RightOpen
+118:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+		side = RightOpen
+118:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+		side = RightOpen
+118:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+		side = RightOpen
+119:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+119:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 4
+120:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+120:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 1
+121:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+122:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+122:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+122:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+122:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+123:	proc  0 (Controller:1) model.pml:116 (state 151)	[(((previous==Backing)&&!(done)))]
+124:	proc  0 (Controller:1) model.pml:41 (state 152)	[transition = 7]
+		transition = 7
+124:	proc  0 (Controller:1) model.pml:42 (state 153)	[state = 12]
+		transition = 7
+124:	proc  0 (Controller:1) model.pml:43 (state 154)	[command = 7]
+		transition = 7
+124:	proc  0 (Controller:1) model.pml:44 (state 155)	[start_timer = 0]
+		transition = 7
+124:	proc  0 (Controller:1) model.pml:45 (state 156)	[emitted = (emitted+1)]
+		transition = 7
+		emitted = 1
+124:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		transition = 7
+		emitted = 1
+125:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+125:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+126:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+127:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+127:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+127:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+127:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+127:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+127:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T7 prev=Backing f=0 l=0 r=0 done=0 state=Backing cmd=GoBackward elapsed=1 remaining=4
+127:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+127:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+127:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+127:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+  <<<<<START OF CYCLE>>>>>
+129:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+130:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+131:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+132:	proc  0 (Controller:1) model.pml:28 (state 45)	[(!((1&&(state==Stopping))))]
+133:	proc  0 (Controller:1) model.pml:29 (state 46)	[front = 0]
+133:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+134:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+134:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		sampled = 3
+135:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+135:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		sampled = 7
+136:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+136:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+136:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+136:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+136:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+136:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		sampled = 15
+		emitted = 0
+136:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		sampled = 15
+		emitted = 0
+137:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+137:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+137:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+137:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+137:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+138:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+138:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 3
+139:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+139:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 2
+140:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+141:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+141:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+141:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+141:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+142:	proc  0 (Controller:1) model.pml:116 (state 151)	[(((previous==Backing)&&!(done)))]
+143:	proc  0 (Controller:1) model.pml:41 (state 152)	[transition = 7]
+143:	proc  0 (Controller:1) model.pml:42 (state 153)	[state = 12]
+143:	proc  0 (Controller:1) model.pml:43 (state 154)	[command = 7]
+143:	proc  0 (Controller:1) model.pml:44 (state 155)	[start_timer = 0]
+143:	proc  0 (Controller:1) model.pml:45 (state 156)	[emitted = (emitted+1)]
+		emitted = 1
+143:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		emitted = 1
+144:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+144:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+145:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+146:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+146:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+146:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+146:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+146:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+146:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T7 prev=Backing f=0 l=0 r=0 done=0 state=Backing cmd=GoBackward elapsed=2 remaining=3
+146:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+146:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+146:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+146:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+148:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+149:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+150:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+151:	proc  0 (Controller:1) model.pml:28 (state 45)	[(!((1&&(state==Stopping))))]
+152:	proc  0 (Controller:1) model.pml:29 (state 46)	[front = 0]
+152:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+153:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+153:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		sampled = 3
+154:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+154:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		sampled = 7
+155:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+155:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+155:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+155:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+155:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+155:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		sampled = 15
+		emitted = 0
+155:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		sampled = 15
+		emitted = 0
+156:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+156:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+156:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+156:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+156:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+157:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+157:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 2
+158:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+158:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 3
+159:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+160:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+160:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+160:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+160:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+161:	proc  0 (Controller:1) model.pml:116 (state 151)	[(((previous==Backing)&&!(done)))]
+162:	proc  0 (Controller:1) model.pml:41 (state 152)	[transition = 7]
+162:	proc  0 (Controller:1) model.pml:42 (state 153)	[state = 12]
+162:	proc  0 (Controller:1) model.pml:43 (state 154)	[command = 7]
+162:	proc  0 (Controller:1) model.pml:44 (state 155)	[start_timer = 0]
+162:	proc  0 (Controller:1) model.pml:45 (state 156)	[emitted = (emitted+1)]
+		emitted = 1
+162:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		emitted = 1
+163:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+163:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+164:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+165:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+165:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+165:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+165:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+165:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+165:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T7 prev=Backing f=0 l=0 r=0 done=0 state=Backing cmd=GoBackward elapsed=3 remaining=2
+165:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+165:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+165:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+165:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+167:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+168:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+169:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+170:	proc  0 (Controller:1) model.pml:28 (state 45)	[(!((1&&(state==Stopping))))]
+171:	proc  0 (Controller:1) model.pml:29 (state 46)	[front = 0]
+171:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+172:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+172:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		sampled = 3
+173:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+173:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		sampled = 7
+174:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+174:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+174:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+174:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+174:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+174:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		sampled = 15
+		emitted = 0
+174:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		sampled = 15
+		emitted = 0
+175:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+175:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+175:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+175:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+175:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+176:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+176:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 1
+177:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+177:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 4
+178:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+179:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+179:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+179:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+179:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+180:	proc  0 (Controller:1) model.pml:116 (state 151)	[(((previous==Backing)&&!(done)))]
+181:	proc  0 (Controller:1) model.pml:41 (state 152)	[transition = 7]
+181:	proc  0 (Controller:1) model.pml:42 (state 153)	[state = 12]
+181:	proc  0 (Controller:1) model.pml:43 (state 154)	[command = 7]
+181:	proc  0 (Controller:1) model.pml:44 (state 155)	[start_timer = 0]
+181:	proc  0 (Controller:1) model.pml:45 (state 156)	[emitted = (emitted+1)]
+		emitted = 1
+181:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		emitted = 1
+182:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+182:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+183:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+184:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+184:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+184:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+184:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+184:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+184:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T7 prev=Backing f=0 l=0 r=0 done=0 state=Backing cmd=GoBackward elapsed=4 remaining=1
+184:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+184:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+184:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+184:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+186:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+187:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+188:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+189:	proc  0 (Controller:1) model.pml:28 (state 45)	[(!((1&&(state==Stopping))))]
+190:	proc  0 (Controller:1) model.pml:29 (state 46)	[front = 0]
+190:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+191:	proc  0 (Controller:1) model.pml:32 (state 54)	[left = 1]
+		left = 1
+191:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		left = 1
+		sampled = 3
+192:	proc  0 (Controller:1) model.pml:34 (state 59)	[right = 1]
+		right = 1
+192:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		right = 1
+		sampled = 7
+193:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+193:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+193:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+193:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+193:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+193:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		sampled = 15
+		emitted = 0
+193:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		sampled = 15
+		emitted = 0
+194:	proc  0 (Controller:1) model.pml:76 (state 80)	[((right&&left))]
+194:	proc  0 (Controller:1) model.pml:76 (state 81)	[side = SidesBlocked]
+		side = SidesBlocked
+194:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+		side = SidesBlocked
+194:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+		side = SidesBlocked
+194:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+		side = SidesBlocked
+195:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+195:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 0
+196:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+196:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 5
+197:	proc  0 (Controller:1) model.pml:88 (state 95)	[((elapsed==5))]
+197:	proc  0 (Controller:1) model.pml:88 (state 96)	[done = 1]
+		done = 1
+197:	proc  0 (Controller:1) model.pml:88 (state 97)	[elapsed = 6]
+		done = 1
+		elapsed = 6
+197:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+		done = 1
+		elapsed = 6
+197:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+		done = 1
+		elapsed = 6
+197:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+		done = 1
+		elapsed = 6
+198:	proc  0 (Controller:1) model.pml:117 (state 158)	[((((previous==Backing)&&done)&&(side==SidesBlocked)))]
+199:	proc  0 (Controller:1) model.pml:41 (state 159)	[transition = 8]
+		transition = 8
+199:	proc  0 (Controller:1) model.pml:42 (state 160)	[state = 12]
+		transition = 8
+199:	proc  0 (Controller:1) model.pml:43 (state 161)	[command = 7]
+		transition = 8
+199:	proc  0 (Controller:1) model.pml:44 (state 162)	[start_timer = 1]
+		start_timer = 1
+		transition = 8
+199:	proc  0 (Controller:1) model.pml:45 (state 163)	[emitted = (emitted+1)]
+		start_timer = 1
+		transition = 8
+		emitted = 1
+199:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		start_timer = 1
+		transition = 8
+		emitted = 1
+200:	proc  0 (Controller:1) model.pml:133 (state 214)	[((((previous==Stopping)||(previous==Backing))&&done))]
+200:	proc  0 (Controller:1) model.pml:134 (state 215)	[assert(start_timer)]
+200:	proc  0 (Controller:1) model.pml:137 (state 216)	[assert((((!(right)&&(state==TurningRight))||((right&&!(left))&&(state==TurningLeft)))||((right&&left)&&(state==Backing))))]
+201:	proc  0 (Controller:1) model.pml:143 (state 221)	[(start_timer)]
+201:	proc  0 (Controller:1) model.pml:144 (state 222)	[assert((remaining==0))]
+201:	proc  0 (Controller:1) model.pml:145 (state 223)	[elapsed = 0]
+		elapsed = 0
+201:	proc  0 (Controller:1) model.pml:146 (state 224)	[remaining = 5]
+		elapsed = 0
+		remaining = 5
+201:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+		elapsed = 0
+		remaining = 5
+201:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+		elapsed = 0
+		remaining = 5
+201:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+		elapsed = 0
+		remaining = 5
+201:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+		elapsed = 0
+		remaining = 5
+201:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+		elapsed = 0
+		remaining = 5
+          T8 prev=Backing f=0 l=1 r=1 done=1 state=Backing cmd=GoBackward elapsed=0 remaining=5
+201:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+		elapsed = 0
+		remaining = 5
+201:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+		elapsed = 0
+		remaining = 5
+201:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+		elapsed = 0
+		remaining = 5
+201:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+		elapsed = 0
+		remaining = 5
+203:	proc  0 (Controller:1) model.pml:64 (state 38)	[stable = 0]
+		stable = 0
+204:	proc  0 (Controller:1) model.pml:65 (state 41)	[else]
+205:	proc  0 (Controller:1) model.pml:25 (state 42)	[sampled = 0]
+		sampled = 0
+206:	proc  0 (Controller:1) model.pml:28 (state 45)	[(!((1&&(state==Stopping))))]
+207:	proc  0 (Controller:1) model.pml:29 (state 46)	[front = 0]
+207:	proc  0 (Controller:1) model.pml:31 (state 52)	[sampled = (sampled|1)]
+		sampled = 1
+208:	proc  0 (Controller:1) model.pml:32 (state 53)	[left = 0]
+		left = 0
+208:	proc  0 (Controller:1) model.pml:33 (state 57)	[sampled = (sampled|2)]
+		left = 0
+		sampled = 3
+209:	proc  0 (Controller:1) model.pml:34 (state 58)	[right = 0]
+		right = 0
+209:	proc  0 (Controller:1) model.pml:35 (state 62)	[sampled = (sampled|4)]
+		right = 0
+		sampled = 7
+210:	proc  0 (Controller:1) model.pml:36 (state 63)	[dust = 0]
+210:	proc  0 (Controller:1) model.pml:37 (state 67)	[sampled = (sampled|8)]
+		sampled = 15
+210:	proc  0 (Controller:1) model.pml:66 (state 71)	[assert((sampled==15))]
+		sampled = 15
+210:	proc  0 (Controller:1) model.pml:67 (state 72)	[previous = state]
+		sampled = 15
+210:	proc  0 (Controller:1) model.pml:68 (state 73)	[emitted = 0]
+		sampled = 15
+		emitted = 0
+210:	proc  0 (Controller:1) model.pml:69 (state 74)	[start_timer = 0]
+		start_timer = 0
+		sampled = 15
+		emitted = 0
+210:	proc  0 (Controller:1) model.pml:70 (state 75)	[done = 0]
+		done = 0
+		start_timer = 0
+		sampled = 15
+		emitted = 0
+211:	proc  0 (Controller:1) model.pml:74 (state 76)	[(!(right))]
+211:	proc  0 (Controller:1) model.pml:74 (state 77)	[side = RightOpen]
+		side = RightOpen
+211:	proc  0 (Controller:1) model.pml:78 (state 84)	[assert(((side==RightOpen)==!(right)))]
+		side = RightOpen
+211:	proc  0 (Controller:1) model.pml:79 (state 85)	[assert(((side==LeftOpen)==(right&&!(left))))]
+		side = RightOpen
+211:	proc  0 (Controller:1) model.pml:80 (state 86)	[assert(((side==SidesBlocked)==(right&&left)))]
+		side = RightOpen
+212:	proc  0 (Controller:1) model.pml:83 (state 87)	[((remaining>0))]
+212:	proc  0 (Controller:1) model.pml:83 (state 88)	[remaining = (remaining-1)]
+		remaining = 4
+213:	proc  0 (Controller:1) model.pml:86 (state 93)	[((elapsed!=6))]
+213:	proc  0 (Controller:1) model.pml:87 (state 94)	[elapsed = (elapsed+1)]
+		elapsed = 1
+214:	proc  0 (Controller:1) model.pml:88 (state 98)	[else]
+215:	proc  0 (Controller:1) model.pml:88 (state 99)	[(1)]
+215:	proc  0 (Controller:1) model.pml:91 (state 106)	[assert((done==((previous!=Forward)&&(remaining==0))))]
+215:	proc  0 (Controller:1) model.pml:94 (state 107)	[guards = (((((((((((((((previous==Forward)&&!(front))+((previous==Forward)&&front))+((previous==Stopping)&&!(done)))+(((previous==Stopping)&&done)&&(side==RightOpen)))+(((previous==Stopping)&&done)&&(side==LeftOpen)))+(((previous==Stopping)&&done)&&(side==SidesBlocked)))+((previous==Backing)&&!(done)))+(((previous==Backing)&&done)&&(side==SidesBlocked)))+(((previous==Backing)&&done)&&(side==RightOpen)))+(((previous==Backing)&&done)&&(side==LeftOpen)))+((previous==TurningRight)&&!(done)))+((previous==TurningRight)&&done))+((previous==TurningLeft)&&!(done)))+((previous==TurningLeft)&&done))]
+215:	proc  0 (Controller:1) model.pml:108 (state 108)	[assert((guards==1))]
+216:	proc  0 (Controller:1) model.pml:116 (state 151)	[(((previous==Backing)&&!(done)))]
+217:	proc  0 (Controller:1) model.pml:41 (state 152)	[transition = 7]
+		transition = 7
+217:	proc  0 (Controller:1) model.pml:42 (state 153)	[state = 12]
+		transition = 7
+217:	proc  0 (Controller:1) model.pml:43 (state 154)	[command = 7]
+		transition = 7
+217:	proc  0 (Controller:1) model.pml:44 (state 155)	[start_timer = 0]
+		transition = 7
+217:	proc  0 (Controller:1) model.pml:45 (state 156)	[emitted = (emitted+1)]
+		transition = 7
+		emitted = 1
+217:	proc  0 (Controller:1) model.pml:127 (state 209)	[assert((emitted==1))]
+		transition = 7
+		emitted = 1
+218:	proc  0 (Controller:1) model.pml:132 (state 212)	[(((previous!=Forward)&&!(done)))]
+218:	proc  0 (Controller:1) model.pml:132 (state 213)	[assert(((state==previous)&&!(start_timer)))]
+219:	proc  0 (Controller:1) model.pml:147 (state 225)	[else]
+220:	proc  0 (Controller:1) model.pml:147 (state 226)	[(1)]
+220:	proc  0 (Controller:1) model.pml:149 (state 229)	[direction = command]
+220:	proc  0 (Controller:1) model.pml:150 (state 230)	[avoiding = (command!=GoForward)]
+220:	proc  0 (Controller:1) model.pml:155 (state 231)	[assert(((((((state==Forward)&&(command==GoForward))||((state==Stopping)&&(command==Stop)))||((state==Backing)&&(command==GoBackward)))||((state==TurningRight)&&(command==TurnRight)))||((state==TurningLeft)&&(command==TurnLeft))))]
+220:	proc  0 (Controller:1) model.pml:156 (state 232)	[assert(((direction==command)&&(avoiding==(state!=Forward))))]
+220:	proc  0 (Controller:1) model.pml:158 (state 233)	[assert(((((state==Forward)&&(elapsed==6))&&(remaining==0))||(((state!=Forward)&&(elapsed<5))&&(remaining==(5-elapsed)))))]
+          T7 prev=Backing f=0 l=0 r=0 done=0 state=Backing cmd=GoBackward elapsed=1 remaining=4
+220:	proc  0 (Controller:1) model.pml:159 (state 234)	[printf('T%d prev=%e f=%d l=%d r=%d done=%d state=%e cmd=%e elapsed=%d remaining=%d\\n',transition,previous,front,left,right,done,state,command,elapsed,remaining)]
+220:	proc  0 (Controller:1) model.pml:161 (state 235)	[stable = 1]
+		stable = 1
+220:	proc  0 (Controller:1) model.pml:162 (state 236)	[assert((transition!=255))]
+		stable = 1
+220:	proc  0 (Controller:1) model.pml:163 (state 237)	[assert((state!=0))]
+		stable = 1
+spin: trail ends after 220 steps
+#processes: 1
+		state = Backing
+		previous = Backing
+		command = GoBackward
+		direction = GoBackward
+		side = RightOpen
+		front = 0
+		left = 0
+		right = 0
+		dust = 0
+		done = 0
+		start_timer = 0
+		stable = 1
+		avoiding = 1
+		first_tick = 0
+		clean_emitted = 0
+		sampled = 15
+		elapsed = 1
+		remaining = 4
+		transition = 7
+		emitted = 1
+		guards = 1
+220:	proc  0 (Controller:1) model.pml:62 (state 239)
+220:	proc  - (unconditional_forward:1) _spin_nvr.tmp:7 (state 10)
+1 processes created

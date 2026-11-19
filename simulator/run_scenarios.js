@@ -13,7 +13,7 @@ const World = require('./public/world');
 const { SCENARIOS } = require('./public/scenarios');
 const { ControllerProcess } = require('./controller_process');
 
-const OUT_DIR = path.join(__dirname, '..', 'artifacts', 'SystemTest');
+const OUT_DIR = process.env.RVC_SCENARIO_OUT || path.join(__dirname, '..', 'artifacts', 'SystemTest');
 
 // Runs one scenario for the full 100 ticks. Returns the list of snapshots.
 async function runScenario(controller, scenario) {
@@ -22,7 +22,7 @@ async function runScenario(controller, scenario) {
         throw new Error(`${scenario.id}: ${problems.join(' ')}`);
     }
     const world = World.create(scenario);
-    const power_on = await controller.start();
+    const power_on = await controller.start(World.sense(world));
     const history = [{ ...power_on, events: [], world: World.snapshot(world) }];
     for (let tick = 1; tick <= World.MAX_TICKS; tick++) {
         const sensors = World.sense(world);

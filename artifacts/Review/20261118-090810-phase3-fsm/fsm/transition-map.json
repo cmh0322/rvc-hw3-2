@@ -1,0 +1,152 @@
+[
+  {
+    "id": "T0",
+    "source_line": 63,
+    "model_line": 51,
+    "from": "[*]",
+    "guard": "Before first Tick",
+    "action": "Set state only; no Movement Command or Start Step Timer",
+    "to": "Forward",
+    "requirements": "C13"
+  },
+  {
+    "id": "T1",
+    "source_line": 64,
+    "model_line": 110,
+    "from": "Forward",
+    "guard": "not Front Blocked",
+    "action": "Forward",
+    "to": "Forward",
+    "requirements": "B2, C16"
+  },
+  {
+    "id": "T2",
+    "source_line": 65,
+    "model_line": 111,
+    "from": "Forward",
+    "guard": "Front Blocked",
+    "action": "Stop, Start Step Timer",
+    "to": "Stopping",
+    "requirements": "B3, C2, C7, C16"
+  },
+  {
+    "id": "T3",
+    "source_line": 66,
+    "model_line": 112,
+    "from": "Stopping",
+    "guard": "not Step Done",
+    "action": "Stop",
+    "to": "Stopping",
+    "requirements": "C7"
+  },
+  {
+    "id": "T4",
+    "source_line": 67,
+    "model_line": 113,
+    "from": "Stopping",
+    "guard": "Step Done and Right Open",
+    "action": "Turn Right, Start Step Timer",
+    "to": "TurningRight",
+    "requirements": "B3, C1, C8"
+  },
+  {
+    "id": "T5",
+    "source_line": 68,
+    "model_line": 114,
+    "from": "Stopping",
+    "guard": "Step Done and Left Open",
+    "action": "Turn Left, Start Step Timer",
+    "to": "TurningLeft",
+    "requirements": "B3, C8"
+  },
+  {
+    "id": "T6",
+    "source_line": 69,
+    "model_line": 115,
+    "from": "Stopping",
+    "guard": "Step Done and Sides Blocked",
+    "action": "Backward, Start Step Timer",
+    "to": "Backing",
+    "requirements": "B4, C6"
+  },
+  {
+    "id": "T7",
+    "source_line": 70,
+    "model_line": 116,
+    "from": "Backing",
+    "guard": "not Step Done",
+    "action": "Backward",
+    "to": "Backing",
+    "requirements": "C6"
+  },
+  {
+    "id": "T8",
+    "source_line": 71,
+    "model_line": 117,
+    "from": "Backing",
+    "guard": "Step Done and Sides Blocked",
+    "action": "Backward, Start Step Timer",
+    "to": "Backing",
+    "requirements": "C5, C6, C9"
+  },
+  {
+    "id": "T9",
+    "source_line": 72,
+    "model_line": 118,
+    "from": "Backing",
+    "guard": "Step Done and Right Open",
+    "action": "Turn Right, Start Step Timer",
+    "to": "TurningRight",
+    "requirements": "C5, C8, C9"
+  },
+  {
+    "id": "T10",
+    "source_line": 73,
+    "model_line": 119,
+    "from": "Backing",
+    "guard": "Step Done and Left Open",
+    "action": "Turn Left, Start Step Timer",
+    "to": "TurningLeft",
+    "requirements": "C5, C8, C9"
+  },
+  {
+    "id": "T11",
+    "source_line": 74,
+    "model_line": 120,
+    "from": "TurningRight",
+    "guard": "not Step Done",
+    "action": "Turn Right",
+    "to": "TurningRight",
+    "requirements": "C8"
+  },
+  {
+    "id": "T12",
+    "source_line": 75,
+    "model_line": 121,
+    "from": "TurningRight",
+    "guard": "Step Done",
+    "action": "Forward",
+    "to": "Forward",
+    "requirements": "B3, B4, C8"
+  },
+  {
+    "id": "T13",
+    "source_line": 76,
+    "model_line": 122,
+    "from": "TurningLeft",
+    "guard": "not Step Done",
+    "action": "Turn Left",
+    "to": "TurningLeft",
+    "requirements": "C8"
+  },
+  {
+    "id": "T14",
+    "source_line": 77,
+    "model_line": 123,
+    "from": "TurningLeft",
+    "guard": "Step Done",
+    "action": "Forward",
+    "to": "Forward",
+    "requirements": "B3, B4, C8"
+  }
+]

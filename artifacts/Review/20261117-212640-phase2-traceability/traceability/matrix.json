@@ -1,0 +1,923 @@
+[
+  {
+    "id": "B1",
+    "summary": "자동 흡입 청소·물걸레",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 1,
+      "end": 1
+    },
+    "event": "Clean",
+    "process": "0,4,4.2",
+    "dictionary": "Clean",
+    "fsm": "청소 출력은 FSM 밖; Forward 상태와 Movement Status로 연결",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 16,
+        "end": 28
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 424,
+        "end": 444
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 109,
+        "end": 117
+      }
+    ],
+    "sa_status": "traced",
+    "note": "C14가 물걸레/강화 의미를 보완",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "B2",
+    "summary": "전진하며 청소",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 2,
+      "end": 2
+    },
+    "event": "Direction,Clean",
+    "process": "3,3.2.2,3.2.3,4.2",
+    "dictionary": "Movement Status,Clean",
+    "fsm": "T1,T12,T14",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 27,
+        "end": 28
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 520,
+        "end": 533
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 565,
+        "end": 579
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 424,
+        "end": 440
+      }
+    ],
+    "sa_status": "traced",
+    "note": "초기 출력 예외는 C13",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "B3",
+    "summary": "장애물 시 청소 중단·정지·회전·전진 재개",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 3,
+      "end": 3
+    },
+    "event": "Front/Left/Right Sensor Input,Direction,Clean",
+    "process": "1,3.1,3.2.2,3.2.3,4.2",
+    "dictionary": "Obstacle Situation,Movement Status",
+    "fsm": "T2-T5,T11-T14",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 22,
+        "end": 28
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 174,
+        "end": 189
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 520,
+        "end": 535
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 424,
+        "end": 440
+      }
+    ],
+    "sa_status": "traced-under-Q6",
+    "note": "Forward의 회피 진입은 Q6 가정 아래 전방만 사용; Q6 별도 행",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "B4",
+    "summary": "전방·좌우 차단 시 후진 후 회전",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 4,
+      "end": 4
+    },
+    "event": "Front/Left/Right Sensor Input,Direction",
+    "process": "1,3.1,3.2.2,3.2.4",
+    "dictionary": "Side Situation,D4",
+    "fsm": "T6-T10,T12,T14",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 22,
+        "end": 27
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 264,
+        "end": 291
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 69,
+        "end": 77
+      }
+    ],
+    "sa_status": "traced",
+    "note": "C5/C9가 후진 반복과 전방 독립을 보완",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "B5",
+    "summary": "먼지 감지 시 일시 파워업",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 5,
+      "end": 5
+    },
+    "event": "Dust Sensor Input,Clean,Tick",
+    "process": "2,4.1,4.2",
+    "dictionary": "D2,D3,Pending Dust Detection",
+    "fsm": "직접 전이 해당 없음: 청소 타이머는 FSM 밖",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 25,
+        "end": 28
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 130,
+        "end": 146
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 398
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 424,
+        "end": 444
+      }
+    ],
+    "sa_status": "traced",
+    "note": "C3/C10/C11/C15로 기간·재시작·보존 정의",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "B6",
+    "summary": "하드웨어 세부 설계·구현 제외",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 6,
+      "end": 6
+    },
+    "event": "Context 외부 경계",
+    "process": "0,4.2의 범위 계약",
+    "dictionary": "외부 센서/Motor/Cleaner",
+    "fsm": "해당 없음: 범위 제약",
+    "evidence": [
+      {
+        "path": "artifacts/SA/context_diagram.md",
+        "start": 8,
+        "end": 9
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 428,
+        "end": 428
+      }
+    ],
+    "sa_status": "scope-traced",
+    "note": "C14는 명령 의미만 정의; 하드웨어 모듈 추가를 요구하지 않음",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "B7",
+    "summary": "자동 청소 기능으로 범위 제한",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 7,
+      "end": 7
+    },
+    "event": "Context 내부 경계",
+    "process": "0 및 자동 제어 분해",
+    "dictionary": "시스템 전체 범위",
+    "fsm": "해당 없음: 범위 제약",
+    "evidence": [
+      {
+        "path": "artifacts/SA/context_diagram.md",
+        "start": 8,
+        "end": 9
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 20,
+        "end": 21
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 42,
+        "end": 62
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_1.md",
+        "start": 53,
+        "end": 66
+      }
+    ],
+    "sa_status": "scope-traced",
+    "note": "충전/지도/앱 기능을 새 요구사항으로 요구하지 않음",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C1",
+    "summary": "양측 개방 시 우회전 우선",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 9,
+      "end": 9
+    },
+    "event": "Left/Right Sensor Input,Direction",
+    "process": "3.1,3.2.2",
+    "dictionary": "Right Open,Left Open",
+    "fsm": "T4,T9",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 23,
+        "end": 27
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 264,
+        "end": 286
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 67,
+        "end": 73
+      }
+    ],
+    "sa_status": "traced",
+    "note": "Right Open은 오른쪽이 비면 TRUE, Left Open은 오른쪽 차단+왼쪽 개방",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C2",
+    "summary": "우회 전 정지",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 10,
+      "end": 10
+    },
+    "event": "Front Sensor Input,Direction",
+    "process": "3.2.2,3.2.4",
+    "dictionary": "Start Step Timer,D4",
+    "fsm": "T2,T3",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 27,
+        "end": 27
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 520,
+        "end": 525
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 65,
+        "end": 69
+      }
+    ],
+    "sa_status": "traced",
+    "note": "Stop을 먼저 출력; C7이 지속 시간 보완",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C3",
+    "summary": "파워업 5틱",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 11,
+      "end": 11
+    },
+    "event": "Dust Sensor Input,Tick,Clean",
+    "process": "4.1",
+    "dictionary": "Remaining Power-Up Ticks,D3",
+    "fsm": "직접 전이 해당 없음: D3",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 26,
+        "end": 28
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 392
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 200,
+        "end": 218
+      }
+    ],
+    "sa_status": "traced",
+    "note": "시작 틱 포함, 새 감지/회피가 없으면 t..t+4",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C4",
+    "summary": "장애물이 물리적으로 사라지지 않음",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 12,
+      "end": 12
+    },
+    "event": "Front/Left/Right Sensor Input의 환경 전제",
+    "process": "3.2.2",
+    "dictionary": "Front Blocked,Side Situation",
+    "fsm": "Stopping의 T4-T6 전제",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_2.md",
+        "start": 125,
+        "end": 125
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_3.md",
+        "start": 96,
+        "end": 97
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 104,
+        "end": 111
+      }
+    ],
+    "sa_status": "traced",
+    "note": "정지 중 전방 유지; 이동·회전 후 센서 고정이라는 뜻이 아님",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C5",
+    "summary": "후진 후 오른쪽/왼쪽/재후진 선택",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 13,
+      "end": 13
+    },
+    "event": "Left/Right Sensor Input,Direction",
+    "process": "3.1,3.2.2",
+    "dictionary": "Side Situation",
+    "fsm": "T8,T9,T10",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 174,
+        "end": 177
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 71,
+        "end": 73
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_2.md",
+        "start": 125,
+        "end": 129
+      }
+    ],
+    "sa_status": "traced",
+    "note": "양측 차단이면 무제한 반복 가능; unconditional eventual-forward 요구 없음",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C6",
+    "summary": "후진 5틱",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 14,
+      "end": 14
+    },
+    "event": "Tick,Direction",
+    "process": "3.2.2,3.2.4",
+    "dictionary": "D4,Step Done",
+    "fsm": "T6-T10",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 26,
+        "end": 26
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 613,
+        "end": 637
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 69,
+        "end": 73
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 91,
+        "end": 91
+      }
+    ],
+    "sa_status": "traced",
+    "note": "시작 틱 포함 5회 출력; 다음 틱에 선택",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C7",
+    "summary": "회피 전 정지 5틱",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 15,
+      "end": 15
+    },
+    "event": "Tick,Direction",
+    "process": "3.2.2,3.2.4",
+    "dictionary": "D4,Step Done",
+    "fsm": "T2-T6",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 26,
+        "end": 26
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 613,
+        "end": 637
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 85,
+        "end": 91
+      }
+    ],
+    "sa_status": "traced",
+    "note": "정지 t..t+4, 다음 액션 t+5",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C8",
+    "summary": "회전 5틱",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 16,
+      "end": 16
+    },
+    "event": "Tick,Direction",
+    "process": "3.2.2,3.2.4",
+    "dictionary": "D4,Step Done",
+    "fsm": "T4,T5,T9-T14",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 26,
+        "end": 26
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 613,
+        "end": 637
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 67,
+        "end": 77
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 85,
+        "end": 91
+      }
+    ],
+    "sa_status": "traced",
+    "note": "회전 방향은 상태로 유지",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C9",
+    "summary": "후진 종료 때 전방을 보지 않고 좌우로 결정",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 17,
+      "end": 17
+    },
+    "event": "Left/Right Sensor Input,Direction",
+    "process": "3.1,3.2.1,3.2.2",
+    "dictionary": "Front Blocked + Side Situation",
+    "fsm": "T8,T9,T10",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 264,
+        "end": 291
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 319,
+        "end": 329
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 474,
+        "end": 486
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 71,
+        "end": 73
+      }
+    ],
+    "sa_status": "traced",
+    "note": "front=FALSE, sides blocked도 T8; 상위 enum 잔존 없음",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C10",
+    "summary": "재감지 시 5틱 재시작",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 18,
+      "end": 18
+    },
+    "event": "Dust Sensor Input,Tick,Clean",
+    "process": "2,4.1",
+    "dictionary": "D2,D3",
+    "fsm": "직접 전이 해당 없음: 청소",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 25,
+        "end": 28
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 392
+      }
+    ],
+    "sa_status": "traced",
+    "note": "current/pending dust가 잔여 틱보다 우선; 지속 TRUE는 매 Forward Tick 재시작",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C11",
+    "summary": "회피 중 잔여 파워업 보존·복귀 시 재개",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 19,
+      "end": 19
+    },
+    "event": "Movement Status,Clean,Tick",
+    "process": "3.2.3,4.1,4.2",
+    "dictionary": "D3",
+    "fsm": "FSM은 Avoiding/Forward 상태를 제공",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 28,
+        "end": 28
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 395
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 565,
+        "end": 579
+      }
+    ],
+    "sa_status": "traced",
+    "note": "회피 중 감소 없음; C15 감지가 있으면 복귀 때 재시작 우선",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C12",
+    "summary": "첫 Tick 전 네 센서 실제 값 확보",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 20,
+      "end": 20
+    },
+    "event": "네 Sensor Input,Tick",
+    "process": "0,1,2",
+    "dictionary": "D1,D2 초기 샘플",
+    "fsm": "T1/T2 실행 전 조건; 새 전이 없음",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 38,
+        "end": 38
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 38,
+        "end": 40
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 92,
+        "end": 104
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 130,
+        "end": 146
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_3.md",
+        "start": 127,
+        "end": 134
+      }
+    ],
+    "sa_status": "traced",
+    "note": "미수신 FALSE 금지; 초기 dust TRUE는 pending에 기록",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C13",
+    "summary": "초기 Forward 상태만 설정; 첫 Tick에 출력",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 21,
+      "end": 21
+    },
+    "event": "Tick,Direction,Clean",
+    "process": "0,3.2,3.2.2",
+    "dictionary": "D3=0,D4=Idle; no initial output",
+    "fsm": "T0 상태 설정만, 첫 Tick T1 또는 T2",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 38,
+        "end": 38
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 38,
+        "end": 59
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 516,
+        "end": 516
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 25,
+        "end": 25
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 63,
+        "end": 65
+      }
+    ],
+    "sa_status": "traced",
+    "note": "Power On은 외부 여덟 번째 이벤트가 아님",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C14",
+    "summary": "Start/Stop 동시 제어, Power Up 흡입만 강화",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 22,
+      "end": 22
+    },
+    "event": "Clean",
+    "process": "4,4.2",
+    "dictionary": "Clean enum의 효과",
+    "fsm": "직접 전이 해당 없음: 출력 의미",
+    "evidence": [
+      {
+        "path": "artifacts/SA/event_list.md",
+        "start": 16,
+        "end": 16
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 109,
+        "end": 117
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 424,
+        "end": 444
+      }
+    ],
+    "sa_status": "traced",
+    "note": "물걸레 강화가 아닌 정상 유지; B6 범위 보존",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "C15",
+    "summary": "회피 먼지 기억 후 복귀 시 5틱 시작·재시작",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 23,
+      "end": 23
+    },
+    "event": "Dust Sensor Input,Pending Dust Detection,Clean",
+    "process": "2,4,4.1",
+    "dictionary": "D2 두 Boolean,D3",
+    "fsm": "직접 전이 해당 없음: 4.1이 새 Movement Status 사용",
+    "evidence": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 27,
+        "end": 29
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_1.md",
+        "start": 33,
+        "end": 38
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_2.md",
+        "start": 71,
+        "end": 107
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 159,
+        "end": 178
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 130,
+        "end": 142
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 395
+      }
+    ],
+    "sa_status": "traced",
+    "note": "TRUE→FALSE도 pending 유지; 반복 감지 합침; 복귀 시 잔여 틱보다 재시작 우선",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  },
+  {
+    "id": "Q6",
+    "summary": "전방이 비면 측면 장애물만으로 회피하지 않는 가정",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 42,
+      "end": 42
+    },
+    "event": "Front/Left/Right Sensor Input",
+    "process": "3.1,3.2.2",
+    "dictionary": "Front Blocked,Side Situation",
+    "fsm": "T1,T2",
+    "evidence": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 42,
+        "end": 42
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 175,
+        "end": 175
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 291,
+        "end": 291
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_3.md",
+        "start": 147,
+        "end": 147
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 64,
+        "end": 65
+      }
+    ],
+    "sa_status": "assumption-traced",
+    "note": "미확정. B3의 포괄적 sensors 표현에 대한 현재 해석; 새 결함이나 승인으로 승격하지 않음",
+    "sd_status": "notChecked-phase4",
+    "c_status": "notChecked-phase5",
+    "unit_test_status": "notChecked",
+    "system_test_status": "notChecked",
+    "execution_status": "notRun"
+  }
+]

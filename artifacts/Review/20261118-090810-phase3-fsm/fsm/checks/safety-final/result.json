@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "started_utc": "2026-11-18T00:09:43.752208+00:00",
+  "commands": [
+    {
+      "stage": "spin-version",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-V"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler-version",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+      "exit_code": 0
+    },
+    {
+      "stage": "generate",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-a",
+        "model.pml"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+      "exit_code": 0
+    },
+    {
+      "stage": "compile",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "-O2",
+        "-o",
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety\\pan.exe",
+        "pan.c"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+      "exit_code": 0
+    },
+    {
+      "stage": "search",
+      "argv": [
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety\\pan.exe",
+        "-m100000"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+      "exit_code": 0
+    }
+  ],
+  "scope": "one property/check on the supplied model only",
+  "ltl": null,
+  "depth": 100000,
+  "fairness": "none",
+  "search": "full-state",
+  "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\model.pml",
+  "model_sha256": "9d7a6c637f3afbd8d44dddb34f26bc7a0eb3e653d090f848143c0eb24b383fe4",
+  "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+  "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+  "errors": 0,
+  "stored_states": "157",
+  "transitions": "2233",
+  "reason": "Configured check completed with zero reported errors; model fidelity is separate",
+  "finished_utc": "2026-11-18T00:09:50.035854+00:00"
+}

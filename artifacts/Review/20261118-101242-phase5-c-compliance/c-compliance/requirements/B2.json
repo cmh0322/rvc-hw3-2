@@ -1,0 +1,71 @@
+{
+  "id": "B2",
+  "verdict": "partial",
+  "confidence": "high",
+  "spec_refs": [
+    {"path":"docs/preliminary_requirements.md","start":2,"end":2},
+    {"path":"docs/requirements_clarifications.md","start":20,"end":24},
+    {"path":"artifacts/SA/process_specification.md","start":37,"end":59},
+    {"path":"artifacts/SA/process_specification.md","start":319,"end":334},
+    {"path":"artifacts/SA/DFD/dfd_level_4_fsm.md","start":63,"end":77},
+    {"path":"artifacts/SA/data_dictionary.md","start":99,"end":117},
+    {"path":"artifacts/SD/structure_chart.md","start":17,"end":23},
+    {"path":"artifacts/SD/structure_chart.md","start":134,"end":159},
+    {"path":"artifacts/SD/transform_analysis.md","start":190,"end":192}
+  ],
+  "code_refs": [
+    {"path":"src/main.c","start":10,"end":17},
+    {"path":"src/initialize_rvc.c","start":8,"end":14},
+    {"path":"src/movement_controller.c","start":27,"end":68},
+    {"path":"src/assess_obstacle_situation.c","start":8,"end":16},
+    {"path":"src/controller.c","start":8,"end":14},
+    {"path":"src/get_inputs.c","start":8,"end":16},
+    {"path":"src/detect_obstacle.c","start":10,"end":12},
+    {"path":"src/detect_dust.c","start":6,"end":8},
+    {"path":"src/decide_actions.c","start":17,"end":22},
+    {"path":"src/derive_movement_status.c","start":8,"end":12},
+    {"path":"src/decide_cleaning.c","start":8,"end":13},
+    {"path":"src/put_outputs.c","start":7,"end":10},
+    {"path":"src/issue_movement_output.c","start":6,"end":17},
+    {"path":"simulator/host/sim_host.c","start":85,"end":135},
+    {"path":"CMakeLists.txt","start":31,"end":42},
+    {"path":"CMakeLists.txt","start":97,"end":101}
+  ],
+  "subclaims": [
+    {"claim":"Forward Ticks emit Direction Forward together with enabled cleaning.","verdict":"implemented","evidence":"src/movement_controller.c:27-31,60; src/decide_actions.c:17-22; src/derive_movement_status.c:8-12; src/decide_cleaning.c:8-13; src/put_outputs.c:7-10; src/issue_movement_output.c:6-17"},
+    {"claim":"C16: a clear front keeps Forward regardless of either side being blocked.","verdict":"implemented","evidence":"src/assess_obstacle_situation.c:8-16; src/movement_controller.c:27-31; side classification is consulted only in other state branches."},
+    {"claim":"C13: Power On emits no Direction command.","verdict":"contradicted","evidence":"src/main.c:12-16 calls initialization before first Tick; src/initialize_rvc.c:10-13 sends Forward returned by src/movement_controller.c:64-68 through src/issue_movement_output.c:17."},
+    {"claim":"C13: Power On emits no Clean command.","verdict":"implemented","evidence":"src/initialize_rvc.c:8-14 invokes state/timer resets and motor output only; drive_cleaner is reached through src/put_outputs.c:10 on controller cycles."},
+    {"claim":"C12 and approved SD: obtain four actual initial samples before first Tick delivery/processing.","verdict":"contradicted","evidence":"src/initialize_rvc.c:8-14 contains no acquisition; src/main.c:15 waits for Tick before controller/get_inputs reads sensors. All locals are read before per-cycle decisions, but approved initial-acquisition/readiness boundary is missing."}
+  ],
+  "paths_walked": [
+    "main -> initialize_rvc -> reset_movement_controller -> reset_step_timer; reset_power_up_timer; issue_movement_output -> drive_motor",
+    "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle/detect_dust -> read_*",
+    "controller -> decide_actions -> movement_controller -> derive_movement_status -> track_power_up -> decide_cleaning -> put_outputs -> drive_motor/drive_cleaner",
+    "Forward front clear/blocked; both turn completion branches; Stopping/Backing side branches; reset after activity",
+    "CMake control library, Main test object and simulator target; simulator host initial report/read cycle and world Forward mapping"
+  ],
+  "searched": [
+    {"pattern":"initialize_rvc|reset_movement_controller|drive_motor|read_front_sensor|read_left_sensor|read_right_sensor|read_dust_sensor|wait_for_tick|receive_input|acquire_initial|inputs_ready|sensor_valid","scope":"src include simulator/host CMakeLists.txt","result":"Single startup/polling path; no initial event acquisition/readiness alternate path."},
+    {"pattern":"FORWARD|CLEAN_START|CLEAN_POWER_UP|front_blocked|side_situation","scope":"movement, assessment, decision, status, cleaning and movement-output source files","result":"Front-only Forward guard and paired Forward/cleaning output mapping."},
+    {"pattern":"B2|SideObstacles|T1_|Forward|initial|power on","scope":"tests/test_requirements.cpp tests/test_movement_controller.cpp tests/test_main.cpp tests/test_initialize_rvc.cpp","result":"Steady Forward/side blocker coverage plus obsolete startup Forward expectations."},
+    {"pattern":"RVC_SOURCES|rvc_control|rvc_main|rvc_sim_host|C_STANDARD|GLOB|FILTER","scope":"CMakeLists.txt","result":"Relevant targets compile same production sources; no alternate startup implementation."},
+    {"pattern":"Direction|direction|Forward|clean|power","scope":"simulator/public/world.js simulator/public/scenarios.js simulator/controller_process.js","result":"Forward heading movement and Start/Power Up cleaning interpretation; startup protocol found."}
+  ],
+  "divergence": {
+    "consequence":"A Forward command escapes before sensor evaluation and before the first Tick; initial acquisition contract is not implemented. No physical collision claim is made.",
+    "scenario":"Power on with an obstacle already in front: initialize_rvc sends Forward immediately; sensors and Stop/Clean Stop are evaluated only after wait_for_tick returns.",
+    "minimal_fix":"Implement approved state-only reset and initial actual-sample acquisition/readiness before running Tick delivery; update startup tests and simulator adapter to the approved event contract.",
+    "severity":"high"
+  },
+  "tests_reviewed": [
+    "tests/test_requirements.cpp:16-19,169-175",
+    "tests/test_controller.cpp:18-56",
+    "tests/test_decide_cleaning.cpp:9-26",
+    "tests/test_main.cpp:33-80",
+    "tests/test_initialize_rvc.cpp:24-56",
+    "tests/rvc_system_fixture.h:14-18"
+  ],
+  "test_execution":"notRun-by-reviewer",
+  "open_questions":["No unresolved requirement ambiguity for B2. Runtime execution and physical motor straightness were not measured; detailed hardware is excluded by B6. Full B5/C15 cleaning-power compliance belongs to its independent record."]
+}

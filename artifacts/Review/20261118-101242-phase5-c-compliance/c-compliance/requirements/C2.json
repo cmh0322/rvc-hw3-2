@@ -1,0 +1,53 @@
+{
+  "id": "C2",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {"path":"docs/requirements_clarifications.md","start":10,"end":10},
+    {"path":"docs/requirements_clarifications.md","start":15,"end":15},
+    {"path":"docs/requirements_clarifications.md","start":24,"end":24},
+    {"path":"artifacts/SA/DFD/dfd_level_4_fsm.md","start":65,"end":75},
+    {"path":"artifacts/SA/process_specification.md","start":516,"end":535},
+    {"path":"artifacts/SA/data_dictionary.md","start":231,"end":238},
+    {"path":"artifacts/SD/structure_chart.md","start":149,"end":160},
+    {"path":"artifacts/SD/structure_chart.md","start":288,"end":288},
+    {"path":"artifacts/SD/transform_analysis.md","start":65,"end":68}
+  ],
+  "code_refs": [
+    {"path":"src/movement_controller.c","start":13,"end":68},
+    {"path":"src/step_timer.c","start":10,"end":35},
+    {"path":"src/controller.c","start":8,"end":13},
+    {"path":"src/get_inputs.c","start":8,"end":16},
+    {"path":"src/detect_obstacle.c","start":6,"end":14},
+    {"path":"src/assess_obstacle_situation.c","start":4,"end":19},
+    {"path":"src/decide_actions.c","start":9,"end":24},
+    {"path":"src/put_outputs.c","start":7,"end":10},
+    {"path":"src/issue_movement_output.c","start":6,"end":17},
+    {"path":"src/initialize_rvc.c","start":8,"end":13},
+    {"path":"src/main.c","start":10,"end":17},
+    {"path":"include/hw_interface.h","start":32,"end":33},
+    {"path":"simulator/host/sim_host.c","start":85,"end":129},
+    {"path":"CMakeLists.txt","start":31,"end":42},
+    {"path":"CMakeLists.txt","start":97,"end":101}
+  ],
+  "subclaims": [
+    {"claim":"Forward plus blocked front selects Stop regardless of side availability (C16-qualified C2)","verdict":"implemented","evidence":"src/movement_controller.c:27-31 and 13-18,60; front flag carried by src/assess_obstacle_situation.c:8"},
+    {"claim":"Stop precedes either turn or backing and is delivered to the Motor boundary","verdict":"implemented","evidence":"src/movement_controller.c:32-60; src/step_timer.c:10-35; src/put_outputs.c:7-10; src/issue_movement_output.c:6-17"}
+  ],
+  "paths_walked": [
+    "main -> controller -> get_inputs -> detect_obstacle -> assess_obstacle_situation -> decide_actions -> movement_controller -> put_outputs -> issue_movement_output -> drive_motor",
+    "Forward blocked front with each side classification -> Stopping -> held Stop -> right/left/backward",
+    "Backing repeated or side-selected turn -> Forward -> next obstacle Stop",
+    "initialize_rvc -> reset_movement_controller -> reset_step_timer; initial Forward output separately belongs to C13",
+    "CMake library, test and simulator source selection; simulator sensor/motor boundary"
+  ],
+  "searched": [
+    {"pattern":"movement_controller\\(|reset_movement_controller\\(|issue_movement_output\\(|drive_motor\\(|DIRECTION_STOP|MOVEMENT_COMMAND_STOP","scope":"src include simulator tests","result":"Located single production decision/output chain, initialization reset/output caller, fake/host boundary and tests; no second movement decision path."},
+    {"pattern":"C2|C7|C16|Stopping|STOP|Stop|T2|T3|T4|T5|stop","scope":"relevant SA/SD and movement/controller/requirements tests","result":"Located normative stopped phase and branch/sequence test assertions."},
+    {"pattern":"RVC_SOURCES|rvc_control|rvc_main|rvc_sim_host","scope":"CMakeLists.txt","result":"Production library/tests and simulator include reviewed C sources without alternate C2 branch."}
+  ],
+  "divergence": null,
+  "tests_reviewed": ["tests/test_movement_controller.cpp:70-134,225-257","tests/test_controller.cpp:50-70","tests/test_requirements.cpp:21-67"],
+  "test_execution": "notRun-by-reviewer",
+  "open_questions": []
+}

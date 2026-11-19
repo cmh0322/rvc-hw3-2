@@ -7,8 +7,8 @@
 /* Module: Controller (one control cycle per Tick). */
 void controller(void)
 {
-    const Inputs inputs = get_inputs();
-    const Actions actions = decide_actions(inputs.obstacle_situation, inputs.dust_existence);
+    const ObstacleSituation situation = get_inputs();
+    const Actions actions = decide_actions(situation);
 
     put_outputs(actions.movement_command, actions.clean);
 }

@@ -1,0 +1,68 @@
+﻿{
+  "workflow": {
+    "activation_steps_prepend": [
+      "Read the scope and choose a new run-specific report path under artifacts/Review. For an RVC SASD review without explicit lenses, use adversarial, edge-case-hunter, and sasd; add prose only when editing prose is requested."
+    ],
+    "activation_steps_append": [],
+    "persistent_facts": [
+      "file:{project-root}/AGENTS.md",
+      "file:{project-root}/docs/verification/review-contract.md"
+    ],
+    "review_guidance": [
+      "Report in Korean while preserving requirement IDs, process IDs and source identifiers.",
+      "Use the RVC source documents as evidence; never impose a minimum finding count.",
+      "Review does not authorize changing approved artifacts or advancing a development phase."
+    ],
+    "on_complete": "",
+    "output_format": "both",
+    "report_path": "",
+    "output_preferences": "Include requirement references, severity, confirmed defect versus ambiguity versus optional improvement, evidence, minimal correction, and unreviewed scope. Record executed checks separately.",
+    "reader_type": "humans",
+    "style_guide": "Microsoft Writing Style Guide",
+    "lenses": [
+      {
+        "code": "adversarial",
+        "name": "RVC evidence-based adversarial review",
+        "applies_to": "any",
+        "when": "always",
+        "instruction": "Read {project-root}/docs/verification/bmad-lenses.md and apply only its adversarial section. Return canonical BMAD finding fields. Zero findings is valid. Do not load the upstream minimum-count adversarial lens."
+      },
+      {
+        "code": "edge-case-hunter",
+        "name": "Edge-Case Hunter",
+        "applies_to": "any",
+        "when": "Content with behavior to trace: code, diffs, and the specs, requirements, plans, and stories that define behavior. Skip for prose documents with no behavioral surface.",
+        "instruction": "Load `references/lens-edge-case-hunter.md` from the skill root and follow it."
+      },
+      {
+        "code": "verification-gap",
+        "name": "Verification Gap",
+        "applies_to": "code",
+        "when": "Reviewed inside a repo where tests can be searched and read.",
+        "instruction": "Load `references/lens-verification-gap.md` from the skill root and follow it."
+      },
+      {
+        "code": "structure",
+        "name": "Editorial Structure",
+        "applies_to": "docs",
+        "when": "Documents whose shape is the author's to change.",
+        "instruction": "Load `references/lens-structure.md` from the skill root and follow it."
+      },
+      {
+        "code": "prose",
+        "name": "Editorial Prose",
+        "applies_to": "docs",
+        "after": "structure",
+        "when": "Documents being copy-edited.",
+        "instruction": "Load `references/lens-prose.md` from the skill root and follow it."
+      },
+      {
+        "code": "sasd",
+        "name": "RVC SASD consistency and design review",
+        "applies_to": "any",
+        "when": "RVC requirements, SA, SD, or claims of their consistency with implementation and tests.",
+        "instruction": "Read {project-root}/docs/verification/bmad-lenses.md and apply its sasd section to the requested scope using live source artifacts. Return canonical BMAD finding fields."
+      }
+    ]
+  }
+}

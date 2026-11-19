@@ -1,0 +1,42 @@
+[
+  {
+    "pattern": "pending",
+    "scope": [
+      "src",
+      "include",
+      "tests",
+      "simulator/host"
+    ],
+    "matches": []
+  },
+  {
+    "pattern": "receive_input|InputEvent|InputMode",
+    "scope": [
+      "src",
+      "include",
+      "tests",
+      "simulator/host"
+    ],
+    "matches": []
+  },
+  {
+    "pattern": "dispatch|inputs_ready|sensor_store|reset_sensor",
+    "scope": [
+      "src",
+      "include",
+      "tests",
+      "simulator/host"
+    ],
+    "matches": []
+  },
+  {
+    "pattern": "get_dust|get_obstacle",
+    "scope": [
+      "src",
+      "include",
+      "tests",
+      "simulator/host"
+    ],
+    "matches": []
+  }
+]

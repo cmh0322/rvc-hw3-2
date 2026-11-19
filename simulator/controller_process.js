@@ -31,7 +31,10 @@ class ControllerProcess {
     }
 
     // initialize / reset: starts a fresh C program and returns its power-on state.
-    async start() {
+    async start(sensors) {
+        if (!sensors || ["front","left","right","dust"].some(k => typeof sensors[k] !== "boolean")) {
+            throw new Error("Four actual initial sensor values are required");
+        }
         this.stop();
         this.buffer = '';
         this.lines = [];
@@ -49,6 +52,18 @@ class ControllerProcess {
             }
         });
         child.on('error', (err) => this.fail(err));
+        for (const kind of ['front','left','right','dust']) {
+            child.stdin.write(`${kind} ${sensors[kind] ? 1 : 0}\n`);
+        }
+        return this.nextLine();
+    }
+
+    // Sensor-only delivery lets callers represent multiple updates between Ticks.
+    async event(kind, value) {
+        if (!this.child) throw new Error('Reset first');
+        if (!['front','left','right','dust','tick'].includes(kind) ||
+            (kind !== 'tick' && typeof value !== 'boolean')) throw new Error('Invalid input event');
+        this.child.stdin.write(kind === 'tick' ? 'tick\n' : `${kind} ${value ? 1 : 0}\n`);
         return this.nextLine();
     }
 
@@ -57,10 +72,10 @@ class ControllerProcess {
         if (!this.child) {
             throw new Error('The controller is not running. Reset first.');
         }
-        const bit = (value) => (value ? 1 : 0);
-        this.child.stdin.write(
-            `${bit(sensors.front)} ${bit(sensors.left)} ${bit(sensors.right)} ${bit(sensors.dust)}\n`);
-        return this.nextLine();
+        for (const kind of ['front','left','right','dust']) {
+            await this.event(kind, sensors[kind]);
+        }
+        return this.event('tick');
     }
 
     stop() {

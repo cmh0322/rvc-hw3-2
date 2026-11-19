@@ -1,0 +1,21 @@
+{
+  "executed_at": "2026-11-18T09:15:42.538010+09:00",
+  "source_transition_mapping": 15,
+  "categories": {
+    "safety": 2,
+    "liveness": 2,
+    "transition-witness": 15,
+    "state-witness": 5,
+    "monitor-sensitivity": 4,
+    "negative-experiment": 1
+  },
+  "all_expected_results_and_replays_checked": true,
+  "protected_files_unchanged": 74,
+  "source_inputs_unchanged": 18,
+  "model_sha256": "9d7a6c637f3afbd8d44dddb34f26bc7a0eb3e653d090f848143c0eb24b383fe4",
+  "git_diff_check_exit": 0,
+  "C_tests": "notRun",
+  "coverage": "notMeasured",
+  "web_simulator": "notRun",
+  "SD_C_compliance": "notChecked"
+}

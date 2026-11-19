@@ -1,0 +1,760 @@
+[
+  {
+    "id": "ST-01",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 15,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-01_2026-11-19T04-02-09-040Z.json",
+    "expected": [
+      [
+        4,
+        "Forward",
+        "Start"
+      ],
+      [
+        9,
+        "Stop",
+        "Stop"
+      ],
+      [
+        14,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        15,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-02",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 13,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-02_2026-11-19T04-02-28-960Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        7,
+        "Stop",
+        "Stop"
+      ],
+      [
+        12,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        13,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-03",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 13,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-03_2026-11-19T04-03-13-648Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        7,
+        "Stop",
+        "Stop"
+      ],
+      [
+        12,
+        "Turn Left",
+        "Stop"
+      ],
+      [
+        13,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-04",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 13,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-04_2026-11-19T04-04-07-520Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        7,
+        "Stop",
+        "Stop"
+      ],
+      [
+        12,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        13,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-05",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 18,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-05_2026-11-19T04-04-19-904Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        7,
+        "Stop",
+        "Stop"
+      ],
+      [
+        12,
+        "Backward",
+        "Stop"
+      ],
+      [
+        17,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        18,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-06",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 100,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-06_2026-11-19T04-04-32-176Z.json",
+    "expected": [
+      [
+        6,
+        "Forward",
+        "Start"
+      ],
+      [
+        11,
+        "Stop",
+        "Stop"
+      ],
+      [
+        100,
+        "Backward",
+        "Stop"
+      ]
+    ]
+  },
+  {
+    "id": "ST-07",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 20,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-07_2026-11-19T04-04-44-088Z.json",
+    "expected": [
+      [
+        4,
+        "Forward",
+        "Start"
+      ],
+      [
+        9,
+        "Stop",
+        "Stop"
+      ],
+      [
+        14,
+        "Backward",
+        "Stop"
+      ],
+      [
+        19,
+        "Turn Left",
+        "Stop"
+      ],
+      [
+        20,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-08",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 20,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-08_2026-11-19T04-04-56-898Z.json",
+    "expected": [
+      [
+        4,
+        "Forward",
+        "Start"
+      ],
+      [
+        9,
+        "Stop",
+        "Stop"
+      ],
+      [
+        14,
+        "Backward",
+        "Stop"
+      ],
+      [
+        19,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        20,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-09",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 24,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-09_2026-11-19T04-05-11-298Z.json",
+    "expected": [
+      [
+        3,
+        "Forward",
+        "Start"
+      ],
+      [
+        8,
+        "Stop",
+        "Stop"
+      ],
+      [
+        18,
+        "Backward",
+        "Stop"
+      ],
+      [
+        23,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        24,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-10",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 18,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-10_2026-11-19T04-05-23-049Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        7,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        8,
+        "Forward",
+        "Start"
+      ],
+      [
+        13,
+        "Stop",
+        "Stop"
+      ],
+      [
+        18,
+        "Turn Right",
+        "Stop"
+      ]
+    ]
+  },
+  {
+    "id": "ST-11",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 20,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-11_2026-11-19T04-05-35-353Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        8,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        13,
+        "Stop",
+        "Stop"
+      ],
+      [
+        18,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        19,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        20,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-12",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 23,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-12_2026-11-19T04-05-47-222Z.json",
+    "expected": [
+      [
+        5,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        7,
+        "Forward",
+        "Start"
+      ],
+      [
+        9,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        14,
+        "Stop",
+        "Stop"
+      ],
+      [
+        19,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        22,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        23,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-13",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 18,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-13_2026-11-19T04-05-59-680Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        3,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        8,
+        "Stop",
+        "Stop"
+      ],
+      [
+        13,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        17,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        18,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-14",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 18,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-14_2026-11-19T04-06-11-589Z.json",
+    "expected": [
+      [
+        3,
+        "Forward",
+        "Start"
+      ],
+      [
+        8,
+        "Stop",
+        "Stop"
+      ],
+      [
+        13,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        18,
+        "Forward",
+        "Power Up"
+      ]
+    ]
+  },
+  {
+    "id": "ST-15",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 14,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-15_2026-11-19T04-06-23-803Z.json",
+    "expected": [
+      [
+        4,
+        "Forward",
+        "Start"
+      ],
+      [
+        9,
+        "Stop",
+        "Stop"
+      ],
+      [
+        14,
+        "Turn Right",
+        "Stop"
+      ]
+    ]
+  },
+  {
+    "id": "ST-16",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 13,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-16_2026-11-19T04-06-35-312Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        7,
+        "Stop",
+        "Stop"
+      ],
+      [
+        12,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        13,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-17",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 13,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-17_2026-11-19T04-06-47-352Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        7,
+        "Stop",
+        "Stop"
+      ],
+      [
+        12,
+        "Turn Left",
+        "Stop"
+      ],
+      [
+        13,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-18",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 17,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-18_2026-11-19T04-06-59-303Z.json",
+    "expected": [
+      [
+        1,
+        "Forward",
+        "Start"
+      ],
+      [
+        6,
+        "Stop",
+        "Stop"
+      ],
+      [
+        11,
+        "Backward",
+        "Stop"
+      ],
+      [
+        16,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        17,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-19",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 11,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-19_2026-11-19T04-07-11-093Z.json",
+    "expected": [
+      [
+        5,
+        "Stop",
+        "Stop"
+      ],
+      [
+        10,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        11,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-20",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 32,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-20_2026-11-19T04-07-23-632Z.json",
+    "expected": [
+      [
+        2,
+        "Forward",
+        "Start"
+      ],
+      [
+        7,
+        "Stop",
+        "Stop"
+      ],
+      [
+        12,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        14,
+        "Forward",
+        "Start"
+      ],
+      [
+        17,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        22,
+        "Stop",
+        "Stop"
+      ],
+      [
+        27,
+        "Turn Right",
+        "Stop"
+      ],
+      [
+        31,
+        "Forward",
+        "Power Up"
+      ],
+      [
+        32,
+        "Forward",
+        "Start"
+      ]
+    ]
+  },
+  {
+    "id": "ST-21",
+    "result": "PASS",
+    "issue": null,
+    "prefixChecks": 100,
+    "ticks_executed": 100,
+    "evaluator": "Codex",
+    "evaluation_type": "automated-agent",
+    "human_approval": "pending",
+    "saved": "simulator/results/ST-21_2026-11-19T04-07-35-029Z.json",
+    "expected": [
+      [
+        5,
+        "Stop",
+        "Stop"
+      ],
+      [
+        100,
+        "Backward",
+        "Stop"
+      ]
+    ]
+  }
+]

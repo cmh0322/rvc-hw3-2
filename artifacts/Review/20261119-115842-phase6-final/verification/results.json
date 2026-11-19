@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-19T12:04:44.388481+09:00",
+  "inputs_unchanged": 84,
+  "ctest_entries": 121,
+  "google_test_cases": 120,
+  "call_graph": 31,
+  "call_checker_negative_exit": 1,
+  "coverage_total": "| **Total** | **140 / 140 (100.0%)** | **62 / 62 (100.0%)** |",
+  "headless_scenarios": 21,
+  "ticks_per_scenario": 100,
+  "browser_scenarios_first_tick": 21,
+  "browser_regression_groups": 5,
+  "browser_errors": [],
+  "canonical_findings": 24,
+  "resolved": 22,
+  "optional_open": [
+    "P2-I01"
+  ],
+  "not_a_defect": [
+    "P3-N01"
+  ],
+  "new_mandatory_defects": [],
+  "historical_SPIN_inputs_unchanged": 11,
+  "SPIN": "notRun-in-Phase6; historical Phase3 model results only",
+  "human_evaluation": "pending",
+  "source_changes": false,
+  "git_diff_check": 0
+}

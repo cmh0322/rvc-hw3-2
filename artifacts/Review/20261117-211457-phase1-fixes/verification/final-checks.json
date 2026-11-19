@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-11-17T21:24:06.444133+09:00",
+  "document_check_exit": 0,
+  "boundary_pairs_equal": 5,
+  "process_specs": 13,
+  "defined_flow_names": 19,
+  "protected_files_unchanged": 53,
+  "confirmed_decisions": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15"
+  ],
+  "git_diff_check_exit": 0,
+  "independent_review": "attempted but all three failed due execution limit; sequential primary-agent fallback used",
+  "product_tests": "not run",
+  "spin": "not run",
+  "mermaid_visual_render": "not run (mmdc not on PATH)",
+  "errors": []
+}

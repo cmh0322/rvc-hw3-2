@@ -1,0 +1,29 @@
+[workflow]
+persistent_facts = [
+  "file:{project-root}/AGENTS.md",
+  "file:{project-root}/docs/verification/review-contract.md"
+]
+review_guidance = [
+  "Report in Korean while preserving requirement IDs, process IDs and source identifiers.",
+  "Use the RVC source documents as evidence; never impose a minimum finding count.",
+  "Review does not authorize changing approved artifacts or advancing a development phase."
+]
+output_format = "both"
+activation_steps_prepend = [
+  "Read the scope and choose a new run-specific report path under artifacts/Review. For an RVC SASD review without explicit lenses, use adversarial, edge-case-hunter, and sasd; add prose only when editing prose is requested."
+]
+output_preferences = "Include requirement references, severity, confirmed defect versus ambiguity versus optional improvement, evidence, minimal correction, and unreviewed scope. Record executed checks separately."
+
+[[workflow.lenses]]
+code = "adversarial"
+name = "RVC evidence-based adversarial review"
+applies_to = "any"
+when = "always"
+instruction = "Read {project-root}/docs/verification/bmad-lenses.md and apply only its adversarial section. Return canonical BMAD finding fields. Zero findings is valid. Do not load the upstream minimum-count adversarial lens."
+
+[[workflow.lenses]]
+code = "sasd"
+name = "RVC SASD consistency and design review"
+applies_to = "any"
+when = "RVC requirements, SA, SD, or claims of their consistency with implementation and tests."
+instruction = "Read {project-root}/docs/verification/bmad-lenses.md and apply its sasd section to the requested scope using live source artifacts. Return canonical BMAD finding fields."

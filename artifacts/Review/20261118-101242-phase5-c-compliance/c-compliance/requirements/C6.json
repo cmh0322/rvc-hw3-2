@@ -1,0 +1,66 @@
+{
+  "id": "C6",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 14,
+      "end": 14
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/movement_controller.c",
+      "start": 24,
+      "end": 60
+    },
+    {
+      "path": "src/step_timer.c",
+      "start": 10,
+      "end": 35
+    },
+    {
+      "path": "include/rvc_types.h",
+      "start": 77,
+      "end": 81
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Five-tick boundary",
+      "verdict": "implemented",
+      "evidence": "movement_controller.c:24 advances prior timer before transition; :56–57 starts new timer after selection; step_timer.c:14–18 ends at5"
+    },
+    {
+      "claim": "Repeat receives new full step",
+      "verdict": "implemented",
+      "evidence": "movement_controller.c:45–50 sets Backing and step_begins for repeated Backing"
+    }
+  ],
+  "paths_walked": [
+    "Backing entered at t with elapsed0; t+1..t+4 retain Backing; t+5 selects next step using sides. All repeat/turn branches checked."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/movement_controller.c",
+        "src/step_timer.c",
+        "include/rvc_types.h",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_step_timer.cpp",
+    "tests/test_movement_controller.cpp",
+    "tests/test_requirements.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

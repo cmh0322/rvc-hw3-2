@@ -1,0 +1,10 @@
+[
+  {
+    "id": "R1-SASD-01",
+    "lens": "sasd",
+    "location": "artifacts/SA/DFD/dfd_level_2.md:Overall Balancing with Level 0",
+    "trigger_condition": "Pending Dust Detection은 Process 4 경계를 넘지만 기존 총괄 문구가 모든 새 흐름을 부모 내부로 기술했다.",
+    "guard_snippet": "Pending Dust Detection은 Process 4 외부의 D2로 향하며 수정된 Level 1 경계와 일치하고 Process 0 내부라고 구분한다.",
+    "potential_consequence": "부모별 balancing 설명과 실제 새 화살표의 경계를 혼동할 수 있다."
+  }
+]

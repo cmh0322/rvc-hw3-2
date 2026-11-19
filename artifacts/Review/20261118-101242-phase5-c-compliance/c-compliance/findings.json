@@ -1,0 +1,501 @@
+[
+  {
+    "id": "P5-01",
+    "title": "전원 초기화가 첫 Tick 전에 Forward 명령 출력",
+    "severity": "HIGH",
+    "classification": "확정 결함",
+    "requirements": [
+      "C13"
+    ],
+    "status": "open-unfixed",
+    "independent_refutation": "survived",
+    "refutation_record": "c-compliance/refutations/startup.json",
+    "reasoning": "C13 explicitly forbids Direction at Power On. Main calls initialize_rvc before wait_for_tick. Initialization resets movement and D3, obtains MOVEMENT_COMMAND_FORWARD from reset_movement_controller, then calls issue_movement_output, which unconditionally calls drive_motor with DIRECTION_FORWARD. Neither reset callee reads sensors. This is an emitted software boundary command, not merely setting the hidden Forward state. No initialization call reaches drive_cleaner, so the no-Clean part is satisfied. The first subsequent Tick does read all four sensors before deciding and can choose Stop, but cannot undo the earlier command.",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 21,
+        "end": 21
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 63,
+        "end": 65
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 23,
+        "end": 23
+      },
+      {
+        "path": "artifacts/Review/20261118-101242-phase5-c-compliance/approval.md",
+        "start": 3,
+        "end": 7
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/main.c",
+        "start": 10,
+        "end": 17
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 63,
+        "end": 69
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 5,
+        "end": 17
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 13
+      }
+    ],
+    "corrections": [
+      "Retain the finding as a C13 command-timing contradiction. Do not describe physical motion or collision as observed: B6 excludes hardware implementation and this reviewer executed no probe.",
+      "Keep no initialization Clean output as a satisfied subclaim rather than implying that both output types violate C13.",
+      "The SD text still says approval pending, but the current revision is explicitly approved by this run's approval.md; that stale status sentence does not refute the contract."
+    ],
+    "details": "candidate-findings.md",
+    "duplicate_relationship": null
+  },
+  {
+    "id": "P5-02",
+    "title": "첫 Tick 전 실제 센서 확보·준비 완료 단계 누락",
+    "severity": "MEDIUM",
+    "classification": "확정 결함",
+    "requirements": [
+      "C12"
+    ],
+    "status": "open-unfixed",
+    "independent_refutation": "survived",
+    "refutation_record": "c-compliance/refutations/startup.json",
+    "reasoning": "There is no initial-acquisition or readiness step in the actual main/initialization call chain. Initialization only resets movement/D4 and D3 and emits movement; Main then waits for the first Tick. All four read calls occur under controller -> get_inputs after wait_for_tick returns. Thus the approved SD/SA boundary requiring actual initial samples before enabling/delivering the first Tick is absent. The strongest counterargument is real: C12's phrase 'before processing the first Tick' read alone could include the input phase inside controller, and the current code fully assigns its Inputs before decide_actions. Therefore this is not proof of uninitialized local use or treating an unreceived value as FALSE during a control decision. C12 is partial against its SA and approved SD realization; the specific pre-Tick acquisition/readiness sub-obligation is absent.",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 20,
+        "end": 20
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 37,
+        "end": 40
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 50,
+        "end": 56
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 17,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 192,
+        "end": 198
+      },
+      {
+        "path": "artifacts/Review/20261118-101242-phase5-c-compliance/approval.md",
+        "start": 3,
+        "end": 7
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/main.c",
+        "start": 10,
+        "end": 17
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 16
+      },
+      {
+        "path": "src/detect_obstacle.c",
+        "start": 6,
+        "end": 14
+      },
+      {
+        "path": "src/detect_dust.c",
+        "start": 6,
+        "end": 8
+      },
+      {
+        "path": "include/hw_interface.h",
+        "start": 17,
+        "end": 30
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 84,
+        "end": 103
+      }
+    ],
+    "corrections": [
+      "Use partial for the overall C12 verdict; reserve absent for the explicit initial-acquisition/readiness sub-obligation. It is inaccurate to say all sensor reading is absent.",
+      "State the distinction between Tick delivery and the decision/output phase. The approved SA/SD resolves the boundary more precisely than C12's isolated wording.",
+      "Four validity flags and an InitialSensors event adapter are approved SD implementation obligations, not independently new business requirements inferred from C12.",
+      "Do not claim current Tick decisions use uninitialized C locals, or a simulated default FALSE sensor value is consumed before the first input line; the simulator obtains its first four values within wait_for_tick before Controller runs.",
+      "Keep this finding about initialization timing/readiness; ordered later input delivery and event loss belong to P5-04."
+    ],
+    "details": "candidate-findings.md",
+    "duplicate_relationship": null
+  },
+  {
+    "id": "P5-03",
+    "title": "회피 중 먼지 감지 유실 및 복귀 파워업 재시작 누락",
+    "severity": "HIGH",
+    "classification": "확정 결함",
+    "requirements": [
+      "B5",
+      "C15"
+    ],
+    "status": "open-unfixed",
+    "independent_refutation": "survived",
+    "refutation_record": "c-compliance/refutations/dust.json",
+    "reasoning": "C15 and PSPEC 2/4.1 explicitly require a TRUE dust observation during avoidance to survive a later FALSE and override any paused D3 count on first Forward. detect_dust returns a transient hardware Boolean; get_inputs and decide_actions pass it only into this Tick. track_power_up ignores dust while Avoiding and retains only D3. There is no current/pending D2 latch in the inspected production files. Thus C11 preservation works but cannot satisfy C15 restart precedence. The existing executed probe uses an actual dust read on the first Stop Tick followed by nine avoidance Ticks, then Forward; its observed Start/0 and paused-count result 2 agree with the code and contradict expected Power Up/4. Current TRUE on the returning Forward Tick does restart correctly, so partial is more precise than wholly absent for C15 overall.",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 23,
+        "end": 23
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 28,
+        "end": 30
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 128,
+        "end": 142
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 395
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 223,
+        "end": 250
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/detect_dust.c",
+        "start": 5,
+        "end": 9
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 17
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 9,
+        "end": 24
+      },
+      {
+        "path": "src/power_up_timer.c",
+        "start": 7,
+        "end": 32
+      },
+      {
+        "path": "include/get_inputs.h",
+        "start": 11,
+        "end": 21
+      },
+      {
+        "path": "include/detect_dust.h",
+        "start": 11,
+        "end": 12
+      }
+    ],
+    "corrections": [
+      "Preserve the passing C11 no-new-dust resume path when fixing C15.",
+      "Describe the value after the restart Tick as remaining 4; the full restart count is 5 before the current Tick is consumed.",
+      "P5-03 is the concrete remembered-dust behavioral failure; avoid counting its downstream effect again as a distinct business defect in P5-04."
+    ],
+    "details": "candidate-findings.md",
+    "duplicate_relationship": null
+  },
+  {
+    "id": "P5-04",
+    "title": "승인된 입력 이벤트·Sensor Store 인터페이스 미구현",
+    "severity": "HIGH",
+    "classification": "확정 결함",
+    "requirements": [
+      "C10",
+      "C12",
+      "C15",
+      "SD-EVENT",
+      "SD-STORE"
+    ],
+    "status": "open-unfixed",
+    "independent_refutation": "survived",
+    "refutation_record": "c-compliance/refutations/dust.json",
+    "reasoning": "The approved SD section 2 expressly excludes polling only the latest values once per Tick and requires an ordered lossless received-event adapter plus event dispatch and private Sensor Store access. Existing main instead waits for a Tick then calls Controller; Controller/get_inputs poll four current values, with dust represented as a single bool. hw_interface.h exposes only old reads/wait and outputs. The simulator host accepts one four-value line per Tick and has no independent event-kind/receipt stream. The fake hardware can change current values in before_tick but has no delivery/storage path for each intermediate sensor observation. Inspected production paths and alternative-term searches found no event receiver/dispatcher, sensor readiness, D2 getter/clearer, or pending state. Therefore SD-EVENT and SD-STORE sub-obligations are absent; replacing only the power-up latch would not supply the approved input boundary. Sequential Controller execution already exists, so do not label every serialization aspect absent. Hardware transport remains B6-excluded; the missing obligation is the software boundary contract that tests/simulator must realize.",
+    "spec_refs": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 13,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 134,
+        "end": 148
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 174,
+        "end": 181
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 185,
+        "end": 216
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 89,
+        "end": 100
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 128,
+        "end": 142
+      },
+      {
+        "path": "artifacts/Review/20261118-101242-phase5-c-compliance/approval.md",
+        "start": 3,
+        "end": 7
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/main.c",
+        "start": 10,
+        "end": 18
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 17
+      },
+      {
+        "path": "src/detect_obstacle.c",
+        "start": 6,
+        "end": 15
+      },
+      {
+        "path": "src/detect_dust.c",
+        "start": 5,
+        "end": 9
+      },
+      {
+        "path": "include/hw_interface.h",
+        "start": 17,
+        "end": 36
+      },
+      {
+        "path": "include/get_inputs.h",
+        "start": 11,
+        "end": 21
+      },
+      {
+        "path": "include/power_up_timer.h",
+        "start": 16,
+        "end": 21
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 48,
+        "end": 52
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 84,
+        "end": 124
+      },
+      {
+        "path": "tests/fake_hw.cpp",
+        "start": 24,
+        "end": 62
+      }
+    ],
+    "corrections": [
+      "Replace candidate wording detect_dust(TRUE), detect_dust(FALSE) with: set fake dust TRUE, call detect_dust(void), set fake dust FALSE, call detect_dust(void). The actual function accepts no parameters; this signature mismatch itself is part of SD noncompliance.",
+      "Keep P5-04 as an approved interface/boundary divergence with a received-event loss consequence under that contract; do not claim an observed asynchronous production execution.",
+      "Count absent event reception/dispatch and private D1/D2 storage obligations separately from already present sequential execution of one Controller cycle per Tick.",
+      "Do not infer a physical sensor/interrupt/driver implementation requirement beyond B6 or require a particular hardware transport."
+    ],
+    "details": "candidate-findings.md",
+    "duplicate_relationship": "P5-04 is shared input architecture cause; P5-02/P5-03 are concrete failures. Do not sum as unrelated bugs."
+  },
+  {
+    "id": "P5-05",
+    "title": "기존 테스트와 호출 기준이 이전 동작을 정답으로 기대",
+    "severity": "MEDIUM",
+    "classification": "검증 근거 결함",
+    "requirements": [
+      "C12",
+      "C13",
+      "C15",
+      "SD"
+    ],
+    "status": "open-unfixed",
+    "independent_refutation": "survived",
+    "refutation_record": "c-compliance/refutations/tests.json",
+    "reasoning": "The strongest attempted counterargument is that passing tests and matching GCC call edges validate the approved SD. It fails: initialization tests explicitly require a pre-Tick Forward motor command and no sensor acquisition, while the approved C13/SD prohibits that output and requires acquisition. The power-up test explicitly requires avoidance-only dust to be forgotten, contradicting C15. CMake passes tests/expected_calls.txt to the checker; the checker parses that file rather than the current SD. That baseline has 26 earlier edges including initialization output and polling. The revised SD call table has 31 edges. Retained fresh execution evidence reports 130 passing CTest entries and 115/115 lines, 36/36 branch outcomes, yet six requirement-probe assertions fail and the revised-call baseline yields 14 missing and 9 unexpected edges. These results are consistent because the old oracles encode superseded behavior.",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 20,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 189,
+        "end": 219
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 307,
+        "end": 307
+      },
+      {
+        "path": "artifacts/Review/20261118-101242-phase5-c-compliance/approval.md",
+        "start": 3,
+        "end": 7
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "tests/test_initialize_rvc.cpp",
+        "start": 24,
+        "end": 34
+      },
+      {
+        "path": "tests/test_main.cpp",
+        "start": 34,
+        "end": 60
+      },
+      {
+        "path": "tests/test_power_up_timer.cpp",
+        "start": 74,
+        "end": 78
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 65,
+        "end": 71
+      },
+      {
+        "path": "tests/check_call_hierarchy.cmake",
+        "start": 33,
+        "end": 57
+      },
+      {
+        "path": "tests/expected_calls.txt",
+        "start": 3,
+        "end": 28
+      }
+    ],
+    "corrections": [
+      "Retain as MEDIUM verification-gap finding, not another independent runtime defect.",
+      "Phrase 130 as CTest entries (129 GoogleTest cases plus one call-hierarchy check). Coverage is executed-code coverage, not requirement coverage.",
+      "The checker itself need not be replaced: its EXPECTED argument can select the approved baseline, as the review already demonstrates. Reconcile its maintained baseline and semantic regression oracles during authorized TDD."
+    ],
+    "details": "candidate-findings.md",
+    "duplicate_relationship": null
+  },
+  {
+    "id": "P5-06",
+    "title": "확정 C16을 구현 근거에서 여전히 Q6 가정으로 표시",
+    "severity": "LOW",
+    "classification": "선택적 개선",
+    "requirements": [
+      "C16"
+    ],
+    "status": "open-unfixed",
+    "independent_refutation": "survived",
+    "refutation_record": "c-compliance/refutations/tests.json",
+    "reasoning": "C16 and the owner confirmation unambiguously resolve Q6. The cited requirement test still labels the behavior an open assumption, module traceability still says one assumption remains, and the implementation test report says Q6 is still open. The test's actual expectations agree with C16, and the actual Forward branch consults only front_blocked. Thus this is stale traceability text, not an unresolved requirement or movement defect.",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 24,
+        "end": 24
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 43,
+        "end": 47
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "tests/test_requirements.cpp",
+        "start": 165,
+        "end": 175
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 27,
+        "end": 31
+      },
+      {
+        "path": "artifacts/Implementation/module_traceability.md",
+        "start": 111,
+        "end": 111
+      },
+      {
+        "path": "artifacts/Implementation/test_report.md",
+        "start": 142,
+        "end": 142
+      }
+    ],
+    "corrections": [
+      "Retain as LOW optional traceability cleanup. Cite C16 and retain the requirement history; do not create a new business question or change the movement branch.",
+      "tests/test_requirements.cpp:4 also omits C12-C16 from its source summary and should be refreshed with the labels when implementation evidence is updated."
+    ],
+    "details": "candidate-findings.md",
+    "duplicate_relationship": null
+  }
+]

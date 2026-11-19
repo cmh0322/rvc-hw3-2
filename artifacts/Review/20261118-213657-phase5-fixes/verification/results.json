@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-11-18T21:46:52.014194+09:00",
+  "SA_SD_unchanged": 11,
+  "approved_SD_calls": 31,
+  "ctest_entries_passed": 121,
+  "GoogleTest_cases": 120,
+  "red_regressions_failed_before_fix": 4,
+  "C_lines": "140/140",
+  "C_branch_outcomes": "62/62",
+  "headless_scenarios": 21,
+  "ticks_per_scenario": 100,
+  "browser_API_checks": 4,
+  "browser_errors": [],
+  "git_diff_check_exit": 0,
+  "SPIN": "notRun; movement transition/timing logic unchanged, all existing boundary tests executed",
+  "human_system_evaluation": "pending; no human verdict submitted",
+  "commit_push": "notPerformed"
+}

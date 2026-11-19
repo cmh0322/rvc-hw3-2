@@ -1,0 +1,31 @@
+pan:1: assertion violated (transition!=8) (at depth 827)
+pan: wrote model.pml.trail
+
+(Spin Version 6.5.1 -- 20 December 2019)
+Warning: Search not completed
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	acceptance   cycles 	- (not selected)
+	invalid end states	+
+
+State-vector 28 byte, depth reached 934, errors: 1
+      117 states, stored
+     1152 states, matched
+     1269 transitions (= stored+matched)
+    13934 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.005	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.267	actual memory usage for states
+  128.000	memory used for hash table (-w24)
+    5.341	memory used for DFS stack (-m100000)
+  133.536	total actual memory usage
+
+
+
+pan: elapsed time 0.011 seconds
+pan: rate 10636.364 states/second

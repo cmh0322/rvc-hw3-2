@@ -1,0 +1,20 @@
+[
+  "AGENTS.md",
+  "QA.md",
+  "README.md",
+  "docs/requirements_clarifications.md",
+  ".specify/rvc-review-map.toml",
+  "docs/verification/bmad-lenses.md",
+  "docs/verification/review-contract.md",
+  "artifacts/SA/data_dictionary.md",
+  "artifacts/SA/event_list.md",
+  "artifacts/SA/process_specification.md",
+  "artifacts/SA/DFD/dfd_level_1.md",
+  "artifacts/SA/DFD/dfd_level_2.md",
+  "artifacts/SA/DFD/dfd_level_3.md",
+  "artifacts/SA/DFD/dfd_level_4_fsm.md",
+  ".agents/skills/rvc-c-compliance/SKILL.md",
+  ".agents/skills/rvc-fsm-verify/references/model-contract.md",
+  ".agents/skills/rvc-speckit-review/SKILL.md",
+  ".agents/skills/rvc-superpowers-verify/SKILL.md"
+]

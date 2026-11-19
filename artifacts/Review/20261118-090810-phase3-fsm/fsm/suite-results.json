@@ -1,0 +1,2631 @@
+[
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:41.087690+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c13-initial-output",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c13-initial-output",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c13-initial-output",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c13-initial-output\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c13-initial-output",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c13-initial-output\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c13-initial-output",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c13-initial-output",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\mutant-c13-initial-output.pml",
+    "model_sha256": "deb97ff0cbb5a17d5f9d2862c874c227fdc0834fbf3213f7b0afd1a48bd3790c",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "1",
+    "transitions": "1",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:47.241951+00:00",
+    "name": "mutant-c13-initial-output",
+    "category": "monitor-sensitivity",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:34.214004+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c16-side-avoidance",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c16-side-avoidance",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c16-side-avoidance",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c16-side-avoidance\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c16-side-avoidance",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c16-side-avoidance\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c16-side-avoidance",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c16-side-avoidance",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\mutant-c16-side-avoidance.pml",
+    "model_sha256": "a050f04f293e32c7219aff73e9bb2a60c4b4bd6a514bfa1332d076dea2755f6f",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "3",
+    "transitions": "5",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:40.888133+00:00",
+    "name": "mutant-c16-side-avoidance",
+    "category": "monitor-sensitivity",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:34.183924+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\mutant-c9-front-dependent.pml",
+    "model_sha256": "5748953aff2876b88e55e86a6bc85f44823e22cfaaac374994900595e412b745",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "49",
+    "transitions": "175",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:40.823370+00:00",
+    "name": "mutant-c9-front-dependent",
+    "category": "monitor-sensitivity",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:34.182021+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-timer-early",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-timer-early",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-timer-early",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-timer-early\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-timer-early",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-timer-early\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-timer-early",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-timer-early",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\mutant-timer-early.pml",
+    "model_sha256": "0a02aab4646fb86fb6c28b5834610937e7beddbafc550cd42566352c38ca0a7f",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "10",
+    "transitions": "30",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:40.807827+00:00",
+    "name": "mutant-timer-early",
+    "category": "monitor-sensitivity",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:27.171493+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Backing",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Backing",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Backing",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Backing\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Backing",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Backing\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Backing",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Backing",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-Backing.pml",
+    "model_sha256": "5515f6a8b02f89c2e9805a77599ea2997ad0f8617a67e0f4f993d14e309806a8",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "44",
+    "transitions": "170",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:33.897293+00:00",
+    "name": "reach-Backing",
+    "category": "state-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:20.416674+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Forward\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Forward\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Forward",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-Forward.pml",
+    "model_sha256": "6ef2e15e434c3cf19adc7a1e82a3f42889a77e7324f69fabc11de262e6c89f35",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "1",
+    "transitions": "1",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:26.956570+00:00",
+    "name": "reach-Forward",
+    "category": "state-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:20.470315+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Stopping",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Stopping",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Stopping",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Stopping\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Stopping",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Stopping\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Stopping",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-Stopping",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-Stopping.pml",
+    "model_sha256": "d79cb5bcdbf482b6b3665a86f2f4840042493e52de8cfabece038c9179024411",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "6",
+    "transitions": "26",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:26.997175+00:00",
+    "name": "reach-Stopping",
+    "category": "state-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:45.726644+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T00",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T00",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T00",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T00\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T00",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T00\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T00",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T00",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T00.pml",
+    "model_sha256": "69f98dcedfe29832f24a793def68d979d87156f9bc9a74c68a09e68e4a3d6b8d",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "1",
+    "transitions": "1",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:10:52.294091+00:00",
+    "name": "reach-T00",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:45.785476+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T01",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T01",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T01",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T01\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T01",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T01\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T01",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T01",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T01.pml",
+    "model_sha256": "94569731543799aa8e586af4aff936db8edbb1f2a4d1c35890664a4550ca5f18",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "2",
+    "transitions": "2",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:10:52.339176+00:00",
+    "name": "reach-T01",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:52.564164+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T02",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T02",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T02",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T02\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T02",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T02\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T02",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T02",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T02.pml",
+    "model_sha256": "c517b3c1db6d681618218a1bbab36e22886f283929cb2d2ed28ae973eb7c171a",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "6",
+    "transitions": "26",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:10:59.274410+00:00",
+    "name": "reach-T02",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:52.575924+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T03",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T03",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T03",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T03\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T03",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T03\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T03",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T03",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T03.pml",
+    "model_sha256": "7dbee31b7c476353fee54fbb90d418c054d33f5e8509da0ed03e9c6a021fee00",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "7",
+    "transitions": "27",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:10:59.274611+00:00",
+    "name": "reach-T03",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:52.591935+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T04",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T04",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T04",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T04\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T04",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T04\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T04",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T04",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T04.pml",
+    "model_sha256": "5a267635532c654844a8df62eac7050922322de31b719613e68ed0aebe11737f",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "11",
+    "transitions": "31",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:10:59.298540+00:00",
+    "name": "reach-T04",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:59.537792+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T05",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T05",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T05",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T05\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T05",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T05\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T05",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T05",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T05.pml",
+    "model_sha256": "968ac3f50caa7d1b69e6a2cf4cc5185169131186810e6a29d54fd3f095fc1894",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "22",
+    "transitions": "62",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:06.276429+00:00",
+    "name": "reach-T05",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:59.538218+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T06",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T06",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T06",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T06\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T06",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T06\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T06",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T06",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T06.pml",
+    "model_sha256": "6160232eaa355b1eac72179ee6d2d4d0783d78d5a59050bfe64490c2a313fca2",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "44",
+    "transitions": "170",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:06.179337+00:00",
+    "name": "reach-T06",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:59.561096+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T07",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T07",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T07",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T07\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T07",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T07\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T07",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T07",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T07.pml",
+    "model_sha256": "bf939d80505cda3930fb558cc52691ea2bdcca03d1dda0cce7da12d92780121b",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "45",
+    "transitions": "171",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:06.389177+00:00",
+    "name": "reach-T07",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:06.470627+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T08.pml",
+    "model_sha256": "fe7fc4e1c68fc1a92d95c1826b916991d357ef524cf7232cf3c485def1bd944f",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "117",
+    "transitions": "1269",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:13.118158+00:00",
+    "name": "reach-T08",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:06.559066+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T09",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T09",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T09",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T09\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T09",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T09\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T09",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T09",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T09.pml",
+    "model_sha256": "37360b434530911e48964f3f084770a63c1bbe73a9d50d1b109ae3cab53a6e99",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "49",
+    "transitions": "175",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:13.191354+00:00",
+    "name": "reach-T09",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:06.664035+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T10",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T10",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T10",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T10\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T10",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T10\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T10",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T10",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T10.pml",
+    "model_sha256": "289cffe75151033d344539fac45ae709b17f4c3dfd67f39d77259d517f2647c0",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "80",
+    "transitions": "673",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:13.302388+00:00",
+    "name": "reach-T10",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:13.420991+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T11",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T11",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T11",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T11\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T11",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T11\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T11",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T11",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T11.pml",
+    "model_sha256": "c9b9fc989ac72c4633e1d4e95f4d169df42e1271a9b7136826da8e23ef661bfe",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "12",
+    "transitions": "32",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:20.089884+00:00",
+    "name": "reach-T11",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:13.470973+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T12",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T12",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T12",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T12\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T12",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T12\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T12",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T12",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T12.pml",
+    "model_sha256": "32c173f25639c673fbbc539cad2013b22a115cda7b05e59baab013cbd5bf36fc",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "16",
+    "transitions": "36",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:20.139769+00:00",
+    "name": "reach-T12",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:13.560901+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T13",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T13",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T13",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T13\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T13",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T13\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T13",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T13",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T13.pml",
+    "model_sha256": "b77efa0bb5ed8547a2aec011c5aa9f955b9796d710bdcc474d91624d02e00a49",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "23",
+    "transitions": "63",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:20.193468+00:00",
+    "name": "reach-T13",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:20.394324+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T14",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T14",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T14",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T14\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T14",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T14\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T14",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T14",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T14.pml",
+    "model_sha256": "51d877965acfcaf4b5f4ca1cede53511d464254ce0f00ed7d2833ef396b6ab51",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "27",
+    "transitions": "67",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:26.890983+00:00",
+    "name": "reach-T14",
+    "category": "transition-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:27.269865+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningLeft",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningLeft",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningLeft",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningLeft\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningLeft",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningLeft\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningLeft",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningLeft",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-TurningLeft.pml",
+    "model_sha256": "887de2f4f0f6e4324f6f609f86775dbebcfb2f8aa12a8fd6b3663b1af3deaca7",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "22",
+    "transitions": "62",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:33.907489+00:00",
+    "name": "reach-TurningLeft",
+    "category": "state-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:11:27.224147+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningRight",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningRight",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningRight",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningRight\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningRight",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningRight\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningRight",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-TurningRight",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-TurningRight.pml",
+    "model_sha256": "e791105b754b2ffd684269a6b83b3434f1627465f49c7cbf659ddc5790a2b2cd",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "11",
+    "transitions": "31",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:11:33.941645+00:00",
+    "name": "reach-TurningRight",
+    "category": "state-witness",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  },
+  {
+    "status": "passed",
+    "started_utc": "2026-11-18T00:10:38.937960+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\robust-unconstrained-front",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\robust-unconstrained-front",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\robust-unconstrained-front",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\robust-unconstrained-front\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\robust-unconstrained-front",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\robust-unconstrained-front\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\robust-unconstrained-front",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\robust-unconstrained-front.pml",
+    "model_sha256": "5e7a0a499cd3fbee7b4fa616cc09dd3e4c0ffc4d4ab8030b939f88d04b6a74dc",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 0,
+    "stored_states": "177",
+    "transitions": "2713",
+    "reason": "Configured check completed with zero reported errors; model fidelity is separate",
+    "finished_utc": "2026-11-18T00:10:45.194660+00:00",
+    "name": "robust-unconstrained-front",
+    "category": "safety",
+    "expected_status": "passed",
+    "runner_exit": 0,
+    "expectation_met": true
+  },
+  {
+    "status": "passed",
+    "started_utc": "2026-11-18T00:09:43.752208+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety\\pan.exe",
+          "-m100000"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\safety",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": null,
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\model.pml",
+    "model_sha256": "9d7a6c637f3afbd8d44dddb34f26bc7a0eb3e653d090f848143c0eb24b383fe4",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 0,
+    "stored_states": "157",
+    "transitions": "2233",
+    "reason": "Configured check completed with zero reported errors; model fidelity is separate",
+    "finished_utc": "2026-11-18T00:09:50.035854+00:00",
+    "name": "safety-final",
+    "category": "safety",
+    "expected_status": "passed",
+    "expectation_met": true
+  },
+  {
+    "status": "passed",
+    "started_utc": "2026-11-18T00:10:38.940897+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress\\pan.exe",
+          "-m100000",
+          "-a",
+          "-N",
+          "stop_progress"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": "stop_progress",
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\stop_progress.pml",
+    "model_sha256": "b0a7c766afa963609fcefa78abc1fc997133e7672d6408fc4b4a966e4826cce6",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 0,
+    "stored_states": "177",
+    "transitions": "2665",
+    "reason": "Configured check completed with zero reported errors; model fidelity is separate",
+    "finished_utc": "2026-11-18T00:10:45.457271+00:00",
+    "name": "stop_progress",
+    "category": "liveness",
+    "expected_status": "passed",
+    "runner_exit": 0,
+    "expectation_met": true
+  },
+  {
+    "status": "passed",
+    "started_utc": "2026-11-18T00:10:38.939399+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\turn_progress",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\turn_progress",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\turn_progress",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\turn_progress\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\turn_progress",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\turn_progress\\pan.exe",
+          "-m100000",
+          "-a",
+          "-N",
+          "turn_progress"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\turn_progress",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": "turn_progress",
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\turn_progress.pml",
+    "model_sha256": "135f50f83d26054ed4b7b94dff5aca2ebc6d5290e2afbb60695eeb232b84bb67",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 0,
+    "stored_states": "237",
+    "transitions": "5513",
+    "reason": "Configured check completed with zero reported errors; model fidelity is separate",
+    "finished_utc": "2026-11-18T00:10:45.518831+00:00",
+    "name": "turn_progress",
+    "category": "liveness",
+    "expected_status": "passed",
+    "runner_exit": 0,
+    "expectation_met": true
+  },
+  {
+    "status": "failed",
+    "started_utc": "2026-11-18T00:10:45.443484+00:00",
+    "commands": [
+      {
+        "stage": "spin-version",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-V"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "compiler-version",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "generate",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-a",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "compile",
+        "argv": [
+          "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+          "-O2",
+          "-o",
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward\\pan.exe",
+          "pan.c"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "search",
+        "argv": [
+          "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward\\pan.exe",
+          "-m100000",
+          "-a",
+          "-N",
+          "unconditional_forward"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+        "exit_code": 0
+      },
+      {
+        "stage": "replay",
+        "argv": [
+          "C:\\Users\\james\\.local\\bin\\spin.exe",
+          "-t",
+          "-p",
+          "-g",
+          "-l",
+          "-k",
+          "model.pml.trail",
+          "model.pml"
+        ],
+        "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+        "exit_code": 0
+      }
+    ],
+    "scope": "one property/check on the supplied model only",
+    "ltl": "unconditional_forward",
+    "depth": 100000,
+    "fairness": "none",
+    "search": "full-state",
+    "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\unconditional_forward.pml",
+    "model_sha256": "e57c9b52147dc9e06c94379cdf63bad29f54bafb3f7a34ff75aab1d2c01b5644",
+    "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+    "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+    "errors": 1,
+    "stored_states": "107",
+    "transitions": "2355",
+    "reason": "SPIN found a counterexample; classify against model and source requirements",
+    "trails": [
+      "model.pml.trail"
+    ],
+    "replay_ok": true,
+    "finished_utc": "2026-11-18T00:10:52.292273+00:00",
+    "name": "unconditional_forward",
+    "category": "negative-experiment",
+    "expected_status": "failed",
+    "runner_exit": 1,
+    "expectation_met": true
+  }
+]

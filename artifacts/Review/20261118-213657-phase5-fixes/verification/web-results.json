@@ -1,0 +1,12 @@
+{
+  "executed_at": "2026-11-18T12:45:14.074Z",
+  "browser": "157.0.4341.60",
+  "checks": [
+    "C12/C13 actual blocked initial sample and no startup commands",
+    "Between-Tick TRUE/FALSE preserved, Forward consumes once and boost lasts five ticks",
+    "C15 pending detection overrides saved partial power-up on Forward",
+    "ST-14 browser controls complete 18 ticks and render resumed Power Up history"
+  ],
+  "errors": [],
+  "human_evaluation": "pending; no human PASS submitted"
+}

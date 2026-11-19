@@ -1,0 +1,57 @@
+{
+  "status": "inconclusive",
+  "started_utc": "2026-11-18T00:09:27.040867+00:00",
+  "commands": [
+    {
+      "stage": "spin-version",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-V"
+      ],
+      "cwd": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\checks\\safety-v2",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler-version",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "--version"
+      ],
+      "cwd": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\checks\\safety-v2",
+      "exit_code": 0
+    },
+    {
+      "stage": "generate",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-a",
+        "model.pml"
+      ],
+      "cwd": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\checks\\safety-v2",
+      "exit_code": 0
+    },
+    {
+      "stage": "compile",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "-O2",
+        "-o",
+        "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\checks\\safety-v2\\pan.exe",
+        "pan.c"
+      ],
+      "cwd": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\checks\\safety-v2",
+      "exit_code": 1
+    }
+  ],
+  "scope": "one property/check on the supplied model only",
+  "ltl": null,
+  "depth": 100000,
+  "fairness": "none",
+  "search": "full-state",
+  "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\model.pml",
+  "model_sha256": "9d7a6c637f3afbd8d44dddb34f26bc7a0eb3e653d090f848143c0eb24b383fe4",
+  "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+  "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+  "reason": "Verifier compilation failed; inspect compile.log",
+  "finished_utc": "2026-11-18T00:09:32.079417+00:00"
+}

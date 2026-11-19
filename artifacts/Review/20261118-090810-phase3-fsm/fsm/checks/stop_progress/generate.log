@@ -1,0 +1,1 @@
+ltl stop_progress: [] ((! ((stable) && ((state==Stopping)))) || (<> ((stable) && ((state!=Stopping)))))

@@ -1,0 +1,128 @@
+[
+  {
+    "id": "ST-01",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-02",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-03",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-04",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-05",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-06",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-07",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-08",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-09",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-10",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-11",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-12",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Power Up"
+  },
+  {
+    "id": "ST-13",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-14",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-15",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-16",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-17",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-18",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-19",
+    "initial_outputs": "none",
+    "first_tick": "Stop",
+    "clean": "Stop"
+  },
+  {
+    "id": "ST-20",
+    "initial_outputs": "none",
+    "first_tick": "Forward",
+    "clean": "Start"
+  },
+  {
+    "id": "ST-21",
+    "initial_outputs": "none",
+    "first_tick": "Stop",
+    "clean": "Stop"
+  }
+]

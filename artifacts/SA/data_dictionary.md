@@ -21,7 +21,8 @@ No internal flows exist at DFD Level 0.
 | Data Name | Description | Format / Type | Flow Category | Source | Destination | DFD Level |
 |---|---|---|---|---|---|---|
 | Obstacle Location | Latest obstacle detection result for front, left, and right. | Front Obstacle + Left Obstacle + Right Obstacle | Data | Process 1; D1 Obstacle Location | D1 Obstacle Location; Process 3 (L1), 3.1 (L2) | 1, 2 |
-| Dust Existence | Latest dust detection result. | Dust Detected | Data | Process 2; D2 Dust Existence | D2 Dust Existence; Process 4 (L1), 4.1 (L2) | 1, 2 |
+| Dust Existence | Current dust reading and unconsumed detection. | Dust Detected + Pending Dust Detection | Data | Process 2; D2 Dust Existence | D2 Dust Existence; Process 2; Process 4 (L1), 4.1 (L2/L3) | 1, 2, 3 |
+| Pending Dust Detection | A detection retained until a Forward Tick consumes it. | Boolean | Data | Process 4 (L1), 4.1 (L2/L3) | D2 Dust Existence (pending field only) | 1, 2, 3 |
 | Movement Status | Whether the RVC is moving forward or avoiding an obstacle. | Enum | Data | Process 3 (L1), 3.2 (L2), 3.2.3 (L3) | Process 4 (L1), 4.1 and 4.2 (L2, L3) | 1, 2, 3 |
 | Obstacle Situation | Classification of the current obstacles: Front Blocked and Side Situation. | Record | Data | Process 3.1 | Process 3.2 (L2), 3.2.1 (L3) | 2, 3 |
 | Situation Signal | Obstacle Situation delivered to the Controller as a control signal. | Record | Control | Process 3.2.1 | Process 3.2.2 | 3 |
@@ -39,7 +40,7 @@ No Data Stores exist at DFD Level 0.
 | Data Store | Description | Stored Data | Format / Type | DFD Level |
 |---|---|---|---|---|
 | D1 Obstacle Location | Holds the latest front, left, and right obstacle readings for use on the next Tick. | Front Obstacle, Left Obstacle, Right Obstacle | Record of 3 Booleans | 1, 2 |
-| D2 Dust Existence | Holds the latest dust reading for use on the next Tick. | Dust Detected | Boolean | 1, 2 |
+| D2 Dust Existence | Holds current dust and a remembered detection across ticks/avoidance. | Dust Detected, Pending Dust Detection | Record of 2 Booleans | 1, 2, 3 |
 | D3 Power-Up Timer | Holds the remaining powered-up cleaning ticks across ticks. | Remaining Power-Up Ticks | Integer, 0-5 | 2, 3 |
 | D4 Step Timer | Holds the tick count of the current stop, backward, or turn step across ticks. | Step Ticks Elapsed | Idle or Integer 0-5 | 3 |
 
@@ -83,17 +84,17 @@ No Data Stores exist at DFD Level 0.
 - Source: Dust Sensor
 - Destination: Process 0; Process 2 (Level 1)
 - DFD Level: Context, 0, 1
-- Requirement Reference: B5
+- Requirement Reference: B5, C12, C15
 
 ### Tick
-- Description: Clock event that provides the time base for the system. Powered-up cleaning lasts 5 ticks.
+- Description: Clock event for five-tick cleaning/stop/back/turn durations. All four initial sensor samples precede the first Tick (C12); initialization emits no output (C13).
 - Format / Type: Event
 - Possible Values: None; the occurrence of the event is the information.
 - Flow Category: Control
 - Source: Digital Clock
 - Destination: Process 0; Processes 3 and 4 (Level 1); Processes 3.1, 3.2, 4.1 (Level 2); Processes 3.1, 3.2.2, 3.2.4, 4.1 (Level 3)
 - DFD Level: Context, 0, 1, 2, 3
-- Requirement Reference: B5, C3
+- Requirement Reference: B5, C3, C6-C8, C12, C13
 
 ### Direction
 - Description: Movement command sent to the motor.
@@ -108,12 +109,12 @@ No Data Stores exist at DFD Level 0.
 ### Clean
 - Description: Cleaning command sent to the cleaner.
 - Format / Type: Enum
-- Possible Values: Start, Stop, Power Up
+- Possible Values: Start (normal suction and mopping on), Stop (both off), Power Up (stronger suction and normal mopping), per C14
 - Flow Category: Data
 - Source: Process 0; Process 4 (Level 1); Process 4.2 (Level 2)
 - Destination: Cleaner
 - DFD Level: Context, 0, 1, 2, 3
-- Requirement Reference: B1, B2, B3, B5, C3
+- Requirement Reference: B1, B2, B3, B5, C3, C14
 
 ### Obstacle Location
 - Description: Latest obstacle detection result for the three obstacle sensors. Written by Process 1, kept in D1, read by Process 3 on Tick.
@@ -122,18 +123,18 @@ No Data Stores exist at DFD Level 0.
 - Flow Category: Data
 - Source: Process 1 (write); D1 Obstacle Location (read)
 - Destination: D1 Obstacle Location; Process 3 (Level 1); Process 3.1 (Level 2)
-- DFD Level: 1, 2
-- Requirement Reference: B3, B4, C1, Q6
+- DFD Level: 1, 2, 3
+- Requirement Reference: B3, B4, C1, C16
 
 ### Dust Existence
-- Description: Latest dust detection result. Written by Process 2, kept in D2, read by Process 4 on Tick.
-- Format / Type: Record = Dust Detected (Boolean)
-- Possible Values: TRUE (dust detected), FALSE (no dust detected)
+- Description: Current dust reading plus a latched unconsumed detection. Process 2 records every TRUE input even if a subsequent FALSE arrives before Forward resumes (C15). Process 4.1 consumes pending dust on Forward only.
+- Format / Type: Record = Dust Detected (Boolean) + Pending Dust Detection (Boolean)
+- Possible Values: Dust Detected is the current reading; Pending Dust Detection records any unconsumed TRUE input (each Boolean).
 - Flow Category: Data
 - Source: Process 2 (write); D2 Dust Existence (read)
-- Destination: D2 Dust Existence; Process 4 (Level 1); Process 4.1 (Level 2)
-- DFD Level: 1, 2
-- Requirement Reference: B5
+- Destination: D2 Dust Existence; Process 2 (read-modify-write); Process 4 (Level 1); Process 4.1 (Levels 2, 3)
+- DFD Level: 1, 2, 3
+- Requirement Reference: B5, C10, C12, C15
 
 ### Movement Status
 - Description: Tells Process 4 whether the RVC is moving forward (cleaning allowed) or avoiding an obstacle (cleaning stopped).
@@ -150,18 +151,31 @@ No Data Stores exist at DFD Level 0.
 - Format / Type: Record of 3 Booleans
 - Stored Data: Front Obstacle, Left Obstacle, Right Obstacle
 - Source: Process 1
-- Destination: Process 3 (Level 1); Process 3.1 (Level 2)
-- DFD Level: 1, 2
-- Requirement Reference: B3, B4
+- Destination: Process 3 (Level 1); Process 3.1 (Levels 2, 3)
+- Initial state: All three fields are actual sensor samples obtained before the first Tick (C12), not default FALSE values. Later input updates replace only the received field.
+- DFD Level: 1, 2, 3
+- Requirement Reference: B3, B4, C12
 
 ### D2 Dust Existence (Data Store)
-- Description: Holds the latest Dust Existence so that Process 4 can use it on each Tick.
+- Description: Holds the current dust reading and an unconsumed detection across ticks and avoidance.
+- Format / Type: Record of 2 Booleans
+- Stored Data: Dust Detected, Pending Dust Detection
+- Source: Process 2 writes the current reading and ORs TRUE detections into the pending flag; Process 4 (L1), 4.1 (L2/L3) writes only the pending flag after Tick processing.
+- Destination: Process 2; Process 4 (Level 1); Process 4.1 (Levels 2, 3)
+- Initial state: Pending Dust Detection=FALSE before initial sampling; Dust Detected is obtained from the actual sensor before the first Tick (C12). A TRUE initial sample latches pending dust.
+- DFD Level: 1, 2, 3
+- Requirement Reference: B5, C10, C12, C15
+
+### Pending Dust Detection
+- Description: TRUE if a dust detection has not yet been consumed by a Forward Tick. FALSE sensor inputs never erase a pending detection. Repeated TRUE inputs coalesce; this is not a count of detections.
 - Format / Type: Boolean
-- Stored Data: Dust Detected
-- Source: Process 2
-- Destination: Process 4 (Level 1); Process 4.1 (Level 2)
-- DFD Level: 1, 2
-- Requirement Reference: B5
+- Possible Values: TRUE (pending), FALSE (none)
+- Flow Category: Data
+- Source: Process 4 (L1), 4.1 (L2/L3) returns the updated flag; Process 2 also sets the field through the Dust Existence record.
+- Destination: D2 Dust Existence (update only this field)
+- Update: Preserve during Avoiding; on Forward use pending/current dust to start or restart five ticks, then clear pending. Input updates and Tick processing are logically serialized (Process 0 contract).
+- DFD Level: 1, 2, 3
+- Requirement Reference: B5, C10, C11, C15
 
 ### Obstacle Situation
 - Description: Classification of the obstacles read from D1. It has two parts. Front Blocked says whether an obstacle is detected in front. Side Situation classifies left and right, whether or not the front is blocked (C9).
@@ -171,7 +185,7 @@ No Data Stores exist at DFD Level 0.
 - Source: Process 3.1
 - Destination: Process 3.2 (Level 2); Process 3.2.1 (Level 3)
 - DFD Level: 2, 3
-- Requirement Reference: B3, B4, C1, Q6, C9
+- Requirement Reference: B3, B4, C1, C16, C9
 
 ### Power-Up Active
 - Description: Whether powered-up cleaning applies on the current tick.
@@ -186,21 +200,22 @@ No Data Stores exist at DFD Level 0.
 ### Remaining Power-Up Ticks
 - Description: Number of powered-up cleaning ticks still to run, including the current tick before it is counted down.
 - Format / Type: Integer
-- Possible Values: 0-5 (0 = no power-up in progress; set to 5 on every dust detection while moving forward, C10; kept while avoiding, C11)
+- Possible Values: 0-5 (0 = no power-up in progress; set to 5 on current or pending dust while Forward, C10/C15; kept while Avoiding, C11; initialized to 0)
 - Flow Category: Data
 - Source: Process 4.1 (write); D3 Power-Up Timer (read)
 - Destination: D3 Power-Up Timer; Process 4.1
 - DFD Level: 2
-- Requirement Reference: B5, C3, C10, C11
+- Requirement Reference: B5, C3, C10, C11, C15
 
 ### D3 Power-Up Timer (Data Store)
 - Description: Holds Remaining Power-Up Ticks so that the 5-tick power-up persists across ticks.
 - Format / Type: Integer, 0-5
 - Stored Data: Remaining Power-Up Ticks
+- Initial value: 0 before initial sampling and the first Tick (no power-up yet). Pending dust is stored separately in D2.
 - Source: Process 4.1
 - Destination: Process 4.1
 - DFD Level: 2
-- Requirement Reference: B5, C3
+- Requirement Reference: B5, C3, C11, C15
 
 ### Situation Signal
 - Description: The Obstacle Situation delivered to the Movement Controller as a control signal. The Controller uses Front Blocked while going forward and the Side Situation when a stop or backward step ends.
@@ -210,7 +225,7 @@ No Data Stores exist at DFD Level 0.
 - Source: Process 3.2.1
 - Destination: Process 3.2.2
 - DFD Level: 3
-- Requirement Reference: B3, B4, C1, C4, Q6, C9
+- Requirement Reference: B3, B4, C1, C4, C16, C9
 
 ### Movement Command
 - Description: The action chosen by the Movement Controller for the current tick. It triggers Process 3.2.3.

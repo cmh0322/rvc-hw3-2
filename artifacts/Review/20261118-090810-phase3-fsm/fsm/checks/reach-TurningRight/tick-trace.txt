@@ -1,0 +1,11 @@
+INIT T0 state=Forward command=NoCommand elapsed=6
+T1 prev=Forward f=0 l=0 r=0 done=0 state=Forward cmd=GoForward elapsed=6 remaining=0
+T1 prev=Forward f=0 l=0 r=1 done=0 state=Forward cmd=GoForward elapsed=6 remaining=0
+T1 prev=Forward f=0 l=1 r=0 done=0 state=Forward cmd=GoForward elapsed=6 remaining=0
+T1 prev=Forward f=0 l=1 r=1 done=0 state=Forward cmd=GoForward elapsed=6 remaining=0
+T2 prev=Forward f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=0 remaining=5
+T3 prev=Stopping f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=1 remaining=4
+T3 prev=Stopping f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=2 remaining=3
+T3 prev=Stopping f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=3 remaining=2
+T3 prev=Stopping f=1 l=0 r=0 done=0 state=Stopping cmd=Stop elapsed=4 remaining=1
+T4 prev=Stopping f=1 l=0 r=0 done=1 state=TurningRight cmd=TurnRight elapsed=0 remaining=5

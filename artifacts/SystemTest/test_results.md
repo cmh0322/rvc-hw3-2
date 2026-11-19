@@ -1,5 +1,7 @@
 # System Test Results
 
+2026-11-19 최신 기록:21개 시나리오를 실제 웹에서100틱씩 실행하여 Codex 자동 평가21 PASS/0 FAIL을 기록했다. [결과·비교 범위](../Review/20261119-130006-closeout/verification/report.md). 독립 사람 평가·최종 승인은 대기이며, 아래 2026-11-16의 Pending 표시는 당시 이력이다.
+
 System: RVC Controller
 Date: 2026-11-16
 Simulator: `simulator/` (specification in `simulator/README.md`)

@@ -1,0 +1,59 @@
+{
+  "id": "C9",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 17,
+      "end": 17
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/assess_obstacle_situation.c",
+      "start": 8,
+      "end": 19
+    },
+    {
+      "path": "src/movement_controller.c",
+      "start": 27,
+      "end": 50
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Classification keeps side information even if front clear",
+      "verdict": "implemented",
+      "evidence": "assess_obstacle_situation.c:8–16 computes front and side separately"
+    },
+    {
+      "claim": "Only Forward entry checks front",
+      "verdict": "implemented",
+      "evidence": "movement_controller.c:27–48 checks front only in Forward and side_situation after Backing"
+    }
+  ],
+  "paths_walked": [
+    "Backing Done with front clear + RightOpen → right; LeftOpen → left; BothBlocked → repeat. Same outcomes with front blocked."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/assess_obstacle_situation.c",
+        "src/movement_controller.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_movement_controller.cpp",
+    "tests/test_requirements.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

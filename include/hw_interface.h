@@ -1,42 +1,19 @@
-/*
- * Hardware interface: the seven library modules of the Structure Chart.
- * Each stands for one terminator of the Context Diagram.
- *
- * These functions are declared only. Their implementation is outside this
- * design (requirement B6). Unit tests and the simulator supply their own.
- */
 #ifndef HW_INTERFACE_H
 #define HW_INTERFACE_H
-
 #include "rvc_types.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/* Read Front Sensor: true when an obstacle is detected in front. */
-bool read_front_sensor(void);
-
-/* Read Left Sensor: true when an obstacle is detected on the left. */
-bool read_left_sensor(void);
-
-/* Read Right Sensor: true when an obstacle is detected on the right. */
-bool read_right_sensor(void);
-
-/* Read Dust Sensor: true when dust is detected. */
-bool read_dust_sensor(void);
-
-/* Wait For Tick: returns when the next Tick of the Digital Clock occurs. */
-void wait_for_tick(void);
-
-/* Drive Motor: sends a Direction to the Motor. */
+/* Initial mode delivers actual four samples before enabling Tick delivery.
+ * Running mode retains every received sensor update and Tick in receipt order.
+ * Events received during Controller remain queued for later dispatch; no callback
+ * may mutate controller storage. Valid input kinds/values are preconditions.
+ * Physical capture/transport implementation is excluded by B6. */
+InputEvent receive_input_event(InputMode mode);
 void drive_motor(Direction direction);
-
-/* Drive Cleaner: sends a Clean command to the Cleaner. */
+/* C14: Start/Stop switch suction+mop; PowerUp boosts suction, normal mop. */
 void drive_cleaner(Clean clean);
-
 #ifdef __cplusplus
 }
 #endif
-
-#endif /* HW_INTERFACE_H */
+#endif

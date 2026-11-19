@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-11-17T21:34:45.285596+09:00",
+  "scope": "Review artifact integrity/inventory, not semantic or product proof",
+  "structural_exit": 0,
+  "boundary_pairs_equal": 5,
+  "requirement_rows": 22,
+  "assumption_rows": 1,
+  "reverse_counts": {
+    "flows": 19,
+    "processes": 13,
+    "stores": 4,
+    "states": 5,
+    "transitions": 15
+  },
+  "unchecked_checklist_items": 15,
+  "protected_files_unchanged": 65,
+  "mapped_paths_exist": 21,
+  "source_search": {
+    "patterns": [
+      "TODO",
+      "TBD",
+      "TKTK",
+      "placeholder",
+      "Open:",
+      "remain open",
+      "Obstacle Situation == Clear",
+      "Power On / Forward"
+    ],
+    "hits": []
+  },
+  "git_diff_check_exit": 0,
+  "product_tests": "notRun",
+  "spin": "notRun",
+  "errors": []
+}

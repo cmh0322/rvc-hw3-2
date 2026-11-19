@@ -1,0 +1,30 @@
+flowchart TB
+    M5["Controller"]
+    M6["Get Inputs"]
+    M8["Assess Obstacle Situation"]
+    M12["Get Obstacle Location"]
+    M15["Decide Actions"]
+    M16["Movement Controller"]
+    M18["Advance Step Timer"]
+    M19["Start Step Timer"]
+    M21["Derive Movement Status"]
+    M22["Track Power-Up"]
+    M24["Decide Cleaning"]
+    M25["Put Outputs"]
+    M26["Issue Movement Output"]
+    M28[["Drive Motor"]]
+    M29[["Drive Cleaner"]]
+    M5 -->|"1 per Tick"| M6
+    M5 -->|"2 per Tick"| M15
+    M5 -->|"3 per Tick"| M25
+    M6 -->|"1"| M12
+    M6 -->|"2"| M8
+    M15 -->|"1"| M16
+    M15 -->|"2"| M21
+    M15 -->|"3"| M22
+    M15 -->|"4"| M24
+    M16 -->|"before transition"| M18
+    M16 -->|"T2/T4/T5/T6/T8/T9/T10 only, after selection"| M19
+    M25 -->|"1"| M26
+    M25 -->|"2"| M29
+    M26 -->|"always"| M28

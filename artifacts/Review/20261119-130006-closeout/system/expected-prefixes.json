@@ -1,0 +1,529 @@
+{
+  "ST-01": [
+    [
+      4,
+      "Forward",
+      "Start"
+    ],
+    [
+      9,
+      "Stop",
+      "Stop"
+    ],
+    [
+      14,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      15,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-02": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      7,
+      "Stop",
+      "Stop"
+    ],
+    [
+      12,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      13,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-03": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      7,
+      "Stop",
+      "Stop"
+    ],
+    [
+      12,
+      "Turn Left",
+      "Stop"
+    ],
+    [
+      13,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-04": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      7,
+      "Stop",
+      "Stop"
+    ],
+    [
+      12,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      13,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-05": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      7,
+      "Stop",
+      "Stop"
+    ],
+    [
+      12,
+      "Backward",
+      "Stop"
+    ],
+    [
+      17,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      18,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-06": [
+    [
+      6,
+      "Forward",
+      "Start"
+    ],
+    [
+      11,
+      "Stop",
+      "Stop"
+    ],
+    [
+      100,
+      "Backward",
+      "Stop"
+    ]
+  ],
+  "ST-07": [
+    [
+      4,
+      "Forward",
+      "Start"
+    ],
+    [
+      9,
+      "Stop",
+      "Stop"
+    ],
+    [
+      14,
+      "Backward",
+      "Stop"
+    ],
+    [
+      19,
+      "Turn Left",
+      "Stop"
+    ],
+    [
+      20,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-08": [
+    [
+      4,
+      "Forward",
+      "Start"
+    ],
+    [
+      9,
+      "Stop",
+      "Stop"
+    ],
+    [
+      14,
+      "Backward",
+      "Stop"
+    ],
+    [
+      19,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      20,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-09": [
+    [
+      3,
+      "Forward",
+      "Start"
+    ],
+    [
+      8,
+      "Stop",
+      "Stop"
+    ],
+    [
+      18,
+      "Backward",
+      "Stop"
+    ],
+    [
+      23,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      24,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-10": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      7,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      8,
+      "Forward",
+      "Start"
+    ],
+    [
+      13,
+      "Stop",
+      "Stop"
+    ],
+    [
+      18,
+      "Turn Right",
+      "Stop"
+    ]
+  ],
+  "ST-11": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      8,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      13,
+      "Stop",
+      "Stop"
+    ],
+    [
+      18,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      19,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      20,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-12": [
+    [
+      5,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      7,
+      "Forward",
+      "Start"
+    ],
+    [
+      9,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      14,
+      "Stop",
+      "Stop"
+    ],
+    [
+      19,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      22,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      23,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-13": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      3,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      8,
+      "Stop",
+      "Stop"
+    ],
+    [
+      13,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      17,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      18,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-14": [
+    [
+      3,
+      "Forward",
+      "Start"
+    ],
+    [
+      8,
+      "Stop",
+      "Stop"
+    ],
+    [
+      13,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      18,
+      "Forward",
+      "Power Up"
+    ]
+  ],
+  "ST-15": [
+    [
+      4,
+      "Forward",
+      "Start"
+    ],
+    [
+      9,
+      "Stop",
+      "Stop"
+    ],
+    [
+      14,
+      "Turn Right",
+      "Stop"
+    ]
+  ],
+  "ST-16": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      7,
+      "Stop",
+      "Stop"
+    ],
+    [
+      12,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      13,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-17": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      7,
+      "Stop",
+      "Stop"
+    ],
+    [
+      12,
+      "Turn Left",
+      "Stop"
+    ],
+    [
+      13,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-18": [
+    [
+      1,
+      "Forward",
+      "Start"
+    ],
+    [
+      6,
+      "Stop",
+      "Stop"
+    ],
+    [
+      11,
+      "Backward",
+      "Stop"
+    ],
+    [
+      16,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      17,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-19": [
+    [
+      5,
+      "Stop",
+      "Stop"
+    ],
+    [
+      10,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      11,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-20": [
+    [
+      2,
+      "Forward",
+      "Start"
+    ],
+    [
+      7,
+      "Stop",
+      "Stop"
+    ],
+    [
+      12,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      14,
+      "Forward",
+      "Start"
+    ],
+    [
+      17,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      22,
+      "Stop",
+      "Stop"
+    ],
+    [
+      27,
+      "Turn Right",
+      "Stop"
+    ],
+    [
+      31,
+      "Forward",
+      "Power Up"
+    ],
+    [
+      32,
+      "Forward",
+      "Start"
+    ]
+  ],
+  "ST-21": [
+    [
+      5,
+      "Stop",
+      "Stop"
+    ],
+    [
+      100,
+      "Backward",
+      "Stop"
+    ]
+  ]
+}

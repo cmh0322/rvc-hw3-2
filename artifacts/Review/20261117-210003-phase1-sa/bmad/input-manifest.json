@@ -1,0 +1,75 @@
+{
+  "started_at": "2026-11-17T21:00:03.088480+09:00",
+  "head": "dea14b590b5246e1889119fc9040c5df496bd987",
+  "git_status_before_review": " M AGENTS.md\n M README.md\n?? .agents/\n?? .specify/\n?? QA.md\n?? _bmad/\n?? artifacts/Review/\n?? docs/verification/\n",
+  "bmad": "6.12.4",
+  "superpowers": "bd2122cb",
+  "inputs": [
+    {
+      "path": "docs/preliminary_requirements.md",
+      "sha256": "f6a3dc81879211c8bb4cf9516b0e29e5fe436bef7ad88fe649529958653d5d78",
+      "lines": 7,
+      "review_range": "1-7"
+    },
+    {
+      "path": "docs/requirements_clarifications.md",
+      "sha256": "488104266b295100d6c015bec2fcab4f8c6b4e60308efdc88e5e359e371c4ae9",
+      "lines": 30,
+      "review_range": "1-30"
+    },
+    {
+      "path": "artifacts/SA/context_diagram.md",
+      "sha256": "f584a477d525119afdfbb995b910dc76ba583fec875863ae42ab00ff95d44df7",
+      "lines": 33,
+      "review_range": "1-33"
+    },
+    {
+      "path": "artifacts/SA/data_dictionary.md",
+      "sha256": "8579561549da760dae32f1f2940c2d54e68edf9e21f78024f28df7b7a7bcef1e",
+      "lines": 262,
+      "review_range": "1-262"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_0.md",
+      "sha256": "82f05b38dd97da01917edf5bf19019ff2e7b5636a8c8b34766f79ef39ad6a294",
+      "lines": 48,
+      "review_range": "1-48"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_1.md",
+      "sha256": "6f328f8b6eba139406cacda3b2b47cf979411f7a5418d84b2920011b1db7c44e",
+      "lines": 112,
+      "review_range": "1-112"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_2.md",
+      "sha256": "aedc9e505dede8d5d7e8acc76f0093323aa5167da740b7a8254431a5eca5d788",
+      "lines": 134,
+      "review_range": "1-134"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_3.md",
+      "sha256": "6403d787648f9a393203ea694d517cb4b984d93495ed968fb011a1a9450b8d84",
+      "lines": 144,
+      "review_range": "1-144"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+      "sha256": "401efe0b69da9f7fc1d8f6d0d14dfd1de9daece9a791ee8a896137c81efc9998",
+      "lines": 113,
+      "review_range": "1-113"
+    },
+    {
+      "path": "artifacts/SA/event_list.md",
+      "sha256": "4215148a13c655d93c628c36e2a689578a177dfb621605e10a631dc3de49a165",
+      "lines": 34,
+      "review_range": "1-34"
+    },
+    {
+      "path": "artifacts/SA/process_specification.md",
+      "sha256": "84ff1f24d5fba2a193a8cb91d1726b9cb147c6fc94816c16bf6f7a00bd5f403a",
+      "lines": 700,
+      "review_range": "1-700"
+    }
+  ]
+}

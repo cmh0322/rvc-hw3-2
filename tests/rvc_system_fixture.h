@@ -1,3 +1,4 @@
+#include "test_input_helpers.h"
 // Fixture for tests that drive the whole system through Controller, one call
 // per Tick, with the fake hardware as the only test double.
 #ifndef RVC_SYSTEM_FIXTURE_H
@@ -11,7 +12,7 @@
 
 class RvcSystemTest : public ::testing::Test {
 protected:
-    // Powers the system on and forgets what power-on sent to the hardware.
+    // Initialize real samples, then begin Tick-level output assertions.
     void SetUp() override {
         ResetFakeHw();
         initialize_rvc();
@@ -23,12 +24,16 @@ protected:
         fake_hw.left = left;
         fake_hw.right = right;
         fake_hw.dust = dust;
+        Observe(front,left,right,dust);
     }
 
     static void SetObstacles(bool front, bool left, bool right) {
         fake_hw.front = front;
         fake_hw.left = left;
         fake_hw.right = right;
+        dispatch_sensor_input({INPUT_FRONT,front});
+        dispatch_sensor_input({INPUT_LEFT,left});
+        dispatch_sensor_input({INPUT_RIGHT,right});
     }
 
     // Runs `count` cycles (Ticks) and expects each to send exactly one

@@ -1,0 +1,245 @@
+{
+  "executed_at": "2026-11-18T10:15:44.435493+09:00",
+  "commands": [
+    {
+      "name": "gcc-version",
+      "args": [
+        "D:\\MSYS2\\mingw64\\bin\\gcc.exe",
+        "--version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "probe-main-compile",
+      "args": [
+        "D:\\MSYS2\\mingw64\\bin\\gcc.exe",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-Iinclude",
+        "-Dmain=rvc_audit_main",
+        "-c",
+        "src/main.c",
+        "-o",
+        "artifacts\\Review\\20261118-101242-phase5-c-compliance\\verification\\audit_main.o"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "probe-link",
+      "args": [
+        "D:\\MSYS2\\mingw64\\bin\\gcc.exe",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-Iinclude",
+        "artifacts\\Review\\20261118-101242-phase5-c-compliance\\verification\\compliance_probe.c",
+        "artifacts\\Review\\20261118-101242-phase5-c-compliance\\verification\\audit_main.o",
+        "src\\assess_obstacle_situation.c",
+        "src\\controller.c",
+        "src\\decide_actions.c",
+        "src\\decide_cleaning.c",
+        "src\\derive_movement_status.c",
+        "src\\detect_dust.c",
+        "src\\detect_obstacle.c",
+        "src\\get_inputs.c",
+        "src\\initialize_rvc.c",
+        "src\\issue_movement_output.c",
+        "src\\movement_controller.c",
+        "src\\power_up_timer.c",
+        "src\\put_outputs.c",
+        "src\\step_timer.c",
+        "-o",
+        "artifacts\\Review\\20261118-101242-phase5-c-compliance\\verification\\compliance_probe.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "compliance-probe",
+      "args": [
+        "artifacts\\Review\\20261118-101242-phase5-c-compliance\\verification\\compliance_probe.exe"
+      ],
+      "exit_code": 1
+    },
+    {
+      "name": "approved-call-hierarchy",
+      "args": [
+        "cmake",
+        "-DOBJECT_DIR=D:/SCHOOL/2026_3-2/소프트웨어공학/HW3-2/build/CMakeFiles",
+        "-DEXPECTED=D:/SCHOOL/2026_3-2/소프트웨어공학/HW3-2/artifacts/Review/20261118-101242-phase5-c-compliance/verification/approved_expected_calls.txt",
+        "-P",
+        "tests/check_call_hierarchy.cmake"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "checks": [
+    {
+      "id": "C13.initial_motor_commands",
+      "expected": 0,
+      "actual": 1,
+      "passes": false
+    },
+    {
+      "id": "C13.initial_clean_commands",
+      "expected": 0,
+      "actual": 0,
+      "passes": true
+    },
+    {
+      "id": "C12.initial_actual_sensor_reads",
+      "expected": 4,
+      "actual": 0,
+      "passes": false
+    },
+    {
+      "id": "C15.avoidance_only_dust_return_clean",
+      "expected": 2,
+      "actual": 0,
+      "passes": false
+    },
+    {
+      "id": "C15.avoidance_only_dust_return_remaining",
+      "expected": 4,
+      "actual": 0,
+      "passes": false
+    },
+    {
+      "id": "C15.pending_overrides_paused_remaining",
+      "expected": 4,
+      "actual": 2,
+      "passes": false
+    },
+    {
+      "id": "C15.observed_true_false_before_tick",
+      "expected": 2,
+      "actual": 0,
+      "passes": false
+    },
+    {
+      "id": "C11.no_new_dust_resumes_remaining",
+      "expected": 2,
+      "actual": 2,
+      "passes": true
+    },
+    {
+      "id": "C16.side_only_forward",
+      "expected": 0,
+      "actual": 0,
+      "passes": true
+    },
+    {
+      "id": "C16.side_only_clean",
+      "expected": 0,
+      "actual": 0,
+      "passes": true
+    }
+  ],
+  "passed": 4,
+  "failed": 6,
+  "interpretation": "Unchanged code contradicts six assertions across C12/C13/C15; controls pass. No fix applied. Observed sensor pulse probe exercises detect_dust directly; production main lacks asynchronous dispatch entirely. This is not a browser/system test.",
+  "calls": {
+    "approved": 31,
+    "compiled": 26,
+    "missing": [
+      [
+        "acquire_initial_inputs",
+        "dispatch_sensor_input"
+      ],
+      [
+        "acquire_initial_inputs",
+        "inputs_ready"
+      ],
+      [
+        "acquire_initial_inputs",
+        "receive_input_event"
+      ],
+      [
+        "dispatch_input_event",
+        "controller"
+      ],
+      [
+        "dispatch_input_event",
+        "dispatch_sensor_input"
+      ],
+      [
+        "dispatch_sensor_input",
+        "detect_dust"
+      ],
+      [
+        "dispatch_sensor_input",
+        "detect_obstacle"
+      ],
+      [
+        "get_inputs",
+        "get_obstacle_location"
+      ],
+      [
+        "initialize_rvc",
+        "acquire_initial_inputs"
+      ],
+      [
+        "initialize_rvc",
+        "reset_sensor_data"
+      ],
+      [
+        "main",
+        "dispatch_input_event"
+      ],
+      [
+        "main",
+        "receive_input_event"
+      ],
+      [
+        "track_power_up",
+        "clear_pending_dust"
+      ],
+      [
+        "track_power_up",
+        "get_dust_existence"
+      ]
+    ],
+    "unexpected": [
+      [
+        "detect_dust",
+        "read_dust_sensor"
+      ],
+      [
+        "detect_obstacle",
+        "read_front_sensor"
+      ],
+      [
+        "detect_obstacle",
+        "read_left_sensor"
+      ],
+      [
+        "detect_obstacle",
+        "read_right_sensor"
+      ],
+      [
+        "get_inputs",
+        "detect_dust"
+      ],
+      [
+        "get_inputs",
+        "detect_obstacle"
+      ],
+      [
+        "initialize_rvc",
+        "issue_movement_output"
+      ],
+      [
+        "main",
+        "controller"
+      ],
+      [
+        "main",
+        "wait_for_tick"
+      ]
+    ]
+  }
+}

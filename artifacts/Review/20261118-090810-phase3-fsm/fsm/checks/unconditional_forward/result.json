@@ -1,0 +1,91 @@
+{
+  "status": "failed",
+  "started_utc": "2026-11-18T00:10:45.443484+00:00",
+  "commands": [
+    {
+      "stage": "spin-version",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-V"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler-version",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+      "exit_code": 0
+    },
+    {
+      "stage": "generate",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-a",
+        "model.pml"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+      "exit_code": 0
+    },
+    {
+      "stage": "compile",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "-O2",
+        "-o",
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward\\pan.exe",
+        "pan.c"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+      "exit_code": 0
+    },
+    {
+      "stage": "search",
+      "argv": [
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward\\pan.exe",
+        "-m100000",
+        "-a",
+        "-N",
+        "unconditional_forward"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+      "exit_code": 0
+    },
+    {
+      "stage": "replay",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-t",
+        "-p",
+        "-g",
+        "-l",
+        "-k",
+        "model.pml.trail",
+        "model.pml"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\unconditional_forward",
+      "exit_code": 0
+    }
+  ],
+  "scope": "one property/check on the supplied model only",
+  "ltl": "unconditional_forward",
+  "depth": 100000,
+  "fairness": "none",
+  "search": "full-state",
+  "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\unconditional_forward.pml",
+  "model_sha256": "e57c9b52147dc9e06c94379cdf63bad29f54bafb3f7a34ff75aab1d2c01b5644",
+  "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+  "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+  "errors": 1,
+  "stored_states": "107",
+  "transitions": "2355",
+  "reason": "SPIN found a counterexample; classify against model and source requirements",
+  "trails": [
+    "model.pml.trail"
+  ],
+  "replay_ok": true,
+  "finished_utc": "2026-11-18T00:10:52.292273+00:00"
+}

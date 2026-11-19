@@ -1,0 +1,21 @@
+ST-01 Empty room: Forward/Start 1-4, Stop/Stop 5-9, Turn Right/Stop 10-14, Forward/Start 15-19, Stop/Stop 20-24, Turn Right/Stop 25-29, Forward/Start 30-38, Stop/Stop 39-43
+ST-02 Obstacle ahead, both sides open: Forward/Start 1-2, Stop/Stop 3-7, Turn Right/Stop 8-12, Forward/Start 13-17, Stop/Stop 18-22, Turn Right/Stop 23-27, Forward/Start 28-34, Stop/Stop 35-39
+ST-03 Obstacle ahead, right blocked: Forward/Start 1-2, Stop/Stop 3-7, Turn Left/Stop 8-12, Forward/Start 13-16, Stop/Stop 17-21, Turn Right/Stop 22-26, Forward/Start 27-28, Stop/Stop 29-33
+ST-04 Obstacle ahead, left blocked: Forward/Start 1-2, Stop/Stop 3-7, Turn Right/Stop 8-12, Forward/Start 13-17, Stop/Stop 18-22, Turn Right/Stop 23-27, Forward/Start 28-34, Stop/Stop 35-39
+ST-05 Dead end in the open: Forward/Start 1-2, Stop/Stop 3-7, Backward/Stop 8-12, Turn Right/Stop 13-17, Forward/Start 18-22, Stop/Stop 23-27, Turn Right/Stop 28-32, Forward/Start 33-34
+ST-06 Closed corridor: Forward/Start 1-6, Stop/Stop 7-11, Backward/Stop 12-100
+ST-07 Corridor that opens to the left: Forward/Start 1-4, Stop/Stop 5-9, Backward/Stop 10-14, Turn Left/Stop 15-19, Forward/Start 20-23, Stop/Stop 24-28, Turn Right/Stop 29-33, Forward/Start 34-38
+ST-08 Corridor that opens to the right: Forward/Start 1-4, Stop/Stop 5-9, Backward/Stop 10-14, Turn Right/Stop 15-19, Forward/Start 20-24, Stop/Stop 25-29, Turn Right/Stop 30-34, Forward/Start 35-38
+ST-09 Backward twice, then turn: Forward/Start 1-3, Stop/Stop 4-8, Backward/Stop 9-18, Turn Right/Stop 19-23, Forward/Start 24-28, Stop/Stop 29-33, Turn Left/Stop 34-38, Forward/Start 39-47
+ST-10 Dust on a straight path: Forward/Start 1-2, Forward/Power Up 3-7, Forward/Start 8, Stop/Stop 9-13, Turn Right/Stop 14-18, Forward/Start 19-23, Stop/Stop 24-28, Turn Right/Stop 29-33
+ST-11 Second dust during a power-up: Forward/Start 1-2, Forward/Power Up 3-8, Stop/Stop 9-13, Turn Right/Stop 14-18, Forward/Power Up 19, Forward/Start 20-23, Stop/Stop 24-28, Turn Right/Stop 29-33
+ST-12 Two separate power-ups: Forward/Power Up 1-5, Forward/Start 6-7, Forward/Power Up 8-9, Stop/Stop 10-14, Turn Right/Stop 15-19, Forward/Power Up 20-22, Forward/Start 23-24, Stop/Stop 25-29
+ST-13 Power-up interrupted by an obstacle: Forward/Start 1-2, Forward/Power Up 3, Stop/Stop 4-8, Turn Right/Stop 9-13, Forward/Power Up 14-17, Forward/Start 18, Stop/Stop 19-23, Turn Right/Stop 24-28
+ST-14 Dust where the RVC stops: Forward/Start 1-3, Stop/Stop 4-8, Turn Right/Stop 9-13, Forward/Power Up 14-18, Stop/Stop 19-23, Turn Right/Stop 24-28, Forward/Start 29-34, Stop/Stop 35-39
+ST-15 Obstacles beside the path only: Forward/Start 1-4, Stop/Stop 5-9, Turn Right/Stop 10-14, Forward/Start 15-19, Stop/Stop 20-24, Turn Right/Stop 25-29, Forward/Start 30-38, Stop/Stop 39-43
+ST-16 Heading east: Forward/Start 1-2, Stop/Stop 3-7, Turn Right/Stop 8-12, Forward/Start 13-17, Stop/Stop 18-22, Turn Right/Stop 23-27, Forward/Start 28-33, Stop/Stop 34-38
+ST-17 Heading south, right blocked: Forward/Start 1-2, Stop/Stop 3-7, Turn Left/Stop 8-12, Forward/Start 13-17, Stop/Stop 18-22, Turn Right/Stop 23-27, Forward/Start 28-30, Stop/Stop 31-35
+ST-18 Heading west into a dead end: Forward/Start 1, Stop/Stop 2-6, Backward/Stop 7-11, Turn Right/Stop 12-16, Forward/Start 17-20, Stop/Stop 21-25, Turn Right/Stop 26-30, Forward/Start 31-32
+ST-19 Start in a corner: Stop/Stop 1-5, Turn Right/Stop 6-10, Forward/Start 11-19, Stop/Stop 20-24, Turn Right/Stop 25-29, Forward/Start 30-38, Stop/Stop 39-43, Turn Right/Stop 44-48
+ST-20 Obstacle and dust course: Forward/Start 1-2, Stop/Stop 3-7, Turn Right/Stop 8-12, Forward/Start 13-14, Forward/Power Up 15-17, Stop/Stop 18-22, Turn Right/Stop 23-27, Forward/Power Up 28-31
+ST-21 Enclosed on all four sides: Stop/Stop 1-5, Backward/Stop 6-100

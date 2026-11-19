@@ -1,0 +1,30 @@
+flowchart TB
+    M0["Main"]
+    M1["Initialize RVC"]
+    M2["Acquire Initial Inputs"]
+    M3["Dispatch Input Event"]
+    M4["Dispatch Sensor Input"]
+    M5["Controller"]
+    M7["Detect Obstacle"]
+    M9["Detect Dust"]
+    M10["Reset Sensor Data"]
+    M11["Inputs Ready"]
+    M17["Reset Movement Controller"]
+    M20["Reset Step Timer"]
+    M23["Reset Power-Up Timer"]
+    M27[["Receive Input Event"]]
+    M0 -->|"once before event loop"| M1
+    M0 -->|"each event-loop iteration, after initialization"| M27
+    M0 -->|"after Receive Input Event returns"| M3
+    M1 -->|"once, in listed order"| M17
+    M1 -->|"once, in listed order"| M23
+    M1 -->|"once, in listed order"| M10
+    M1 -->|"once, in listed order"| M2
+    M2 -->|"before each acquisition iteration"| M11
+    M2 -->|"while not Ready"| M27
+    M2 -->|"after each initial sensor event"| M4
+    M3 -->|"event kind is a sensor"| M4
+    M3 -->|"event kind is Tick"| M5
+    M4 -->|"front, left or right event"| M7
+    M4 -->|"dust event"| M9
+    M17 -->|"always"| M20

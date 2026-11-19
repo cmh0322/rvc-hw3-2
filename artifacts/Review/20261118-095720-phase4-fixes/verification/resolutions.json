@@ -1,0 +1,132 @@
+[
+  {
+    "id": "P4-01",
+    "original_severity": "HIGH",
+    "title": "초기 Forward 출력이 C13/T0와 충돌",
+    "status": "resolved-in-documents",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 23,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 151,
+        "end": 151
+      }
+    ],
+    "implementation_status": "notChecked",
+    "human_SD_approval": "pending"
+  },
+  {
+    "id": "P4-02",
+    "original_severity": "MEDIUM",
+    "title": "첫 Tick 전 초기 센서 샘플 확보 단계 누락",
+    "status": "resolved-in-documents",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 17,
+        "end": 17
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 136,
+        "end": 136
+      }
+    ],
+    "implementation_status": "notChecked",
+    "human_SD_approval": "pending"
+  },
+  {
+    "id": "P4-03",
+    "original_severity": "HIGH",
+    "title": "D2의 pending 감지 수명·소유자·소비 경로 누락",
+    "status": "resolved-in-documents",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 172,
+        "end": 172
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 233,
+        "end": 233
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 146,
+        "end": 146
+      }
+    ],
+    "implementation_status": "notChecked",
+    "human_SD_approval": "pending"
+  },
+  {
+    "id": "P4-04",
+    "original_severity": "HIGH",
+    "title": "Tick당 현재값 polling만으로 Tick 사이 감지 보존 불가",
+    "status": "resolved-in-documents",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 19,
+        "end": 19
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 21,
+        "end": 21
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 228,
+        "end": 228
+      }
+    ],
+    "implementation_status": "notChecked",
+    "human_SD_approval": "pending"
+  },
+  {
+    "id": "P4-05",
+    "original_severity": "MEDIUM",
+    "title": "확정 C16을 Q6 가정으로 표시",
+    "status": "resolved-in-documents",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 5,
+        "end": 5
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 301,
+        "end": 301
+      }
+    ],
+    "implementation_status": "notChecked",
+    "human_SD_approval": "pending"
+  },
+  {
+    "id": "P4-06",
+    "original_severity": "LOW",
+    "title": "D3 초기값이 SA에 없다는 설명이 오래됨",
+    "status": "resolved-in-documents",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 298,
+        "end": 298
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 179,
+        "end": 179
+      }
+    ],
+    "implementation_status": "notChecked",
+    "human_SD_approval": "pending"
+  }
+]

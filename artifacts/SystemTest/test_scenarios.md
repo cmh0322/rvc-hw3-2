@@ -23,11 +23,11 @@ Requirement IDs: B1-B7 (`docs/preliminary_requirements.md`), C1-C11 and Q6 (`doc
 | F6 | Move backward for 5 ticks when front, left, and right are blocked | B4, C6 |
 | F7 | After moving backward, turn by left and right only | B4, C5, C9 |
 | F8 | Move backward again when left and right are still blocked | C5, C6, C9 |
-| F9 | Power up the cleaning for 5 ticks when dust is detected | B5, C3 |
+| F9 | Power up the cleaning for 5 ticks when dust is detected | B5, C3, C15 |
 | F10 | Restart the 5 ticks when dust is detected during a power-up | C10 |
 | F11 | Continue an interrupted power-up after the avoidance | C11 |
 | F12 | Keep the cleaning stopped during the whole avoidance | B3 |
-| F13 | Ignore side obstacles while the front is clear | Q6 (assumption) |
+| F13 | Ignore side obstacles while the front is clear | C16 |
 
 ## 3. Scenarios
 
@@ -327,7 +327,7 @@ Reaches (4,0) at tick 3 and stops for ticks 4-8. Moves backward for ticks 9-13 t
 - Essential Function 4: F3 Turn right for 5 ticks when the right is open
 
 **Requirement Traceability**
-- Related Requirement IDs: B1, B2, B5, C3, B3, C2, C7, C1, C8
+- Related Requirement IDs: B1, B2, B5, C3, C15, B3, C2, C7, C1, C8
 - Related SA Artifacts: FSM T1; Process Specification 4.2; Process Specification 4.1, 4.2; FSM T2, T3; FSM T4, T11; Process Specification 3.1
 
 **Expected Behavior**
@@ -358,7 +358,7 @@ Goes forward with Clean Start for ticks 1-2 and is on the dust cell (4,6) at tic
 - Essential Function 5: F12 Keep the cleaning stopped during the whole avoidance
 
 **Requirement Traceability**
-- Related Requirement IDs: B5, C3, C10, C11, B3, C2, C7
+- Related Requirement IDs: B5, C3, C15, C10, C11, B3, C2, C7
 - Related SA Artifacts: Process Specification 4.1, 4.2; Process Specification 4.1; FSM T2, T3; Process Specification 4.2; Process Specification 3.2.3, 4.2
 
 **Expected Behavior**
@@ -388,7 +388,7 @@ Clean is Power Up from tick 3 (dust at (4,6)). At tick 5 it is on the second dus
 - Essential Function 4: F2 Stop moving and cleaning for 5 ticks at an obstacle
 
 **Requirement Traceability**
-- Related Requirement IDs: B1, B2, B5, C3, C11, B3, C2, C7
+- Related Requirement IDs: B1, B2, B5, C3, C15, C11, B3, C2, C7
 - Related SA Artifacts: FSM T1; Process Specification 4.2; Process Specification 4.1, 4.2; Process Specification 4.1; FSM T2, T3
 
 **Expected Behavior**
@@ -419,7 +419,7 @@ The start cell has dust: Clean is Power Up for ticks 1-5, then Start for ticks 6
 - Essential Function 5: F12 Keep the cleaning stopped during the whole avoidance
 
 **Requirement Traceability**
-- Related Requirement IDs: B5, C3, C11, B3, C2, C7, C1, C8
+- Related Requirement IDs: B5, C3, C15, C11, B3, C2, C7, C1, C8
 - Related SA Artifacts: Process Specification 4.1, 4.2; Process Specification 4.1; FSM T2, T3; Process Specification 4.2; FSM T4, T11; Process Specification 3.1; Process Specification 3.2.3, 4.2
 
 **Expected Behavior**
@@ -450,12 +450,12 @@ At tick 3 it is on the dust cell (4,4): Clean is Power Up and it moves to (4,3).
 - Essential Function 5: F5 Go forward with cleaning after turning aside
 
 **Requirement Traceability**
-- Related Requirement IDs: B3, C2, C7, B5, C3, C1, C8
+- Related Requirement IDs: B3, C2, C7, B5, C3, C15, C1, C8
 - Related SA Artifacts: FSM T2, T3; Process Specification 4.2; Process Specification 3.2.3, 4.2; Process Specification 4.1, 4.2; FSM T4, T11; Process Specification 3.1; FSM T12, T14
 
 **Expected Behavior**
 
-Reaches (4,3) at tick 3. At tick 4 the obstacle is in front and the cell has dust: it stops, and Clean is Stop, not Power Up (B3). Clean stays Stop during the stop (ticks 4-8) and the right turn (ticks 9-13); the dust stays. At tick 14 it goes forward and the dust is still under it: Clean is Power Up for ticks 14-18 and the dust is removed.
+Dust observed during stopping/turning is remembered under C15. At the first Forward Tick (14), restart a full five-tick suction boost through tick 18, even if the dust sensor has cleared. Cleaning and mopping stay stopped during avoidance.
 
 **Human Evaluation**
 - Result: Pending (PASS / FAIL / INCONCLUSIVE)
@@ -480,12 +480,12 @@ Reaches (4,3) at tick 3. At tick 4 the obstacle is in front and the cell has dus
 - Essential Function 4: F3 Turn right for 5 ticks when the right is open
 
 **Requirement Traceability**
-- Related Requirement IDs: Q6 (assumption), B1, B2, B3, C2, C7, C1, C8
+- Related Requirement IDs: C16, B1, B2, B3, C2, C7, C1, C8
 - Related SA Artifacts: FSM T1; Process Specification 3.1; Process Specification 4.2; FSM T2, T3; FSM T4, T11
 
 **Expected Behavior**
 
-Obstacles lie to the left and right of the path but never in front. It goes forward with Clean Start for ticks 1-4 without stopping (Q6 assumption) and reaches the top wall. It stops for ticks 5-9 and turns right for ticks 10-14.
+Obstacles lie to the left and right of the path but never in front. It goes forward with Clean Start for ticks 1-4 without stopping (confirmed C16) and reaches the top wall. It stops for ticks 5-9 and turns right for ticks 10-14.
 
 **Human Evaluation**
 - Result: Pending (PASS / FAIL / INCONCLUSIVE)
@@ -634,7 +634,7 @@ The wall is in front at the first tick: it stops for ticks 1-5 without having mo
 - Essential Function 6: F12 Keep the cleaning stopped during the whole avoidance
 
 **Requirement Traceability**
-- Related Requirement IDs: B3, C2, C7, C1, C8, B5, C3, C10, C11
+- Related Requirement IDs: B3, C2, C7, C1, C8, B5, C3, C15, C10, C11
 - Related SA Artifacts: FSM T2, T3; Process Specification 4.2; FSM T4, T11; Process Specification 3.1; Process Specification 4.1, 4.2; Process Specification 4.1; Process Specification 3.2.3, 4.2
 
 **Expected Behavior**

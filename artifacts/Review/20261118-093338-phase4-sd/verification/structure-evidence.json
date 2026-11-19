@@ -1,0 +1,705 @@
+{
+  "scope": "syntax inventories and source integrity; semantic gaps are findings, not script failures",
+  "modules": [
+    {
+      "line": 256,
+      "name": "Main",
+      "region": "Root",
+      "responsibility": "Initializes the system once, then runs one control cycle for every Tick. Corresponds to the C `main()` function.",
+      "callees": [
+        "Initialize RVC",
+        "Wait For Tick",
+        "Controller"
+      ]
+    },
+    {
+      "line": 257,
+      "name": "Initialize RVC",
+      "region": "Root",
+      "responsibility": "Puts the system into its power-on condition (FSM transition T0): resets the hidden data and issues the initial Forward command.",
+      "callees": [
+        "Reset Movement Controller",
+        "Reset Power-Up Timer",
+        "Issue Movement Output"
+      ]
+    },
+    {
+      "line": 258,
+      "name": "Controller",
+      "region": "Root",
+      "responsibility": "Runs one control cycle: obtains the inputs, decides the actions, delivers the outputs. Coordinates Process 0 for one Tick.",
+      "callees": [
+        "Get Inputs",
+        "Decide Actions",
+        "Put Outputs"
+      ]
+    },
+    {
+      "line": 259,
+      "name": "Get Inputs",
+      "region": "Afferent",
+      "responsibility": "Obtains the two inputs the decisions need: Obstacle Situation and Dust Existence.",
+      "callees": [
+        "Detect Obstacle",
+        "Assess Obstacle Situation",
+        "Detect Dust"
+      ]
+    },
+    {
+      "line": 260,
+      "name": "Detect Obstacle",
+      "region": "Afferent",
+      "responsibility": "Reads the three obstacle sensors and returns them as one Obstacle Location.",
+      "callees": [
+        "Read Front Sensor",
+        "Read Left Sensor",
+        "Read Right Sensor"
+      ]
+    },
+    {
+      "line": 261,
+      "name": "Assess Obstacle Situation",
+      "region": "Afferent",
+      "responsibility": "Classifies an Obstacle Location: whether the front is blocked, and whether the right is open, only the left is open, or both sides are blocked (C1, C9).",
+      "callees": []
+    },
+    {
+      "line": 262,
+      "name": "Detect Dust",
+      "region": "Afferent",
+      "responsibility": "Reads the dust sensor and returns Dust Existence.",
+      "callees": [
+        "Read Dust Sensor"
+      ]
+    },
+    {
+      "line": 263,
+      "name": "Decide Actions",
+      "region": "Central",
+      "responsibility": "Decides the Movement Command and the Clean command for this cycle.",
+      "callees": [
+        "Movement Controller",
+        "Derive Movement Status",
+        "Track Power-Up",
+        "Decide Cleaning"
+      ]
+    },
+    {
+      "line": 264,
+      "name": "Movement Controller",
+      "region": "Central",
+      "responsibility": "Takes one FSM transition (T1-T14) for this Tick and returns the Movement Command. Keeps the controller state.",
+      "callees": [
+        "Advance Step Timer",
+        "Start Step Timer"
+      ]
+    },
+    {
+      "line": 265,
+      "name": "Reset Movement Controller",
+      "region": "Central",
+      "responsibility": "Sets the controller state to Forward and returns the initial Movement Command, Forward (T0).",
+      "callees": [
+        "Reset Step Timer"
+      ]
+    },
+    {
+      "line": 266,
+      "name": "Advance Step Timer",
+      "region": "Central",
+      "responsibility": "Counts one tick of the running step and reports Step Done when 5 ticks have elapsed. Does nothing when no step is running.",
+      "callees": []
+    },
+    {
+      "line": 267,
+      "name": "Start Step Timer",
+      "region": "Central",
+      "responsibility": "Begins counting a new 5-tick step.",
+      "callees": []
+    },
+    {
+      "line": 268,
+      "name": "Reset Step Timer",
+      "region": "Central",
+      "responsibility": "Sets the step timer to Idle.",
+      "callees": []
+    },
+    {
+      "line": 269,
+      "name": "Derive Movement Status",
+      "region": "Central",
+      "responsibility": "Returns Forward when the Movement Command is Forward, otherwise Avoiding.",
+      "callees": []
+    },
+    {
+      "line": 270,
+      "name": "Track Power-Up",
+      "region": "Central",
+      "responsibility": "Starts and counts down the 5-tick power-up and reports whether it applies on this tick. Keeps the remaining count.",
+      "callees": []
+    },
+    {
+      "line": 271,
+      "name": "Reset Power-Up Timer",
+      "region": "Central",
+      "responsibility": "Sets the remaining power-up count to 0.",
+      "callees": []
+    },
+    {
+      "line": 272,
+      "name": "Decide Cleaning",
+      "region": "Central",
+      "responsibility": "Chooses Clean: Stop while avoiding, Power Up while power-up is active, otherwise Start.",
+      "callees": []
+    },
+    {
+      "line": 273,
+      "name": "Put Outputs",
+      "region": "Efferent",
+      "responsibility": "Delivers the two decided commands to the Motor and the Cleaner.",
+      "callees": [
+        "Issue Movement Output",
+        "Drive Cleaner"
+      ]
+    },
+    {
+      "line": 274,
+      "name": "Issue Movement Output",
+      "region": "Efferent",
+      "responsibility": "Converts a Movement Command into the Direction value and sends it to the Motor.",
+      "callees": [
+        "Drive Motor"
+      ]
+    }
+  ],
+  "library_modules": [
+    {
+      "line": 282,
+      "name": "Read Front Sensor",
+      "terminator": "Front Sensor",
+      "event": "Front Sensor Input",
+      "contract": "Returns Boolean"
+    },
+    {
+      "line": 283,
+      "name": "Read Left Sensor",
+      "terminator": "Left Sensor",
+      "event": "Left Sensor Input",
+      "contract": "Returns Boolean"
+    },
+    {
+      "line": 284,
+      "name": "Read Right Sensor",
+      "terminator": "Right Sensor",
+      "event": "Right Sensor Input",
+      "contract": "Returns Boolean"
+    },
+    {
+      "line": 285,
+      "name": "Read Dust Sensor",
+      "terminator": "Dust Sensor",
+      "event": "Dust Sensor Input",
+      "contract": "Returns Boolean"
+    },
+    {
+      "line": 286,
+      "name": "Wait For Tick",
+      "terminator": "Digital Clock",
+      "event": "Tick",
+      "contract": "Returns when the next Tick occurs"
+    },
+    {
+      "line": 287,
+      "name": "Drive Motor",
+      "terminator": "Motor",
+      "event": "Direction",
+      "contract": "Accepts Forward, Backward, Turn Left, Turn Right, or Stop"
+    },
+    {
+      "line": 288,
+      "name": "Drive Cleaner",
+      "terminator": "Cleaner",
+      "event": "Clean",
+      "contract": "Accepts Start, Stop, or Power Up"
+    }
+  ],
+  "calls": [
+    [
+      "Controller",
+      "Decide Actions"
+    ],
+    [
+      "Controller",
+      "Get Inputs"
+    ],
+    [
+      "Controller",
+      "Put Outputs"
+    ],
+    [
+      "Decide Actions",
+      "Decide Cleaning"
+    ],
+    [
+      "Decide Actions",
+      "Derive Movement Status"
+    ],
+    [
+      "Decide Actions",
+      "Movement Controller"
+    ],
+    [
+      "Decide Actions",
+      "Track Power-Up"
+    ],
+    [
+      "Detect Dust",
+      "Read Dust Sensor"
+    ],
+    [
+      "Detect Obstacle",
+      "Read Front Sensor"
+    ],
+    [
+      "Detect Obstacle",
+      "Read Left Sensor"
+    ],
+    [
+      "Detect Obstacle",
+      "Read Right Sensor"
+    ],
+    [
+      "Get Inputs",
+      "Assess Obstacle Situation"
+    ],
+    [
+      "Get Inputs",
+      "Detect Dust"
+    ],
+    [
+      "Get Inputs",
+      "Detect Obstacle"
+    ],
+    [
+      "Initialize RVC",
+      "Issue Movement Output"
+    ],
+    [
+      "Initialize RVC",
+      "Reset Movement Controller"
+    ],
+    [
+      "Initialize RVC",
+      "Reset Power-Up Timer"
+    ],
+    [
+      "Issue Movement Output",
+      "Drive Motor"
+    ],
+    [
+      "Main",
+      "Controller"
+    ],
+    [
+      "Main",
+      "Initialize RVC"
+    ],
+    [
+      "Main",
+      "Wait For Tick"
+    ],
+    [
+      "Movement Controller",
+      "Advance Step Timer"
+    ],
+    [
+      "Movement Controller",
+      "Start Step Timer"
+    ],
+    [
+      "Put Outputs",
+      "Drive Cleaner"
+    ],
+    [
+      "Put Outputs",
+      "Issue Movement Output"
+    ],
+    [
+      "Reset Movement Controller",
+      "Reset Step Timer"
+    ]
+  ],
+  "interfaces": [
+    {
+      "line": 306,
+      "caller": "Main",
+      "callee": "Initialize RVC",
+      "input": "—",
+      "output": "—",
+      "control": "—"
+    },
+    {
+      "line": 307,
+      "caller": "Main",
+      "callee": "Wait For Tick",
+      "input": "—",
+      "output": "—",
+      "control": "↑ Tick"
+    },
+    {
+      "line": 308,
+      "caller": "Main",
+      "callee": "Controller",
+      "input": "—",
+      "output": "—",
+      "control": "—"
+    },
+    {
+      "line": 309,
+      "caller": "Initialize RVC",
+      "callee": "Reset Movement Controller",
+      "input": "—",
+      "output": "—",
+      "control": "↑ Movement Command (Forward)"
+    },
+    {
+      "line": 310,
+      "caller": "Reset Movement Controller",
+      "callee": "Reset Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "—"
+    },
+    {
+      "line": 311,
+      "caller": "Initialize RVC",
+      "callee": "Reset Power-Up Timer",
+      "input": "—",
+      "output": "—",
+      "control": "—"
+    },
+    {
+      "line": 312,
+      "caller": "Initialize RVC",
+      "callee": "Issue Movement Output",
+      "input": "—",
+      "output": "—",
+      "control": "↓ Movement Command"
+    },
+    {
+      "line": 313,
+      "caller": "Controller",
+      "callee": "Get Inputs",
+      "input": "—",
+      "output": "Obstacle Situation, Dust Existence",
+      "control": "—"
+    },
+    {
+      "line": 314,
+      "caller": "Controller",
+      "callee": "Decide Actions",
+      "input": "Obstacle Situation, Dust Existence",
+      "output": "Clean",
+      "control": "↑ Movement Command"
+    },
+    {
+      "line": 315,
+      "caller": "Controller",
+      "callee": "Put Outputs",
+      "input": "Clean",
+      "output": "—",
+      "control": "↓ Movement Command"
+    },
+    {
+      "line": 316,
+      "caller": "Get Inputs",
+      "callee": "Detect Obstacle",
+      "input": "—",
+      "output": "Obstacle Location",
+      "control": "—"
+    },
+    {
+      "line": 317,
+      "caller": "Get Inputs",
+      "callee": "Assess Obstacle Situation",
+      "input": "Obstacle Location",
+      "output": "Obstacle Situation",
+      "control": "—"
+    },
+    {
+      "line": 318,
+      "caller": "Get Inputs",
+      "callee": "Detect Dust",
+      "input": "—",
+      "output": "Dust Existence",
+      "control": "—"
+    },
+    {
+      "line": 319,
+      "caller": "Detect Obstacle",
+      "callee": "Read Front Sensor",
+      "input": "—",
+      "output": "Front Sensor Input",
+      "control": "—"
+    },
+    {
+      "line": 320,
+      "caller": "Detect Obstacle",
+      "callee": "Read Left Sensor",
+      "input": "—",
+      "output": "Left Sensor Input",
+      "control": "—"
+    },
+    {
+      "line": 321,
+      "caller": "Detect Obstacle",
+      "callee": "Read Right Sensor",
+      "input": "—",
+      "output": "Right Sensor Input",
+      "control": "—"
+    },
+    {
+      "line": 322,
+      "caller": "Detect Dust",
+      "callee": "Read Dust Sensor",
+      "input": "—",
+      "output": "Dust Sensor Input",
+      "control": "—"
+    },
+    {
+      "line": 323,
+      "caller": "Decide Actions",
+      "callee": "Movement Controller",
+      "input": "—",
+      "output": "—",
+      "control": "↓ Situation Signal, ↑ Movement Command"
+    },
+    {
+      "line": 324,
+      "caller": "Movement Controller",
+      "callee": "Advance Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "↑ Step Done"
+    },
+    {
+      "line": 325,
+      "caller": "Movement Controller",
+      "callee": "Start Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "— (conditional call)"
+    },
+    {
+      "line": 326,
+      "caller": "Decide Actions",
+      "callee": "Derive Movement Status",
+      "input": "—",
+      "output": "Movement Status",
+      "control": "↓ Movement Command"
+    },
+    {
+      "line": 327,
+      "caller": "Decide Actions",
+      "callee": "Track Power-Up",
+      "input": "Movement Status, Dust Existence",
+      "output": "Power-Up Active",
+      "control": "—"
+    },
+    {
+      "line": 328,
+      "caller": "Decide Actions",
+      "callee": "Decide Cleaning",
+      "input": "Movement Status, Power-Up Active",
+      "output": "Clean",
+      "control": "—"
+    },
+    {
+      "line": 329,
+      "caller": "Put Outputs",
+      "callee": "Issue Movement Output",
+      "input": "—",
+      "output": "—",
+      "control": "↓ Movement Command"
+    },
+    {
+      "line": 330,
+      "caller": "Put Outputs",
+      "callee": "Drive Cleaner",
+      "input": "Clean",
+      "output": "—",
+      "control": "—"
+    },
+    {
+      "line": 331,
+      "caller": "Issue Movement Output",
+      "callee": "Drive Motor",
+      "input": "Direction",
+      "output": "—",
+      "control": "—"
+    }
+  ],
+  "process_map": [
+    {
+      "line": 341,
+      "id": "0",
+      "name": "RVC Controller",
+      "modules": "Main, Initialize RVC, Controller",
+      "rationale": "Main supplies the Tick loop. Controller performs Process 0 once per Tick."
+    },
+    {
+      "line": 342,
+      "id": "1",
+      "name": "Detect Obstacle",
+      "modules": "Detect Obstacle",
+      "rationale": "One to one."
+    },
+    {
+      "line": 343,
+      "id": "2",
+      "name": "Detect Dust",
+      "modules": "Detect Dust",
+      "rationale": "One to one."
+    },
+    {
+      "line": 344,
+      "id": "3",
+      "name": "Control Movement",
+      "modules": "Modules of 3.1 and 3.2",
+      "rationale": "Parent process; realized by its children."
+    },
+    {
+      "line": 345,
+      "id": "3.1",
+      "name": "Assess Obstacle Situation",
+      "modules": "Assess Obstacle Situation",
+      "rationale": "One to one."
+    },
+    {
+      "line": 346,
+      "id": "3.2",
+      "name": "Decide Movement",
+      "modules": "Modules of 3.2.1 to 3.2.4",
+      "rationale": "Parent process; realized by its children."
+    },
+    {
+      "line": 347,
+      "id": "3.2.1",
+      "name": "Signal Obstacle Situation",
+      "modules": "Decide Actions (parameter passing)",
+      "rationale": "3.2.1 only hands a value on as a signal. A module for it would have no body, so the hand-over is the call `Decide Actions → Movement Controller`."
+    },
+    {
+      "line": 348,
+      "id": "3.2.2",
+      "name": "Movement Controller",
+      "modules": "Movement Controller, Reset Movement Controller",
+      "rationale": "Movement Controller takes T1-T14. Reset Movement Controller takes T0."
+    },
+    {
+      "line": 349,
+      "id": "3.2.3",
+      "name": "Issue Movement Output",
+      "modules": "Derive Movement Status, Issue Movement Output",
+      "rationale": "Split along the transform boundary: Movement Status feeds the decisions (central), Direction goes to the Motor (efferent). Each module now has one function."
+    },
+    {
+      "line": 350,
+      "id": "3.2.4",
+      "name": "Time Movement Step",
+      "modules": "Advance Step Timer, Start Step Timer, Reset Step Timer",
+      "rationale": "One module per trigger of 3.2.4 (Tick, Start Step Timer) plus its initial value. They share D4 as hidden data."
+    },
+    {
+      "line": 351,
+      "id": "4",
+      "name": "Control Cleaning",
+      "modules": "Modules of 4.1 and 4.2",
+      "rationale": "Parent process; realized by its children."
+    },
+    {
+      "line": 352,
+      "id": "4.1",
+      "name": "Track Power-Up",
+      "modules": "Track Power-Up, Reset Power-Up Timer",
+      "rationale": "Track Power-Up is the process. Reset Power-Up Timer gives D3 its initial value."
+    },
+    {
+      "line": 353,
+      "id": "4.2",
+      "name": "Decide Cleaning",
+      "modules": "Decide Cleaning",
+      "rationale": "One to one."
+    }
+  ],
+  "leaf_processes": [
+    "1",
+    "2",
+    "3.1",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "4.1",
+    "4.2"
+  ],
+  "call_graph_interfaces_descriptions_agree": true,
+  "sa_flows": [
+    "Clean",
+    "Direction",
+    "Dust Existence",
+    "Dust Sensor Input",
+    "Front Sensor Input",
+    "Left Sensor Input",
+    "Movement Command",
+    "Movement Status",
+    "Obstacle Location",
+    "Obstacle Situation",
+    "Pending Dust Detection",
+    "Power-Up Active",
+    "Remaining Power-Up Ticks",
+    "Right Sensor Input",
+    "Situation Signal",
+    "Start Step Timer",
+    "Step Done",
+    "Step Ticks Elapsed",
+    "Tick"
+  ],
+  "ta_flows": [
+    "Clean",
+    "Direction",
+    "Dust Existence",
+    "Dust Sensor Input",
+    "Front Sensor Input",
+    "Left Sensor Input",
+    "Movement Command",
+    "Movement Status",
+    "Obstacle Location",
+    "Obstacle Situation",
+    "Power-Up Active",
+    "Remaining Power-Up Ticks",
+    "Right Sensor Input",
+    "Situation Signal",
+    "Start Step Timer",
+    "Step Done",
+    "Step Ticks Elapsed",
+    "Tick"
+  ],
+  "missing_ta_flow_names": [
+    "Pending Dust Detection"
+  ],
+  "missing_ta_edges": [
+    "D2 -> P2 : Dust Existence",
+    "P4.1 -> D2 : Pending Dust Detection"
+  ],
+  "sd_pending_or_C12_to_C16_search": {
+    "pattern": "pending|C1[2-6]",
+    "paths": [
+      "artifacts/SD/transform_analysis.md",
+      "artifacts/SD/structure_chart.md"
+    ],
+    "hits": []
+  },
+  "mapped_paths_exist": 21,
+  "protected_files_unchanged": 74
+}

@@ -1,0 +1,77 @@
+{
+  "id": "C3",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 11,
+      "end": 11
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/power_up_timer.c",
+      "start": 7,
+      "end": 36
+    },
+    {
+      "path": "src/decide_actions.c",
+      "start": 17,
+      "end": 22
+    },
+    {
+      "path": "src/decide_cleaning.c",
+      "start": 8,
+      "end": 13
+    },
+    {
+      "path": "include/rvc_types.h",
+      "start": 83,
+      "end": 84
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Duration constant is five",
+      "verdict": "implemented",
+      "evidence": "include/rvc_types.h:83–84"
+    },
+    {
+      "claim": "Count includes activation Tick",
+      "verdict": "implemented",
+      "evidence": "src/power_up_timer.c:16–21 sets5, returns active, decrements to4"
+    },
+    {
+      "claim": "Avoidance does not consume boost duration",
+      "verdict": "implemented",
+      "evidence": "src/power_up_timer.c:14–28 leaves count unchanged outside Forward"
+    }
+  ],
+  "paths_walked": [
+    "Controller → Decide Actions → Movement Controller → Derive Movement Status → Track Power-Up → Decide Cleaning → Put Outputs",
+    "After activation: stored counts4,3,2,1,0 with active=true, then false at0. TRUE current restarts under C10; Avoiding pauses under C11."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/power_up_timer.c",
+        "src/decide_actions.c",
+        "src/decide_cleaning.c",
+        "include/rvc_types.h",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_power_up_timer.cpp",
+    "tests/test_requirements.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

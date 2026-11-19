@@ -1,0 +1,438 @@
+{
+  "modules": [
+    [
+      "Main",
+      "Root",
+      "Initialize once, then receive and dispatch one ordered input event at a time."
+    ],
+    [
+      "Initialize RVC",
+      "Root",
+      "Reset movement, D3 and Sensor Store; acquire initial samples. Return only when all four samples are valid; emit no command (C12/C13)."
+    ],
+    [
+      "Acquire Initial Inputs",
+      "Root",
+      "Until Inputs Ready, obtain InitialSensors events and dispatch only sensor inputs. Preserve all intermediate TRUE dust observations."
+    ],
+    [
+      "Dispatch Input Event",
+      "Root",
+      "For a sensor event call Dispatch Sensor Input; for Tick call Controller once. The branches are mutually exclusive."
+    ],
+    [
+      "Dispatch Sensor Input",
+      "Afferent",
+      "Route front/left/right values to Detect Obstacle and dust values to Detect Dust. Never call Controller or any output module."
+    ],
+    [
+      "Controller",
+      "Root",
+      "For one Tick: Get Inputs, Decide Actions, Put Outputs. No sensor dispatch interleaves with this cycle."
+    ],
+    [
+      "Get Inputs",
+      "Afferent",
+      "Read a valid D1 snapshot and classify it. Dust is read directly by Track Power-Up through the Sensor Store accessor."
+    ],
+    [
+      "Detect Obstacle",
+      "Afferent",
+      "Update only the named D1 sensor field and its valid flag; preserve the other fields (P1)."
+    ],
+    [
+      "Assess Obstacle Situation",
+      "Afferent",
+      "Produce Front Blocked and Side Situation independently; right priority (C1/C9)."
+    ],
+    [
+      "Detect Dust",
+      "Afferent",
+      "Set current=value; pending=old_pending OR value; mark dust valid. FALSE preserves pending (P2/C15)."
+    ],
+    [
+      "Reset Sensor Data",
+      "Afferent",
+      "Set valid flags false and pending=false. Current sensor slots are invalid until populated by actual input; zero is not an assumed reading."
+    ],
+    [
+      "Inputs Ready",
+      "Afferent",
+      "Return true exactly when front, left, right and dust have all received a valid actual sample."
+    ],
+    [
+      "Get Obstacle Location",
+      "Afferent",
+      "Return a value copy of the three valid D1 readings. No writable state reference escapes."
+    ],
+    [
+      "Get Dust Existence",
+      "Afferent",
+      "Return a value copy of D2 current and pending. Does not consume or clear the detection."
+    ],
+    [
+      "Clear Pending Dust",
+      "Afferent storage access",
+      "Set only pending=false. Leave current and validity unchanged. Called only by Track Power-Up on Forward."
+    ],
+    [
+      "Decide Actions",
+      "Central",
+      "Select movement, derive Movement Status, track power-up, then decide cleaning."
+    ],
+    [
+      "Movement Controller",
+      "Central",
+      "Advance D4, take exactly one T1-T14 transition, and restart D4 only when that transition starts a timed step."
+    ],
+    [
+      "Reset Movement Controller",
+      "Central",
+      "Set Forward state and reset D4 to Idle; return no Movement Command (T0/C13)."
+    ],
+    [
+      "Advance Step Timer",
+      "Central",
+      "If running, increment elapsed; at 5 emit Step Done and set Idle. Run before the FSM transition."
+    ],
+    [
+      "Start Step Timer",
+      "Central",
+      "Set elapsed=0 after the transition requests a new step; its command Tick is the first of five."
+    ],
+    [
+      "Reset Step Timer",
+      "Central",
+      "Set D4 to Idle."
+    ],
+    [
+      "Derive Movement Status",
+      "Central",
+      "Return Forward for a Forward command, otherwise Avoiding (P3.2.3 central part)."
+    ],
+    [
+      "Track Power-Up",
+      "Central",
+      "Read D2; preserve D3 and pending while Avoiding. On Forward apply current/pending restart precedence, consume pending, report active and decrement D3."
+    ],
+    [
+      "Reset Power-Up Timer",
+      "Central",
+      "Set D3=0 as specified by current SA; no cleaning output."
+    ],
+    [
+      "Decide Cleaning",
+      "Central",
+      "Choose Stop while Avoiding; otherwise Power Up if active, else Start. Use C14 meanings."
+    ],
+    [
+      "Put Outputs",
+      "Efferent",
+      "Deliver Movement Command through Issue Movement Output, then Clean through Drive Cleaner, within this Tick."
+    ],
+    [
+      "Issue Movement Output",
+      "Efferent",
+      "Map Movement Command to Direction and call Drive Motor (P3.2.3 efferent part)."
+    ]
+  ],
+  "library_modules": [
+    [
+      "Receive Input Event",
+      "Four sensor terminators and Digital Clock",
+      "Input Mode → one Input Event; ordered, lossless received-event contract in section 2"
+    ],
+    [
+      "Drive Motor",
+      "Motor",
+      "Direction → hardware boundary; no return data"
+    ],
+    [
+      "Drive Cleaner",
+      "Cleaner",
+      "Clean → hardware boundary; Start/Stop affect suction+mop, Power Up suction only"
+    ]
+  ],
+  "calls": [
+    {
+      "caller": "Main",
+      "callee": "Initialize RVC",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once before event loop"
+    },
+    {
+      "caller": "Main",
+      "callee": "Receive Input Event",
+      "input": "Input Mode=Running",
+      "output": "Input Event",
+      "control": "—",
+      "when": "each event-loop iteration, after initialization"
+    },
+    {
+      "caller": "Main",
+      "callee": "Dispatch Input Event",
+      "input": "Input Event",
+      "output": "—",
+      "control": "—",
+      "when": "after Receive Input Event returns"
+    },
+    {
+      "caller": "Initialize RVC",
+      "callee": "Reset Movement Controller",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once, in listed order"
+    },
+    {
+      "caller": "Initialize RVC",
+      "callee": "Reset Power-Up Timer",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once, in listed order"
+    },
+    {
+      "caller": "Initialize RVC",
+      "callee": "Reset Sensor Data",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once, in listed order"
+    },
+    {
+      "caller": "Initialize RVC",
+      "callee": "Acquire Initial Inputs",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once, in listed order"
+    },
+    {
+      "caller": "Acquire Initial Inputs",
+      "callee": "Inputs Ready",
+      "input": "—",
+      "output": "Ready",
+      "control": "—",
+      "when": "before each acquisition iteration"
+    },
+    {
+      "caller": "Acquire Initial Inputs",
+      "callee": "Receive Input Event",
+      "input": "Input Mode=InitialSensors",
+      "output": "Sensor Input Event",
+      "control": "—",
+      "when": "while not Ready"
+    },
+    {
+      "caller": "Acquire Initial Inputs",
+      "callee": "Dispatch Sensor Input",
+      "input": "Sensor Input Event",
+      "output": "—",
+      "control": "—",
+      "when": "after each initial sensor event"
+    },
+    {
+      "caller": "Dispatch Input Event",
+      "callee": "Dispatch Sensor Input",
+      "input": "Sensor Input Event",
+      "output": "—",
+      "control": "—",
+      "when": "event kind is a sensor"
+    },
+    {
+      "caller": "Dispatch Input Event",
+      "callee": "Controller",
+      "input": "—",
+      "output": "—",
+      "control": "Tick occurrence",
+      "when": "event kind is Tick"
+    },
+    {
+      "caller": "Dispatch Sensor Input",
+      "callee": "Detect Obstacle",
+      "input": "Sensor ID, Boolean value",
+      "output": "—",
+      "control": "—",
+      "when": "front, left or right event"
+    },
+    {
+      "caller": "Dispatch Sensor Input",
+      "callee": "Detect Dust",
+      "input": "Dust Sensor Input",
+      "output": "—",
+      "control": "—",
+      "when": "dust event"
+    },
+    {
+      "caller": "Controller",
+      "callee": "Get Inputs",
+      "input": "—",
+      "output": "Obstacle Situation",
+      "control": "—",
+      "when": "1 per Tick"
+    },
+    {
+      "caller": "Controller",
+      "callee": "Decide Actions",
+      "input": "Obstacle Situation",
+      "output": "Clean",
+      "control": "↑ Movement Command",
+      "when": "2 per Tick"
+    },
+    {
+      "caller": "Controller",
+      "callee": "Put Outputs",
+      "input": "Clean",
+      "output": "—",
+      "control": "↓ Movement Command",
+      "when": "3 per Tick"
+    },
+    {
+      "caller": "Get Inputs",
+      "callee": "Get Obstacle Location",
+      "input": "—",
+      "output": "Obstacle Location",
+      "control": "—",
+      "when": "1"
+    },
+    {
+      "caller": "Get Inputs",
+      "callee": "Assess Obstacle Situation",
+      "input": "Obstacle Location",
+      "output": "Obstacle Situation",
+      "control": "—",
+      "when": "2"
+    },
+    {
+      "caller": "Decide Actions",
+      "callee": "Movement Controller",
+      "input": "—",
+      "output": "—",
+      "control": "↓ Situation Signal, ↑ Movement Command",
+      "when": "1"
+    },
+    {
+      "caller": "Decide Actions",
+      "callee": "Derive Movement Status",
+      "input": "—",
+      "output": "Movement Status",
+      "control": "↓ Movement Command",
+      "when": "2"
+    },
+    {
+      "caller": "Decide Actions",
+      "callee": "Track Power-Up",
+      "input": "Movement Status",
+      "output": "Power-Up Active",
+      "control": "—",
+      "when": "3"
+    },
+    {
+      "caller": "Decide Actions",
+      "callee": "Decide Cleaning",
+      "input": "Movement Status, Power-Up Active",
+      "output": "Clean",
+      "control": "—",
+      "when": "4"
+    },
+    {
+      "caller": "Movement Controller",
+      "callee": "Advance Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "↑ Step Done",
+      "when": "before transition"
+    },
+    {
+      "caller": "Movement Controller",
+      "callee": "Start Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "T2/T4/T5/T6/T8/T9/T10 only, after selection"
+    },
+    {
+      "caller": "Reset Movement Controller",
+      "callee": "Reset Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "always"
+    },
+    {
+      "caller": "Track Power-Up",
+      "callee": "Get Dust Existence",
+      "input": "—",
+      "output": "Dust Existence",
+      "control": "—",
+      "when": "1 before power-up decision"
+    },
+    {
+      "caller": "Track Power-Up",
+      "callee": "Clear Pending Dust",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "Forward only, after evaluating current/pending; before returning"
+    },
+    {
+      "caller": "Put Outputs",
+      "callee": "Issue Movement Output",
+      "input": "—",
+      "output": "—",
+      "control": "↓ Movement Command",
+      "when": "1"
+    },
+    {
+      "caller": "Put Outputs",
+      "callee": "Drive Cleaner",
+      "input": "Clean",
+      "output": "—",
+      "control": "—",
+      "when": "2"
+    },
+    {
+      "caller": "Issue Movement Output",
+      "callee": "Drive Motor",
+      "input": "Direction",
+      "output": "—",
+      "control": "—",
+      "when": "always"
+    }
+  ],
+  "ids": {
+    "Main": "M0",
+    "Initialize RVC": "M1",
+    "Acquire Initial Inputs": "M2",
+    "Dispatch Input Event": "M3",
+    "Dispatch Sensor Input": "M4",
+    "Controller": "M5",
+    "Get Inputs": "M6",
+    "Detect Obstacle": "M7",
+    "Assess Obstacle Situation": "M8",
+    "Detect Dust": "M9",
+    "Reset Sensor Data": "M10",
+    "Inputs Ready": "M11",
+    "Get Obstacle Location": "M12",
+    "Get Dust Existence": "M13",
+    "Clear Pending Dust": "M14",
+    "Decide Actions": "M15",
+    "Movement Controller": "M16",
+    "Reset Movement Controller": "M17",
+    "Advance Step Timer": "M18",
+    "Start Step Timer": "M19",
+    "Reset Step Timer": "M20",
+    "Derive Movement Status": "M21",
+    "Track Power-Up": "M22",
+    "Reset Power-Up Timer": "M23",
+    "Decide Cleaning": "M24",
+    "Put Outputs": "M25",
+    "Issue Movement Output": "M26",
+    "Receive Input Event": "M27",
+    "Drive Motor": "M28",
+    "Drive Cleaner": "M29"
+  }
+}

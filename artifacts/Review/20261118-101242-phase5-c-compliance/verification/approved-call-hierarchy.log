@@ -1,0 +1,33 @@
+CMake Error at tests/check_call_hierarchy.cmake:52 (message):
+  Call hierarchy differs from the Structure Chart.
+
+  In the chart but not in the code:
+
+    acquire_initial_inputs -> dispatch_sensor_input
+    acquire_initial_inputs -> inputs_ready
+    acquire_initial_inputs -> receive_input_event
+    dispatch_input_event -> controller
+    dispatch_input_event -> dispatch_sensor_input
+    dispatch_sensor_input -> detect_dust
+    dispatch_sensor_input -> detect_obstacle
+    get_inputs -> get_obstacle_location
+    initialize_rvc -> acquire_initial_inputs
+    initialize_rvc -> reset_sensor_data
+    main -> dispatch_input_event
+    main -> receive_input_event
+    track_power_up -> clear_pending_dust
+    track_power_up -> get_dust_existence
+
+  In the code but not in the chart:
+
+    detect_dust -> read_dust_sensor
+    detect_obstacle -> read_front_sensor
+    detect_obstacle -> read_left_sensor
+    detect_obstacle -> read_right_sensor
+    get_inputs -> detect_obstacle
+    get_inputs -> detect_dust
+    initialize_rvc -> issue_movement_output
+    main -> wait_for_tick
+    main -> controller
+
+

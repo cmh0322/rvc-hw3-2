@@ -15,6 +15,13 @@ endif()
 
 set(actual "")
 foreach(ci_file IN LISTS ci_files)
+    # Ninja may retain .ci files for sources removed since an earlier configure.
+    # All production sources of these targets are src/*.c (CMakeLists.txt).
+    get_filename_component(ci_name "${ci_file}" NAME)
+    string(REGEX REPLACE "\\.ci$" "" source_name "${ci_name}")
+    if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/../src/${source_name}")
+        continue()
+    endif()
     file(STRINGS "${ci_file}" edges REGEX "^edge:" ENCODING UTF-8)
     foreach(edge IN LISTS edges)
         # Calls from compiler-generated helpers (coverage setup) have a path as

@@ -1,0 +1,72 @@
+{
+  "id": "B1",
+  "verdict": "partial",
+  "confidence": "high",
+  "spec_refs": [
+    {"path":"docs/preliminary_requirements.md","start":1,"end":1},
+    {"path":"docs/preliminary_requirements.md","start":6,"end":6},
+    {"path":"docs/requirements_clarifications.md","start":21,"end":22},
+    {"path":"artifacts/SA/process_specification.md","start":425,"end":439},
+    {"path":"artifacts/SA/data_dictionary.md","start":109,"end":117},
+    {"path":"artifacts/SA/DFD/dfd_level_4_fsm.md","start":63,"end":63},
+    {"path":"artifacts/SD/structure_chart.md","start":23,"end":23},
+    {"path":"artifacts/SD/structure_chart.md","start":158,"end":170},
+    {"path":"artifacts/SD/structure_chart.md","start":247,"end":247},
+    {"path":"artifacts/SD/transform_analysis.md","start":190,"end":192}
+  ],
+  "code_refs": [
+    {"path":"src/main.c","start":10,"end":17},
+    {"path":"src/controller.c","start":8,"end":13},
+    {"path":"src/initialize_rvc.c","start":8,"end":14},
+    {"path":"src/movement_controller.c","start":22,"end":68},
+    {"path":"src/decide_actions.c","start":17,"end":22},
+    {"path":"src/derive_movement_status.c","start":8,"end":12},
+    {"path":"src/decide_cleaning.c","start":4,"end":16},
+    {"path":"src/put_outputs.c","start":7,"end":10},
+    {"path":"src/issue_movement_output.c","start":6,"end":17},
+    {"path":"include/rvc_types.h","start":61,"end":66},
+    {"path":"include/hw_interface.h","start":5,"end":36},
+    {"path":"simulator/host/sim_host.c","start":126,"end":135},
+    {"path":"simulator/public/world.js","start":93,"end":103},
+    {"path":"CMakeLists.txt","start":31,"end":59},
+    {"path":"CMakeLists.txt","start":97,"end":101}
+  ],
+  "subclaims": [
+    {"claim":"Automatic Tick-driven abstract cleaning commands","verdict":"implemented","evidence":"main.c:14-16 -> controller.c:10-13 -> decide_actions.c:17-22 -> decide_cleaning.c:8-16 -> put_outputs.c:7-10."},
+    {"claim":"C14 suction/mopping combinations represented at the approved Clean hardware boundary","verdict":"implemented","evidence":"SA data_dictionary.md:112 and SD structure_chart.md:168,247 define semantics of the three enum values at include/rvc_types.h:61-66, delivered unchanged by src/put_outputs.c:10. Physical actuation excluded by B6; not claimed verified."},
+    {"claim":"Forward/timer initialization emits no Clean","verdict":"implemented","evidence":"initialize_rvc.c:10-13 resets state/timers and only reaches Issue Movement Output, not Drive Cleaner."},
+    {"claim":"C13 initialization emits no Direction before first Tick","verdict":"contradicted","evidence":"initialize_rvc.c:10-13 receives Forward from movement_controller.c:64-68 and calls issue_movement_output.c:15-17 before main.c:15 Wait For Tick."}
+  ],
+  "paths_walked": [
+    "Main -> Initialize RVC -> Reset Movement Controller -> Reset Step Timer; Reset Power-Up Timer; Issue Movement Output -> Drive Motor (fresh and repeated initialization)",
+    "Main -> Wait For Tick -> Controller -> Get Inputs -> Detect Obstacle/read three sensors + Assess Obstacle Situation + Detect Dust/read dust sensor",
+    "Controller -> Decide Actions -> Movement Controller/step timer -> Derive Movement Status -> Track Power-Up -> Decide Cleaning -> Put Outputs -> Drive Cleaner",
+    "Forward normal -> Start; Forward power-up -> Power Up; Stop/Backward/either Turn -> Avoiding -> Stop; completed Turn -> Forward -> cleaning resumes",
+    "CMake control library / renamed-main tests / simulator host use same production source; simulator Drive Cleaner records enum and world applies generic cleaned marker"
+  ],
+  "searched": [
+    {"pattern":"B1|C13|C14|Clean|clean|mop|Mop|Power On|initialize","scope":"SA process_specification/data_dictionary/FSM and SD structure_chart/transform_analysis","result":"Found exact startup and Clean suction/mopping contract."},
+    {"pattern":"initialize_rvc|drive_cleaner|CLEAN_START|CLEAN_STOP|CLEAN_POWER_UP|reset_movement_controller","scope":"src include CMakeLists.txt","result":"One initializer; Drive Cleaner reached by Put Outputs; three Clean enum values; movement reset returns command."},
+    {"pattern":"mop|suction (case-insensitive)","scope":"src include tests simulator","result":"No matches; no separate actuator code/tests found. B6 excludes hardware detail, so no absent verdict inferred."},
+    {"pattern":"RVC_SOURCES|rvc_control|rvc_main|rvc_sim_host|C_STANDARD|RVC_TEST_SOURCES","scope":"CMakeLists.txt","result":"C11; same production source used in library, tests and simulator; no alternative startup selection."}
+  ],
+  "divergence": {
+    "consequence":"Forward motor command occurs before initial sensor evaluation and before first Tick; physical movement is not asserted.",
+    "scenario":"Start Main and deliver zero Ticks: initialize_rvc calls issue_movement_output(Forward).",
+    "minimal_fix":"Remove initialization output, make movement reset state-only per approved SD, and update startup tests. Deduplicate with C13 finding.",
+    "severity":"medium"
+  },
+  "tests_reviewed": [
+    "tests/test_requirements.cpp:15-19 (20 Forward/Start cycles); tests/rvc_system_fixture.h:14-18 erases startup output",
+    "tests/test_decide_cleaning.cpp:10-26 (all status/power combinations)",
+    "tests/test_outputs.cpp:63-80 (enum delivery and ordering)",
+    "tests/test_controller.cpp:19-56 (one pair, sensor reads, current sensor decisions)",
+    "tests/test_initialize_rvc.cpp:24-56 and tests/test_main.cpp:33-80 (obsolete Forward-at-start expectations, reset, Tick loop)",
+    "tests/fake_hw.cpp:59-66 (enum-only recorder)"
+  ],
+  "test_execution": "notRun-by-reviewer",
+  "open_questions": [
+    "No unresolved interpretation for the C13 contradiction. Root owns fresh runtime execution.",
+    "Physical suction/mopping effects are outside B6 scope; simulator does not independently observe these effects. Command-boundary implementation only is concluded."
+  ]
+}

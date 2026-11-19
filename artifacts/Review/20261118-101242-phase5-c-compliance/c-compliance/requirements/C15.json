@@ -1,0 +1,101 @@
+{
+  "id": "C15",
+  "verdict": "partial",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 23,
+      "end": 23
+    },
+    {
+      "path": "artifacts/SA/process_specification.md",
+      "start": 365,
+      "end": 395
+    },
+    {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 226,
+      "end": 247
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/detect_dust.c",
+      "start": 6,
+      "end": 8
+    },
+    {
+      "path": "src/get_inputs.c",
+      "start": 11,
+      "end": 14
+    },
+    {
+      "path": "src/decide_actions.c",
+      "start": 17,
+      "end": 22
+    },
+    {
+      "path": "src/power_up_timer.c",
+      "start": 7,
+      "end": 30
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Resume saved count without new detection",
+      "verdict": "implemented",
+      "evidence": "power_up_timer.c:14–28 preserves then resumes count"
+    },
+    {
+      "claim": "Remember received TRUE through later FALSE",
+      "verdict": "absent",
+      "evidence": "detect_dust.c:6–8 only returns current bool, no pending state anywhere in input path"
+    },
+    {
+      "claim": "Pending overrides residual on Forward",
+      "verdict": "contradicted",
+      "evidence": "power_up_timer.c:16 tests current bool only; probe returns residual2 instead of4 after new avoidance detection"
+    }
+  ],
+  "paths_walked": [
+    "During avoidance controller reads TRUE and passes it to track_power_up, but its Avoiding branch discards it. Later FALSE and Forward produce Start or saved residual instead of full5. Separate pulse probe explicitly observes TRUE/FALSE via detect_dust and loses it; not claimed to be nonexistent asynchronous production delivery."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/detect_dust.c",
+        "src/get_inputs.c",
+        "src/decide_actions.c",
+        "src/power_up_timer.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    },
+    {
+      "pattern": "pending|receive_input|InputEvent|InputMode|dispatch|inputs_ready|sensor_store|reset_sensor|get_dust|get_obstacle",
+      "scope": [
+        "src",
+        "include",
+        "tests",
+        "simulator/host"
+      ],
+      "result": "See c-compliance/absence-searches.json; no production event/readiness/pending enforcement. Input path read in full, including current Boolean forwarding."
+    }
+  ],
+  "divergence": {
+    "severity": "HIGH",
+    "scenario": "TRUE on Stop entry, FALSE during remaining Stop/Turn, then Forward.",
+    "consequence": "No boost after avoidance-only detection; paused boost fails to restart full5. Executed probes show both.",
+    "minimal_fix": "D2 current+pending OR latch, Forward-only consume, pending/current restart precedence."
+  },
+  "tests_reviewed": [
+    "tests/test_power_up_timer.cpp",
+    "tests/test_requirements.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

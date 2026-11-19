@@ -8,7 +8,7 @@ extern "C" {
 
 /*
  * Puts the system into its power-on condition: resets the hidden data and
- * issues the initial Forward command to the Motor.
+ * acquires four initial readings without emitting any command (C12/C13).
  */
 void initialize_rvc(void);
 

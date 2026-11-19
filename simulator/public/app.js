@@ -63,7 +63,7 @@
         }
         showMessage('');
         world = World.create(config);
-        const powerOn = await api('reset');
+        const powerOn = await api('reset', World.sense(world));
         history = [Object.assign({}, powerOn, { events: [], world: World.snapshot(world) })];
         viewIndex = 0;
         render();
@@ -209,10 +209,10 @@
             ['Previous state', first ? '—' : snap.previous_state],
             ['Current state', snap.state],
             ['Transition', first ? 'Power On' : (snap.previous_state === snap.state ? 'stays in ' + snap.state : snap.previous_state + ' → ' + snap.state)],
-            ['Front sensor', first ? 'not read' : yesNo(snap.sensors.front)],
-            ['Left sensor', first ? 'not read' : yesNo(snap.sensors.left)],
-            ['Right sensor', first ? 'not read' : yesNo(snap.sensors.right)],
-            ['Dust sensor', first ? 'not read' : yesNo(snap.sensors.dust)],
+            ['Front sensor', yesNo(snap.sensors.front)],
+            ['Left sensor', yesNo(snap.sensors.left)],
+            ['Right sensor', yesNo(snap.sensors.right)],
+            ['Dust sensor', yesNo(snap.sensors.dust)],
             ['Motor output (Direction)', snap.direction],
             ['Cleaner output (Clean)', snap.clean === null ? 'not issued yet' : snap.clean],
             ['Step timer (ticks elapsed)', timerText(snap.step_ticks_elapsed)],

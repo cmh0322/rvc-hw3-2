@@ -7,6 +7,12 @@
 
 #include <stdbool.h>
 
+/* Five distinct incoming flows share an ordered boundary adapter. */
+typedef enum { INPUT_FRONT, INPUT_LEFT, INPUT_RIGHT, INPUT_DUST, INPUT_TICK } InputKind;
+typedef enum { INPUT_INITIAL_SENSORS, INPUT_RUNNING } InputMode;
+typedef struct { InputKind kind; bool value; } InputEvent;
+typedef struct { bool current; bool pending; } DustExistence;
+
 #ifdef __cplusplus
 extern "C" {
 #endif

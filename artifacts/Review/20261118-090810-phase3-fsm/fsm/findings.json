@@ -1,0 +1,35 @@
+[
+  {
+    "id": "P3-D01",
+    "severity": "MEDIUM",
+    "classification": "confirmed-known-downstream-mismatch",
+    "new": false,
+    "requirements": [
+      "C13"
+    ],
+    "source": [
+      "docs/requirements_clarifications.md:21",
+      "artifacts/SA/DFD/dfd_level_4_fsm.md:63"
+    ],
+    "target": [
+      "artifacts/SD/structure_chart.md:257",
+      "artifacts/SD/structure_chart.md:386",
+      "artifacts/SD/structure_chart.md:404"
+    ],
+    "status": "carry-forward-to-phase4-not-fixed",
+    "reason": "Historical SD still emits Forward on initialization; latest SA initializes state without output. Previously tracked Phase1 propagation work."
+  },
+  {
+    "id": "P3-N01",
+    "severity": "INFO",
+    "classification": "unsupported-property-refuted",
+    "new": false,
+    "requirements": [
+      "C5",
+      "C9"
+    ],
+    "status": "expected-counterexample-not-source-defect",
+    "evidence": "checks/unconditional_forward/tick-trace.txt",
+    "reason": "A continuing Tick cycle can repeat Backing when both sides are blocked at decision ticks; no unconditional eventual-Forward requirement."
+  }
+]

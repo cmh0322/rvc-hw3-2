@@ -1,0 +1,411 @@
+{
+  "scope": "Diagram boundary syntax, process/flow definition presence, input integrity. No behavior proof.",
+  "boundaries": [
+    {
+      "name": "Context -> 0",
+      "parent": [
+        [
+          "in",
+          "Dust Sensor Input",
+          "data",
+          "DustSensor"
+        ],
+        [
+          "in",
+          "Front Sensor Input",
+          "data",
+          "FrontSensor"
+        ],
+        [
+          "in",
+          "Left Sensor Input",
+          "data",
+          "LeftSensor"
+        ],
+        [
+          "in",
+          "Right Sensor Input",
+          "data",
+          "RightSensor"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Clean",
+          "data",
+          "Cleaner"
+        ],
+        [
+          "out",
+          "Direction",
+          "data",
+          "Motor"
+        ]
+      ],
+      "child": [
+        [
+          "in",
+          "Dust Sensor Input",
+          "data",
+          "DustSensor"
+        ],
+        [
+          "in",
+          "Front Sensor Input",
+          "data",
+          "FrontSensor"
+        ],
+        [
+          "in",
+          "Left Sensor Input",
+          "data",
+          "LeftSensor"
+        ],
+        [
+          "in",
+          "Right Sensor Input",
+          "data",
+          "RightSensor"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Clean",
+          "data",
+          "Cleaner"
+        ],
+        [
+          "out",
+          "Direction",
+          "data",
+          "Motor"
+        ]
+      ],
+      "equal": true
+    },
+    {
+      "name": "0 -> 1",
+      "parent": [
+        [
+          "in",
+          "Dust Sensor Input",
+          "data",
+          "DustSensor"
+        ],
+        [
+          "in",
+          "Front Sensor Input",
+          "data",
+          "FrontSensor"
+        ],
+        [
+          "in",
+          "Left Sensor Input",
+          "data",
+          "LeftSensor"
+        ],
+        [
+          "in",
+          "Right Sensor Input",
+          "data",
+          "RightSensor"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Clean",
+          "data",
+          "Cleaner"
+        ],
+        [
+          "out",
+          "Direction",
+          "data",
+          "Motor"
+        ]
+      ],
+      "child": [
+        [
+          "in",
+          "Dust Sensor Input",
+          "data",
+          "DustSensor"
+        ],
+        [
+          "in",
+          "Front Sensor Input",
+          "data",
+          "FrontSensor"
+        ],
+        [
+          "in",
+          "Left Sensor Input",
+          "data",
+          "LeftSensor"
+        ],
+        [
+          "in",
+          "Right Sensor Input",
+          "data",
+          "RightSensor"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Clean",
+          "data",
+          "Cleaner"
+        ],
+        [
+          "out",
+          "Direction",
+          "data",
+          "Motor"
+        ]
+      ],
+      "equal": true
+    },
+    {
+      "name": "3 -> 3.1/3.2",
+      "parent": [
+        [
+          "in",
+          "Obstacle Location",
+          "data",
+          "DS1"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Direction",
+          "data",
+          "Motor"
+        ],
+        [
+          "out",
+          "Movement Status",
+          "data",
+          "P4"
+        ]
+      ],
+      "child": [
+        [
+          "in",
+          "Obstacle Location",
+          "data",
+          "DS1"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Direction",
+          "data",
+          "Motor"
+        ],
+        [
+          "out",
+          "Movement Status",
+          "data",
+          "P4"
+        ]
+      ],
+      "equal": true
+    },
+    {
+      "name": "4 -> 4.1/4.2",
+      "parent": [
+        [
+          "in",
+          "Dust Existence",
+          "data",
+          "DS2"
+        ],
+        [
+          "in",
+          "Movement Status",
+          "data",
+          "P3"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Clean",
+          "data",
+          "Cleaner"
+        ]
+      ],
+      "child": [
+        [
+          "in",
+          "Dust Existence",
+          "data",
+          "DS2"
+        ],
+        [
+          "in",
+          "Movement Status",
+          "data",
+          "P3"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Clean",
+          "data",
+          "Cleaner"
+        ]
+      ],
+      "equal": true
+    },
+    {
+      "name": "3.2 -> 3.2.1-4",
+      "parent": [
+        [
+          "in",
+          "Obstacle Situation",
+          "data",
+          "P31"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Direction",
+          "data",
+          "Motor"
+        ],
+        [
+          "out",
+          "Movement Status",
+          "data",
+          "P4"
+        ]
+      ],
+      "child": [
+        [
+          "in",
+          "Obstacle Situation",
+          "data",
+          "P31"
+        ],
+        [
+          "in",
+          "Tick",
+          "control",
+          "DigitalClock"
+        ],
+        [
+          "out",
+          "Direction",
+          "data",
+          "Motor"
+        ],
+        [
+          "out",
+          "Movement Status",
+          "data",
+          "P4"
+        ]
+      ],
+      "equal": true
+    }
+  ],
+  "process_ids": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "3.1",
+    "3.2",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "4",
+    "4.1",
+    "4.2"
+  ],
+  "spec_ids": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "3.1",
+    "3.2",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "4",
+    "4.1",
+    "4.2"
+  ],
+  "missing_specs": [],
+  "extra_specs": [],
+  "flow_names": [
+    "Clean",
+    "Direction",
+    "Dust Existence",
+    "Dust Sensor Input",
+    "Front Sensor Input",
+    "Left Sensor Input",
+    "Movement Command",
+    "Movement Status",
+    "Obstacle Location",
+    "Obstacle Situation",
+    "Power-Up Active",
+    "Remaining Power-Up Ticks",
+    "Right Sensor Input",
+    "Situation Signal",
+    "Start Step Timer",
+    "Step Done",
+    "Step Ticks Elapsed",
+    "Tick"
+  ],
+  "missing_flow_definitions": [],
+  "input_sha256_unchanged": true
+}

@@ -1,0 +1,853 @@
+[
+  {
+    "id": "B1",
+    "meaning": "자동 흡입·물걸레",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 1,
+      "end": 1
+    },
+    "event_or_flow": "Clean",
+    "SA_process": "4.2",
+    "FSM": "—",
+    "SD_modules_or_interface": "Decide Cleaning → Drive Cleaner",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 428,
+        "end": 428
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 158,
+        "end": 158
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 168,
+        "end": 168
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "B2",
+    "meaning": "전진 중 청소",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 2,
+      "end": 2
+    },
+    "event_or_flow": "Direction, Movement Status, Clean",
+    "SA_process": "3.2.2/3.2.3/4.2",
+    "FSM": "T1",
+    "SD_modules_or_interface": "Movement Controller / Derive Movement Status / Decide Cleaning",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 64,
+        "end": 64
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 155,
+        "end": 155
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 158,
+        "end": 158
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "B3",
+    "meaning": "장애물 회피·청소 정지·전진 복귀",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 3,
+      "end": 3
+    },
+    "event_or_flow": "Obstacle Situation, Clean",
+    "SA_process": "3.1/3.2/4.2",
+    "FSM": "T2–T5,T11–T14",
+    "SD_modules_or_interface": "Assess Obstacle Situation / Movement Controller / Decide Cleaning",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 65,
+        "end": 77
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 150,
+        "end": 150
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 158,
+        "end": 158
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "B4",
+    "meaning": "막힘 후진 및 회전",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 4,
+      "end": 4
+    },
+    "event_or_flow": "Situation Signal, Movement Command",
+    "SA_process": "3.2.2/3.2.4",
+    "FSM": "T6–T10",
+    "SD_modules_or_interface": "Movement Controller / Advance Step Timer / Start Step Timer",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 69,
+        "end": 73
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 286,
+        "end": 286
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 150,
+        "end": 150
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "B5",
+    "meaning": "먼지 감지 파워업",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 5,
+      "end": 5
+    },
+    "event_or_flow": "Dust Existence, Pending Dust Detection, Clean",
+    "SA_process": "2/4.1/4.2",
+    "FSM": "—",
+    "SD_modules_or_interface": "Receive Input Event / Dispatch Sensor Input / Detect Dust / Get Dust Existence / Track Power-Up / Clear Pending Dust",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 118,
+        "end": 142
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 392
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 223,
+        "end": 223
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 143,
+        "end": 143
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 156,
+        "end": 156
+      }
+    ],
+    "note": "입력 수신 시 pending을 OR로 보존하고 Forward에서 소비한다. P4-03/04 반영.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "B6",
+    "meaning": "하드웨어 상세 범위 제외",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 6,
+      "end": 6
+    },
+    "event_or_flow": "외부 7흐름",
+    "SA_process": "외부 경계",
+    "FSM": "—",
+    "SD_modules_or_interface": "Receive Input Event / Drive Motor / Drive Cleaner",
+    "SD_status": "scope-justified",
+    "evidence": [
+      {
+        "path": "artifacts/SA/context_diagram.md",
+        "start": 1,
+        "end": 37
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 170,
+        "end": 170
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 162,
+        "end": 162
+      }
+    ],
+    "note": "기존 7개 외부 흐름을 입력 어댑터 1개와 출력 어댑터 2개로 묶은 소프트웨어 설계. HW 구현은 계속 범위 밖.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "B7",
+    "meaning": "자동 청소 기능만",
+    "source": {
+      "path": "docs/preliminary_requirements.md",
+      "start": 7,
+      "end": 7
+    },
+    "event_or_flow": "Tick 제어 주기",
+    "SA_process": "0",
+    "FSM": "—",
+    "SD_modules_or_interface": "Main / Controller",
+    "SD_status": "scope-justified",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 11,
+        "end": 11
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 134,
+        "end": 134
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C1",
+    "meaning": "우측 우선",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 9,
+      "end": 9
+    },
+    "event_or_flow": "Obstacle Situation",
+    "SA_process": "3.1",
+    "FSM": "T4,T9",
+    "SD_modules_or_interface": "Assess Obstacle Situation",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 264,
+        "end": 286
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 142,
+        "end": 142
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C2",
+    "meaning": "회피 전 정지",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 10,
+      "end": 10
+    },
+    "event_or_flow": "Movement Command",
+    "SA_process": "3.2.2",
+    "FSM": "T2",
+    "SD_modules_or_interface": "Movement Controller",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 65,
+        "end": 65
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 286,
+        "end": 286
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 150,
+        "end": 150
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C3",
+    "meaning": "파워업 5틱",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 11,
+      "end": 11
+    },
+    "event_or_flow": "Remaining Power-Up Ticks",
+    "SA_process": "4.1",
+    "FSM": "—",
+    "SD_modules_or_interface": "Track Power-Up / Reset Power-Up Timer",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 369,
+        "end": 390
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 245,
+        "end": 245
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 156,
+        "end": 156
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C4",
+    "meaning": "고정 장애물 환경 조건",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 12,
+      "end": 12
+    },
+    "event_or_flow": "Obstacle Situation",
+    "SA_process": "3.1/3.2.2",
+    "FSM": "T3–T6",
+    "SD_modules_or_interface": "환경 전제 / Movement Controller",
+    "SD_status": "scope-justified",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 104,
+        "end": 104
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 286,
+        "end": 286
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 21,
+        "end": 21
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C5",
+    "meaning": "후진 뒤 우측/좌측/반복",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 13,
+      "end": 13
+    },
+    "event_or_flow": "Situation Signal",
+    "SA_process": "3.2.2",
+    "FSM": "T8–T10",
+    "SD_modules_or_interface": "Movement Controller",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 71,
+        "end": 73
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C6",
+    "meaning": "후진 5틱",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 14,
+      "end": 14
+    },
+    "event_or_flow": "Step Done, D4",
+    "SA_process": "3.2.4",
+    "FSM": "T6–T10",
+    "SD_modules_or_interface": "Advance/Start/Reset Step Timer",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 609,
+        "end": 637
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C7",
+    "meaning": "정지 5틱",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 15,
+      "end": 15
+    },
+    "event_or_flow": "Step Done, D4",
+    "SA_process": "3.2.4",
+    "FSM": "T2–T6",
+    "SD_modules_or_interface": "Advance/Start/Reset Step Timer",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 609,
+        "end": 637
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C8",
+    "meaning": "회전 5틱",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 16,
+      "end": 16
+    },
+    "event_or_flow": "Step Done, D4",
+    "SA_process": "3.2.4",
+    "FSM": "T4,T5,T9–T14",
+    "SD_modules_or_interface": "Movement Controller / Step Timer group",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 67,
+        "end": 77
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C9",
+    "meaning": "후진 종료는 좌우만",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 17,
+      "end": 17
+    },
+    "event_or_flow": "Obstacle Situation/Situation Signal",
+    "SA_process": "3.1/3.2.2",
+    "FSM": "T8–T10",
+    "SD_modules_or_interface": "Assess Obstacle Situation / Movement Controller",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 71,
+        "end": 73
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 221,
+        "end": 221
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C10",
+    "meaning": "재감지 시 5틱 재시작",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 18,
+      "end": 18
+    },
+    "event_or_flow": "Dust Existence, D3",
+    "SA_process": "4.1",
+    "FSM": "—",
+    "SD_modules_or_interface": "Track Power-Up",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 369,
+        "end": 372
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 245,
+        "end": 245
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C11",
+    "meaning": "회피 중 잔여 틱 보존",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 19,
+      "end": 19
+    },
+    "event_or_flow": "Movement Status, D3",
+    "SA_process": "4.1",
+    "FSM": "—",
+    "SD_modules_or_interface": "Track Power-Up",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 368,
+        "end": 372
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 245,
+        "end": 245
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 233,
+        "end": 233
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C12",
+    "meaning": "첫 Tick 전 네 센서",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 20,
+      "end": 20
+    },
+    "event_or_flow": "4 sensor inputs",
+    "SA_process": "0/1/2",
+    "FSM": "T0→T1/T2",
+    "SD_modules_or_interface": "Initialize RVC / Acquire Initial Inputs / Inputs Ready / Receive Input Event",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 38,
+        "end": 54
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 17,
+        "end": 17
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 23,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 145,
+        "end": 145
+      }
+    ],
+    "note": "초기화 중 네 실제 센서 입력을 모두 확보한 뒤 Running 모드/첫 Tick을 허용한다. 미수신 값은 validity=false.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C13",
+    "meaning": "초기 상태만 설정·무출력",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 21,
+      "end": 21
+    },
+    "event_or_flow": "Direction/Clean/T0",
+    "SA_process": "0/3.2.2",
+    "FSM": "T0",
+    "SD_modules_or_interface": "Initialize RVC / Reset Movement Controller",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 63,
+        "end": 63
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 23,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 151,
+        "end": 151
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      }
+    ],
+    "note": "초기화 호출 그래프에 출력 경로가 없고 Reset Movement Controller는 명령을 반환하지 않는다.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C14",
+    "meaning": "흡입·물걸레 명령 의미",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 22,
+      "end": 22
+    },
+    "event_or_flow": "Clean",
+    "SA_process": "4.2",
+    "FSM": "—",
+    "SD_modules_or_interface": "Decide Cleaning / Drive Cleaner",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 428,
+        "end": 428
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 109,
+        "end": 117
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 247,
+        "end": 247
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 168,
+        "end": 168
+      }
+    ],
+    "note": "최신 SA와 개정 SD의 해당 계약을 대조함. 문서 대응 판정이며 실행/구현 준수 판정은 아님.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C15",
+    "meaning": "회피 감지 보존·복귀 5틱 재시작",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 23,
+      "end": 23
+    },
+    "event_or_flow": "D2/Pending Dust Detection",
+    "SA_process": "2/4.1",
+    "FSM": "—",
+    "SD_modules_or_interface": "Receive Input Event / Dispatch Sensor Input / Detect Dust / Get Dust Existence / Track Power-Up / Clear Pending Dust",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 128,
+        "end": 142
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 392
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 19,
+        "end": 19
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 172,
+        "end": 172
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 223,
+        "end": 223
+      }
+    ],
+    "note": "지속 D2 소유자·초기값·OR 갱신·Forward pending-only clear 및 직렬화 경계를 명시. 구현의 무손실 입력 계약은 후속 검증 필요.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  },
+  {
+    "id": "C16",
+    "meaning": "전방만 회피 시작",
+    "source": {
+      "path": "docs/requirements_clarifications.md",
+      "start": 24,
+      "end": 24
+    },
+    "event_or_flow": "Front Blocked/Situation Signal",
+    "SA_process": "3.1/3.2.2",
+    "FSM": "T1/T2",
+    "SD_modules_or_interface": "Movement Controller",
+    "SD_status": "mapped",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 64,
+        "end": 65
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 5,
+        "end": 5
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      }
+    ],
+    "note": "확정 C16/Q6 해결 이력으로 갱신; 전방 전용 회피 시작과 C9의 후진 판단을 구분.",
+    "C_symbols": "notChecked",
+    "unit_tests": "notChecked",
+    "system_tests": "notChecked",
+    "executed_tests": "notRun",
+    "human_approval": "pending"
+  }
+]

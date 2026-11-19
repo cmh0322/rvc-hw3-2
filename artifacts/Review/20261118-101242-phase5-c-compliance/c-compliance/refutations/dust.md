@@ -1,0 +1,11 @@
+# Independent refutation: P5-03 and P5-04
+
+Neither candidate is refuted. This reviewer inspected the requirements, PSPEC 2/4.1, approved SD input/storage contract, entire production input path, related headers, fake hardware, simulator host and the existing executed probe source/results. No source changes, builds or fresh test execution were performed. Exact path/line references and corrections are in `dust.json`.
+
+P5-03 survives: `detect_dust` returns only the current read and `track_power_up` ignores it while Avoiding. Its only retained state is D3. C15 requires the observed dust to remain pending through FALSE and to restart a full five ticks on return to Forward, including when D3 had a saved partial count. Existing probe results agree with the code: return-to-Forward emits Start with 0 remaining, and a paused 3 resumes to 2 instead of restarting to 4 after the active Tick. C11 without new dust still works. C15 overall is partial, because current Forward dust still starts/restarts correctly.
+
+P5-04 survives as a separate approved software-interface gap. Main waits for Tick, then Controller polls current values. There is no ordered input-event receiver/dispatcher, sensor readiness or private D1/D2 access path. The host protocol permits one four-value sample per Tick; the fake exposes latest sensor fields. Alternative-name searches and path inspection found no substitute. The approved contract expressly rules out polling only current values once per Tick. Its absence does not create a physical hardware obligation under B6. Existing sequential Controller execution is present and should not be called wholly absent serialization.
+
+Correct the candidate's pulse-probe shorthand: `detect_dust` takes no arguments. The harness changes a fake sensor value and calls `detect_dust(void)` for TRUE and FALSE, then runs Controller. It does not execute a production asynchronous event path. The static boundary review establishes the missing event capability; the direct probe establishes that even explicit legacy reads retain no dust. Avoid double-counting P5-03's concrete behavioral failure as a second business defect under P5-04.
+
+The SD's historical pending-approval wording is superseded by this run's `approval.md`, which explicitly records approval of the current revised SD. The audited contract is therefore valid for Phase 5.

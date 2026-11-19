@@ -1,69 +1,44 @@
 #include "fake_hw.h"
-
 FakeHw fake_hw;
-
-void ResetFakeHw() {
-    fake_hw.front = false;
-    fake_hw.left = false;
-    fake_hw.right = false;
-    fake_hw.dust = false;
-    fake_hw.front_reads = 0;
-    fake_hw.left_reads = 0;
-    fake_hw.right_reads = 0;
-    fake_hw.dust_reads = 0;
-    fake_hw.motor.clear();
-    fake_hw.cleaner.clear();
-    fake_hw.calls.clear();
-    fake_hw.ticks = 0;
-    fake_hw.ticks_to_deliver = -1;
-    fake_hw.before_tick = nullptr;
-}
-
+void ResetFakeHw() { fake_hw = FakeHw{}; }
 extern "C" {
-
-bool read_front_sensor(void) {
-    ++fake_hw.front_reads;
-    fake_hw.calls.push_back("front");
-    return fake_hw.front;
-}
-
-bool read_left_sensor(void) {
-    ++fake_hw.left_reads;
-    fake_hw.calls.push_back("left");
-    return fake_hw.left;
-}
-
-bool read_right_sensor(void) {
-    ++fake_hw.right_reads;
-    fake_hw.calls.push_back("right");
-    return fake_hw.right;
-}
-
-bool read_dust_sensor(void) {
-    ++fake_hw.dust_reads;
-    fake_hw.calls.push_back("dust");
-    return fake_hw.dust;
-}
-
-void wait_for_tick(void) {
-    if (fake_hw.ticks_to_deliver >= 0 && fake_hw.ticks == fake_hw.ticks_to_deliver) {
-        std::longjmp(fake_hw.power_off, 1);
+InputEvent receive_input_event(InputMode mode) {
+    InputEvent event;
+    if (mode == INPUT_INITIAL_SENSORS && !fake_hw.initial_events.empty()) {
+        event=fake_hw.initial_events.front(); fake_hw.initial_events.pop_front();
+    } else if (mode == INPUT_INITIAL_SENSORS) {
+        const bool values[]={fake_hw.front,fake_hw.left,fake_hw.right,fake_hw.dust};
+        int index=fake_hw.initial_index++ % 4;
+        event={static_cast<InputKind>(index), values[index]};
+    } else if (!fake_hw.events.empty()) {
+        event=fake_hw.events.front(); fake_hw.events.pop_front();
+    } else {
+        if (fake_hw.scripted || (fake_hw.running_index==0 &&
+            fake_hw.ticks_to_deliver>=0 && fake_hw.ticks==fake_hw.ticks_to_deliver))
+            std::longjmp(fake_hw.power_off,1);
+        if(fake_hw.running_index==0 && fake_hw.before_tick)
+            fake_hw.before_tick(fake_hw.ticks+1);
+        const bool values[]={fake_hw.front,fake_hw.left,fake_hw.right,fake_hw.dust,false};
+        int index=fake_hw.running_index;
+        fake_hw.running_index=(index+1)%5;
+        event={static_cast<InputKind>(index),values[index]};
     }
-    ++fake_hw.ticks;
-    if (fake_hw.before_tick) {
-        fake_hw.before_tick(fake_hw.ticks);
+    const char *names[]={"front","left","right","dust","tick"};
+    fake_hw.calls.push_back(names[event.kind]);
+    switch(event.kind) {
+    case INPUT_FRONT: ++fake_hw.front_reads; break;
+    case INPUT_LEFT: ++fake_hw.left_reads; break;
+    case INPUT_RIGHT: ++fake_hw.right_reads; break;
+    case INPUT_DUST: ++fake_hw.dust_reads; break;
+    case INPUT_TICK: ++fake_hw.ticks; break;
     }
-    fake_hw.calls.push_back("tick");
+    return event;
 }
-
 void drive_motor(Direction direction) {
-    fake_hw.motor.push_back(direction);
-    fake_hw.calls.push_back("motor");
+    fake_hw.motor.push_back(direction); fake_hw.calls.push_back("motor");
+    if(fake_hw.on_motor) fake_hw.on_motor();
 }
-
 void drive_cleaner(Clean clean) {
-    fake_hw.cleaner.push_back(clean);
-    fake_hw.calls.push_back("cleaner");
+    fake_hw.cleaner.push_back(clean); fake_hw.calls.push_back("cleaner");
 }
-
-}  // extern "C"
+}

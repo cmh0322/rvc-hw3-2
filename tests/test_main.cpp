@@ -1,83 +1,56 @@
-// Module: Main (root of the Structure Chart)
-// Source: Structure Chart sections 3.1, 3.2, and 5; Event List (Tick).
-//
-// main() never returns. For these tests main.c is compiled with main renamed
-// to rvc_main, and the fake wait_for_tick ends the loop by jumping back here
-// after the requested number of Ticks ("power off").
-#include <csetjmp>
-#include <string>
-#include <vector>
-
-#include <gtest/gtest.h>
-
+#include "test_input_helpers.h"
 #include "fake_hw.h"
-
+#include "movement_controller.h"
+#include <gtest/gtest.h>
 extern "C" int rvc_main(void);
-
-namespace {
-
 class MainTest : public ::testing::Test {
 protected:
-    void SetUp() override { ResetFakeHw(); }
-
-    // Runs main() until `ticks` Ticks have been delivered.
-    static void RunMainForTicks(int ticks) {
-        fake_hw.ticks_to_deliver = ticks;
-        if (setjmp(fake_hw.power_off) == 0) {
-            rvc_main();
-            ADD_FAILURE() << "main() returned; it must keep running until power off";
-        }
+    void SetUp() override {ResetFakeHw();}
+    static void Run(int ticks) {
+        fake_hw.ticks_to_deliver=ticks;
+        if(setjmp(fake_hw.power_off)==0) {rvc_main(); ADD_FAILURE()<<"Main returned";}
     }
 };
-
-// Structure Chart 3.1: Main calls Initialize RVC once, before the first Tick.
-TEST_F(MainTest, InitializesTheSystemBeforeWaitingForTheFirstTick) {
-    RunMainForTicks(0);
-    EXPECT_EQ((std::vector<std::string>{"motor"}), fake_hw.calls);
-    EXPECT_EQ((std::vector<Direction>{DIRECTION_FORWARD}), fake_hw.motor);
+TEST_F(MainTest, InitialSamplesBeforeAnyTickAndNoOutputs) {
+    Run(0); EXPECT_EQ(0,fake_hw.ticks); EXPECT_TRUE(fake_hw.motor.empty());
+    EXPECT_TRUE(fake_hw.cleaner.empty()); EXPECT_EQ(1,fake_hw.front_reads);
+    EXPECT_EQ(1,fake_hw.left_reads); EXPECT_EQ(1,fake_hw.right_reads); EXPECT_EQ(1,fake_hw.dust_reads);
 }
-
-// Event List: Tick is the time base. One control cycle runs for every Tick.
-TEST_F(MainTest, RunsOneControlCycleForEveryTick) {
-    RunMainForTicks(7);
-    EXPECT_EQ(7, fake_hw.ticks);
-    EXPECT_EQ(7u, fake_hw.cleaner.size());
-    EXPECT_EQ(8u, fake_hw.motor.size()) << "one at power on, then one per Tick";
-    EXPECT_EQ(7, fake_hw.front_reads);
+TEST_F(MainTest, OneCyclePerTickAndBlockedFirstTickStops) {
+    fake_hw.front=true; Run(6);
+    EXPECT_EQ((std::vector<Direction>{DIRECTION_STOP,DIRECTION_STOP,DIRECTION_STOP,
+        DIRECTION_STOP,DIRECTION_STOP,DIRECTION_TURN_RIGHT}),fake_hw.motor);
+    EXPECT_EQ(6u,fake_hw.cleaner.size());
 }
-
-// Structure Chart 3.1: in every cycle, Wait For Tick comes before Controller.
-TEST_F(MainTest, WaitsForTheTickBeforeEachControlCycle) {
-    RunMainForTicks(2);
-    // power on: motor | tick, 4 sensor reads, motor, cleaner | tick, ...
-    ASSERT_EQ(15u, fake_hw.calls.size());
-    EXPECT_EQ("motor", fake_hw.calls[0]);
-    EXPECT_EQ("tick", fake_hw.calls[1]);
-    EXPECT_EQ("motor", fake_hw.calls[6]);
-    EXPECT_EQ("cleaner", fake_hw.calls[7]);
-    EXPECT_EQ("tick", fake_hw.calls[8]);
-    EXPECT_EQ("motor", fake_hw.calls[13]);
-    EXPECT_EQ("cleaner", fake_hw.calls[14]);
+TEST_F(MainTest, ReceiptOrderBeforeAndAfterTickIsRespected) {
+    fake_hw.scripted=true;
+    fake_hw.events={{INPUT_TICK,false},{INPUT_DUST,true},{INPUT_DUST,false},
+        {INPUT_TICK,false},{INPUT_TICK,false}};
+    Run(0);
+    EXPECT_EQ((std::vector<Clean>{CLEAN_START,CLEAN_POWER_UP,CLEAN_POWER_UP}),fake_hw.cleaner);
+    EXPECT_EQ(3,fake_hw.ticks);
 }
-
-// Initialize RVC runs once only: the avoidance carries on from Tick to Tick.
-TEST_F(MainTest, DoesNotInitializeAgainBetweenTicks) {
-    fake_hw.front = true;
-    RunMainForTicks(6);
-    const std::vector<Direction> expected{
-        DIRECTION_FORWARD,                                    // power on (T0)
-        DIRECTION_STOP, DIRECTION_STOP, DIRECTION_STOP,       // Ticks 1-5: stop (C7)
-        DIRECTION_STOP, DIRECTION_STOP,
-        DIRECTION_TURN_RIGHT};                                // Tick 6: turn right (C1)
-    EXPECT_EQ(expected, fake_hw.motor);
+TEST_F(MainTest, InitialPulseSurvivesUntilFirstForwardTick) {
+    fake_hw.initial_events={{INPUT_DUST,true},{INPUT_DUST,false},{INPUT_FRONT,false},
+        {INPUT_LEFT,false},{INPUT_RIGHT,false}};
+    Run(1); EXPECT_EQ((std::vector<Clean>{CLEAN_POWER_UP}),fake_hw.cleaner);
 }
-
-// Each cycle uses the sensor values present at its Tick.
-TEST_F(MainTest, EachCycleUsesTheSensorValuesAtItsTick) {
-    fake_hw.before_tick = [](int tick) { fake_hw.dust = (tick == 2); };
-    RunMainForTicks(3);
-    const std::vector<Clean> expected{CLEAN_START, CLEAN_POWER_UP, CLEAN_POWER_UP};
-    EXPECT_EQ(expected, fake_hw.cleaner);
+TEST_F(MainTest, EventsReceivedDuringOutputWaitForNextTick) {
+    fake_hw.scripted=true; fake_hw.events={{INPUT_TICK,false}};
+    fake_hw.on_motor=[] {
+        if(fake_hw.motor.size()==1) {
+            fake_hw.events.push_back({INPUT_DUST,true});
+            fake_hw.events.push_back({INPUT_DUST,false});
+            fake_hw.events.push_back({INPUT_TICK,false});
+        }
+    };
+    Run(0); EXPECT_EQ((std::vector<Clean>{CLEAN_START,CLEAN_POWER_UP}),fake_hw.cleaner);
 }
-
-}  // namespace
+TEST_F(MainTest, ManyQueuedPulsesAreNotDroppedOrAccumulated) {
+    fake_hw.scripted=true;
+    for(int i=0;i<100;i++) {fake_hw.events.push_back({INPUT_DUST,true});fake_hw.events.push_back({INPUT_DUST,false});}
+    for(int i=0;i<6;i++) fake_hw.events.push_back({INPUT_TICK,false});
+    Run(0);
+    EXPECT_EQ((std::vector<Clean>{CLEAN_POWER_UP,CLEAN_POWER_UP,CLEAN_POWER_UP,
+        CLEAN_POWER_UP,CLEAN_POWER_UP,CLEAN_START}),fake_hw.cleaner);
+}

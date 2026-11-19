@@ -1,0 +1,3259 @@
+Start testing: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+----------------------------------------------------------
+1/121 Testing: StepTimerTest.IsIdleAfterReset
+1/121 Test: StepTimerTest.IsIdleAfterReset
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.IsIdleAfterReset" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.IsIdleAfterReset" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.IsIdleAfterReset
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.IsIdleAfterReset
+[       OK ] StepTimerTest.IsIdleAfterReset (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.IsIdleAfterReset" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.IsIdleAfterReset" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/121 Testing: StepTimerTest.AdvanceWhileIdleNeverReportsStepDone
+2/121 Test: StepTimerTest.AdvanceWhileIdleNeverReportsStepDone
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.AdvanceWhileIdleNeverReportsStepDone" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.AdvanceWhileIdleNeverReportsStepDone" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.AdvanceWhileIdleNeverReportsStepDone
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.AdvanceWhileIdleNeverReportsStepDone
+[       OK ] StepTimerTest.AdvanceWhileIdleNeverReportsStepDone (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.AdvanceWhileIdleNeverReportsStepDone" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.AdvanceWhileIdleNeverReportsStepDone" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/121 Testing: StepTimerTest.StartSetsTheCountToZero
+3/121 Test: StepTimerTest.StartSetsTheCountToZero
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.StartSetsTheCountToZero" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.StartSetsTheCountToZero" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.StartSetsTheCountToZero
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.StartSetsTheCountToZero
+[       OK ] StepTimerTest.StartSetsTheCountToZero (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.StartSetsTheCountToZero" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.StartSetsTheCountToZero" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/121 Testing: StepTimerTest.CountsOneTickPerAdvance
+4/121 Test: StepTimerTest.CountsOneTickPerAdvance
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.CountsOneTickPerAdvance" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.CountsOneTickPerAdvance" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.CountsOneTickPerAdvance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.CountsOneTickPerAdvance
+[       OK ] StepTimerTest.CountsOneTickPerAdvance (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.CountsOneTickPerAdvance" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.CountsOneTickPerAdvance" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/121 Testing: StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart
+5/121 Test: StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart
+[       OK ] StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/121 Testing: StepTimerTest.IsIdleAgainAfterStepDone
+6/121 Test: StepTimerTest.IsIdleAgainAfterStepDone
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.IsIdleAgainAfterStepDone" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.IsIdleAgainAfterStepDone" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.IsIdleAgainAfterStepDone
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.IsIdleAgainAfterStepDone
+[       OK ] StepTimerTest.IsIdleAgainAfterStepDone (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.IsIdleAgainAfterStepDone" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.IsIdleAgainAfterStepDone" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/121 Testing: StepTimerTest.StartDuringARunningStepRestartsTheCount
+7/121 Test: StepTimerTest.StartDuringARunningStepRestartsTheCount
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.StartDuringARunningStepRestartsTheCount" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.StartDuringARunningStepRestartsTheCount" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.StartDuringARunningStepRestartsTheCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.StartDuringARunningStepRestartsTheCount
+[       OK ] StepTimerTest.StartDuringARunningStepRestartsTheCount (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.StartDuringARunningStepRestartsTheCount" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.StartDuringARunningStepRestartsTheCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/121 Testing: StepTimerTest.ResetStopsARunningStep
+8/121 Test: StepTimerTest.ResetStopsARunningStep
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.ResetStopsARunningStep" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.ResetStopsARunningStep" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.ResetStopsARunningStep
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.ResetStopsARunningStep
+[       OK ] StepTimerTest.ResetStopsARunningStep (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.ResetStopsARunningStep" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.ResetStopsARunningStep" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/121 Testing: StepTimerTest.CanRunAnotherStepAfterStepDone
+9/121 Test: StepTimerTest.CanRunAnotherStepAfterStepDone
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=StepTimerTest.CanRunAnotherStepAfterStepDone" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"StepTimerTest.CanRunAnotherStepAfterStepDone" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = StepTimerTest.CanRunAnotherStepAfterStepDone
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StepTimerTest
+[ RUN      ] StepTimerTest.CanRunAnotherStepAfterStepDone
+[       OK ] StepTimerTest.CanRunAnotherStepAfterStepDone (0 ms)
+[----------] 1 test from StepTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"StepTimerTest.CanRunAnotherStepAfterStepDone" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"StepTimerTest.CanRunAnotherStepAfterStepDone" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/121 Testing: RevisionRegression.C13_NoPowerOnCommands
+10/121 Test: RevisionRegression.C13_NoPowerOnCommands
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RevisionRegression.C13_NoPowerOnCommands" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RevisionRegression.C13_NoPowerOnCommands" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RevisionRegression.C13_NoPowerOnCommands
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RevisionRegression
+[ RUN      ] RevisionRegression.C13_NoPowerOnCommands
+[       OK ] RevisionRegression.C13_NoPowerOnCommands (0 ms)
+[----------] 1 test from RevisionRegression (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RevisionRegression.C13_NoPowerOnCommands" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RevisionRegression.C13_NoPowerOnCommands" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/121 Testing: RevisionRegression.C12_AllInitialSensorsAcquired
+11/121 Test: RevisionRegression.C12_AllInitialSensorsAcquired
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RevisionRegression.C12_AllInitialSensorsAcquired" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RevisionRegression.C12_AllInitialSensorsAcquired" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RevisionRegression.C12_AllInitialSensorsAcquired
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RevisionRegression
+[ RUN      ] RevisionRegression.C12_AllInitialSensorsAcquired
+[       OK ] RevisionRegression.C12_AllInitialSensorsAcquired (0 ms)
+[----------] 1 test from RevisionRegression (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"RevisionRegression.C12_AllInitialSensorsAcquired" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RevisionRegression.C12_AllInitialSensorsAcquired" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/121 Testing: RevisionRegression.C15_AvoidanceDetectionSurvivesClear
+12/121 Test: RevisionRegression.C15_AvoidanceDetectionSurvivesClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RevisionRegression.C15_AvoidanceDetectionSurvivesClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RevisionRegression.C15_AvoidanceDetectionSurvivesClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RevisionRegression.C15_AvoidanceDetectionSurvivesClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RevisionRegression
+[ RUN      ] RevisionRegression.C15_AvoidanceDetectionSurvivesClear
+[       OK ] RevisionRegression.C15_AvoidanceDetectionSurvivesClear (0 ms)
+[----------] 1 test from RevisionRegression (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"RevisionRegression.C15_AvoidanceDetectionSurvivesClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RevisionRegression.C15_AvoidanceDetectionSurvivesClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/121 Testing: RevisionRegression.C15_NewDetectionOverridesPausedCount
+13/121 Test: RevisionRegression.C15_NewDetectionOverridesPausedCount
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RevisionRegression.C15_NewDetectionOverridesPausedCount" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RevisionRegression.C15_NewDetectionOverridesPausedCount" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RevisionRegression.C15_NewDetectionOverridesPausedCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RevisionRegression
+[ RUN      ] RevisionRegression.C15_NewDetectionOverridesPausedCount
+[       OK ] RevisionRegression.C15_NewDetectionOverridesPausedCount (0 ms)
+[----------] 1 test from RevisionRegression (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"RevisionRegression.C15_NewDetectionOverridesPausedCount" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RevisionRegression.C15_NewDetectionOverridesPausedCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/121 Testing: RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning
+14/121 Test: RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning
+[       OK ] RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/121 Testing: RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle
+15/121 Test: RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle
+[       OK ] RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/121 Testing: RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear
+16/121 Test: RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear
+[       OK ] RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/121 Testing: RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked
+17/121 Test: RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked
+[       OK ] RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/121 Testing: RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked
+18/121 Test: RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked
+[       OK ] RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/121 Testing: RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside
+19/121 Test: RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside
+[       OK ] RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/121 Testing: RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked
+20/121 Test: RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked
+[       OK ] RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/121 Testing: RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward
+21/121 Test: RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward
+[       OK ] RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/121 Testing: RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear
+22/121 Test: RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear
+[       OK ] RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/121 Testing: RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked
+23/121 Test: RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked
+[       OK ] RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/121 Testing: RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected
+24/121 Test: RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected
+[       OK ] RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/121 Testing: RequirementsTest.B5_DustDoesNotChangeTheMovement
+25/121 Test: RequirementsTest.B5_DustDoesNotChangeTheMovement
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B5_DustDoesNotChangeTheMovement" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B5_DustDoesNotChangeTheMovement" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B5_DustDoesNotChangeTheMovement
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B5_DustDoesNotChangeTheMovement
+[       OK ] RequirementsTest.B5_DustDoesNotChangeTheMovement (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B5_DustDoesNotChangeTheMovement" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B5_DustDoesNotChangeTheMovement" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/121 Testing: RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust
+26/121 Test: RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust
+[       OK ] RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/121 Testing: RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear
+27/121 Test: RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear
+[       OK ] RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/121 Testing: RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks
+28/121 Test: RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks
+[       OK ] RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/121 Testing: RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance
+29/121 Test: RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance
+[       OK ] RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/121 Testing: RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance
+30/121 Test: RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RequirementsTest
+[ RUN      ] RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance
+[       OK ] RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance (0 ms)
+[----------] 1 test from RequirementsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/121 Testing: PowerUpTimerTest.CountIsZeroAfterReset
+31/121 Test: PowerUpTimerTest.CountIsZeroAfterReset
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.CountIsZeroAfterReset" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.CountIsZeroAfterReset" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.CountIsZeroAfterReset
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.CountIsZeroAfterReset
+[       OK ] PowerUpTimerTest.CountIsZeroAfterReset (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.CountIsZeroAfterReset" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.CountIsZeroAfterReset" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/121 Testing: PowerUpTimerTest.NoDustMeansNoPowerUp
+32/121 Test: PowerUpTimerTest.NoDustMeansNoPowerUp
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.NoDustMeansNoPowerUp" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.NoDustMeansNoPowerUp" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.NoDustMeansNoPowerUp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.NoDustMeansNoPowerUp
+[       OK ] PowerUpTimerTest.NoDustMeansNoPowerUp (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.NoDustMeansNoPowerUp" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.NoDustMeansNoPowerUp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/121 Testing: PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp
+33/121 Test: PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp
+[       OK ] PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/121 Testing: PowerUpTimerTest.PowerUpLastsFiveTicks
+34/121 Test: PowerUpTimerTest.PowerUpLastsFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.PowerUpLastsFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.PowerUpLastsFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.PowerUpLastsFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.PowerUpLastsFiveTicks
+[       OK ] PowerUpTimerTest.PowerUpLastsFiveTicks (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.PowerUpLastsFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.PowerUpLastsFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/121 Testing: PowerUpTimerTest.StaysOffAfterThePowerUpEnded
+35/121 Test: PowerUpTimerTest.StaysOffAfterThePowerUpEnded
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.StaysOffAfterThePowerUpEnded" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.StaysOffAfterThePowerUpEnded" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.StaysOffAfterThePowerUpEnded
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.StaysOffAfterThePowerUpEnded
+[       OK ] PowerUpTimerTest.StaysOffAfterThePowerUpEnded (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.StaysOffAfterThePowerUpEnded" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.StaysOffAfterThePowerUpEnded" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/121 Testing: PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks
+36/121 Test: PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks
+[       OK ] PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/121 Testing: PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp
+37/121 Test: PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp
+[       OK ] PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/121 Testing: PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered
+38/121 Test: PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered
+[       OK ] PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/121 Testing: PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding
+39/121 Test: PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding
+[       OK ] PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/121 Testing: PowerUpTimerTest.ResetEndsARunningPowerUp
+40/121 Test: PowerUpTimerTest.ResetEndsARunningPowerUp
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.ResetEndsARunningPowerUp" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.ResetEndsARunningPowerUp" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.ResetEndsARunningPowerUp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.ResetEndsARunningPowerUp
+[       OK ] PowerUpTimerTest.ResetEndsARunningPowerUp (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.ResetEndsARunningPowerUp" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.ResetEndsARunningPowerUp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/121 Testing: PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks
+41/121 Test: PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks
+[       OK ] PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/121 Testing: PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning
+42/121 Test: PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning
+[       OK ] PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/121 Testing: PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding
+43/121 Test: PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PowerUpTimerTest
+[ RUN      ] PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding
+[       OK ] PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding (0 ms)
+[----------] 1 test from PowerUpTimerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/121 Testing: OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection
+44/121 Test: OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection
+[       OK ] OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection" time elapsed: 00:00:00
+----------------------------------------------------------
+
+45/121 Testing: OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection
+45/121 Test: OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection
+[       OK ] OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/121 Testing: OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection
+46/121 Test: OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection
+[       OK ] OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/121 Testing: OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection
+47/121 Test: OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection
+[       OK ] OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/121 Testing: OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection
+48/121 Test: OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection
+[       OK ] OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/121 Testing: OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner
+49/121 Test: OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner
+[       OK ] OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/121 Testing: OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner
+50/121 Test: OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner
+[       OK ] OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/121 Testing: OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged
+51/121 Test: OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged
+[       OK ] OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged" time elapsed: 00:00:00
+----------------------------------------------------------
+
+52/121 Testing: OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse
+52/121 Test: OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OutputsTest
+[ RUN      ] OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse
+[       OK ] OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse (0 ms)
+[----------] 1 test from OutputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse" time elapsed: 00:00:00
+----------------------------------------------------------
+
+53/121 Testing: MovementControllerTest.T0_ResetEntersForwardWithoutACommand
+53/121 Test: MovementControllerTest.T0_ResetEntersForwardWithoutACommand
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T0_ResetEntersForwardWithoutACommand" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T0_ResetEntersForwardWithoutACommand" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T0_ResetEntersForwardWithoutACommand
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T0_ResetEntersForwardWithoutACommand
+[       OK ] MovementControllerTest.T0_ResetEntersForwardWithoutACommand (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T0_ResetEntersForwardWithoutACommand" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T0_ResetEntersForwardWithoutACommand" time elapsed: 00:00:00
+----------------------------------------------------------
+
+54/121 Testing: MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer
+54/121 Test: MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer
+[       OK ] MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/121 Testing: MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear
+55/121 Test: MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear
+[       OK ] MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+56/121 Testing: MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen
+56/121 Test: MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen
+[       OK ] MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+57/121 Testing: MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen
+57/121 Test: MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen
+[       OK ] MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+58/121 Testing: MovementControllerTest.T2_ForwardStopsWhenAllBlocked
+58/121 Test: MovementControllerTest.T2_ForwardStopsWhenAllBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T2_ForwardStopsWhenAllBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T2_ForwardStopsWhenAllBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T2_ForwardStopsWhenAllBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T2_ForwardStopsWhenAllBlocked
+[       OK ] MovementControllerTest.T2_ForwardStopsWhenAllBlocked (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T2_ForwardStopsWhenAllBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T2_ForwardStopsWhenAllBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+59/121 Testing: MovementControllerTest.T3_StopLastsFiveTicks
+59/121 Test: MovementControllerTest.T3_StopLastsFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T3_StopLastsFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T3_StopLastsFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T3_StopLastsFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T3_StopLastsFiveTicks
+[       OK ] MovementControllerTest.T3_StopLastsFiveTicks (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T3_StopLastsFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T3_StopLastsFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+60/121 Testing: MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds
+60/121 Test: MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds
+[       OK ] MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds" time elapsed: 00:00:00
+----------------------------------------------------------
+
+61/121 Testing: MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen
+61/121 Test: MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen
+[       OK ] MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+62/121 Testing: MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen
+62/121 Test: MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen
+[       OK ] MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+63/121 Testing: MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked
+63/121 Test: MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked
+[       OK ] MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+64/121 Testing: MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds
+64/121 Test: MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds
+[       OK ] MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds" time elapsed: 00:00:00
+----------------------------------------------------------
+
+65/121 Testing: MovementControllerTest.T7_BackwardLastsFiveTicks
+65/121 Test: MovementControllerTest.T7_BackwardLastsFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T7_BackwardLastsFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T7_BackwardLastsFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T7_BackwardLastsFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T7_BackwardLastsFiveTicks
+[       OK ] MovementControllerTest.T7_BackwardLastsFiveTicks (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T7_BackwardLastsFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T7_BackwardLastsFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+66/121 Testing: MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked
+66/121 Test: MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked
+[       OK ] MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+67/121 Testing: MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks
+67/121 Test: MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks
+[       OK ] MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+68/121 Testing: MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen
+68/121 Test: MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen
+[       OK ] MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+69/121 Testing: MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen
+69/121 Test: MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen
+[       OK ] MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+70/121 Testing: MovementControllerTest.T11_RightTurnLastsFiveTicks
+70/121 Test: MovementControllerTest.T11_RightTurnLastsFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T11_RightTurnLastsFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T11_RightTurnLastsFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T11_RightTurnLastsFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T11_RightTurnLastsFiveTicks
+[       OK ] MovementControllerTest.T11_RightTurnLastsFiveTicks (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T11_RightTurnLastsFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T11_RightTurnLastsFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+71/121 Testing: MovementControllerTest.T12_AfterTheRightTurnGoesForward
+71/121 Test: MovementControllerTest.T12_AfterTheRightTurnGoesForward
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T12_AfterTheRightTurnGoesForward" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T12_AfterTheRightTurnGoesForward" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T12_AfterTheRightTurnGoesForward
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T12_AfterTheRightTurnGoesForward
+[       OK ] MovementControllerTest.T12_AfterTheRightTurnGoesForward (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T12_AfterTheRightTurnGoesForward" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T12_AfterTheRightTurnGoesForward" time elapsed: 00:00:00
+----------------------------------------------------------
+
+72/121 Testing: MovementControllerTest.T13_LeftTurnLastsFiveTicks
+72/121 Test: MovementControllerTest.T13_LeftTurnLastsFiveTicks
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T13_LeftTurnLastsFiveTicks" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T13_LeftTurnLastsFiveTicks" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T13_LeftTurnLastsFiveTicks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T13_LeftTurnLastsFiveTicks
+[       OK ] MovementControllerTest.T13_LeftTurnLastsFiveTicks (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T13_LeftTurnLastsFiveTicks" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T13_LeftTurnLastsFiveTicks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+73/121 Testing: MovementControllerTest.T14_AfterTheLeftTurnGoesForward
+73/121 Test: MovementControllerTest.T14_AfterTheLeftTurnGoesForward
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T14_AfterTheLeftTurnGoesForward" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T14_AfterTheLeftTurnGoesForward" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T14_AfterTheLeftTurnGoesForward
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T14_AfterTheLeftTurnGoesForward
+[       OK ] MovementControllerTest.T14_AfterTheLeftTurnGoesForward (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T14_AfterTheLeftTurnGoesForward" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T14_AfterTheLeftTurnGoesForward" time elapsed: 00:00:00
+----------------------------------------------------------
+
+74/121 Testing: MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn
+74/121 Test: MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn
+[       OK ] MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn" time elapsed: 00:00:00
+----------------------------------------------------------
+
+75/121 Testing: MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen
+75/121 Test: MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen
+[       OK ] MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+76/121 Testing: MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft
+76/121 Test: MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft
+[       OK ] MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft" time elapsed: 00:00:00
+----------------------------------------------------------
+
+77/121 Testing: MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance
+77/121 Test: MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance
+[       OK ] MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance" time elapsed: 00:00:00
+----------------------------------------------------------
+
+78/121 Testing: MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick
+78/121 Test: MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick
+[       OK ] MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick" time elapsed: 00:00:00
+----------------------------------------------------------
+
+79/121 Testing: MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear
+79/121 Test: MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear
+[       OK ] MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+80/121 Testing: MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear
+80/121 Test: MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear
+[       OK ] MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+81/121 Testing: MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear
+81/121 Test: MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear
+[       OK ] MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+82/121 Testing: MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward
+82/121 Test: MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MovementControllerTest
+[ RUN      ] MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward
+[       OK ] MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward (0 ms)
+[----------] 1 test from MovementControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward" time elapsed: 00:00:00
+----------------------------------------------------------
+
+83/121 Testing: MainTest.InitialSamplesBeforeAnyTickAndNoOutputs
+83/121 Test: MainTest.InitialSamplesBeforeAnyTickAndNoOutputs
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MainTest.InitialSamplesBeforeAnyTickAndNoOutputs" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MainTest.InitialSamplesBeforeAnyTickAndNoOutputs" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MainTest.InitialSamplesBeforeAnyTickAndNoOutputs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MainTest
+[ RUN      ] MainTest.InitialSamplesBeforeAnyTickAndNoOutputs
+[       OK ] MainTest.InitialSamplesBeforeAnyTickAndNoOutputs (0 ms)
+[----------] 1 test from MainTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MainTest.InitialSamplesBeforeAnyTickAndNoOutputs" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MainTest.InitialSamplesBeforeAnyTickAndNoOutputs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+84/121 Testing: MainTest.OneCyclePerTickAndBlockedFirstTickStops
+84/121 Test: MainTest.OneCyclePerTickAndBlockedFirstTickStops
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MainTest.OneCyclePerTickAndBlockedFirstTickStops" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MainTest.OneCyclePerTickAndBlockedFirstTickStops" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MainTest.OneCyclePerTickAndBlockedFirstTickStops
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MainTest
+[ RUN      ] MainTest.OneCyclePerTickAndBlockedFirstTickStops
+[       OK ] MainTest.OneCyclePerTickAndBlockedFirstTickStops (0 ms)
+[----------] 1 test from MainTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MainTest.OneCyclePerTickAndBlockedFirstTickStops" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MainTest.OneCyclePerTickAndBlockedFirstTickStops" time elapsed: 00:00:00
+----------------------------------------------------------
+
+85/121 Testing: MainTest.ReceiptOrderBeforeAndAfterTickIsRespected
+85/121 Test: MainTest.ReceiptOrderBeforeAndAfterTickIsRespected
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MainTest.ReceiptOrderBeforeAndAfterTickIsRespected" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MainTest.ReceiptOrderBeforeAndAfterTickIsRespected" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MainTest.ReceiptOrderBeforeAndAfterTickIsRespected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MainTest
+[ RUN      ] MainTest.ReceiptOrderBeforeAndAfterTickIsRespected
+[       OK ] MainTest.ReceiptOrderBeforeAndAfterTickIsRespected (0 ms)
+[----------] 1 test from MainTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MainTest.ReceiptOrderBeforeAndAfterTickIsRespected" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MainTest.ReceiptOrderBeforeAndAfterTickIsRespected" time elapsed: 00:00:00
+----------------------------------------------------------
+
+86/121 Testing: MainTest.InitialPulseSurvivesUntilFirstForwardTick
+86/121 Test: MainTest.InitialPulseSurvivesUntilFirstForwardTick
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MainTest.InitialPulseSurvivesUntilFirstForwardTick" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MainTest.InitialPulseSurvivesUntilFirstForwardTick" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MainTest.InitialPulseSurvivesUntilFirstForwardTick
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MainTest
+[ RUN      ] MainTest.InitialPulseSurvivesUntilFirstForwardTick
+[       OK ] MainTest.InitialPulseSurvivesUntilFirstForwardTick (0 ms)
+[----------] 1 test from MainTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"MainTest.InitialPulseSurvivesUntilFirstForwardTick" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MainTest.InitialPulseSurvivesUntilFirstForwardTick" time elapsed: 00:00:00
+----------------------------------------------------------
+
+87/121 Testing: MainTest.EventsReceivedDuringOutputWaitForNextTick
+87/121 Test: MainTest.EventsReceivedDuringOutputWaitForNextTick
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MainTest.EventsReceivedDuringOutputWaitForNextTick" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MainTest.EventsReceivedDuringOutputWaitForNextTick" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MainTest.EventsReceivedDuringOutputWaitForNextTick
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MainTest
+[ RUN      ] MainTest.EventsReceivedDuringOutputWaitForNextTick
+[       OK ] MainTest.EventsReceivedDuringOutputWaitForNextTick (0 ms)
+[----------] 1 test from MainTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MainTest.EventsReceivedDuringOutputWaitForNextTick" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MainTest.EventsReceivedDuringOutputWaitForNextTick" time elapsed: 00:00:00
+----------------------------------------------------------
+
+88/121 Testing: MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated
+88/121 Test: MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MainTest
+[ RUN      ] MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated
+[       OK ] MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated (0 ms)
+[----------] 1 test from MainTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated" time elapsed: 00:00:00
+----------------------------------------------------------
+
+89/121 Testing: InputsTest.ActualFalseRequiredForEverySensor
+89/121 Test: InputsTest.ActualFalseRequiredForEverySensor
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=InputsTest.ActualFalseRequiredForEverySensor" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"InputsTest.ActualFalseRequiredForEverySensor" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = InputsTest.ActualFalseRequiredForEverySensor
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InputsTest
+[ RUN      ] InputsTest.ActualFalseRequiredForEverySensor
+[       OK ] InputsTest.ActualFalseRequiredForEverySensor (0 ms)
+[----------] 1 test from InputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"InputsTest.ActualFalseRequiredForEverySensor" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"InputsTest.ActualFalseRequiredForEverySensor" time elapsed: 00:00:00
+----------------------------------------------------------
+
+90/121 Testing: InputsTest.SingleObstacleUpdatePreservesOtherFields
+90/121 Test: InputsTest.SingleObstacleUpdatePreservesOtherFields
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=InputsTest.SingleObstacleUpdatePreservesOtherFields" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"InputsTest.SingleObstacleUpdatePreservesOtherFields" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = InputsTest.SingleObstacleUpdatePreservesOtherFields
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InputsTest
+[ RUN      ] InputsTest.SingleObstacleUpdatePreservesOtherFields
+[       OK ] InputsTest.SingleObstacleUpdatePreservesOtherFields (0 ms)
+[----------] 1 test from InputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"InputsTest.SingleObstacleUpdatePreservesOtherFields" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"InputsTest.SingleObstacleUpdatePreservesOtherFields" time elapsed: 00:00:00
+----------------------------------------------------------
+
+91/121 Testing: InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume
+91/121 Test: InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InputsTest
+[ RUN      ] InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume
+[       OK ] InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume (0 ms)
+[----------] 1 test from InputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume" time elapsed: 00:00:00
+----------------------------------------------------------
+
+92/121 Testing: InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling
+92/121 Test: InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InputsTest
+[ RUN      ] InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling
+[       OK ] InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling (0 ms)
+[----------] 1 test from InputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling" time elapsed: 00:00:00
+----------------------------------------------------------
+
+93/121 Testing: InputsTest.SensorEventsDoNotAdvanceTimersOrOutput
+93/121 Test: InputsTest.SensorEventsDoNotAdvanceTimersOrOutput
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=InputsTest.SensorEventsDoNotAdvanceTimersOrOutput" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"InputsTest.SensorEventsDoNotAdvanceTimersOrOutput" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = InputsTest.SensorEventsDoNotAdvanceTimersOrOutput
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InputsTest
+[ RUN      ] InputsTest.SensorEventsDoNotAdvanceTimersOrOutput
+[       OK ] InputsTest.SensorEventsDoNotAdvanceTimersOrOutput (0 ms)
+[----------] 1 test from InputsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"InputsTest.SensorEventsDoNotAdvanceTimersOrOutput" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"InputsTest.SensorEventsDoNotAdvanceTimersOrOutput" time elapsed: 00:00:00
+----------------------------------------------------------
+
+94/121 Testing: InitializeRvc.ActualSamplesWithoutCommands
+94/121 Test: InitializeRvc.ActualSamplesWithoutCommands
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=InitializeRvc.ActualSamplesWithoutCommands" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"InitializeRvc.ActualSamplesWithoutCommands" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = InitializeRvc.ActualSamplesWithoutCommands
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InitializeRvc
+[ RUN      ] InitializeRvc.ActualSamplesWithoutCommands
+[       OK ] InitializeRvc.ActualSamplesWithoutCommands (0 ms)
+[----------] 1 test from InitializeRvc (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"InitializeRvc.ActualSamplesWithoutCommands" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"InitializeRvc.ActualSamplesWithoutCommands" time elapsed: 00:00:00
+----------------------------------------------------------
+
+95/121 Testing: InitializeRvc.ResetsTimersAndPendingBeforeSampling
+95/121 Test: InitializeRvc.ResetsTimersAndPendingBeforeSampling
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=InitializeRvc.ResetsTimersAndPendingBeforeSampling" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"InitializeRvc.ResetsTimersAndPendingBeforeSampling" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = InitializeRvc.ResetsTimersAndPendingBeforeSampling
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InitializeRvc
+[ RUN      ] InitializeRvc.ResetsTimersAndPendingBeforeSampling
+[       OK ] InitializeRvc.ResetsTimersAndPendingBeforeSampling (0 ms)
+[----------] 1 test from InitializeRvc (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"InitializeRvc.ResetsTimersAndPendingBeforeSampling" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"InitializeRvc.ResetsTimersAndPendingBeforeSampling" time elapsed: 00:00:00
+----------------------------------------------------------
+
+96/121 Testing: InitializeRvc.InitialDustPulseIsNotResetAfterSampling
+96/121 Test: InitializeRvc.InitialDustPulseIsNotResetAfterSampling
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=InitializeRvc.InitialDustPulseIsNotResetAfterSampling" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"InitializeRvc.InitialDustPulseIsNotResetAfterSampling" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = InitializeRvc.InitialDustPulseIsNotResetAfterSampling
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InitializeRvc
+[ RUN      ] InitializeRvc.InitialDustPulseIsNotResetAfterSampling
+[       OK ] InitializeRvc.InitialDustPulseIsNotResetAfterSampling (0 ms)
+[----------] 1 test from InitializeRvc (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"InitializeRvc.InitialDustPulseIsNotResetAfterSampling" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"InitializeRvc.InitialDustPulseIsNotResetAfterSampling" time elapsed: 00:00:00
+----------------------------------------------------------
+
+97/121 Testing: DeriveMovementStatus.ForwardCommandIsForward
+97/121 Test: DeriveMovementStatus.ForwardCommandIsForward
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DeriveMovementStatus.ForwardCommandIsForward" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DeriveMovementStatus.ForwardCommandIsForward" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DeriveMovementStatus.ForwardCommandIsForward
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DeriveMovementStatus
+[ RUN      ] DeriveMovementStatus.ForwardCommandIsForward
+[       OK ] DeriveMovementStatus.ForwardCommandIsForward (0 ms)
+[----------] 1 test from DeriveMovementStatus (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"DeriveMovementStatus.ForwardCommandIsForward" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DeriveMovementStatus.ForwardCommandIsForward" time elapsed: 00:00:00
+----------------------------------------------------------
+
+98/121 Testing: DeriveMovementStatus.StopCommandIsAvoiding
+98/121 Test: DeriveMovementStatus.StopCommandIsAvoiding
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DeriveMovementStatus.StopCommandIsAvoiding" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DeriveMovementStatus.StopCommandIsAvoiding" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DeriveMovementStatus.StopCommandIsAvoiding
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DeriveMovementStatus
+[ RUN      ] DeriveMovementStatus.StopCommandIsAvoiding
+[       OK ] DeriveMovementStatus.StopCommandIsAvoiding (0 ms)
+[----------] 1 test from DeriveMovementStatus (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"DeriveMovementStatus.StopCommandIsAvoiding" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DeriveMovementStatus.StopCommandIsAvoiding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+99/121 Testing: DeriveMovementStatus.TurnCommandsAreAvoiding
+99/121 Test: DeriveMovementStatus.TurnCommandsAreAvoiding
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DeriveMovementStatus.TurnCommandsAreAvoiding" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DeriveMovementStatus.TurnCommandsAreAvoiding" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DeriveMovementStatus.TurnCommandsAreAvoiding
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DeriveMovementStatus
+[ RUN      ] DeriveMovementStatus.TurnCommandsAreAvoiding
+[       OK ] DeriveMovementStatus.TurnCommandsAreAvoiding (0 ms)
+[----------] 1 test from DeriveMovementStatus (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"DeriveMovementStatus.TurnCommandsAreAvoiding" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DeriveMovementStatus.TurnCommandsAreAvoiding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+100/121 Testing: DeriveMovementStatus.BackwardCommandIsAvoiding
+100/121 Test: DeriveMovementStatus.BackwardCommandIsAvoiding
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DeriveMovementStatus.BackwardCommandIsAvoiding" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DeriveMovementStatus.BackwardCommandIsAvoiding" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DeriveMovementStatus.BackwardCommandIsAvoiding
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DeriveMovementStatus
+[ RUN      ] DeriveMovementStatus.BackwardCommandIsAvoiding
+[       OK ] DeriveMovementStatus.BackwardCommandIsAvoiding (0 ms)
+[----------] 1 test from DeriveMovementStatus (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"DeriveMovementStatus.BackwardCommandIsAvoiding" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DeriveMovementStatus.BackwardCommandIsAvoiding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+101/121 Testing: DecideCleaning.ForwardWithoutPowerUpStartsCleaning
+101/121 Test: DecideCleaning.ForwardWithoutPowerUpStartsCleaning
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideCleaning.ForwardWithoutPowerUpStartsCleaning" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideCleaning.ForwardWithoutPowerUpStartsCleaning" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideCleaning.ForwardWithoutPowerUpStartsCleaning
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideCleaning
+[ RUN      ] DecideCleaning.ForwardWithoutPowerUpStartsCleaning
+[       OK ] DecideCleaning.ForwardWithoutPowerUpStartsCleaning (0 ms)
+[----------] 1 test from DecideCleaning (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"DecideCleaning.ForwardWithoutPowerUpStartsCleaning" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideCleaning.ForwardWithoutPowerUpStartsCleaning" time elapsed: 00:00:00
+----------------------------------------------------------
+
+102/121 Testing: DecideCleaning.ForwardWithPowerUpPowersUp
+102/121 Test: DecideCleaning.ForwardWithPowerUpPowersUp
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideCleaning.ForwardWithPowerUpPowersUp" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideCleaning.ForwardWithPowerUpPowersUp" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideCleaning.ForwardWithPowerUpPowersUp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideCleaning
+[ RUN      ] DecideCleaning.ForwardWithPowerUpPowersUp
+[       OK ] DecideCleaning.ForwardWithPowerUpPowersUp (0 ms)
+[----------] 1 test from DecideCleaning (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"DecideCleaning.ForwardWithPowerUpPowersUp" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideCleaning.ForwardWithPowerUpPowersUp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+103/121 Testing: DecideCleaning.AvoidingStopsCleaning
+103/121 Test: DecideCleaning.AvoidingStopsCleaning
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideCleaning.AvoidingStopsCleaning" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideCleaning.AvoidingStopsCleaning" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideCleaning.AvoidingStopsCleaning
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideCleaning
+[ RUN      ] DecideCleaning.AvoidingStopsCleaning
+[       OK ] DecideCleaning.AvoidingStopsCleaning (0 ms)
+[----------] 1 test from DecideCleaning (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"DecideCleaning.AvoidingStopsCleaning" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideCleaning.AvoidingStopsCleaning" time elapsed: 00:00:00
+----------------------------------------------------------
+
+104/121 Testing: DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp
+104/121 Test: DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideCleaning
+[ RUN      ] DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp
+[       OK ] DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp (0 ms)
+[----------] 1 test from DecideCleaning (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+105/121 Testing: DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans
+105/121 Test: DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideActionsTest
+[ RUN      ] DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans
+[       OK ] DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans (0 ms)
+[----------] 1 test from DecideActionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans" time elapsed: 00:00:00
+----------------------------------------------------------
+
+106/121 Testing: DecideActionsTest.DustPowersUpTheCleaningForFiveCycles
+106/121 Test: DecideActionsTest.DustPowersUpTheCleaningForFiveCycles
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideActionsTest.DustPowersUpTheCleaningForFiveCycles" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideActionsTest.DustPowersUpTheCleaningForFiveCycles" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideActionsTest.DustPowersUpTheCleaningForFiveCycles
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideActionsTest
+[ RUN      ] DecideActionsTest.DustPowersUpTheCleaningForFiveCycles
+[       OK ] DecideActionsTest.DustPowersUpTheCleaningForFiveCycles (0 ms)
+[----------] 1 test from DecideActionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"DecideActionsTest.DustPowersUpTheCleaningForFiveCycles" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideActionsTest.DustPowersUpTheCleaningForFiveCycles" time elapsed: 00:00:00
+----------------------------------------------------------
+
+107/121 Testing: DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle
+107/121 Test: DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideActionsTest
+[ RUN      ] DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle
+[       OK ] DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle (0 ms)
+[----------] 1 test from DecideActionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+108/121 Testing: DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards
+108/121 Test: DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideActionsTest
+[ RUN      ] DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards
+[       OK ] DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards (0 ms)
+[----------] 1 test from DecideActionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards" time elapsed: 00:00:00
+----------------------------------------------------------
+
+109/121 Testing: DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning
+109/121 Test: DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideActionsTest
+[ RUN      ] DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning
+[       OK ] DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning (0 ms)
+[----------] 1 test from DecideActionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning" time elapsed: 00:00:00
+----------------------------------------------------------
+
+110/121 Testing: DecideActionsTest.DustWhileAvoidingDoesNotPowerUp
+110/121 Test: DecideActionsTest.DustWhileAvoidingDoesNotPowerUp
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideActionsTest.DustWhileAvoidingDoesNotPowerUp" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideActionsTest.DustWhileAvoidingDoesNotPowerUp" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideActionsTest.DustWhileAvoidingDoesNotPowerUp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideActionsTest
+[ RUN      ] DecideActionsTest.DustWhileAvoidingDoesNotPowerUp
+[       OK ] DecideActionsTest.DustWhileAvoidingDoesNotPowerUp (0 ms)
+[----------] 1 test from DecideActionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"DecideActionsTest.DustWhileAvoidingDoesNotPowerUp" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideActionsTest.DustWhileAvoidingDoesNotPowerUp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+111/121 Testing: DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall
+111/121 Test: DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideActionsTest
+[ RUN      ] DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall
+[       OK ] DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall (0 ms)
+[----------] 1 test from DecideActionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall" time elapsed: 00:00:00
+----------------------------------------------------------
+
+112/121 Testing: DecideActionsTest.DoesNotTouchTheHardware
+112/121 Test: DecideActionsTest.DoesNotTouchTheHardware
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=DecideActionsTest.DoesNotTouchTheHardware" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"DecideActionsTest.DoesNotTouchTheHardware" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = DecideActionsTest.DoesNotTouchTheHardware
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DecideActionsTest
+[ RUN      ] DecideActionsTest.DoesNotTouchTheHardware
+[       OK ] DecideActionsTest.DoesNotTouchTheHardware (0 ms)
+[----------] 1 test from DecideActionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"DecideActionsTest.DoesNotTouchTheHardware" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"DecideActionsTest.DoesNotTouchTheHardware" time elapsed: 00:00:00
+----------------------------------------------------------
+
+113/121 Testing: ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling
+113/121 Test: ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ControllerTest
+[ RUN      ] ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling
+[       OK ] ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling (0 ms)
+[----------] 1 test from ControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling" time elapsed: 00:00:00
+----------------------------------------------------------
+
+114/121 Testing: ControllerTest.CurrentStateAndStoredInputsDriveTheTick
+114/121 Test: ControllerTest.CurrentStateAndStoredInputsDriveTheTick
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=ControllerTest.CurrentStateAndStoredInputsDriveTheTick" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"ControllerTest.CurrentStateAndStoredInputsDriveTheTick" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = ControllerTest.CurrentStateAndStoredInputsDriveTheTick
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ControllerTest
+[ RUN      ] ControllerTest.CurrentStateAndStoredInputsDriveTheTick
+[       OK ] ControllerTest.CurrentStateAndStoredInputsDriveTheTick (0 ms)
+[----------] 1 test from ControllerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"ControllerTest.CurrentStateAndStoredInputsDriveTheTick" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"ControllerTest.CurrentStateAndStoredInputsDriveTheTick" time elapsed: 00:00:00
+----------------------------------------------------------
+
+115/121 Testing: AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked
+115/121 Test: AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AssessObstacleSituation
+[ RUN      ] AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked
+[       OK ] AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked (0 ms)
+[----------] 1 test from AssessObstacleSituation (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+116/121 Testing: AssessObstacleSituation.BothSidesClearIsRightOpen
+116/121 Test: AssessObstacleSituation.BothSidesClearIsRightOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=AssessObstacleSituation.BothSidesClearIsRightOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"AssessObstacleSituation.BothSidesClearIsRightOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = AssessObstacleSituation.BothSidesClearIsRightOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AssessObstacleSituation
+[ RUN      ] AssessObstacleSituation.BothSidesClearIsRightOpen
+[       OK ] AssessObstacleSituation.BothSidesClearIsRightOpen (0 ms)
+[----------] 1 test from AssessObstacleSituation (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"AssessObstacleSituation.BothSidesClearIsRightOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"AssessObstacleSituation.BothSidesClearIsRightOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+117/121 Testing: AssessObstacleSituation.LeftBlockedIsRightOpen
+117/121 Test: AssessObstacleSituation.LeftBlockedIsRightOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=AssessObstacleSituation.LeftBlockedIsRightOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"AssessObstacleSituation.LeftBlockedIsRightOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = AssessObstacleSituation.LeftBlockedIsRightOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AssessObstacleSituation
+[ RUN      ] AssessObstacleSituation.LeftBlockedIsRightOpen
+[       OK ] AssessObstacleSituation.LeftBlockedIsRightOpen (0 ms)
+[----------] 1 test from AssessObstacleSituation (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"AssessObstacleSituation.LeftBlockedIsRightOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"AssessObstacleSituation.LeftBlockedIsRightOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+118/121 Testing: AssessObstacleSituation.RightBlockedIsLeftOpen
+118/121 Test: AssessObstacleSituation.RightBlockedIsLeftOpen
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=AssessObstacleSituation.RightBlockedIsLeftOpen" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"AssessObstacleSituation.RightBlockedIsLeftOpen" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = AssessObstacleSituation.RightBlockedIsLeftOpen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AssessObstacleSituation
+[ RUN      ] AssessObstacleSituation.RightBlockedIsLeftOpen
+[       OK ] AssessObstacleSituation.RightBlockedIsLeftOpen (0 ms)
+[----------] 1 test from AssessObstacleSituation (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"AssessObstacleSituation.RightBlockedIsLeftOpen" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"AssessObstacleSituation.RightBlockedIsLeftOpen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+119/121 Testing: AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked
+119/121 Test: AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AssessObstacleSituation
+[ RUN      ] AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked
+[       OK ] AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked (0 ms)
+[----------] 1 test from AssessObstacleSituation (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked" time elapsed: 00:00:00
+----------------------------------------------------------
+
+120/121 Testing: AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear
+120/121 Test: AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear
+Command: "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/rvc_tests.exe" "--gtest_filter=AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear" "--gtest_also_run_disabled_tests"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+Running main() from C:/M/B/src/googletest-1.17.0/googletest/src/gtest_main.cc
+Note: Google Test filter = AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AssessObstacleSituation
+[ RUN      ] AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear
+[       OK ] AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear (0 ms)
+[----------] 1 test from AssessObstacleSituation (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+121/121 Testing: call_hierarchy
+121/121 Test: call_hierarchy
+Command: "D:/MSYS2/mingw64/bin/cmake.exe" "-DOBJECT_DIR=D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build/CMakeFiles" "-DEXPECTED=D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/tests/expected_calls.txt" "-P" "D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/tests/check_call_hierarchy.cmake"
+Directory: D:/SCHOOL/2026_3-2/ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™/HW3-2/build
+"call_hierarchy" start time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+Output:
+----------------------------------------------------------
+-- Call hierarchy matches the Structure Chart: 31 of 31 calls.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"call_hierarchy" end time: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã
+"call_hierarchy" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 19 11:59 ´ëÇÑ¹Î±¹ Ç¥ÁØ½Ã

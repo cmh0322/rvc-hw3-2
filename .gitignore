@@ -22,6 +22,9 @@ node_modules/
 *.gcov
 *.log
 
+# Preserve verification evidence referenced by review reports.
+!/artifacts/Review/**/*.log
+
 # Operating system files
 .DS_Store
 Thumbs.db

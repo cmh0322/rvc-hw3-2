@@ -2,7 +2,7 @@
 
 System: RVC Controller
 Parent: Process 0 (RVC Controller), `artifacts/SA/DFD/dfd_level_0.md`
-Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarifications.md` (C1-C3, Q1-Q6), `artifacts/SA/event_list.md`, `artifacts/SA/context_diagram.md`
+Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarifications.md` (C1-C16), `artifacts/SA/event_list.md`, `artifacts/SA/context_diagram.md`
 
 ## Diagram
 
@@ -31,9 +31,11 @@ flowchart LR
 
     P1 -->|Obstacle Location| DS1
     P2 -->|Dust Existence| DS2
+    DS2 -->|Dust Existence| P2
 
     DS1 -->|Obstacle Location| P3
     DS2 -->|Dust Existence| P4
+    P4 -->|Pending Dust Detection| DS2
 
     DigitalClock -.->|Tick| P3
     DigitalClock -.->|Tick| P4
@@ -53,9 +55,9 @@ All four processes are data processes. No control process is introduced at this 
 | Process ID | Process Name | Responsibility | Requirements |
 |---|---|---|---|
 | 1 | Detect Obstacle | Reads the front, left, and right sensor inputs and records where obstacles are. | B3, B4, C1 |
-| 2 | Detect Dust | Reads the dust sensor input and records whether dust is present. | B5 |
+| 2 | Detect Dust | Records the current dust reading and latches every TRUE detection until consumed on a Forward Tick. | B5, C15 |
 | 3 | Control Movement | On each Tick, decides the movement from the obstacle locations: go forward, stop, turn right or left, or move backward. Reports whether the RVC is moving forward or avoiding an obstacle. | B2, B3, B4, C1, C2 |
-| 4 | Control Cleaning | On each Tick, decides the cleaning command from the movement status and dust existence: start, stop, or power up for 5 ticks. | B1, B2, B3, B5, C3 |
+| 4 | Control Cleaning | On each Tick, decides the cleaning command from the movement status and dust existence: start, stop, or power up for 5 ticks. Consumes pending dust on Forward; retains it while Avoiding. | B1, B2, B3, B5, C3, C10, C11, C14, C15 |
 
 ### Decomposition rationale
 
@@ -68,7 +70,7 @@ All four processes are data processes. No control process is introduced at this 
 | ID | Data Store | Contents | Written by | Read by | Justification |
 |---|---|---|---|---|---|
 | D1 | Obstacle Location | Front Obstacle, Left Obstacle, Right Obstacle | 1 | 3 | Sensor inputs arrive independently of the clock. 3 acts on Tick, so it needs the latest reading of all three sensors at that moment. |
-| D2 | Dust Existence | Dust Detected | 2 | 4 | Same reason: 4 acts on Tick and needs the latest dust reading. |
+| D2 | Dust Existence | Dust Detected + Pending Dust Detection | 2 (current reading and latch); 4 (consume pending flag) | 2, 4 | Preserve the latest reading and a TRUE detection even if the sensor clears before Forward resumes (C15). |
 
 The 5-tick power-up count is kept inside Process 4 at this level. Whether it needs its own Data Store is decided at Level 2.
 
@@ -77,7 +79,8 @@ The 5-tick power-up count is kept inside Process 4 at this level. Whether it nee
 | Flow | Category | Source | Destination | Content |
 |---|---|---|---|---|
 | Obstacle Location | Data | 1 (write), D1 (read) | D1, 3 | Front Obstacle + Left Obstacle + Right Obstacle |
-| Dust Existence | Data | 2 (write), D2 (read) | D2, 4 | Dust Detected |
+| Dust Existence | Data | 2 (write), D2 (read) | D2, 2, 4 | Dust Detected + Pending Dust Detection |
+| Pending Dust Detection | Data | 4 | D2 | Updated pending flag; FALSE after a Forward Tick consumes the detection, unchanged during avoidance |
 | Movement Status | Data | 3 | 4 | Forward or Avoiding |
 
 ## Balancing with Level 0
@@ -94,19 +97,10 @@ The 5-tick power-up count is kept inside Process 4 at this level. Whether it nee
 
 Flow mapping: the single Level 0 `Tick` is delivered to both 3 and 4. It is the same event, not two different flows.
 
-No external flow was added or removed. `Obstacle Location`, `Dust Existence`, and `Movement Status` are internal to Process 0.
+No external flow was added or removed. `Obstacle Location`, `Dust Existence`, `Pending Dust Detection`, and `Movement Status` are internal to Process 0.
 
-## Open Issues Affecting Level 1
+## Decisions and remaining assumption
 
-Update 2026-11-08: Q1, Q2, Q3 are resolved by C5, C6, C7 and applied at Level 3 and in the Level 4 FSM. C4 (obstacles do not disappear) also applies.
+Q1-Q5 are resolved: C5 defines post-backing selection/repetition; C6-C8 set five-tick steps; C10 restarts power-up on re-detection; C11 preserves its count during avoidance. C9 requires side classification independently of the front. C15 remembers avoidance dust and restarts on resumption; without such dust C11 resumes the saved count. Q6 is resolved by C16: while Forward, a clear front does not initiate avoidance solely because of side obstacles.
 
-These come from `docs/requirements_clarifications.md` and are not resolved here.
-
-| ID | Affects | Effect at Level 1 |
-|---|---|---|
-| Q1 | 3 | Turn direction after backward movement, and what to do if left and right are still blocked. |
-| Q2 | 3 | Duration of backward movement. |
-| Q3 | 3 | Duration of the stop (C2). |
-| Q4 | 4 | Whether new dust during power-up restarts the 5-tick count. |
-| Q5 | 3, 4 | Whether an obstacle cancels or keeps the remaining power-up count when `Movement Status` becomes Avoiding. |
-| Q6 | 1, 3 | Whether a side obstacle with a clear front triggers avoidance. Assumed not: 3 uses Left/Right Obstacle only when Front Obstacle is TRUE. |
+Before the first Tick, obtain all four sensor readings into D1/D2 (C12). Initialize D3=0, D4=Idle and the pending flag=FALSE before initial sampling. Power On emits no commands (C13). Process 1 updates the received sensor field while preserving other valid readings. Process 2 updates the current dust reading and ORs TRUE detections into the pending flag. Input receipt and Tick processing are logically serialized: inputs received before a Tick are included in its snapshot; later inputs are processed after that Tick. This defines the analysis ordering, not hardware synchronization details (B6).

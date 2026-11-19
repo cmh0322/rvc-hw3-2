@@ -1,0 +1,70 @@
+﻿{
+  "id": "B4",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {"path":"docs/preliminary_requirements.md","start":4,"end":4},
+    {"path":"docs/requirements_clarifications.md","start":13,"end":17},
+    {"path":"artifacts/SA/process_specification.md","start":263,"end":329},
+    {"path":"artifacts/SA/process_specification.md","start":474,"end":637},
+    {"path":"artifacts/SA/DFD/dfd_level_4_fsm.md","start":63,"end":107},
+    {"path":"artifacts/SA/data_dictionary.md","start":221,"end":275},
+    {"path":"artifacts/SD/structure_chart.md","start":149,"end":160},
+    {"path":"artifacts/SD/structure_chart.md","start":208,"end":221},
+    {"path":"artifacts/SD/structure_chart.md","start":288,"end":288},
+    {"path":"artifacts/SD/transform_analysis.md","start":47,"end":80}
+  ],
+  "code_refs": [
+    {"path":"src/assess_obstacle_situation.c","start":4,"end":19},
+    {"path":"src/movement_controller.c","start":9,"end":69},
+    {"path":"src/step_timer.c","start":7,"end":35},
+    {"path":"include/rvc_types.h","start":21,"end":81},
+    {"path":"src/main.c","start":10,"end":17},
+    {"path":"src/controller.c","start":8,"end":13},
+    {"path":"src/get_inputs.c","start":8,"end":16},
+    {"path":"src/detect_obstacle.c","start":6,"end":14},
+    {"path":"src/decide_actions.c","start":9,"end":24},
+    {"path":"src/derive_movement_status.c","start":4,"end":15},
+    {"path":"src/decide_cleaning.c","start":4,"end":16},
+    {"path":"src/power_up_timer.c","start":10,"end":30},
+    {"path":"src/initialize_rvc.c","start":8,"end":13},
+    {"path":"src/put_outputs.c","start":7,"end":10},
+    {"path":"src/issue_movement_output.c","start":6,"end":17},
+    {"path":"CMakeLists.txt","start":31,"end":101},
+    {"path":"simulator/host/sim_host.c","start":85,"end":130}
+  ],
+  "subclaims": [
+    {"claim":"Front obstacle initiates Stop; blocked sides at stop completion cause Backward.","verdict":"implemented","evidence":["src/assess_obstacle_situation.c:8-16","src/movement_controller.c:27-50"]},
+    {"claim":"Stop and Backward each last five command ticks.","verdict":"implemented","evidence":["src/movement_controller.c:24-60","src/step_timer.c:10-35","include/rvc_types.h:77-81"]},
+    {"claim":"After Backing only sides decide: right clear wins, left clear is fallback, otherwise Backward repeats.","verdict":"implemented","evidence":["src/assess_obstacle_situation.c:10-16","src/movement_controller.c:32-50"]},
+    {"claim":"Either turn lasts five command ticks then returns Forward.","verdict":"implemented","evidence":["src/movement_controller.c:32-60","src/step_timer.c:10-29"]},
+    {"claim":"Commands reach motor and avoiding stops cleaning using the split SD output modules.","verdict":"implemented","evidence":["src/decide_actions.c:17-22","src/derive_movement_status.c:8-13","src/decide_cleaning.c:8-14","src/controller.c:10-13","src/put_outputs.c:7-10","src/issue_movement_output.c:6-17"]}
+  ],
+  "paths_walked": [
+    "main -> initialize_rvc -> reset_movement_controller -> reset_step_timer; initial state and timer reset read. Extra power-on output is a separate C13 divergence.",
+    "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle -> read_front/left/right_sensor -> assess_obstacle_situation; legacy polling differs from revised acquisition contract reviewed separately.",
+    "controller -> decide_actions -> movement_controller -> advance_step_timer -> conditional start_step_timer; all five states, all side classes, done/not-done, repeated step and reset inspected.",
+    "decide_actions -> derive_movement_status -> track_power_up -> decide_cleaning; power path does not modify movement.",
+    "controller -> put_outputs -> issue_movement_output -> drive_motor; put_outputs also calls drive_cleaner.",
+    "CMake control library and simulator use the same production sources; host provides sensor values and records outputs."
+  ],
+  "searched": [
+    {"pattern":"B4|3\\.2|Step|Backing|Turn|five|5 ticks|decide_movement|movement_controller","scope":"SA Data Dictionary/FSM and SD documents","result":"Located backing, timing and module obligations. Initial plural PSPEC path was missing; actual singular path subsequently read."},
+    {"pattern":"Process 3.2|Process 3.1|Step Ticks Elapsed","scope":"artifacts/SA/process_specification.md","result":"Located classification, complete transition table, output rules and timer ordering."},
+    {"pattern":"movement_controller\\(|reset_movement_controller\\(|start_step_timer\\(|advance_step_timer\\(|drive_motor\\(","scope":"src include simulator/host","result":"Production caller paths are Decide Actions to movement, Movement Controller to timing, Initialize RVC to reset, Issue Movement Output to motor; headers and simulator implementation distinguished."},
+    {"pattern":"B4|C5","scope":"tests/test_requirements.cpp","result":"Located backward, right/left turn, return-forward and repeated-backward assertions at lines 61-100."}
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    {"path":"tests/test_requirements.cpp","start":61,"end":100},
+    {"path":"tests/test_movement_controller.cpp","start":124,"end":218},
+    {"path":"tests/test_movement_controller.cpp","start":232,"end":280},
+    {"path":"tests/test_step_timer.cpp","start":26,"end":89},
+    {"path":"tests/rvc_system_fixture.h","start":14,"end":18}
+  ],
+  "test_execution": "notRun-by-reviewer",
+  "open_questions": [
+    "No unresolved B4 source-level question. Physical motor effectiveness is outside B6 and no test/build/model-check execution is claimed.",
+    "Verdict covers B4 movement sequence, not overall revised SD conformance. Legacy input acquisition and power-on output require separate C12/C13/C15/interface findings."
+  ]
+}

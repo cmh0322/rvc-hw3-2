@@ -1,0 +1,42 @@
+[
+  {
+    "path": ".agents/skills/rvc-bmad-review/SKILL.md",
+    "sha256": "fa586d70d42f53bd449f518ffc539c8213b84bec0f9a1842917cff971ace1a11"
+  },
+  {
+    "path": ".agents/skills/bmad-review/SKILL.md",
+    "sha256": "c571dd7d3aa75f3b40749cf9db352c5e76244de22139cfb13c26629d28be1fa7"
+  },
+  {
+    "path": ".agents/skills/bmad-review/references/lens-edge-case-hunter.md",
+    "sha256": "5f0c4778d7b393d11156af8c1bd9bf88aafeb9d50fff5f460ca67df50d927e7d"
+  },
+  {
+    "path": ".agents/skills/rvc-speckit-review/SKILL.md",
+    "sha256": "c801a2328dc9071778624e889f5871e527f7d9018cf2ce8433b70ca84f36ba7b"
+  },
+  {
+    "path": ".agents/skills/speckit-analyze/SKILL.md",
+    "sha256": "fad1c37a451e017995b15fc3eefe243274642fbb3ff7c8a5ab021908df71aa93"
+  },
+  {
+    "path": ".agents/skills/speckit-checklist/SKILL.md",
+    "sha256": "5c1dce9333a2b733422e2dc75de7fc4d63ba91a460833d14ef3966a672328b9d"
+  },
+  {
+    "path": ".agents/skills/rvc-superpowers-verify/SKILL.md",
+    "sha256": "5e0768d47c4af1ecb39c44fe4d0bbb236e0b1c34a2e0be5a2538ce48c12d5dcd"
+  },
+  {
+    "path": "_bmad/custom/bmad-review.toml",
+    "sha256": "1afd590c003a2d7e91380bd1bcc7ca09c448539829119b91b4107c500bec367f"
+  },
+  {
+    "path": "C:/Users/james/.codex/.tmp/plugins/plugins/superpowers/skills/receiving-code-review/SKILL.md",
+    "sha256": "bda6f19ebd6d4ec043e448c8d233de8308f76b72230de2297b306bc49b8a6e93"
+  },
+  {
+    "path": "C:/Users/james/.codex/.tmp/plugins/plugins/superpowers/skills/verification-before-completion/SKILL.md",
+    "sha256": "c35ac975d145f74d9f3668c1b035a3754d3c0f4edb491cc80a6a0265cfdf7749"
+  }
+]

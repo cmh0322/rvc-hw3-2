@@ -1,0 +1,498 @@
+[
+  {
+    "caller": "Main",
+    "callee": "Initialize RVC",
+    "input": "—",
+    "output": "—",
+    "control": "—",
+    "when": "once before event loop",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 189,
+      "end": 189
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "partial",
+    "note": "Startup contract violated; no input acquisition and early motor output."
+  },
+  {
+    "caller": "Main",
+    "callee": "Receive Input Event",
+    "input": "Input Mode=Running",
+    "output": "Input Event",
+    "control": "—",
+    "when": "each event-loop iteration, after initialization",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 190,
+      "end": 190
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Main",
+    "callee": "Dispatch Input Event",
+    "input": "Input Event",
+    "output": "—",
+    "control": "—",
+    "when": "after Receive Input Event returns",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 191,
+      "end": 191
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Initialize RVC",
+    "callee": "Reset Movement Controller",
+    "input": "—",
+    "output": "—",
+    "control": "—",
+    "when": "once, in listed order",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 192,
+      "end": 192
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "partial",
+    "note": "Returns MovementCommand rather than no data; caller emits it."
+  },
+  {
+    "caller": "Initialize RVC",
+    "callee": "Reset Power-Up Timer",
+    "input": "—",
+    "output": "—",
+    "control": "—",
+    "when": "once, in listed order",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 193,
+      "end": 193
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Initialize RVC",
+    "callee": "Reset Sensor Data",
+    "input": "—",
+    "output": "—",
+    "control": "—",
+    "when": "once, in listed order",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 194,
+      "end": 194
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Initialize RVC",
+    "callee": "Acquire Initial Inputs",
+    "input": "—",
+    "output": "—",
+    "control": "—",
+    "when": "once, in listed order",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 195,
+      "end": 195
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Acquire Initial Inputs",
+    "callee": "Inputs Ready",
+    "input": "—",
+    "output": "Ready",
+    "control": "—",
+    "when": "before each acquisition iteration",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 196,
+      "end": 196
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Acquire Initial Inputs",
+    "callee": "Receive Input Event",
+    "input": "Input Mode=InitialSensors",
+    "output": "Sensor Input Event",
+    "control": "—",
+    "when": "while not Ready",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 197,
+      "end": 197
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Acquire Initial Inputs",
+    "callee": "Dispatch Sensor Input",
+    "input": "Sensor Input Event",
+    "output": "—",
+    "control": "—",
+    "when": "after each initial sensor event",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 198,
+      "end": 198
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Dispatch Input Event",
+    "callee": "Dispatch Sensor Input",
+    "input": "Sensor Input Event",
+    "output": "—",
+    "control": "—",
+    "when": "event kind is a sensor",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 199,
+      "end": 199
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Dispatch Input Event",
+    "callee": "Controller",
+    "input": "—",
+    "output": "—",
+    "control": "Tick occurrence",
+    "when": "event kind is Tick",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 200,
+      "end": 200
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Dispatch Sensor Input",
+    "callee": "Detect Obstacle",
+    "input": "Sensor ID, Boolean value",
+    "output": "—",
+    "control": "—",
+    "when": "front, left or right event",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 201,
+      "end": 201
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Dispatch Sensor Input",
+    "callee": "Detect Dust",
+    "input": "Dust Sensor Input",
+    "output": "—",
+    "control": "—",
+    "when": "dust event",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 202,
+      "end": 202
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Controller",
+    "callee": "Get Inputs",
+    "input": "—",
+    "output": "Obstacle Situation",
+    "control": "—",
+    "when": "1 per Tick",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 203,
+      "end": 203
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "partial",
+    "note": "Returns Inputs incl Boolean dust and polls hardware instead of stored D1 only."
+  },
+  {
+    "caller": "Controller",
+    "callee": "Decide Actions",
+    "input": "Obstacle Situation",
+    "output": "Clean",
+    "control": "↑ Movement Command",
+    "when": "2 per Tick",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 204,
+      "end": 204
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "partial",
+    "note": "Caller supplies extra Boolean dust; approved module consumes D2 through Track Power-Up."
+  },
+  {
+    "caller": "Controller",
+    "callee": "Put Outputs",
+    "input": "Clean",
+    "output": "—",
+    "control": "↓ Movement Command",
+    "when": "3 per Tick",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 205,
+      "end": 205
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Get Inputs",
+    "callee": "Get Obstacle Location",
+    "input": "—",
+    "output": "Obstacle Location",
+    "control": "—",
+    "when": "1",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 206,
+      "end": 206
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Get Inputs",
+    "callee": "Assess Obstacle Situation",
+    "input": "Obstacle Location",
+    "output": "Obstacle Situation",
+    "control": "—",
+    "when": "2",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 207,
+      "end": 207
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Decide Actions",
+    "callee": "Movement Controller",
+    "input": "—",
+    "output": "—",
+    "control": "↓ Situation Signal, ↑ Movement Command",
+    "when": "1",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 208,
+      "end": 208
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Decide Actions",
+    "callee": "Derive Movement Status",
+    "input": "—",
+    "output": "Movement Status",
+    "control": "↓ Movement Command",
+    "when": "2",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 209,
+      "end": 209
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Decide Actions",
+    "callee": "Track Power-Up",
+    "input": "Movement Status",
+    "output": "Power-Up Active",
+    "control": "—",
+    "when": "3",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 210,
+      "end": 210
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "partial",
+    "note": "Extra Boolean dust parameter; no D2 accessor or consumption."
+  },
+  {
+    "caller": "Decide Actions",
+    "callee": "Decide Cleaning",
+    "input": "Movement Status, Power-Up Active",
+    "output": "Clean",
+    "control": "—",
+    "when": "4",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 211,
+      "end": 211
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Movement Controller",
+    "callee": "Advance Step Timer",
+    "input": "—",
+    "output": "—",
+    "control": "↑ Step Done",
+    "when": "before transition",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 212,
+      "end": 212
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Movement Controller",
+    "callee": "Start Step Timer",
+    "input": "—",
+    "output": "—",
+    "control": "—",
+    "when": "T2/T4/T5/T6/T8/T9/T10 only, after selection",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 213,
+      "end": 213
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Reset Movement Controller",
+    "callee": "Reset Step Timer",
+    "input": "—",
+    "output": "—",
+    "control": "—",
+    "when": "always",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 214,
+      "end": 214
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Track Power-Up",
+    "callee": "Get Dust Existence",
+    "input": "—",
+    "output": "Dust Existence",
+    "control": "—",
+    "when": "1 before power-up decision",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 215,
+      "end": 215
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Track Power-Up",
+    "callee": "Clear Pending Dust",
+    "input": "—",
+    "output": "—",
+    "control": "—",
+    "when": "Forward only, after evaluating current/pending; before returning",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 216,
+      "end": 216
+    },
+    "compiled_edge": "absent",
+    "contract_verdict": "absent",
+    "note": "No corresponding compiled call or alternate event/store enforcement; see sd-analysis.md."
+  },
+  {
+    "caller": "Put Outputs",
+    "callee": "Issue Movement Output",
+    "input": "—",
+    "output": "—",
+    "control": "↓ Movement Command",
+    "when": "1",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 217,
+      "end": 217
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Put Outputs",
+    "callee": "Drive Cleaner",
+    "input": "Clean",
+    "output": "—",
+    "control": "—",
+    "when": "2",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 218,
+      "end": 218
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  },
+  {
+    "caller": "Issue Movement Output",
+    "callee": "Drive Motor",
+    "input": "Direction",
+    "output": "—",
+    "control": "—",
+    "when": "always",
+    "spec_ref": {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 219,
+      "end": 219
+    },
+    "compiled_edge": "present",
+    "contract_verdict": "implemented",
+    "note": "Call, data/control meaning and order checked in sd-analysis.md; broader caller contract may still fail."
+  }
+]

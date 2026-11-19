@@ -1,0 +1,51 @@
+﻿{
+  "id": "B7",
+  "verdict": "implemented",
+  "confidence": "high for scope constraint only",
+  "spec_refs": [
+    {"path":"docs/preliminary_requirements.md","start":7,"end":7},
+    {"path":"artifacts/SA/context_diagram.md","start":6,"end":9},
+    {"path":"artifacts/SA/process_specification.md","start":20,"end":35},
+    {"path":"artifacts/SA/data_dictionary.md","start":9,"end":15},
+    {"path":"artifacts/SA/DFD/dfd_level_4_fsm.md","start":9,"end":35},
+    {"path":"artifacts/SD/structure_chart.md","start":13,"end":23},
+    {"path":"artifacts/SD/transform_analysis.md","start":24,"end":69}
+  ],
+  "code_refs": [
+    {"path":"src/main.c","start":10,"end":18},
+    {"path":"src/controller.c","start":8,"end":14},
+    {"path":"src/decide_actions.c","start":9,"end":25},
+    {"path":"src/movement_controller.c","start":22,"end":68},
+    {"path":"src/initialize_rvc.c","start":8,"end":14},
+    {"path":"src/put_outputs.c","start":7,"end":11},
+    {"path":"src/issue_movement_output.c","start":15,"end":18},
+    {"path":"include/hw_interface.h","start":17,"end":36},
+    {"path":"simulator/host/sim_host.c","start":84,"end":135},
+    {"path":"CMakeLists.txt","start":31,"end":40},
+    {"path":"CMakeLists.txt","start":97,"end":99}
+  ],
+  "subclaims": [
+    {"claim":"Movement and cleaning are automatically selected from sensor inputs and controller state.","verdict":"implemented","evidence":"src/main.c:14-16 runs each Tick; src/controller.c:10-13 and src/decide_actions.c:17-22 form the automatic decision/output path; all movement branches inspected at src/movement_controller.c:27-60."},
+    {"claim":"Production functionality stays within the B7 automatic-cleaning boundary.","verdict":"implemented","evidence":"include/hw_interface.h:17-36 declares sensors/Tick/Direction/Clean only; src/put_outputs.c:9-10 emits movement and cleaning. Full src inventory, reset paths and CMake build targets inspected; no additional product-function path identified."},
+    {"claim":"Simulator reset and sensor stepping are harness controls, not production manual-driving functionality.","verdict":"implemented","evidence":"simulator/host/sim_host.c:94,106-135 accepts sensor values and records production commands; simulator/server.js:70-73 exposes reset/step harness routes; CMakeLists.txt:97 links the same production sources."}
+  ],
+  "paths_walked": [
+    "main -> initialize_rvc -> reset_movement_controller/reset_step_timer, reset_power_up_timer, issue_movement_output/drive_motor",
+    "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle/read_front_sensor/read_left_sensor/read_right_sensor, assess_obstacle_situation, detect_dust/read_dust_sensor",
+    "controller -> decide_actions -> movement_controller/advance_step_timer/start_step_timer, derive_movement_status, track_power_up, decide_cleaning -> put_outputs -> issue_movement_output/drive_motor, drive_cleaner",
+    "All production C files; Forward/avoidance, running/completed steps, left/right/backing, reset and power-up alternate branches",
+    "CMake core/main/test/simulator target definitions -> simulator host sensor and output boundary"
+  ],
+  "searched": [
+    {"pattern":"rg --files","scope":"src include tests simulator artifacts/SA artifacts/SD","result":"Inventoried production, artifacts and harness files; all production .c files read through call-path walk."},
+    {"pattern":"battery|charging|manual|remote|slam|wifi|bluetooth|docking","scope":"src include CMakeLists.txt (case-insensitive)","result":"No matches; full source and target inspection also found no out-of-scope product functionality."},
+    {"pattern":"reset|step|sensors|controller\\.tick|host\\.tick","scope":"simulator/controller_process.js simulator/server.js","result":"Found reset and sensor-step harness routes; inspected C host boundary."}
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    {"path":"tests/test_main.cpp","start":40,"end":80,"notes":"Automatic Tick cycles and dust-driven cleaning; historical assertions are not a revised-SD proof."},
+    {"path":"tests/test_controller.cpp","start":19,"end":70,"notes":"Per-cycle input/output and automatic reactions; source reviewed only."}
+  ],
+  "test_execution": "notRun-by-reviewer",
+  "open_questions": []
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RVC Simulator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>RVC Simulator</h1>
+    <p>The control decisions come from the C controller. This page holds the map and shows what the controller does.</p>
+    <p id="message" role="status"></p>
+</header>
+
+<main>
+<section id="scenario-panel" class="panel">
+    <h2>Scenario</h2>
+    <select id="scenario-select" aria-label="Scenario"></select>
+    <p id="scenario-status" class="badge">Pending</p>
+    <h3>Functions under test</h3>
+    <ul id="scenario-functions"></ul>
+    <h3>Requirements</h3>
+    <p id="scenario-requirements"></p>
+    <h3>Expected behavior</h3>
+    <p id="scenario-expected"></p>
+
+    <h2>Human evaluation</h2>
+    <p class="hint">The simulator assigns no result. You decide.</p>
+    <div id="verdicts">
+        <label><input type="radio" name="verdict" value="PASS"> PASS</label>
+        <label><input type="radio" name="verdict" value="FAIL"> FAIL</label>
+        <label><input type="radio" name="verdict" value="INCONCLUSIVE"> INCONCLUSIVE</label>
+    </div>
+    <label>Evaluator <input id="evaluator" type="text"></label>
+    <label>Related tick(s) <input id="related-ticks" type="text" placeholder="e.g. 5-9, 15"></label>
+    <label>Observations <textarea id="observations" rows="4"></textarea></label>
+    <button id="save-evaluation">Save evaluation and trace</button>
+    <button id="export-evaluations">Export all evaluations</button>
+</section>
+
+<section id="map-panel" class="panel">
+    <div id="controls">
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="step-back" title="Show the previous saved tick">◀ Step back</button>
+        <button id="step">Step ▶</button>
+        <button id="reset" title="Fresh controller and initial map">Reset</button>
+        <button id="restart" title="Reset, then start">Restart</button>
+        <label>Speed <input id="speed" type="range" min="1" max="20" value="4"> <span id="speed-label"></span></label>
+    </div>
+    <div id="tick-row">
+        <strong>Tick <span id="tick">0</span> / 100</strong>
+        <input id="tick-slider" type="range" min="0" max="0" value="0" aria-label="Tick to inspect">
+        <span id="viewing-note"></span>
+    </div>
+    <div id="grid" aria-label="10 by 10 map"></div>
+    <p class="legend">
+        <span class="swatch obstacle"></span> Obstacle
+        <span class="swatch dust"></span> Dust
+        <span class="swatch cleaned"></span> Cleaned
+        <span class="swatch start"></span> Start
+        ▲ RVC and heading
+    </p>
+
+    <fieldset id="editor">
+        <legend>Map edit mode (at tick 0)</legend>
+        <label><input type="checkbox" id="edit-mode"> Edit</label>
+        <label><input type="radio" name="tool" value="obstacle" checked> Obstacle</label>
+        <label><input type="radio" name="tool" value="dust"> Dust</label>
+        <label><input type="radio" name="tool" value="start"> RVC start</label>
+        <label>Initial direction
+            <select id="heading">
+                <option value="N">N (up)</option><option value="E">E (right)</option>
+                <option value="S">S (down)</option><option value="W">W (left)</option>
+            </select>
+        </label>
+        <div>
+            <button id="clear-map">Clear map</button>
+            <button id="reload-map">Reset to the selected scenario</button>
+            <button id="save-custom">Save as new scenario</button>
+            <button id="export-map">Export map</button>
+            <label class="file">Import map <input id="import-map" type="file" accept=".json"></label>
+        </div>
+    </fieldset>
+</section>
+
+<section id="inspector-panel" class="panel">
+    <h2>State inspector</h2>
+    <table id="inspector"><tbody></tbody></table>
+    <p class="hint">"Before" is the previous tick. Changed values are highlighted.</p>
+</section>
+</main>
+
+<section id="history-panel" class="panel">
+    <h2>History <button id="export-trace">Export trace</button></h2>
+    <div id="history-scroll">
+        <table id="history">
+            <thead><tr>
+                <th>Tick</th><th>Position</th><th>Heading</th>
+                <th>Front</th><th>Left</th><th>Right</th><th>Dust</th>
+                <th>State before → after</th><th>Motor</th><th>Cleaner</th>
+                <th>Step timer</th><th>Power-up left</th><th>Map events</th>
+            </tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+
+<script src="world.js"></script>
+<script src="scenarios.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

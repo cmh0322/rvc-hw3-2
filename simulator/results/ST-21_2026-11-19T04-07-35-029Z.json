@@ -1,0 +1,2854 @@
+{
+  "scenario_id": "ST-21",
+  "scenario_name": "Enclosed on all four sides",
+  "result": "PASS",
+  "evaluator": "Codex (automated scenario evaluation; human approval pending)",
+  "related_ticks": "0-100",
+  "observations": "Agent evaluation: 100 scenario-prose command-prefix ticks checked, plus 100-tick invariants. Matched scoped expected behavior. Human final approval remains pending.",
+  "evaluated_at": "2026-11-19T04:07:35.024Z",
+  "ticks_executed": 100,
+  "configuration": {
+    "start": {
+      "x": 4,
+      "y": 4
+    },
+    "heading": "N",
+    "obstacles": [
+      [
+        4,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "dust": []
+  },
+  "history": [
+    {
+      "tick": 0,
+      "direction": null,
+      "clean": null,
+      "previous_state": "Forward",
+      "state": "Forward",
+      "step_ticks_elapsed": -1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 1,
+      "direction": "Stop",
+      "clean": "Stop",
+      "previous_state": "Forward",
+      "state": "Stopping",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 2,
+      "direction": "Stop",
+      "clean": "Stop",
+      "previous_state": "Stopping",
+      "state": "Stopping",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 3,
+      "direction": "Stop",
+      "clean": "Stop",
+      "previous_state": "Stopping",
+      "state": "Stopping",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 4,
+      "direction": "Stop",
+      "clean": "Stop",
+      "previous_state": "Stopping",
+      "state": "Stopping",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 5,
+      "direction": "Stop",
+      "clean": "Stop",
+      "previous_state": "Stopping",
+      "state": "Stopping",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 6,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Stopping",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 7,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 8,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 9,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 10,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 11,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 12,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 13,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 14,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 15,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 16,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 17,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 18,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 19,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 20,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 21,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 22,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 23,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 24,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 25,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 26,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 27,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 28,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 29,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 30,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 31,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 32,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 33,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 34,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 35,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 36,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 37,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 38,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 39,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 40,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 41,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 42,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 43,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 44,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 45,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 46,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 47,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 48,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 49,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 50,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 51,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 52,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 53,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 54,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 55,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 56,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 57,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 58,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 59,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 60,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 61,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 62,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 63,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 64,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 65,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 66,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 67,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 68,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 69,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 70,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 71,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 72,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 73,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 74,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 75,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 76,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 77,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 78,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 79,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 80,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 81,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 82,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 83,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 84,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 85,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 86,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 87,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 88,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 89,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 90,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 91,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 92,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 93,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 94,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 95,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 96,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 0,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 97,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 1,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 98,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 2,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 99,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 3,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    },
+    {
+      "tick": 100,
+      "direction": "Backward",
+      "clean": "Stop",
+      "previous_state": "Backing",
+      "state": "Backing",
+      "step_ticks_elapsed": 4,
+      "remaining_power_up_ticks": 0,
+      "pending_dust": false,
+      "sensors": {
+        "front": 1,
+        "left": 1,
+        "right": 1,
+        "dust": 0
+      },
+      "events": [
+        "backward move blocked at (4,4)"
+      ],
+      "world": {
+        "x": 4,
+        "y": 4,
+        "heading": "N",
+        "turnProgress": 0,
+        "turnDirection": null,
+        "dust": [],
+        "cleaned": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "reviewer": "independent tests/oracle refutation reviewer",
+  "method": "Codex adapter using Trail of Bits criteria; source and retained execution evidence inspected, no build or test rerun",
+  "scope": "P5-05, P5-06, rejected candidates and material source-claim accuracy of sd-analysis.md",
+  "findings": [
+    {
+      "id": "P5-05",
+      "refuted": false,
+      "reasoning": "The strongest attempted counterargument is that passing tests and matching GCC call edges validate the approved SD. It fails: initialization tests explicitly require a pre-Tick Forward motor command and no sensor acquisition, while the approved C13/SD prohibits that output and requires acquisition. The power-up test explicitly requires avoidance-only dust to be forgotten, contradicting C15. CMake passes tests/expected_calls.txt to the checker; the checker parses that file rather than the current SD. That baseline has 26 earlier edges including initialization output and polling. The revised SD call table has 31 edges. Retained fresh execution evidence reports 130 passing CTest entries and 115/115 lines, 36/36 branch outcomes, yet six requirement-probe assertions fail and the revised-call baseline yields 14 missing and 9 unexpected edges. These results are consistent because the old oracles encode superseded behavior.",
+      "spec_refs": [
+        {"path":"docs/requirements_clarifications.md","start":20,"end":23},
+        {"path":"artifacts/SD/structure_chart.md","start":189,"end":219},
+        {"path":"artifacts/SD/structure_chart.md","start":307,"end":307},
+        {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/approval.md","start":3,"end":7}
+      ],
+      "code_refs": [
+        {"path":"tests/test_initialize_rvc.cpp","start":24,"end":34},
+        {"path":"tests/test_main.cpp","start":34,"end":60},
+        {"path":"tests/test_power_up_timer.cpp","start":74,"end":78},
+        {"path":"CMakeLists.txt","start":65,"end":71},
+        {"path":"tests/check_call_hierarchy.cmake","start":33,"end":57},
+        {"path":"tests/expected_calls.txt","start":3,"end":28}
+      ],
+      "execution_refs": [
+        {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/verification/ctest.log","start":297,"end":302},
+        {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/verification/coverage-summary.md","start":23,"end":23},
+        {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/verification/probe-results.json","start":80,"end":144},
+        {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/verification/approved-call-hierarchy.log","start":1,"end":31}
+      ],
+      "corrections": ["Retain as MEDIUM verification-gap finding, not another independent runtime defect.","Phrase 130 as CTest entries (129 GoogleTest cases plus one call-hierarchy check). Coverage is executed-code coverage, not requirement coverage.","The checker itself need not be replaced: its EXPECTED argument can select the approved baseline, as the review already demonstrates. Reconcile its maintained baseline and semantic regression oracles during authorized TDD."]
+    },
+    {
+      "id": "P5-06",
+      "refuted": false,
+      "reasoning": "C16 and the owner confirmation unambiguously resolve Q6. The cited requirement test still labels the behavior an open assumption, module traceability still says one assumption remains, and the implementation test report says Q6 is still open. The test's actual expectations agree with C16, and the actual Forward branch consults only front_blocked. Thus this is stale traceability text, not an unresolved requirement or movement defect.",
+      "spec_refs": [
+        {"path":"docs/requirements_clarifications.md","start":24,"end":24},
+        {"path":"docs/requirements_clarifications.md","start":43,"end":47}
+      ],
+      "code_refs": [
+        {"path":"tests/test_requirements.cpp","start":165,"end":175},
+        {"path":"src/movement_controller.c","start":27,"end":31},
+        {"path":"artifacts/Implementation/module_traceability.md","start":111,"end":111},
+        {"path":"artifacts/Implementation/test_report.md","start":142,"end":142}
+      ],
+      "corrections": ["Retain as LOW optional traceability cleanup. Cite C16 and retain the requirement history; do not create a new business question or change the movement branch.","tests/test_requirements.cpp:4 also omits C12-C16 from its source summary and should be refreshed with the labels when implementation evidence is updated."]
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id":"RC-HARDWARE-C14",
+      "claim":"Missing real suction/mop motor drivers violates C14",
+      "refuted":true,
+      "reasoning":"B6 excludes detailed hardware control implementation; C14 preserves that exclusion. Production forwards an abstract Clean value. The simulator stores and prints that same command rather than independently modeling suction and mop intensities. Consequently physical actuator realization is unverified, but absent real drivers do not establish C14 code divergence.",
+      "spec_refs":[{"path":"docs/preliminary_requirements.md","start":6,"end":6},{"path":"docs/requirements_clarifications.md","start":22,"end":22}],
+      "code_refs":[{"path":"src/put_outputs.c","start":7,"end":10},{"path":"include/hw_interface.h","start":5,"end":6},{"path":"simulator/host/sim_host.c","start":132,"end":135}],
+      "corrections":["Retain boundary limitation without a finding that real actuator control is missing."]
+    },
+    {
+      "id":"RC-READONLY-HIDING",
+      "claim":"State/D3/D4 read-only getters violate information hiding",
+      "refuted":true,
+      "reasoning":"The current SD expressly permits test/simulator queries returning copies. Each of these stores is file-static and each getter returns a scalar value, not a writable alias. They do not create external mutation of controller storage.",
+      "spec_refs":[{"path":"artifacts/SD/structure_chart.md","start":174,"end":181}],
+      "code_refs":[{"path":"src/movement_controller.c","start":71,"end":74},{"path":"src/power_up_timer.c","start":39,"end":42},{"path":"src/step_timer.c","start":38,"end":41}],
+      "corrections":["Do not confuse permitted diagnostic getters with the genuinely absent D1/D2 storage/accessor contract."]
+    },
+    {
+      "id":"RC-BACKING-LIVENESS",
+      "claim":"Backing forever violates eventual Forward",
+      "refuted":true,
+      "reasoning":"C5 explicitly permits another backward step whenever both sides remain blocked; C9 leaves the decision to the sides. No unconditional eventual-Forward obligation exists. The SD explicitly states this limitation. The implemented branch starts another timed Backing step, so this is permitted repeated behavior rather than proof of a deadlock.",
+      "spec_refs":[{"path":"docs/requirements_clarifications.md","start":13,"end":17},{"path":"artifacts/SD/structure_chart.md","start":21,"end":21}],
+      "code_refs":[{"path":"src/movement_controller.c","start":32,"end":57}],
+      "corrections":["Reject unconditional liveness criticism unless a new, sourced environment assumption and property are supplied."]
+    },
+    {
+      "id":"RC-OLD-PASS-CONFORMANCE",
+      "claim":"Passing the existing tests proves revised SD conformance",
+      "refuted":true,
+      "reasoning":"The source-level oracles require behavior the revised SD rejects. The checker reads a caller-selected expectation file, and the maintained CTest selects the old one. Retained requirement-probe failures and approved call-graph mismatches directly disprove this inference even though the old suite passes.",
+      "spec_refs":[{"path":"artifacts/SD/structure_chart.md","start":307,"end":307}],
+      "code_refs":[{"path":"tests/test_initialize_rvc.cpp","start":24,"end":34},{"path":"tests/test_power_up_timer.cpp","start":74,"end":78},{"path":"CMakeLists.txt","start":67,"end":71},{"path":"tests/check_call_hierarchy.cmake","start":33,"end":57}],
+      "corrections":["Report existing-suite execution separately from requirement compliance and from web-based system testing."]
+    }
+  ],
+  "sd_analysis_accuracy": {
+    "material_inaccurate_source_claims":[],
+    "reasoning":"The reviewed source paths support the substantive initialization, event/store, Tick order, movement, output and boundary claims. The call-table and baseline counts agree with retained checker evidence. Approval is supported by this run's approval.md despite historical pending text in the unchanged SD. No material source contradiction found.",
+    "minor_corrections":[
+      {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/c-compliance/sd-analysis.md","start":37,"end":37,"correction":"SC:222 should be SC:221 for the P3.2.1 parameter-passing realization."},
+      {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/c-compliance/sd-analysis.md","start":27,"end":27,"correction":"Qualify 'the only dust state is D3' as 'within src/ production controller code'; simulator host and fake hardware separately hold current sensor values, which do not implement D2 pending semantics."},
+      {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/c-compliance/sd-analysis.md","start":19,"end":19,"correction":"For precision, the simulator host parses four integer fields and converts nonzero to true; its documented and JavaScript-produced protocol uses 0/1. This does not affect the missing ordered-event contract."}
+    ]
+  },
+  "changes_made":"Only this refutation JSON and accompanying Markdown; no production, maintained tests, SD artifacts, or build outputs changed."
+}

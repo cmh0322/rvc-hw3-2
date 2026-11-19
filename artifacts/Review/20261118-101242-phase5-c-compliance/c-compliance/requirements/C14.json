@@ -1,0 +1,84 @@
+{
+  "id": "C14",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 22,
+      "end": 22
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/decide_cleaning.c",
+      "start": 4,
+      "end": 16
+    },
+    {
+      "path": "src/put_outputs.c",
+      "start": 7,
+      "end": 10
+    },
+    {
+      "path": "include/rvc_types.h",
+      "start": 61,
+      "end": 66
+    },
+    {
+      "path": "include/hw_interface.h",
+      "start": 35,
+      "end": 36
+    },
+    {
+      "path": "simulator/host/sim_host.c",
+      "start": 131,
+      "end": 135
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Select Start/Stop/PowerUp abstract commands",
+      "verdict": "implemented",
+      "evidence": "decide_cleaning.c:8–13 maps Avoiding/active/normal to the three commands"
+    },
+    {
+      "claim": "Forward exact command to boundary",
+      "verdict": "implemented",
+      "evidence": "put_outputs.c:9–10 forwards Clean unchanged; hw_interface.h:35–36 declares abstract Cleaner"
+    },
+    {
+      "claim": "Physical suction/mop intensity realization",
+      "verdict": "undecidable",
+      "evidence": "B6 excludes hardware implementation. Simulator records Clean enum and cleaned cells, not separate actuator intensity."
+    }
+  ],
+  "paths_walked": [
+    "Derive Movement Status → Track Power-Up → Decide Cleaning → Put Outputs → drive_cleaner(Clean). No physical mopping driver inferred; semantics inherited from DD/approved SD."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/decide_cleaning.c",
+        "src/put_outputs.c",
+        "include/rvc_types.h",
+        "include/hw_interface.h",
+        "simulator/host/sim_host.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_decide_cleaning.cpp",
+    "tests/test_outputs.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [
+    "Real-world environment/physical actuator realization is outside audited software scope."
+  ],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

@@ -119,3 +119,24 @@
 - Measure and report test coverage.
 - Do not proceed when required tests fail.
 - Execute system tests using a web-based RVC simulator.
+
+## Codex Verification Routing
+
+For requested RVC review, compliance, or verification work, read
+`docs/verification/review-contract.md` and choose the project adapter by role:
+
+- `rvc-bmad-review`: overall requirements/SA/SD review using BMAD and the SASD lens.
+- `rvc-speckit-review`: requirements quality and cross-artifact traceability using
+  `.specify/rvc-review-map.toml`; this adapts Spec Kit to existing SASD documents.
+- `rvc-superpowers-verify`: validate review findings, implement authorized fixes
+  with TDD, and record fresh verification evidence.
+- `rvc-c-compliance`: approved SASD requirements/interfaces versus C11 implementation,
+  using Trail of Bits criteria and independent refutation when available.
+- `rvc-fsm-verify`: SPIN modeling and property checks for the Movement Controller FSM.
+
+Use these adapters for this project rather than replacing the SASD workflow with
+a new BMAD/Spec Kit product workflow. Review-only requests do not authorize source
+changes. Treat Q6 as resolved by owner-confirmed C16, preserve phase approval gates, and distinguish
+document review, code compliance, executed tests, and model-checking results.
+Project adapters and BMAD team overrides are maintained separately from installed
+upstream skill files so tool updates do not erase project-specific review rules.

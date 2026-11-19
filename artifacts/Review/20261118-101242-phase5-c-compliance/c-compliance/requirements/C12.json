@@ -1,0 +1,108 @@
+{
+  "id": "C12",
+  "verdict": "partial",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 20,
+      "end": 20
+    },
+    {
+      "path": "artifacts/SA/process_specification.md",
+      "start": 38,
+      "end": 40
+    },
+    {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 13,
+      "end": 23
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/initialize_rvc.c",
+      "start": 8,
+      "end": 14
+    },
+    {
+      "path": "src/main.c",
+      "start": 12,
+      "end": 17
+    },
+    {
+      "path": "src/get_inputs.c",
+      "start": 8,
+      "end": 16
+    },
+    {
+      "path": "src/detect_obstacle.c",
+      "start": 6,
+      "end": 14
+    },
+    {
+      "path": "src/detect_dust.c",
+      "start": 6,
+      "end": 8
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Every Controller invocation reads all four before decision",
+      "verdict": "implemented",
+      "evidence": "get_inputs.c:11–14 and detect_obstacle.c:10–12; no uninitialized automatic input fields used"
+    },
+    {
+      "claim": "Approved initial readiness before first Tick delivery",
+      "verdict": "absent",
+      "evidence": "initialize_rvc.c:8–13 performs no reads; main.c:15 waits for first Tick before polling"
+    },
+    {
+      "claim": "Distinguish actual initial sample from unreceived field",
+      "verdict": "absent",
+      "evidence": "No validity/readiness/initial acquisition API exists in src/include; reviewed polling path and absence-searches.json"
+    }
+  ],
+  "paths_walked": [
+    "main → initialize_rvc(no reads) → wait_for_tick → controller → get_inputs → four reads → decide_actions. Reads before decision do not implement pre-Tick readiness. Audit probe records0 pre-wait reads vs4."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/initialize_rvc.c",
+        "src/main.c",
+        "src/get_inputs.c",
+        "src/detect_obstacle.c",
+        "src/detect_dust.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    },
+    {
+      "pattern": "pending|receive_input|InputEvent|InputMode|dispatch|inputs_ready|sensor_store|reset_sensor|get_dust|get_obstacle",
+      "scope": [
+        "src",
+        "include",
+        "tests",
+        "simulator/host"
+      ],
+      "result": "See c-compliance/absence-searches.json; no production event/readiness/pending enforcement. Input path read in full, including current Boolean forwarding."
+    }
+  ],
+  "divergence": {
+    "severity": "MEDIUM",
+    "scenario": "At entry to first wait_for_tick, no actual initial sample has been acquired.",
+    "consequence": "Approved initialization boundary/readiness contract is absent. Do not allege uninitialized local values in Controller.",
+    "minimal_fix": "Acquire Initial Inputs + Inputs Ready with four valid flags and initial boundary mode."
+  },
+  "tests_reviewed": [
+    "tests/test_main.cpp",
+    "tests/test_initialize_rvc.cpp",
+    "tests/test_controller.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

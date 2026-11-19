@@ -1,0 +1,88 @@
+{
+  "status": "failed",
+  "started_utc": "2026-11-18T00:11:06.470627+00:00",
+  "commands": [
+    {
+      "stage": "spin-version",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-V"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler-version",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+      "exit_code": 0
+    },
+    {
+      "stage": "generate",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-a",
+        "model.pml"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+      "exit_code": 0
+    },
+    {
+      "stage": "compile",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "-O2",
+        "-o",
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08\\pan.exe",
+        "pan.c"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+      "exit_code": 0
+    },
+    {
+      "stage": "search",
+      "argv": [
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08\\pan.exe",
+        "-m100000"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+      "exit_code": 0
+    },
+    {
+      "stage": "replay",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-t",
+        "-p",
+        "-g",
+        "-l",
+        "-k",
+        "model.pml.trail",
+        "model.pml"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\reach-T08",
+      "exit_code": 0
+    }
+  ],
+  "scope": "one property/check on the supplied model only",
+  "ltl": null,
+  "depth": 100000,
+  "fairness": "none",
+  "search": "full-state",
+  "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\reach-T08.pml",
+  "model_sha256": "fe7fc4e1c68fc1a92d95c1826b916991d357ef524cf7232cf3c485def1bd944f",
+  "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+  "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+  "errors": 1,
+  "stored_states": "117",
+  "transitions": "1269",
+  "reason": "SPIN found a counterexample; classify against model and source requirements",
+  "trails": [
+    "model.pml.trail"
+  ],
+  "replay_ok": true,
+  "finished_utc": "2026-11-18T00:11:13.118158+00:00"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "B3",
+  "verdict": "implemented",
+  "confidence": "high for the B3 Tick-level command sequence; not a blanket verdict on related refinements or revised SD",
+  "spec_refs": [
+    {"path":"docs/preliminary_requirements.md","start":3,"end":3},
+    {"path":"docs/requirements_clarifications.md","start":9,"end":24},
+    {"path":"artifacts/SA/process_specification.md","start":425,"end":440},
+    {"path":"artifacts/SA/process_specification.md","start":516,"end":577},
+    {"path":"artifacts/SA/DFD/dfd_level_4_fsm.md","start":65,"end":91},
+    {"path":"artifacts/SA/data_dictionary.md","start":102,"end":147},
+    {"path":"artifacts/SD/structure_chart.md","start":149,"end":159},
+    {"path":"artifacts/SD/structure_chart.md","start":247,"end":288},
+    {"path":"artifacts/SD/transform_analysis.md","start":179,"end":192}
+  ],
+  "code_refs": [
+    {"path":"src/movement_controller.c","start":13,"end":68},
+    {"path":"src/step_timer.c","start":10,"end":35},
+    {"path":"src/assess_obstacle_situation.c","start":8,"end":16},
+    {"path":"src/decide_actions.c","start":17,"end":22},
+    {"path":"src/derive_movement_status.c","start":8,"end":12},
+    {"path":"src/decide_cleaning.c","start":8,"end":13},
+    {"path":"src/put_outputs.c","start":7,"end":10},
+    {"path":"src/issue_movement_output.c","start":6,"end":17}
+  ],
+  "subclaims": [
+    {"claim":"Front-only obstacle entry while Forward, as resolved by C16","verdict":"implemented","evidence":"src/assess_obstacle_situation.c:8-16; src/movement_controller.c:27-31"},
+    {"claim":"Stop moving and cleaning on entry and keep cleaning stopped throughout avoidance","verdict":"implemented","evidence":"src/movement_controller.c:13-18; src/derive_movement_status.c:8-12; src/decide_cleaning.c:8-13; src/put_outputs.c:9-10"},
+    {"claim":"Turn toward the selected open side after five stopped ticks, with right priority and five turn ticks","verdict":"implemented","evidence":"src/assess_obstacle_situation.c:10-16; src/movement_controller.c:24-58; src/step_timer.c:10-29; include/rvc_types.h:77-81"},
+    {"claim":"Either completed turn resumes Forward and cleaning in the same Tick","verdict":"implemented","evidence":"src/movement_controller.c:33-35; src/decide_actions.c:17-22; src/decide_cleaning.c:10-13; src/issue_movement_output.c:6-17"}
+  ],
+  "paths_walked": [
+    "main -> initialize_rvc -> reset_movement_controller -> reset_step_timer; initialization also issues a Forward output (related C13 deviation)",
+    "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle -> assess_obstacle_situation",
+    "controller -> decide_actions -> movement_controller -> advance_step_timer/start_step_timer; front/side branches, turn completion, backing/repeated backing, reset",
+    "decide_actions -> derive_movement_status -> track_power_up -> decide_cleaning -> put_outputs -> issue_movement_output -> drive_motor; put_outputs -> drive_cleaner",
+    "simulator/host/sim_host.c:85-136 supplies sensor tuples and records output; CMakeLists.txt:31-36,97-99 includes the same production sources"
+  ],
+  "searched": [
+    {"pattern":"B3|Stopping|Turning|Turn|T2|T4|T5|T12|T14|Avoiding","scope":"artifacts/SA, relevant tests and simulator/host/sim_host.c","result":"Located movement transitions, cleaning contracts, timing and both-turn/recovery assertions."},
+    {"pattern":"reset_movement_controller|movement_controller\\(|decide_cleaning\\(|drive_cleaner|drive_motor|wait_for_tick|receive_input|dispatch","scope":"src, include, simulator/host, tests/test_main.cpp","result":"Confirmed callers, reset and output paths; no alternate ordered-event dispatcher found."},
+    {"pattern":"GLOB RVC_SOURCES|add_library\\(rvc_control|add_executable\\(rvc_sim_host|C_STANDARD|add_executable\\(rvc_tests","scope":"CMakeLists.txt","result":"C11 source library and simulator include the same production implementations; no alternate B3 movement source selection."}
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_requirements.cpp:21-59,120-125,154-176",
+    "tests/test_movement_controller.cpp:68-136,176-261",
+    "tests/test_decide_cleaning.cpp:9-26",
+    "tests/test_outputs.cpp:31-80",
+    "tests/test_controller.cpp:17-70",
+    "tests/rvc_system_fixture.h:14-18 (discards initialization outputs)"
+  ],
+  "test_execution": "notRun-by-reviewer",
+  "open_questions": [],
+  "limitations": [
+    "B3 command sequence only: initialization output and first-sample/ordered-event defects are explicitly identified for C12/C13/SD reviews and are not certified by this verdict.",
+    "C15 remembered-dust restart is separate and not established by this B3 verdict.",
+    "Physical actuator behavior is outside B6. Tests were read, not executed; no build or model checking was run.",
+    "Q6 test comments are historical; C16 resolves the requirement."
+  ],
+  "reviewed_at": "2026-11-18T10:14:26+09:00",
+  "git_head": "dea14b590b5246e1889119fc9040c5df496bd987",
+  "working_tree": "dirty; inspected current working requirements/SA/SD and production/test files"
+}

@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "started_utc": "2026-11-18T00:10:38.940897+00:00",
+  "commands": [
+    {
+      "stage": "spin-version",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-V"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler-version",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+      "exit_code": 0
+    },
+    {
+      "stage": "generate",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-a",
+        "model.pml"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+      "exit_code": 0
+    },
+    {
+      "stage": "compile",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "-O2",
+        "-o",
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress\\pan.exe",
+        "pan.c"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+      "exit_code": 0
+    },
+    {
+      "stage": "search",
+      "argv": [
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress\\pan.exe",
+        "-m100000",
+        "-a",
+        "-N",
+        "stop_progress"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\stop_progress",
+      "exit_code": 0
+    }
+  ],
+  "scope": "one property/check on the supplied model only",
+  "ltl": "stop_progress",
+  "depth": 100000,
+  "fairness": "none",
+  "search": "full-state",
+  "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\stop_progress.pml",
+  "model_sha256": "b0a7c766afa963609fcefa78abc1fc997133e7672d6408fc4b4a966e4826cce6",
+  "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+  "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+  "errors": 0,
+  "stored_states": "177",
+  "transitions": "2665",
+  "reason": "Configured check completed with zero reported errors; model fidelity is separate",
+  "finished_utc": "2026-11-18T00:10:45.457271+00:00"
+}

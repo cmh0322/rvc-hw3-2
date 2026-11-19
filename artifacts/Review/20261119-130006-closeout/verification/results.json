@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-19T13:07:52.115035+09:00",
+  "changed_baseline_inputs": [
+    "artifacts/SA/DFD/dfd_level_3.md",
+    "artifacts/SA/process_specification.md"
+  ],
+  "unchanged_other_inputs": 82,
+  "exact_reference_only_edits": 2,
+  "diagrams_unchanged": true,
+  "P2-I01": "resolved",
+  "scenario_evaluations": 21,
+  "agent_PASS": 21,
+  "agent_FAIL": 0,
+  "ticks_via_UI_each": 100,
+  "scenario_specific_prefix_ticks": 533,
+  "basic_invariant_ticks": 2100,
+  "evaluator": "Codex (automated-agent)",
+  "human_approval": "pending",
+  "git_diff_check": 0,
+  "C_tests": "notRerun; production/tests unchanged vs Phase6",
+  "SPIN": "notRerun; only summary references changed"
+}

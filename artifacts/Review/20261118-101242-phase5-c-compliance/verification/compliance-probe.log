@@ -1,0 +1,10 @@
+{"id":"C13.initial_motor_commands","expected":0,"actual":1,"passes":false}
+{"id":"C13.initial_clean_commands","expected":0,"actual":0,"passes":true}
+{"id":"C12.initial_actual_sensor_reads","expected":4,"actual":0,"passes":false}
+{"id":"C15.avoidance_only_dust_return_clean","expected":2,"actual":0,"passes":false}
+{"id":"C15.avoidance_only_dust_return_remaining","expected":4,"actual":0,"passes":false}
+{"id":"C15.pending_overrides_paused_remaining","expected":4,"actual":2,"passes":false}
+{"id":"C15.observed_true_false_before_tick","expected":2,"actual":0,"passes":false}
+{"id":"C11.no_new_dust_resumes_remaining","expected":2,"actual":2,"passes":true}
+{"id":"C16.side_only_forward","expected":0,"actual":0,"passes":true}
+{"id":"C16.side_only_clean","expected":0,"actual":0,"passes":true}

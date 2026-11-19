@@ -1,0 +1,69 @@
+{
+  "reviewer": "independent startup refutation reviewer",
+  "method": "Codex adapter using Trail of Bits criteria; native Workflow runtime unavailable",
+  "execution": "read-only source/document analysis; no builds or tests executed by this reviewer",
+  "findings": [
+    {
+      "id": "P5-01",
+      "refuted": false,
+      "verdict": "contradicted",
+      "reasoning": "C13 explicitly forbids Direction at Power On. Main calls initialize_rvc before wait_for_tick. Initialization resets movement and D3, obtains MOVEMENT_COMMAND_FORWARD from reset_movement_controller, then calls issue_movement_output, which unconditionally calls drive_motor with DIRECTION_FORWARD. Neither reset callee reads sensors. This is an emitted software boundary command, not merely setting the hidden Forward state. No initialization call reaches drive_cleaner, so the no-Clean part is satisfied. The first subsequent Tick does read all four sensors before deciding and can choose Stop, but cannot undo the earlier command.",
+      "spec_refs": [
+        {"path":"docs/requirements_clarifications.md","start":21,"end":21},
+        {"path":"artifacts/SA/DFD/dfd_level_4_fsm.md","start":63,"end":65},
+        {"path":"artifacts/SD/structure_chart.md","start":23,"end":23},
+        {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/approval.md","start":3,"end":7}
+      ],
+      "code_refs": [
+        {"path":"src/main.c","start":10,"end":17},
+        {"path":"src/initialize_rvc.c","start":8,"end":14},
+        {"path":"src/movement_controller.c","start":63,"end":69},
+        {"path":"src/issue_movement_output.c","start":5,"end":17},
+        {"path":"src/controller.c","start":8,"end":13}
+      ],
+      "corrections": [
+        "Retain the finding as a C13 command-timing contradiction. Do not describe physical motion or collision as observed: B6 excludes hardware implementation and this reviewer executed no probe.",
+        "Keep no initialization Clean output as a satisfied subclaim rather than implying that both output types violate C13.",
+        "The SD text still says approval pending, but the current revision is explicitly approved by this run's approval.md; that stale status sentence does not refute the contract."
+      ]
+    },
+    {
+      "id": "P5-02",
+      "refuted": false,
+      "verdict": "partial",
+      "reasoning": "There is no initial-acquisition or readiness step in the actual main/initialization call chain. Initialization only resets movement/D4 and D3 and emits movement; Main then waits for the first Tick. All four read calls occur under controller -> get_inputs after wait_for_tick returns. Thus the approved SD/SA boundary requiring actual initial samples before enabling/delivering the first Tick is absent. The strongest counterargument is real: C12's phrase 'before processing the first Tick' read alone could include the input phase inside controller, and the current code fully assigns its Inputs before decide_actions. Therefore this is not proof of uninitialized local use or treating an unreceived value as FALSE during a control decision. C12 is partial against its SA and approved SD realization; the specific pre-Tick acquisition/readiness sub-obligation is absent.",
+      "spec_refs": [
+        {"path":"docs/requirements_clarifications.md","start":20,"end":20},
+        {"path":"artifacts/SA/process_specification.md","start":37,"end":40},
+        {"path":"artifacts/SA/process_specification.md","start":50,"end":56},
+        {"path":"artifacts/SD/structure_chart.md","start":17,"end":23},
+        {"path":"artifacts/SD/structure_chart.md","start":192,"end":198},
+        {"path":"artifacts/Review/20261118-101242-phase5-c-compliance/approval.md","start":3,"end":7}
+      ],
+      "code_refs": [
+        {"path":"src/main.c","start":10,"end":17},
+        {"path":"src/initialize_rvc.c","start":8,"end":14},
+        {"path":"src/controller.c","start":8,"end":13},
+        {"path":"src/get_inputs.c","start":8,"end":16},
+        {"path":"src/detect_obstacle.c","start":6,"end":14},
+        {"path":"src/detect_dust.c","start":6,"end":8},
+        {"path":"include/hw_interface.h","start":17,"end":30},
+        {"path":"simulator/host/sim_host.c","start":84,"end":103}
+      ],
+      "searched": [
+        {
+          "scope":"src include CMakeLists.txt simulator/host",
+          "pattern":"inputs_ready|Inputs Ready|acquire_initial|Acquire Initial|initial.*sensor|sensor.*valid|reset_sensor|receive_input|INITIAL_SENSORS|InitialSensors|read_(front|left|right|dust)_sensor|initialize_rvc",
+          "result":"Only old initialization and four polling sensor declarations/implementations/calls matched; no acquisition/readiness/event adapter symbol or validity guard. Full main, initialize_rvc, controller, get_inputs, sensor callees, reset callees, hardware header and simulator input path were read. CMake builds src/*.c with no alternative initialization implementation."
+        }
+      ],
+      "corrections": [
+        "Use partial for the overall C12 verdict; reserve absent for the explicit initial-acquisition/readiness sub-obligation. It is inaccurate to say all sensor reading is absent.",
+        "State the distinction between Tick delivery and the decision/output phase. The approved SA/SD resolves the boundary more precisely than C12's isolated wording.",
+        "Four validity flags and an InitialSensors event adapter are approved SD implementation obligations, not independently new business requirements inferred from C12.",
+        "Do not claim current Tick decisions use uninitialized C locals, or a simulated default FALSE sensor value is consumed before the first input line; the simulator obtains its first four values within wait_for_tick before Controller runs.",
+        "Keep this finding about initialization timing/readiness; ordered later input delivery and event loss belong to P5-04."
+      ]
+    }
+  ]
+}

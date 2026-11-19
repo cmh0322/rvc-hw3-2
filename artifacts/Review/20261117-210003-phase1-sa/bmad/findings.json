@@ -1,0 +1,98 @@
+[
+  {
+    "id": "ADV-01",
+    "lens": "adversarial",
+    "location": "artifacts/SA/DFD/dfd_level_2.md:42,132-133; artifacts/SA/process_specification.md:358-385,542; artifacts/SA/data_dictionary.md:166-174,205-213",
+    "trigger_condition": "C9 적용 후에도 상위 설명과 일부 PSPEC이 이전 Obstacle Situation 형식과 전방 의존 조건을 사용한다.",
+    "guard_snippet": "Process 3.2의 Clear/All Blocked 비교와 3.2.1의 네 값 주석을 Front Blocked + Side Situation 레코드로 갱신한다. 3.1은 항상 좌우를 분류하고 Q6는 Forward 상태의 회피 진입 조건에 적용한다고 통일한다. 근거는 docs/requirements_clarifications.md:17,30 및 process_specification.md:303-325,580-595이다.",
+    "potential_consequence": "후진 종료 시 전방이 비고 좌우가 막힌 입력에서, 이전 설명은 좌우 정보를 무시하게 하지만 C5·C9와 T8은 후진 반복을 요구한다. 같은 SA에서 서로 다른 구현과 검증 모델을 도출할 수 있다."
+  },
+  {
+    "id": "ADV-02",
+    "lens": "adversarial",
+    "location": "artifacts/SA/process_specification.md:45,272; artifacts/SA/DFD/dfd_level_1.md:99-111; artifacts/SA/DFD/dfd_level_2.md:122-131; docs/requirements_clarifications.md:18-19,28-29",
+    "trigger_condition": "확정된 Q4·Q5가 현재 상위 SA 문서에서 계속 미해결 질문으로 표시된다.",
+    "guard_snippet": "Q4는 C10, Q5는 C11로 해결되었음을 Level 1·2와 Process 0·4에 반영한다. 과거 분석 내용을 보존한다면 당시 버전임을 표시하고 현재 유효한 처리 규칙으로 연결한다. process_specification.md:426-455와 dfd_level_3.md:142에는 이미 확정 규칙이 있다.",
+    "potential_consequence": "파워업 재시작과 회피 중 잔여 틱 보존이 확정 규칙인지 추가 결정이 필요한 사항인지 문서마다 달라져 구현·추적성 검토의 기준이 흔들린다."
+  },
+  {
+    "id": "ADV-03",
+    "lens": "adversarial",
+    "location": "artifacts/SA/DFD/dfd_level_1.md:69-70; artifacts/SA/process_specification.md:103-115,139-149,428-455,697; artifacts/SA/data_dictionary.md:148-164,186-203",
+    "trigger_condition": "첫 Tick 전에 D1·D2가 채워지는 조건과 D3의 초기값이 SA에 정의되어 있지 않다.",
+    "guard_snippet": "초기 센서 샘플 확보와 첫 Tick 처리 순서, D1·D2 초기 상태, D3 초기값을 명세한다. 후보인 D3=0과 센서 샘플 이후 첫 Tick 처리는 승인된 초기화 규칙과 대조하여 확정한다. 검색 범위는 요구사항 두 파일과 artifacts/SA 전체이며 initial/initialize/startup/power.on/before.*tick 검색에서 D4=Idle 및 FSM=Forward만 확인된다.",
+    "potential_consequence": "D3 값이 없는 첫 Forward Tick에서 먼지가 FALSE이면 Power-Up Active를 결정할 수 없다. 센서 입력보다 Tick이 먼저 도착할 때 D1·D2를 읽는 결과도 결정되지 않아 B2·B5·C3의 시작 동작을 재현할 수 없다."
+  },
+  {
+    "id": "ADV-04",
+    "lens": "adversarial",
+    "location": "artifacts/SA/DFD/dfd_level_4_fsm.md:25,51,63,100; artifacts/SA/DFD/dfd_level_3.md:69-75; artifacts/SA/process_specification.md:241-242,572-576",
+    "trigger_condition": "T0가 Power On에서 Forward 명령을 내지만 Controller 입력 계약과 청소 실행 조건에는 해당 이벤트가 없다.",
+    "guard_snippet": "T0의 Power On이 초기 상태 표기인지 실제 출력 명령을 발생시키는 초기화 이벤트인지 명시한다. 실제 명령이면 입력·초기화 계약과 첫 Clean 명령 시점을 연결하고, 초기 상태 표기이면 액션 표기를 그 의미에 맞춘다. B1·B2 및 첫 Tick 처리 규칙을 함께 확인한다.",
+    "potential_consequence": "FSM을 그대로 실행하면 첫 Tick 전부터 Forward 명령이 발생하지만 청소 처리는 Tick에만 실행된다. 초기 상태만 설정하는 구현과 즉시 이동하는 구현이 모두 같은 문서를 근거로 만들어질 수 있다."
+  },
+  {
+    "id": "ADV-05",
+    "lens": "adversarial",
+    "location": "docs/preliminary_requirements.md:1; artifacts/SA/event_list.md:16,28; artifacts/SA/data_dictionary.md:108-116; artifacts/SA/process_specification.md:485-500",
+    "trigger_condition": "B1의 mopping이 Clean 명령의 어떤 동작에 포함되는지 SA의 출력 의미에 정의되어 있지 않다.",
+    "guard_snippet": "Clean의 Start/Stop/Power Up이 청소와 물걸레질에 각각 미치는 효과를 명시한다. 기존 Cleaner 인터페이스가 두 기능을 함께 수행한다면 그 계약을 Data Dictionary와 Process 4.2에 연결한다. 검색 범위는 요구사항 두 파일과 artifacts/SA 전체이며 mop/mopp 검색 결과는 원본 B1 한 곳이다.",
+    "potential_consequence": "Start와 Power Up의 의미를 흡입 청소만으로 해석해도 현재 출력 정의를 충족하므로, B1의 물걸레질 요구사항 충족 여부를 SA만으로 판단할 수 없다."
+  },
+  {
+    "id": "ADV-06",
+    "lens": "adversarial",
+    "location": "artifacts/SA/DFD/dfd_level_2.md:134; artifacts/SA/process_specification.md:428-455; docs/requirements_clarifications.md:18-19",
+    "trigger_condition": "회피 중에만 감지된 먼지를 처리하는 정책이 미확정인데 Process 4.1은 해당 감지를 무시하는 동작을 선택한다.",
+    "guard_snippet": "이미 Level 2에서 기록한 미결 사항에 추적 가능한 질문 ID와 결정 상태를 부여한다. 회피 중 신규 먼지 및 일시 정지된 파워업 중 재감지의 처리 정책을 확인하고 C10·C11과 연결한다.",
+    "potential_consequence": "Avoiding 동안 Dust가 TRUE였다가 Forward 복귀 전에 FALSE가 되면 신규 파워업이 시작되지 않는다. 기존 잔여 틱이 있으면 그대로 재개된다. B5·C10·C11만으로 이 선택의 적합성을 확정할 수 없다."
+  },
+  {
+    "id": "EDGE-01",
+    "lens": "edge-case-hunter",
+    "location": "artifacts/SA/DFD/dfd_level_1.md:66-71; artifacts/SA/process_specification.md:99-114,140-152,305-306,439-441; artifacts/SA/data_dictionary.md:148-164",
+    "trigger_condition": "첫 Tick이 센서 초기 수신보다 먼저 오면 D1·D2의 읽을 값이 정의되지 않는다.",
+    "guard_snippet": "B3·B4·B5 기준으로 첫 Tick 전 센서 초기화 조건 또는 미수신 처리 규칙을 승인받아 명시한다. SA 전체에서 initial/init/first/before 검색 시 D1·D2 초기값이나 첫 샘플 선행 조건을 찾지 못했다.",
+    "potential_consequence": "초기 장애물 판정과 청소 명령을 SA만으로 결정할 수 없다."
+  },
+  {
+    "id": "EDGE-02",
+    "lens": "edge-case-hunter",
+    "location": "artifacts/SA/process_specification.md:428-455,697; artifacts/SA/data_dictionary.md:186-203",
+    "trigger_condition": "첫 전진 Tick에 먼지가 없으면 초기값 없는 D3를 비교하고 감소시킨다.",
+    "guard_snippet": "B5·C3에 맞게 D3의 초기 Remaining Power-Up Ticks = 0을 명세한다. SA 전체 초기화 검색에서 D4 = Idle은 발견됐지만 D3 초기값은 발견되지 않았다.",
+    "potential_consequence": "먼지 감지 전에도 파워업하는 해석을 배제할 수 없다."
+  },
+  {
+    "id": "SASD-01",
+    "lens": "sasd",
+    "location": "artifacts/SA/DFD/dfd_level_2.md:42,133; artifacts/SA/process_specification.md:191,358-389,542; artifacts/SA/data_dictionary.md:166-174,205-213; artifacts/SA/process_specification.md:303-325,578-595",
+    "trigger_condition": "C9 반영이 일부 문서에만 적용되어 Obstacle Situation/Situation Signal의 자료형과 전방이 비었을 때의 좌우 처리 규칙이 서로 충돌한다.",
+    "guard_snippet": "Level 2의 3.1 책임, Process 3·3.2·3.2.1 설명과 의사코드를 Front Blocked + Side Situation 레코드로 일치시킨다. Q6는 Forward 상태의 회피 진입에만 적용하고 Backing 종료는 C9에 따라 좌우만 판단한다고 명시한다. 과거 의사코드를 보존하려면 현재 명세에서 분리하고 superseded로 표시한다.",
+    "potential_consequence": "후진 종료 때 front=FALSE, left=TRUE, right=TRUE인 C9 입력을 기존 Clear 열거값으로 축약하면 좌우 정보가 소실되어 후진 반복 대신 전진할 수 있다. 새 레코드를 보존해도 기존 Process 3.2의 enum 비교는 정의되지 않는다. 하위 FSM과 최신 3.1은 올바르게 개정되어 있으므로 구현 결함 판정이 아니라 SA 내부 계약 불일치이다."
+  },
+  {
+    "id": "SASD-02",
+    "lens": "sasd",
+    "location": "artifacts/SA/process_specification.md:45,256-272; artifacts/SA/DFD/dfd_level_1.md:98-111; artifacts/SA/DFD/dfd_level_2.md:121-131; docs/requirements_clarifications.md:18-19,28-29; artifacts/SA/process_specification.md:425-459; artifacts/SA/DFD/dfd_level_3.md:142",
+    "trigger_condition": "C10·C11이 확정되고 Process 4.1에 반영됐지만 상위 SA에는 Q4·Q5가 여전히 미해결로 표시되어 있다.",
+    "guard_snippet": "Level 0·1·2의 현재 Open Issues 및 Process 4 Relevant Requirements를 Q4→C10 재시작, Q5→C11 잔여 틱 보존으로 갱신하고 최신 4.1을 연결한다. 과거 질문 자체는 이력으로 보존하되 현재 미결정과 구별한다.",
+    "potential_consequence": "상위 SA만 사용하는 후속 설계·테스트가 이미 확정된 재감지 무시 또는 회피 시 취소를 허용 가능한 선택지로 오해할 수 있다. 최신 4.1에는 두 결정이 구현되어 있으므로 동작 누락이 아니라 확정 상태와 명세 전파의 결함이다."
+  },
+  {
+    "id": "SASD-03",
+    "lens": "sasd",
+    "location": "artifacts/SA/data_dictionary.md:186-203; artifacts/SA/process_specification.md:428-455,697; artifacts/SA/DFD/dfd_level_2.md:94",
+    "trigger_condition": "첫 Forward Tick에 Dust Detected=FALSE이면 Process 4.1이 먼저 읽는 D3의 초기값이 SA에 정의되어 있지 않다.",
+    "guard_snippet": "B5·C3에 따른 초기 비활성 상태를 D3=0으로 명시하고 초기화 책임·첫 Tick 이전 적용 시점을 정의한다. 이후 단계에서 승인된 초기화 근거가 있는지 확인하여 SA와 연결한다.",
+    "potential_consequence": "D3의 허용 범위 0–5만으로는 최초 Clean=Start와 Clean=Power Up을 구분할 수 없어 요구사항 기반 최초 실행과 모델 초기 상태가 결정되지 않는다. artifacts/SA 전체에서 Initial/initial/initializ 및 D3를 검색했으며 D4=Idle은 명시됐지만 D3 초기값은 발견되지 않았다. 실제 C 초기화 결함은 이 검토 범위에서 판정하지 않는다."
+  },
+  {
+    "id": "SASD-04",
+    "lens": "sasd",
+    "location": "artifacts/SA/DFD/dfd_level_1.md:70-71; artifacts/SA/process_specification.md:100-115,140-153,305,428; artifacts/SA/DFD/dfd_level_3.md:125-131; artifacts/SA/data_dictionary.md:148-164",
+    "trigger_condition": "센서 입력은 Tick과 독립적으로 도착하지만 첫 Tick 전에 D1·D2가 유효해야 한다는 전제와 미수신 필드의 초기 처리 규칙이 없다.",
+    "guard_snippet": "첫 Tick 전에 모든 센서값을 확보한다는 입력 계약 또는 미수신 데이터 처리 정책을 결정해 명시한다. Process 1의 단일 센서 입력 수신 시 나머지 필드 갱신 방식과 Tick에서 사용할 스냅샷 기준도 그 계약에 맞춘다.",
+    "potential_consequence": "첫 Tick이 센서 수신보다 먼저 오거나 첫 센서 하나만 도착한 경우, 3.1·4.1이 읽는 값과 Process 1이 함께 기록하는 나머지 필드가 정의되지 않는다. artifacts/SA 전체의 초기화·D1·D2 정의를 확인했지만 유효성 전제나 초기값은 없었다. B6의 하드웨어 구현 제외와 별개인 제어 입력 계약의 모호함이며 임의 기본값을 요구사항으로 추가하면 안 된다."
+  }
+]

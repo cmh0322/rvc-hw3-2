@@ -2,7 +2,7 @@
 
 Current coverage: DFD Levels 0-3.
 
-Requirement references: B1-B7 are bullets of `docs/preliminary_requirements.md`, by order. C1-C11 and Q1-Q6 are entries of `docs/requirements_clarifications.md`. Q1-Q3 were resolved by C5-C7 on 2026-11-08; earlier levels keep their Q references and note the resolution.
+Requirement references: B1-B7 are bullets of `docs/preliminary_requirements.md`, by order. C1-C16 and Q1-Q6 are entries of `docs/requirements_clarifications.md`. Q1-Q5 are resolved by C5-C7/C10-C11. Q6 is resolved by C16. C12-C15 record the Phase 1 decisions of 2026-11-17. Earlier refinement notes are history; current logic below is normative.
 
 # DFD Level 0
 
@@ -34,44 +34,32 @@ Control the movement and cleaning of the RVC automatically, using obstacle and d
 ### Trigger / Execution Condition
 - Executes on every Tick.
 
-### Processing Logic
-1. Without a front obstacle, go forward while cleaning.
-2. With a front obstacle, stop cleaning and stop moving.
-3. If the right is clear, turn right. If only the left is clear, turn left.
-4. If front, left, and right are all blocked, move backward and then turn aside.
-5. After turning aside, go forward with cleaning.
-6. If dust is detected, power up the cleaning for 5 ticks, then return to normal cleaning.
+### Initialization and input contract
+Initialize the Controller to Forward, D3 to 0 and D4 to Idle, and the Pending Dust Detection flag in D2 to FALSE. Emit no Direction or Clean at Power On (C13). Read all four actual sensor values through Processes 1 and 2 before the first Tick (C12); no unreceived value is assumed FALSE. A TRUE initial dust sample sets the pending flag.
 
-The stop, backward, and turn steps span several ticks. Their sequencing is refined at lower DFD levels and in the Controller FSM. Q1-Q6 remain open and limit that refinement.
+Sensor input receipt and Tick execution are logically serialized. Inputs received before a Tick update the stores before its snapshot; later inputs are processed after that Tick. Process 1 updates the received field, retaining other valid readings. Process 2 records current dust and retains any unconsumed TRUE detection even if a later FALSE arrives.
+
+### Processing Logic
+1. Each Tick uses current state and the valid sensor snapshot, not a stateless front-only decision.
+2. Process 3 sequences the movement under C1-C9. Forward uses the front for avoidance entry (C16); Backing completion uses sides regardless of the front (C9).
+3. Process 4 uses this Tick's Movement Status, D2 and D3. Avoiding stops suction and mopping, preserves remaining power-up ticks, and keeps pending dust. Forward starts/restarts five ticks for pending/current dust, or resumes saved ticks otherwise (C10, C11, C15).
+4. Clean Start enables suction and mopping; Stop disables both; Power Up strengthens suction while mopping stays normal (C14).
 
 ### Pseudocode
 
 ```text
+BEFORE first Tick:
+    initialize state and stores as above
+    obtain all four initial sensor samples through Processes 1 and 2
 ON Tick:
-    IF Front Sensor Input == TRUE THEN
-        Clean = Stop
-        Direction = Stop
-        IF Left Sensor Input == TRUE AND Right Sensor Input == TRUE THEN
-            Direction = Backward
-            turn aside after moving backward          (Q1)
-        ELSE IF Right Sensor Input == FALSE THEN
-            Direction = Turn Right
-        ELSE
-            Direction = Turn Left
-        END IF
-    ELSE
-        Direction = Forward
-        IF Dust Sensor Input == TRUE THEN
-            Clean = Power Up for 5 ticks              (Q4, Q5)
-        ELSE
-            Clean = Start, unless powering up
-        END IF
-    END IF
+    Direction, Movement Status = Process 3 using D1 and persistent movement state
+    Clean = Process 4 using this Movement Status, D2 and D3
 ```
 
+This is a composition of the lower-level contracts, not multiple movement commands on one Tick. Exact ordering is in DFD Level 3; the first Tick may issue Stop rather than Forward when the front is blocked.
+
 ### Relevant Requirements
-- B1, B2, B3, B4, B5, B7
-- C1, C2, C3
+- B1-B7, C1-C16
 
 # DFD Level 1
 
@@ -101,21 +89,19 @@ Interpret the three obstacle sensors and record where obstacles are.
 - When any obstacle sensor input is received.
 
 ### Processing Logic
-1. Read the three sensor inputs.
-2. Store each value as the matching field of Obstacle Location in D1.
+1. Before the first Tick, obtain all three actual obstacle readings (C12).
+2. When an individual sensor input arrives, update only that matching field in D1 and retain the other valid readings. Tick does not run before the initial set is complete.
 
 ### Pseudocode
 
 ```text
-ON Front/Left/Right Sensor Input:
-    Obstacle Location.Front Obstacle = Front Sensor Input
-    Obstacle Location.Left Obstacle  = Left Sensor Input
-    Obstacle Location.Right Obstacle = Right Sensor Input
-    WRITE Obstacle Location TO D1
+ON received obstacle sensor input:
+    UPDATE the matching Front/Left/Right Obstacle field in D1
+    PRESERVE the other fields (all three must be initialized before first Tick, C12)
 ```
 
 ### Relevant Requirements
-- B3, B4, C1
+- B3, B4, C1, C12
 
 ## Process 2: Detect Dust
 
@@ -129,10 +115,11 @@ ON Front/Left/Right Sensor Input:
 | Parent Process | 0 |
 
 ### Purpose
-Interpret the dust sensor and record whether dust is present.
+Record the current dust reading and latch each TRUE detection until Process 4 consumes it on a Forward Tick (C15).
 
 ### Inputs
 - Dust Sensor Input
+- Dust Existence (previous record from D2, including Pending Dust Detection)
 
 ### Outputs
 - Dust Existence (to D2 Dust Existence)
@@ -141,19 +128,22 @@ Interpret the dust sensor and record whether dust is present.
 - When the dust sensor input is received.
 
 ### Processing Logic
-1. Read the dust sensor input.
-2. Store it as Dust Existence in D2.
+1. Before initial sampling, set Pending Dust Detection to FALSE; obtain the actual initial Dust Sensor Input before the first Tick (C12).
+2. Store the current reading as Dust Detected. A TRUE input sets Pending Dust Detection to TRUE; a FALSE input preserves it (C15). Process 4.1 alone consumes it on a Forward Tick.
+3. This input update and Tick consumption are logically serialized, so a new input after consumption is retained for the next Tick.
 
 ### Pseudocode
 
 ```text
 ON Dust Sensor Input:
+    READ only Pending Dust Detection FROM D2
     Dust Existence.Dust Detected = Dust Sensor Input
+    Dust Existence.Pending Dust Detection = Pending Dust Detection OR Dust Sensor Input
     WRITE Dust Existence TO D2
 ```
 
 ### Relevant Requirements
-- B5
+- B5, C12, C15
 
 ## Process 3: Control Movement
 
@@ -181,40 +171,22 @@ Decide the movement of the RVC from the obstacle locations, and tell Process 4 w
 - Executes on every Tick.
 
 ### Processing Logic
-1. Read Obstacle Location from D1.
-2. If there is no front obstacle, go forward and report Forward.
-3. If there is a front obstacle, stop (C2) and report Avoiding.
-4. Then, if the right is clear, turn right (C1). If only the left is clear, turn left.
-5. If front, left, and right are all blocked, move backward, then turn aside (B4).
-6. After turning aside, go forward and report Forward (B3).
-
-Left and right obstacles are used only when there is a front obstacle (Q6 assumption). Steps 3-6 span several ticks; their sequencing and durations are refined at lower levels and limited by Q1-Q3.
+1. Classify both Front Blocked and Side Situation, with right priority, independently of the front (3.1, C1/C9).
+2. Keep the movement state across ticks. Forward with front blocked enters a five-tick Stop (C2/C7); Forward with front clear remains Forward (C16).
+3. On completing Stop or Backing, use the sides: right clear means Turn Right, else left clear means Turn Left, else Backward. Backing ignores the front and can repeat (C5/C9).
+4. Stop, Backing and each Turn last five ticks (C6-C8). Turn completion resumes Forward. Exact timer ordering is specified by 3.2/3.2.2/3.2.4 and Level 4.
+5. Return one Direction and corresponding Movement Status for this Tick. Initialization alone produces no output (C13).
 
 ### Pseudocode
 
 ```text
 ON Tick:
-    READ Obstacle Location FROM D1
-    IF Front Obstacle == FALSE THEN
-        Direction = Forward
-        Movement Status = Forward
-    ELSE
-        Movement Status = Avoiding
-        Direction = Stop                               (C2, Q3)
-        IF Right Obstacle == FALSE THEN
-            Direction = Turn Right                     (C1)
-        ELSE IF Left Obstacle == FALSE THEN
-            Direction = Turn Left
-        ELSE
-            Direction = Backward                       (B4, Q2)
-            turn aside after moving backward           (Q1)
-        END IF
-    END IF
+    Obstacle Situation = Process 3.1(D1)
+    Direction, Movement Status = Process 3.2(Obstacle Situation, persistent state)
 ```
 
 ### Relevant Requirements
-- B2, B3, B4, C1, C2
-- Resolved later: Q1 (C5), Q2 (C6), Q3 (C7). Open: Q6 (assumed)
+- B2, B3, B4, C1, C2, C4-C9, C12, C13; C16
 
 ## Process 4: Control Cleaning
 
@@ -228,7 +200,7 @@ ON Tick:
 | Parent Process | 0 |
 
 ### Purpose
-Decide the cleaning command from the movement status and dust existence, including the 5-tick power-up.
+Decide the cleaning command from the movement status and dust existence, including the 5-tick power-up, remembered dust, and suction/mopping semantics (C14/C15).
 
 ### Inputs
 - Movement Status (from Process 3)
@@ -237,39 +209,28 @@ Decide the cleaning command from the movement status and dust existence, includi
 
 ### Outputs
 - Clean (to Cleaner)
+- Pending Dust Detection (updated flag to D2)
 
 ### Trigger / Execution Condition
-- Executes on every Tick.
+- Executes on every Tick, after the current Movement Status is available.
 
 ### Processing Logic
-1. If Movement Status is Avoiding, stop cleaning (B3).
-2. If Movement Status is Forward, clean (B2). This also resumes cleaning after avoidance (B3).
-3. While moving forward, if dust is detected, power up the cleaning for 5 ticks (B5, C3).
-4. Count Ticks during power-up. After 5 ticks, return to normal cleaning.
+1. Obtain Power-Up Active from Process 4.1 using this Tick's Movement Status and current/pending dust; D3 initially equals 0.
+2. While Avoiding, stop both suction and mopping and preserve D3 and pending dust (C11/C15).
+3. On Forward with pending or current dust, restart five ticks and consume the pending flag (C10/C15). Otherwise resume any saved ticks (C11).
+4. Process 4.2 emits Start, Stop or Power Up with C14's suction/mopping meanings.
 
 ### Pseudocode
 
 ```text
-ON Tick:
-    READ Dust Existence FROM D2
-    IF Movement Status == Avoiding THEN
-        Clean = Stop                                   (B3; power-up count: Q5)
-    ELSE
-        IF Dust Detected == TRUE THEN
-            start power-up of 5 ticks                  (C3; re-detection: Q4)
-        END IF
-        IF power-up active THEN
-            Clean = Power Up
-            decrease remaining power-up ticks
-        ELSE
-            Clean = Start
-        END IF
-    END IF
+ON Tick after Movement Status:
+    Power-Up Active = Process 4.1(Dust Existence, Movement Status, D3)
+    Clean = Process 4.2(Movement Status, Power-Up Active)
 ```
 
 ### Relevant Requirements
-- B1, B2, B3, B5, C3
-- Open: Q4, Q5
+- B1, B2, B3, B5, C3, C10, C11, C13-C15
+- Q4 -> C10 and Q5 -> C11 are resolved; avoidance dust is resolved by C15.
 
 # DFD Level 2
 
@@ -327,7 +288,7 @@ ON Tick:
 
 ### Relevant Requirements
 - B3, B4, C1, C9
-- Assumption: Q6 (while going forward the Controller uses Front Blocked only)
+- C16: while Forward, the Controller uses Front Blocked only for avoidance entry; a clear front means continued forward movement and cleaning.
 
 ## Process 3.2: Decide Movement
 
@@ -355,45 +316,22 @@ Sequence the movement over ticks from the Obstacle Situation and send the Direct
 - Executes on every Tick, after 3.1.
 
 ### Processing Logic
-1. While moving forward with situation Clear, keep going forward and report Forward (B2).
-2. When the situation becomes non-Clear while moving forward, stop first and report Avoiding (B3, C2).
-3. After stopping: if Right Open, turn right (C1); if Left Open, turn left; if All Blocked, move backward (B4).
-4. After moving backward, turn aside (B4; direction and blocked-again case: Q1).
-5. After turning, go forward and report Forward (B3, B4).
-
-The current avoidance step (Forward, Stopping, Turning, Backing) persists across ticks. Its durations are open (Q2, Q3). Obstacles do not disappear (C4), so the situation that caused the stop stays non-Clear until the turn. Level 3 separates this sequencing into the Controller.
+Obstacle Situation is a record: Front Blocked plus Side Situation. Initialize the movement state to Forward without output (C13). On each Tick, advance D4 before taking the Controller transition. In Forward, front blocked enters Stopping and starts D4; otherwise remain Forward. Stopping and Backing retain their action until Step Done. When Done, use only the sides (Right Open -> Turning Right; Left Open -> Turning Left; Sides Blocked -> Backing) and restart D4, including repeated Backing. Turning retains its direction until Done, then selects Forward. C16 applies only to Forward avoidance entry, not side classification or the Backing decision (C9).
 
 ### Pseudocode
 
 ```text
-ON Tick:
-    CASE current step OF
-    Forward:
-        IF Obstacle Situation == Clear THEN
-            Direction = Forward;  Movement Status = Forward
-        ELSE
-            Direction = Stop;     Movement Status = Avoiding;  step = Stopping   (C2)
-        END IF
-    Stopping:                                          (duration: Q3)
-        Movement Status = Avoiding
-        IF Obstacle Situation == Right Open THEN  Direction = Turn Right; step = Turning   (C1)
-        ELSE IF Obstacle Situation == Left Open THEN  Direction = Turn Left; step = Turning
-        ELSE  Direction = Backward; step = Backing    (All Blocked; B4)
-        (Clear is not possible here: obstacles do not disappear, C4)
-    Backing:                                           (duration: Q2)
-        Movement Status = Avoiding
-        Direction = Turn Left or Turn Right; step = Turning                  (Q1)
-    Turning:
-        Direction = Forward;  Movement Status = Forward;  step = Forward     (B3)
-    END CASE
+ON Tick after Process 3.1:
+    Situation Signal = Process 3.2.1(Obstacle Situation)
+    Step Done = Process 3.2.4 advance on Tick
+    Movement Command, optional Start Step Timer = Process 3.2.2(Situation Signal, Step Done)
+    IF Start Step Timer issued THEN Process 3.2.4 sets D4 = 0
+    Direction, Movement Status = Process 3.2.3(Movement Command)
 ```
 
-### Refinement (2026-11-08)
-Q1-Q3 are resolved: Stopping, Backing, and Turning each last 5 ticks (C7, C6, C8). After Backing, the RVC turns right if the right is clear, turns left if only the left is clear, or backs again if left and right are still both blocked (C5). Process 3.2.2 and the Level 4 FSM carry the exact sequencing.
-
 ### Relevant Requirements
-- B2, B3, B4, C1, C2, C4
-- Resolved: Q1 (C5), Q2 (C6), Q3 (C7)
+- B2-B4, C1, C2, C4-C9, C13; C16
+- Exact states/transitions: Process 3.2.2 and Level 4 FSM. Five-tick boundaries: Process 3.2.4.
 
 ## Process 4.1: Track Power-Up
 
@@ -407,7 +345,7 @@ Q1-Q3 are resolved: Stopping, Backing, and Turning each last 5 ticks (C7, C6, C8
 | Parent Process | 4 |
 
 ### Purpose
-Run the 5-tick powered-up cleaning period started by dust detection.
+Run the five-tick suction power-up from current or remembered dust; freeze its remaining ticks while Avoiding (C10/C11/C15).
 
 ### Inputs
 - Dust Existence (from D2 Dust Existence)
@@ -418,45 +356,46 @@ Run the 5-tick powered-up cleaning period started by dust detection.
 ### Outputs
 - Power-Up Active (to Process 4.2)
 - Remaining Power-Up Ticks (to D3 Power-Up Timer)
+- Pending Dust Detection (updated flag only, to D2 Dust Existence)
 
 ### Trigger / Execution Condition
 - Executes on every Tick, after Movement Status for the tick is available.
 
 ### Processing Logic
-Revised 2026-11-16 for C10 and C11.
+Revised 2026-11-17 for C15; C10/C11 remain in force with the explicit restart precedence below. D3 starts at 0 before the first Tick. D2's pending flag is initialized FALSE before initial sensor sampling and is set by Process 2 on every TRUE dust input.
 
-1. Read Dust Existence from D2 and Remaining Power-Up Ticks from D3.
-2. If moving forward and dust is detected, set the count to 5 (B5, C3). This also restarts a power-up that is already running (C10).
-3. If moving forward and the count is above 0, report Power-Up Active and count down by 1.
-4. Otherwise report Power-Up Active = FALSE. While avoiding, the count is kept (C11).
-5. Write the count back to D3.
+1. Read current Dust Detected and Pending Dust Detection from D2 and Remaining Power-Up Ticks from D3.
+2. While Avoiding, output Power-Up Active=FALSE, preserve remaining ticks and the pending flag. Process 2 continues recording detections; no consumption or countdown occurs.
+3. While Forward, if current dust or pending dust is TRUE, set the remaining count to 5. This overrides a saved partial count (C15). Clear the pending flag only after consuming it; do not change the current Dust Detected value.
+4. If Forward with count > 0, output Power-Up Active=TRUE and decrement by one; otherwise output FALSE. Write the updated count and pending flag to their respective stores.
 
-A power-up starting on tick t runs on ticks t to t+4, which is 5 ticks.
+A start/restart at t powers suction on t..t+4 in the absence of another detection or avoidance. On a restart Tick, D3 becomes 4 after the current active tick is counted. Multiple pending detections coalesce into one restart. Without current/pending dust, a saved count resumes under C11. A continuously TRUE current reading restarts on each Forward Tick under C10, as before. A TRUE input followed by FALSE between ticks is not lost because Process 2 latches it.
 
 ### Pseudocode
 
 ```text
-ON Tick:
-    READ Dust Existence FROM D2
+ON Tick after Movement Status:
+    READ Dust Detected, Pending Dust Detection FROM D2
     READ Remaining Power-Up Ticks FROM D3
+    Power-Up Active = FALSE
     IF Movement Status == Forward THEN
-        IF Dust Detected == TRUE THEN
-            Remaining Power-Up Ticks = 5               (C3, C10)
+        IF Dust Detected OR Pending Dust Detection THEN
+            Remaining Power-Up Ticks = 5               (C3, C10, C15)
         END IF
+        Pending Dust Detection = FALSE                 (consume on Forward only)
         IF Remaining Power-Up Ticks > 0 THEN
             Power-Up Active = TRUE
             Remaining Power-Up Ticks = Remaining Power-Up Ticks - 1
-        ELSE
-            Power-Up Active = FALSE
         END IF
-    ELSE
-        Power-Up Active = FALSE                        (count kept, C11)
-    END IF
+    END IF                                             (Avoiding preserves both, C11/C15)
     WRITE Remaining Power-Up Ticks TO D3
+    UPDATE only Pending Dust Detection IN D2            (preserve current Dust Detected)
 ```
 
+Input updates and this Tick are logically serialized per Process 0's contract. A later input cannot be cleared by the earlier Tick's consumption.
+
 ### Relevant Requirements
-- B5, C3, C10, C11
+- B5, C3, C10, C11, C12, C15
 
 ## Process 4.2: Decide Cleaning
 
@@ -486,6 +425,7 @@ Choose the cleaning command for the current tick.
 1. While avoiding, stop cleaning (B3).
 2. While moving forward with power-up active, power up the cleaning (B5).
 3. While moving forward otherwise, clean normally (B1, B2). This also resumes cleaning after avoidance (B3).
+4. C14: Start enables normal suction and mopping; Stop disables both; Power Up strengthens suction only while mopping continues normally. No hardware implementation detail is specified (B6).
 
 ### Pseudocode
 
@@ -501,7 +441,7 @@ ON Power-Up Active:
 ```
 
 ### Relevant Requirements
-- B1, B2, B3, B5
+- B1, B2, B3, B5, C14
 
 # DFD Level 3
 
@@ -539,11 +479,11 @@ Deliver the Obstacle Situation to the Movement Controller as a control signal.
 
 ```text
 ON Obstacle Situation:
-    Situation Signal = Obstacle Situation     (Clear | Right Open | Left Open | All Blocked)
+    Situation Signal = Obstacle Situation     (Front Blocked + Side Situation; C9)
 ```
 
 ### Relevant Requirements
-- B3, B4, C1
+- B3, B4, C1, C9
 
 ## Process 3.2.2: Movement Controller
 
@@ -573,12 +513,12 @@ Sequence the RVC movement over ticks: go forward, stop at an obstacle for 5 tick
 - Executes on every Tick, after Situation Signal and Step Done for the tick are available.
 
 ### Processing Logic
-The Controller has five states: Forward (initial), Stopping, Backing, Turning Right, Turning Left. On each Tick it takes one transition and issues one Movement Command.
+The Controller has five states: Forward (initial), Stopping, Backing, Turning Right, Turning Left. Initialization sets Forward without output (C13). On each Tick it takes one transition and issues one Movement Command. Initial sensor sampling precedes the first Tick (C12).
 
 | Current State | Tick condition | Actions | Next State | Source |
 |---|---|---|---|---|
-| Forward | not Front Blocked | Forward | Forward | B2 |
-| Forward | Front Blocked | Stop, Start Step Timer | Stopping | B3, C2, C7 |
+| Forward | not Front Blocked | Forward | Forward | B2, C16 |
+| Forward | Front Blocked | Stop, Start Step Timer | Stopping | B3, C2, C7, C16 |
 | Stopping | not Step Done | Stop | Stopping | C7 |
 | Stopping | Step Done and Right Open | Turn Right, Start Step Timer | Turning Right | C1, C8 |
 | Stopping | Step Done and Left Open | Turn Left, Start Step Timer | Turning Left | B3, C8 |
@@ -595,7 +535,7 @@ The Controller has five states: Forward (initial), Stopping, Backing, Turning Ri
 When a stop or backward step ends, only the Side Situation decides (C9). The full state model, with transition IDs and validation, is the Level 4 FSM (`artifacts/SA/DFD/dfd_level_4_fsm.md`).
 
 ### Relevant Requirements
-- B2, B3, B4, C1, C2, C4, C5, C6, C7, C8, C9
+- B2, B3, B4, C1, C2, C4, C5, C6, C7, C8, C9, C12, C13, C16
 
 ## Process 3.2.3: Issue Movement Output
 

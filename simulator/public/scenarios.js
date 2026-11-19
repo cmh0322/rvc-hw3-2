@@ -21,11 +21,11 @@
         F6: { name: 'Move backward for 5 ticks when front, left, and right are blocked', requirements: ['B4', 'C6'] },
         F7: { name: 'After moving backward, turn by left and right only', requirements: ['B4', 'C5', 'C9'] },
         F8: { name: 'Move backward again when left and right are still blocked', requirements: ['C5', 'C6', 'C9'] },
-        F9: { name: 'Power up the cleaning for 5 ticks when dust is detected', requirements: ['B5', 'C3'] },
+        F9: { name: 'Power up the cleaning for 5 ticks when dust is detected', requirements: ['B5', 'C3', 'C15'] },
         F10: { name: 'Restart the 5 ticks when dust is detected during a power-up', requirements: ['C10'] },
         F11: { name: 'Continue an interrupted power-up after the avoidance', requirements: ['C11'] },
         F12: { name: 'Keep the cleaning stopped during the whole avoidance', requirements: ['B3'] },
-        F13: { name: 'Ignore side obstacles while the front is clear', requirements: ['Q6 (assumption)'] },
+        F13: { name: 'Ignore side obstacles while the front is clear', requirements: ['C16'] },
     };
 
     const SA_ARTIFACTS = {
@@ -138,13 +138,13 @@
             id: 'ST-14', name: 'Dust where the RVC stops',
             start: { x: 4, y: 6 }, heading: 'N', obstacles: [[4, 2]], dust: [[4, 3]],
             functions: ['F2', 'F12', 'F9', 'F3', 'F5'],
-            expected: 'Reaches (4,3) at tick 3. At tick 4 the obstacle is in front and the cell has dust: it stops, and Clean is Stop, not Power Up (B3). Clean stays Stop during the stop (ticks 4-8) and the right turn (ticks 9-13); the dust stays. At tick 14 it goes forward and the dust is still under it: Clean is Power Up for ticks 14-18 and the dust is removed.',
+            expected: 'Dust observed during stopping/turning is remembered under C15. At the first Forward Tick (14), restart a full five-tick suction boost through tick 18, even if the dust sensor has cleared. Cleaning and mopping stay stopped during avoidance.',
         },
         {
             id: 'ST-15', name: 'Obstacles beside the path only',
             start: CENTER, heading: 'N', obstacles: [[3, 3], [5, 3], [3, 2], [5, 1]], dust: [],
             functions: ['F13', 'F1', 'F2', 'F3'],
-            expected: 'Obstacles lie to the left and right of the path but never in front. It goes forward with Clean Start for ticks 1-4 without stopping (Q6 assumption) and reaches the top wall. It stops for ticks 5-9 and turns right for ticks 10-14.',
+            expected: 'Obstacles lie to the left and right of the path but never in front. It goes forward with Clean Start for ticks 1-4 without stopping (confirmed C16) and reaches the top wall. It stops for ticks 5-9 and turns right for ticks 10-14.',
         },
         {
             id: 'ST-16', name: 'Heading east',

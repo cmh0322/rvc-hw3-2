@@ -2,7 +2,7 @@
 
 System: RVC Controller
 Controller: Process 3.2.2 Movement Controller, `artifacts/SA/DFD/dfd_level_3.md`
-Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarifications.md` (C1-C11, Q6)
+Sources: `docs/preliminary_requirements.md` (B1-B7), `docs/requirements_clarifications.md` (C1-C16)
 
 ## Controller Inputs and Outputs
 
@@ -22,7 +22,7 @@ Revised 2026-11-16 for C9: the conditions of T1 and T2 use the front only, and t
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Forward : Power On / Forward
+    [*] --> Forward : Initialize state only (C13)
 
     Forward --> Forward : Tick [not FrontBlocked] / Forward
     Forward --> Stopping : Tick [FrontBlocked] / Stop, StartTimer
@@ -48,9 +48,9 @@ stateDiagram-v2
 
 | State | Meaning | Movement Command while in state | Movement Status (via 3.2.3) |
 |---|---|---|---|
-| Forward | Moving forward with cleaning. Initial state. | Forward | Forward |
+| Forward | Initial control state; after a Tick selects Forward, suction cleaning and mopping run. No output at initialization (C13). | Forward on a Tick | Forward |
 | Stopping | Stopped in front of an obstacle for 5 ticks. | Stop | Avoiding |
-| Backing | Moving backward for 5 ticks because front, left, and right are blocked. | Backward | Avoiding |
+| Backing | Moving backward for 5 ticks after a blocked stop or repeated because both sides remain blocked (C5, C9); the front may be clear after backing. | Backward | Avoiding |
 | TurningRight | Turning right for 5 ticks. | Turn Right | Avoiding |
 | TurningLeft | Turning left for 5 ticks. | Turn Left | Avoiding |
 
@@ -60,9 +60,9 @@ Turning is split into two states because the Controller must keep issuing the sa
 
 | # | Current State | Event | Condition | Action | Next State | Source |
 |---|---|---|---|---|---|---|
-| T0 | [*] | Power On | — | Forward | Forward | B1, B2 |
-| T1 | Forward | Tick | not Front Blocked | Forward | Forward | B2 |
-| T2 | Forward | Tick | Front Blocked | Stop, Start Step Timer | Stopping | B3, C2, C7 |
+| T0 | [*] | Internal initialization | Before first Tick | Set state only; no Movement Command or Start Step Timer | Forward | C13 |
+| T1 | Forward | Tick | not Front Blocked | Forward | Forward | B2, C16 |
+| T2 | Forward | Tick | Front Blocked | Stop, Start Step Timer | Stopping | B3, C2, C7, C16 |
 | T3 | Stopping | Tick | not Step Done | Stop | Stopping | C7 |
 | T4 | Stopping | Tick | Step Done and Right Open | Turn Right, Start Step Timer | TurningRight | B3, C1, C8 |
 | T5 | Stopping | Tick | Step Done and Left Open | Turn Left, Start Step Timer | TurningLeft | B3, C8 |
@@ -95,19 +95,22 @@ Stop covers ticks t to t+4 and the turn covers t+5 to t+9, 5 ticks each (C7, C8)
 | Check | Result |
 |---|---|
 | All states defined | Yes: Forward, Stopping, Backing, TurningRight, TurningLeft. |
-| Initial state | Forward. |
+| Initial state | Forward, without output. T0 is initialization, not an external input event (C13). |
 | Valid source and target for every transition | Yes: T0-T14. |
 | Input events from DFD | Tick (Digital Clock), Situation Signal (3.2.1), Step Done (3.2.4), all in Level 3. |
-| Output actions match Controller outputs | Movement Command values and Start Step Timer, both Level 3 outputs of 3.2.2. |
+| Output actions match Controller outputs | T1-T14 issue Movement Command and optionally Start Step Timer, both Level 3 outputs. T0 emits neither. |
 | Conflicting conditions | None. Forward splits on Front Blocked. Stopping and Backing split first on Step Done, then on the Side Situation (Right Open, Left Open, Sides Blocked are mutually exclusive). Turning states split on Step Done only. |
 | Priority | Step Done is checked first. The Side Situation matters only on the tick Step Done is present. Right Open takes priority over Left Open by its definition in 3.1 (C1). |
 | Missing conditions | None. In every state the conditions cover all inputs. In Stopping the front is still blocked (C4), so Sides Blocked there means front, left, and right are blocked (B4). In Backing the front is not consulted (C9). |
 | Unreachable states | None. Stopping via T2; Backing via T6; TurningRight via T4, T9; TurningLeft via T5, T10. |
 | States without an outgoing transition | None. |
-| Cycle check | Backing can repeat (T8) while all directions stay blocked. The requirements set no limit on repeats. |
+| Cycle check | Backing can repeat (T8) while both sides stay blocked, regardless of the front (C5, C9). The requirements set no limit on repeats. |
 
 ## Notes
 
+- C16 resolves Q6: while Forward with a clear front, side obstacles alone do not initiate avoidance; forward movement and cleaning continue. T1/T2 are unchanged. C9 still applies after Backing.
+
 - The Situation Signal is ignored during a turn. By C4 the obstacles do not move, and the requirements do not describe interrupting a turn.
-- Q4 and Q5 (power-up) affect Process 4.1 only, not this FSM.
+- Q4 and Q5 are resolved by C10/C11. C15 uses Process 2, D2 and 4.1 to retain dust; it does not add movement states.
+- C12 requires all four initial sensor samples before the first Tick. C13 initializes Forward without emitting Direction or Clean. On the first Tick T1 or T2 uses the front reading; an obstacle can cause Stop immediately. C14 defines Clean output in Process 4.2.
 - The FSM has no Process Specification, per AGENTS.md. Process 3.2.2's specification refers to it.

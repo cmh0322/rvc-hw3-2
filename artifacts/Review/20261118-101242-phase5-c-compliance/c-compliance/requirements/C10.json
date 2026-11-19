@@ -1,0 +1,96 @@
+{
+  "id": "C10",
+  "verdict": "partial",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 18,
+      "end": 18
+    },
+    {
+      "path": "artifacts/SA/process_specification.md",
+      "start": 365,
+      "end": 395
+    },
+    {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 226,
+      "end": 247
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/power_up_timer.c",
+      "start": 10,
+      "end": 30
+    },
+    {
+      "path": "src/detect_dust.c",
+      "start": 6,
+      "end": 8
+    },
+    {
+      "path": "src/main.c",
+      "start": 12,
+      "end": 16
+    },
+    {
+      "path": "src/get_inputs.c",
+      "start": 8,
+      "end": 16
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Current TRUE at Forward Tick restarts",
+      "verdict": "implemented",
+      "evidence": "power_up_timer.c:16–21 resets5 even if an earlier count remains"
+    },
+    {
+      "claim": "TRUE then FALSE between Ticks is retained for restart",
+      "verdict": "absent",
+      "evidence": "detect_dust.c:6–8 returns only current bool; no latch/accessor; main.c:15–16 only polls once per Tick"
+    }
+  ],
+  "paths_walked": [
+    "Controller → Get Inputs current dust → Decide Actions → Track Power-Up; TRUE overwrites saved count; no TRUE observed at Tick means no restart, even if prior observation was TRUE."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/power_up_timer.c",
+        "src/detect_dust.c",
+        "src/main.c",
+        "src/get_inputs.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    },
+    {
+      "pattern": "pending|receive_input|InputEvent|InputMode|dispatch|inputs_ready|sensor_store|reset_sensor|get_dust|get_obstacle",
+      "scope": [
+        "src",
+        "include",
+        "tests",
+        "simulator/host"
+      ],
+      "result": "See c-compliance/absence-searches.json; no production event/readiness/pending enforcement. Input path read in full, including current Boolean forwarding."
+    }
+  ],
+  "divergence": {
+    "severity": "HIGH",
+    "scenario": "Receive/observe TRUE then FALSE before a Forward Tick while power-up runs. Current-only polling retains no new detection.",
+    "consequence": "A received redetection can fail to restart five ticks. Shared root cause P5-04, not a separate issue count.",
+    "minimal_fix": "Approved event delivery and D2 current/pending store consumed by Track Power-Up."
+  },
+  "tests_reviewed": [
+    "tests/test_power_up_timer.cpp",
+    "tests/test_requirements.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

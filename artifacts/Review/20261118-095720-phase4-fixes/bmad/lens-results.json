@@ -1,0 +1,20 @@
+[
+  {
+    "lens": "adversarial",
+    "agent": "/root/sd_fix_adversarial",
+    "status": "completed",
+    "findings": []
+  },
+  {
+    "lens": "edge-case-hunter",
+    "agent": "/root/sd_fix_edges",
+    "status": "completed",
+    "findings": []
+  },
+  {
+    "lens": "sasd",
+    "agent": "/root/sd_fix_sasd",
+    "status": "completed",
+    "findings": []
+  }
+]

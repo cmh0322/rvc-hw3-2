@@ -1,0 +1,277 @@
+Test project D:/SCHOOL/2026_3-2/소프트웨어공학/HW3-2/build
+        Start   1: StepTimerTest.IsIdleAfterReset
+  1/121 Test   #1: StepTimerTest.IsIdleAfterReset .........................................................................   Passed    0.02 sec
+        Start   2: StepTimerTest.AdvanceWhileIdleNeverReportsStepDone
+  2/121 Test   #2: StepTimerTest.AdvanceWhileIdleNeverReportsStepDone .....................................................   Passed    0.02 sec
+        Start   3: StepTimerTest.StartSetsTheCountToZero
+  3/121 Test   #3: StepTimerTest.StartSetsTheCountToZero ..................................................................   Passed    0.02 sec
+        Start   4: StepTimerTest.CountsOneTickPerAdvance
+  4/121 Test   #4: StepTimerTest.CountsOneTickPerAdvance ..................................................................   Passed    0.02 sec
+        Start   5: StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart
+  5/121 Test   #5: StepTimerTest.ReportsStepDoneOnTheFifthAdvanceAfterStart ...............................................   Passed    0.02 sec
+        Start   6: StepTimerTest.IsIdleAgainAfterStepDone
+  6/121 Test   #6: StepTimerTest.IsIdleAgainAfterStepDone .................................................................   Passed    0.02 sec
+        Start   7: StepTimerTest.StartDuringARunningStepRestartsTheCount
+  7/121 Test   #7: StepTimerTest.StartDuringARunningStepRestartsTheCount ..................................................   Passed    0.02 sec
+        Start   8: StepTimerTest.ResetStopsARunningStep
+  8/121 Test   #8: StepTimerTest.ResetStopsARunningStep ...................................................................   Passed    0.02 sec
+        Start   9: StepTimerTest.CanRunAnotherStepAfterStepDone
+  9/121 Test   #9: StepTimerTest.CanRunAnotherStepAfterStepDone ...........................................................   Passed    0.02 sec
+        Start  10: RevisionRegression.C13_NoPowerOnCommands
+ 10/121 Test  #10: RevisionRegression.C13_NoPowerOnCommands ...............................................................   Passed    0.02 sec
+        Start  11: RevisionRegression.C12_AllInitialSensorsAcquired
+ 11/121 Test  #11: RevisionRegression.C12_AllInitialSensorsAcquired .......................................................   Passed    0.02 sec
+        Start  12: RevisionRegression.C15_AvoidanceDetectionSurvivesClear
+ 12/121 Test  #12: RevisionRegression.C15_AvoidanceDetectionSurvivesClear .................................................   Passed    0.02 sec
+        Start  13: RevisionRegression.C15_NewDetectionOverridesPausedCount
+ 13/121 Test  #13: RevisionRegression.C15_NewDetectionOverridesPausedCount ................................................   Passed    0.02 sec
+        Start  14: RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning
+ 14/121 Test  #14: RequirementsTest.B1_B2_GoesStraightForwardWhileCleaning ................................................   Passed    0.02 sec
+        Start  15: RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle
+ 15/121 Test  #15: RequirementsTest.B3_C2_C7_StopsMovingAndCleaningForFiveTicksAtAnObstacle ...............................   Passed    0.02 sec
+        Start  16: RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear
+ 16/121 Test  #16: RequirementsTest.B3_C1_C8_TurnsRightForFiveTicksWhenBothSidesAreClear ..................................   Passed    0.02 sec
+        Start  17: RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked
+ 17/121 Test  #17: RequirementsTest.B3_TurnsRightWhenTheLeftIsBlocked .....................................................   Passed    0.02 sec
+        Start  18: RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked
+ 18/121 Test  #18: RequirementsTest.B3_C8_TurnsLeftForFiveTicksWhenTheRightIsBlocked ......................................   Passed    0.02 sec
+        Start  19: RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside
+ 19/121 Test  #19: RequirementsTest.B3_GoesForwardWithCleaningAfterTurningAside ...........................................   Passed    0.02 sec
+        Start  20: RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked
+ 20/121 Test  #20: RequirementsTest.B4_C6_MovesBackwardForFiveTicksWhenFrontLeftAndRightAreBlocked ........................   Passed    0.03 sec
+        Start  21: RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward
+ 21/121 Test  #21: RequirementsTest.B4_C5_AfterBackingTurnsRightWhenTheRightIsClearThenGoesForward ........................   Passed    0.02 sec
+        Start  22: RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear
+ 22/121 Test  #22: RequirementsTest.C5_AfterBackingTurnsLeftWhenOnlyTheLeftIsClear ........................................   Passed    0.02 sec
+        Start  23: RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked
+ 23/121 Test  #23: RequirementsTest.C5_C6_AfterBackingMovesBackwardAgainWhenStillBlocked ..................................   Passed    0.02 sec
+        Start  24: RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected
+ 24/121 Test  #24: RequirementsTest.B5_C3_PowersUpTheCleaningForFiveTicksWhenDustIsDetected ...............................   Passed    0.02 sec
+        Start  25: RequirementsTest.B5_DustDoesNotChangeTheMovement
+ 25/121 Test  #25: RequirementsTest.B5_DustDoesNotChangeTheMovement .......................................................   Passed    0.02 sec
+        Start  26: RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust
+ 26/121 Test  #26: RequirementsTest.B3_B5_ObstacleStopsTheCleaningEvenWithDust ............................................   Passed    0.02 sec
+        Start  27: RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear
+ 27/121 Test  #27: RequirementsTest.C9_AfterBackingDecidesByLeftAndRightOnlyWhenTheFrontIsClear ...........................   Passed    0.02 sec
+        Start  28: RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks
+ 28/121 Test  #28: RequirementsTest.C10_DustDuringAPowerUpRestartsTheFiveTicks ............................................   Passed    0.03 sec
+        Start  29: RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance
+ 29/121 Test  #29: RequirementsTest.C11_PowerUpContinuesAfterAnAvoidance ..................................................   Passed    0.02 sec
+        Start  30: RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance
+ 30/121 Test  #30: RequirementsTest.C16_SideObstaclesAloneDoNotTriggerAvoidance ...........................................   Passed    0.02 sec
+        Start  31: PowerUpTimerTest.CountIsZeroAfterReset
+ 31/121 Test  #31: PowerUpTimerTest.CountIsZeroAfterReset .................................................................   Passed    0.02 sec
+        Start  32: PowerUpTimerTest.NoDustMeansNoPowerUp
+ 32/121 Test  #32: PowerUpTimerTest.NoDustMeansNoPowerUp ..................................................................   Passed    0.03 sec
+        Start  33: PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp
+ 33/121 Test  #33: PowerUpTimerTest.DustWhileMovingForwardStartsPowerUp ...................................................   Passed    0.02 sec
+        Start  34: PowerUpTimerTest.PowerUpLastsFiveTicks
+ 34/121 Test  #34: PowerUpTimerTest.PowerUpLastsFiveTicks .................................................................   Passed    0.02 sec
+        Start  35: PowerUpTimerTest.StaysOffAfterThePowerUpEnded
+ 35/121 Test  #35: PowerUpTimerTest.StaysOffAfterThePowerUpEnded ..........................................................   Passed    0.02 sec
+        Start  36: PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks
+ 36/121 Test  #36: PowerUpTimerTest.NewDustAfterThePowerUpEndedStartsAnotherFiveTicks .....................................   Passed    0.02 sec
+        Start  37: PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp
+ 37/121 Test  #37: PowerUpTimerTest.DustWhileAvoidingDoesNotStartPowerUp ..................................................   Passed    0.02 sec
+        Start  38: PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered
+ 38/121 Test  #38: PowerUpTimerTest.C15_DustSeenOnlyWhileAvoidingIsRemembered .............................................   Passed    0.02 sec
+        Start  39: PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding
+ 39/121 Test  #39: PowerUpTimerTest.PowerUpIsNotActiveWhileAvoiding .......................................................   Passed    0.02 sec
+        Start  40: PowerUpTimerTest.ResetEndsARunningPowerUp
+ 40/121 Test  #40: PowerUpTimerTest.ResetEndsARunningPowerUp ..............................................................   Passed    0.02 sec
+        Start  41: PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks
+ 41/121 Test  #41: PowerUpTimerTest.C10_DustDuringARunningPowerUpRestartsTheFiveTicks .....................................   Passed    0.02 sec
+        Start  42: PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning
+ 42/121 Test  #42: PowerUpTimerTest.C10_ContinuousDustKeepsThePowerUpRunning ..............................................   Passed    0.02 sec
+        Start  43: PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding
+ 43/121 Test  #43: PowerUpTimerTest.C11_RemainingCountIsKeptWhileAvoiding .................................................   Passed    0.02 sec
+        Start  44: OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection
+ 44/121 Test  #44: OutputsTest.IssueMovementOutput_ForwardCommandGivesForwardDirection ....................................   Passed    0.02 sec
+        Start  45: OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection
+ 45/121 Test  #45: OutputsTest.IssueMovementOutput_StopCommandGivesStopDirection ..........................................   Passed    0.02 sec
+        Start  46: OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection
+ 46/121 Test  #46: OutputsTest.IssueMovementOutput_TurnRightCommandGivesTurnRightDirection ................................   Passed    0.02 sec
+        Start  47: OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection
+ 47/121 Test  #47: OutputsTest.IssueMovementOutput_TurnLeftCommandGivesTurnLeftDirection ..................................   Passed    0.02 sec
+        Start  48: OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection
+ 48/121 Test  #48: OutputsTest.IssueMovementOutput_BackwardCommandGivesBackwardDirection ..................................   Passed    0.02 sec
+        Start  49: OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner
+ 49/121 Test  #49: OutputsTest.IssueMovementOutput_DoesNotDriveTheCleaner .................................................   Passed    0.02 sec
+        Start  50: OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner
+ 50/121 Test  #50: OutputsTest.PutOutputs_SendsTheDirectionToTheMotorAndTheCleanToTheCleaner ..............................   Passed    0.02 sec
+        Start  51: OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged
+ 51/121 Test  #51: OutputsTest.PutOutputs_PassesEveryCleanValueUnchanged ..................................................   Passed    0.02 sec
+        Start  52: OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse
+ 52/121 Test  #52: OutputsTest.PutOutputs_DrivesTheMotorThenTheCleanerAndNothingElse ......................................   Passed    0.02 sec
+        Start  53: MovementControllerTest.T0_ResetEntersForwardWithoutACommand
+ 53/121 Test  #53: MovementControllerTest.T0_ResetEntersForwardWithoutACommand ............................................   Passed    0.02 sec
+        Start  54: MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer
+ 54/121 Test  #54: MovementControllerTest.T0_ResetLeavesAnyStateAndStopsTheStepTimer ......................................   Passed    0.02 sec
+        Start  55: MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear
+ 55/121 Test  #55: MovementControllerTest.T1_ForwardKeepsGoingForwardWhileClear ...........................................   Passed    0.02 sec
+        Start  56: MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen
+ 56/121 Test  #56: MovementControllerTest.T2_ForwardStopsWhenTheRightIsOpen ...............................................   Passed    0.02 sec
+        Start  57: MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen
+ 57/121 Test  #57: MovementControllerTest.T2_ForwardStopsWhenOnlyTheLeftIsOpen ............................................   Passed    0.02 sec
+        Start  58: MovementControllerTest.T2_ForwardStopsWhenAllBlocked
+ 58/121 Test  #58: MovementControllerTest.T2_ForwardStopsWhenAllBlocked ...................................................   Passed    0.02 sec
+        Start  59: MovementControllerTest.T3_StopLastsFiveTicks
+ 59/121 Test  #59: MovementControllerTest.T3_StopLastsFiveTicks ...........................................................   Passed    0.02 sec
+        Start  60: MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds
+ 60/121 Test  #60: MovementControllerTest.T3_SituationIsIgnoredUntilTheStopEnds ...........................................   Passed    0.02 sec
+        Start  61: MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen
+ 61/121 Test  #61: MovementControllerTest.T4_AfterTheStopTurnsRightWhenTheRightIsOpen .....................................   Passed    0.02 sec
+        Start  62: MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen
+ 62/121 Test  #62: MovementControllerTest.T5_AfterTheStopTurnsLeftWhenOnlyTheLeftIsOpen ...................................   Passed    0.02 sec
+        Start  63: MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked
+ 63/121 Test  #63: MovementControllerTest.T6_AfterTheStopMovesBackwardWhenAllBlocked ......................................   Passed    0.02 sec
+        Start  64: MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds
+ 64/121 Test  #64: MovementControllerTest.T4_T5_T6_UseTheSituationOnTheTickTheStopEnds ....................................   Passed    0.02 sec
+        Start  65: MovementControllerTest.T7_BackwardLastsFiveTicks
+ 65/121 Test  #65: MovementControllerTest.T7_BackwardLastsFiveTicks .......................................................   Passed    0.02 sec
+        Start  66: MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked
+ 66/121 Test  #66: MovementControllerTest.T8_AfterBackingMovesBackwardAgainWhenStillAllBlocked ............................   Passed    0.02 sec
+        Start  67: MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks
+ 67/121 Test  #67: MovementControllerTest.T8_TheSecondBackwardStepAlsoLastsFiveTicks ......................................   Passed    0.02 sec
+        Start  68: MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen
+ 68/121 Test  #68: MovementControllerTest.T9_AfterBackingTurnsRightWhenTheRightIsOpen .....................................   Passed    0.02 sec
+        Start  69: MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen
+ 69/121 Test  #69: MovementControllerTest.T10_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpen ..................................   Passed    0.02 sec
+        Start  70: MovementControllerTest.T11_RightTurnLastsFiveTicks
+ 70/121 Test  #70: MovementControllerTest.T11_RightTurnLastsFiveTicks .....................................................   Passed    0.02 sec
+        Start  71: MovementControllerTest.T12_AfterTheRightTurnGoesForward
+ 71/121 Test  #71: MovementControllerTest.T12_AfterTheRightTurnGoesForward ................................................   Passed    0.02 sec
+        Start  72: MovementControllerTest.T13_LeftTurnLastsFiveTicks
+ 72/121 Test  #72: MovementControllerTest.T13_LeftTurnLastsFiveTicks ......................................................   Passed    0.02 sec
+        Start  73: MovementControllerTest.T14_AfterTheLeftTurnGoesForward
+ 73/121 Test  #73: MovementControllerTest.T14_AfterTheLeftTurnGoesForward .................................................   Passed    0.02 sec
+        Start  74: MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn
+ 74/121 Test  #74: MovementControllerTest.T11_T12_SituationIsIgnoredDuringAndAtTheEndOfATurn ..............................   Passed    0.02 sec
+        Start  75: MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen
+ 75/121 Test  #75: MovementControllerTest.TimingExample_ObstacleAheadWithTheRightOpen .....................................   Passed    0.02 sec
+        Start  76: MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft
+ 76/121 Test  #76: MovementControllerTest.DeadEnd_BacksTwiceThenTurnsLeft .................................................   Passed    0.02 sec
+        Start  77: MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance
+ 77/121 Test  #77: MovementControllerTest.HandlesASecondObstacleAfterTheFirstAvoidance ....................................   Passed    0.02 sec
+        Start  78: MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick
+ 78/121 Test  #78: MovementControllerTest.ObstacleRightAfterATurnIsHandledOnTheNextTick ...................................   Passed    0.02 sec
+        Start  79: MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear
+ 79/121 Test  #79: MovementControllerTest.T9_C9_AfterBackingTurnsRightWhenTheRightIsOpenAndTheFrontIsClear ................   Passed    0.02 sec
+        Start  80: MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear
+ 80/121 Test  #80: MovementControllerTest.T10_C9_AfterBackingTurnsLeftWhenOnlyTheLeftIsOpenAndTheFrontIsClear .............   Passed    0.02 sec
+        Start  81: MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear
+ 81/121 Test  #81: MovementControllerTest.T8_C9_AfterBackingMovesBackwardAgainWhenBothSidesAreBlockedAndTheFrontIsClear ...   Passed    0.02 sec
+        Start  82: MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward
+ 82/121 Test  #82: MovementControllerTest.T1_SidesAreIgnoredWhileGoingForward .............................................   Passed    0.02 sec
+        Start  83: MainTest.InitialSamplesBeforeAnyTickAndNoOutputs
+ 83/121 Test  #83: MainTest.InitialSamplesBeforeAnyTickAndNoOutputs .......................................................   Passed    0.02 sec
+        Start  84: MainTest.OneCyclePerTickAndBlockedFirstTickStops
+ 84/121 Test  #84: MainTest.OneCyclePerTickAndBlockedFirstTickStops .......................................................   Passed    0.02 sec
+        Start  85: MainTest.ReceiptOrderBeforeAndAfterTickIsRespected
+ 85/121 Test  #85: MainTest.ReceiptOrderBeforeAndAfterTickIsRespected .....................................................   Passed    0.02 sec
+        Start  86: MainTest.InitialPulseSurvivesUntilFirstForwardTick
+ 86/121 Test  #86: MainTest.InitialPulseSurvivesUntilFirstForwardTick .....................................................   Passed    0.03 sec
+        Start  87: MainTest.EventsReceivedDuringOutputWaitForNextTick
+ 87/121 Test  #87: MainTest.EventsReceivedDuringOutputWaitForNextTick .....................................................   Passed    0.02 sec
+        Start  88: MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated
+ 88/121 Test  #88: MainTest.ManyQueuedPulsesAreNotDroppedOrAccumulated ....................................................   Passed    0.03 sec
+        Start  89: InputsTest.ActualFalseRequiredForEverySensor
+ 89/121 Test  #89: InputsTest.ActualFalseRequiredForEverySensor ...........................................................   Passed    0.02 sec
+        Start  90: InputsTest.SingleObstacleUpdatePreservesOtherFields
+ 90/121 Test  #90: InputsTest.SingleObstacleUpdatePreservesOtherFields ....................................................   Passed    0.02 sec
+        Start  91: InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume
+ 91/121 Test  #91: InputsTest.TrueFalseDustIsRetainedAndGetterDoesNotConsume ..............................................   Passed    0.02 sec
+        Start  92: InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling
+ 92/121 Test  #92: InputsTest.StoredInputsAreClassifiedWithoutHardwarePolling .............................................   Passed    0.02 sec
+        Start  93: InputsTest.SensorEventsDoNotAdvanceTimersOrOutput
+ 93/121 Test  #93: InputsTest.SensorEventsDoNotAdvanceTimersOrOutput ......................................................   Passed    0.02 sec
+        Start  94: InitializeRvc.ActualSamplesWithoutCommands
+ 94/121 Test  #94: InitializeRvc.ActualSamplesWithoutCommands .............................................................   Passed    0.02 sec
+        Start  95: InitializeRvc.ResetsTimersAndPendingBeforeSampling
+ 95/121 Test  #95: InitializeRvc.ResetsTimersAndPendingBeforeSampling .....................................................   Passed    0.02 sec
+        Start  96: InitializeRvc.InitialDustPulseIsNotResetAfterSampling
+ 96/121 Test  #96: InitializeRvc.InitialDustPulseIsNotResetAfterSampling ..................................................   Passed    0.02 sec
+        Start  97: DeriveMovementStatus.ForwardCommandIsForward
+ 97/121 Test  #97: DeriveMovementStatus.ForwardCommandIsForward ...........................................................   Passed    0.02 sec
+        Start  98: DeriveMovementStatus.StopCommandIsAvoiding
+ 98/121 Test  #98: DeriveMovementStatus.StopCommandIsAvoiding .............................................................   Passed    0.02 sec
+        Start  99: DeriveMovementStatus.TurnCommandsAreAvoiding
+ 99/121 Test  #99: DeriveMovementStatus.TurnCommandsAreAvoiding ...........................................................   Passed    0.02 sec
+        Start 100: DeriveMovementStatus.BackwardCommandIsAvoiding
+100/121 Test #100: DeriveMovementStatus.BackwardCommandIsAvoiding .........................................................   Passed    0.02 sec
+        Start 101: DecideCleaning.ForwardWithoutPowerUpStartsCleaning
+101/121 Test #101: DecideCleaning.ForwardWithoutPowerUpStartsCleaning .....................................................   Passed    0.02 sec
+        Start 102: DecideCleaning.ForwardWithPowerUpPowersUp
+102/121 Test #102: DecideCleaning.ForwardWithPowerUpPowersUp ..............................................................   Passed    0.02 sec
+        Start 103: DecideCleaning.AvoidingStopsCleaning
+103/121 Test #103: DecideCleaning.AvoidingStopsCleaning ...................................................................   Passed    0.02 sec
+        Start 104: DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp
+104/121 Test #104: DecideCleaning.AvoidingStopsCleaningEvenWithPowerUp ....................................................   Passed    0.02 sec
+        Start 105: DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans
+105/121 Test #105: DecideActionsTest.ClearPathWithoutDustGoesForwardAndCleans .............................................   Passed    0.02 sec
+        Start 106: DecideActionsTest.DustPowersUpTheCleaningForFiveCycles
+106/121 Test #106: DecideActionsTest.DustPowersUpTheCleaningForFiveCycles .................................................   Passed    0.02 sec
+        Start 107: DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle
+107/121 Test #107: DecideActionsTest.ObstacleStopsMovementAndCleaningOnTheSameCycle .......................................   Passed    0.02 sec
+        Start 108: DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards
+108/121 Test #108: DecideActionsTest.CleaningIsStoppedDuringAvoidanceAndResumesAfterwards .................................   Passed    0.04 sec
+        Start 109: DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning
+109/121 Test #109: DecideActionsTest.AllBlockedMovesBackwardWithoutCleaning ...............................................   Passed    0.02 sec
+        Start 110: DecideActionsTest.DustWhileAvoidingDoesNotPowerUp
+110/121 Test #110: DecideActionsTest.DustWhileAvoidingDoesNotPowerUp ......................................................   Passed    0.02 sec
+        Start 111: DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall
+111/121 Test #111: DecideActionsTest.AdvancesTheControllerAndThePowerUpByOneTickPerCall ...................................   Passed    0.02 sec
+        Start 112: DecideActionsTest.DoesNotTouchTheHardware
+112/121 Test #112: DecideActionsTest.DoesNotTouchTheHardware ..............................................................   Passed    0.02 sec
+        Start 113: ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling
+113/121 Test #113: ControllerTest.OneTickOutputsMovementThenCleanWithoutPolling ...........................................   Passed    0.02 sec
+        Start 114: ControllerTest.CurrentStateAndStoredInputsDriveTheTick
+114/121 Test #114: ControllerTest.CurrentStateAndStoredInputsDriveTheTick .................................................   Passed    0.02 sec
+        Start 115: AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked
+115/121 Test #115: AssessObstacleSituation.ReportsWhetherTheFrontIsBlocked ................................................   Passed    0.02 sec
+        Start 116: AssessObstacleSituation.BothSidesClearIsRightOpen
+116/121 Test #116: AssessObstacleSituation.BothSidesClearIsRightOpen ......................................................   Passed    0.03 sec
+        Start 117: AssessObstacleSituation.LeftBlockedIsRightOpen
+117/121 Test #117: AssessObstacleSituation.LeftBlockedIsRightOpen .........................................................   Passed    0.03 sec
+        Start 118: AssessObstacleSituation.RightBlockedIsLeftOpen
+118/121 Test #118: AssessObstacleSituation.RightBlockedIsLeftOpen .........................................................   Passed    0.03 sec
+        Start 119: AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked
+119/121 Test #119: AssessObstacleSituation.FrontLeftAndRightBlockedIsAllBlocked ...........................................   Passed    0.02 sec
+        Start 120: AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear
+120/121 Test #120: AssessObstacleSituation.SidesAreClassifiedWhenTheFrontIsClear ..........................................   Passed    0.02 sec
+        Start 121: call_hierarchy
+121/121 Test #121: call_hierarchy .........................................................................................   Passed    0.19 sec
+
+100% tests passed, 0 tests failed out of 121
+
+Total Test time (real) =   3.46 sec
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_main_under_test.dir/src/main.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/assess_obstacle_situation.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/controller.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/decide_actions.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/decide_cleaning.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/derive_movement_status.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/get_inputs.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/initialize_rvc.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/input_events.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/issue_movement_output.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/movement_controller.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/power_up_timer.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/put_outputs.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/sensor_store.c.gcda:Skip
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??Cannot create directory
+profiling:D:\SCHOOL\2026_3-2\?뚰봽?몄썾?닿났??HW3-2\build\CMakeFiles/rvc_control.dir/src/step_timer.c.gcda:Skip

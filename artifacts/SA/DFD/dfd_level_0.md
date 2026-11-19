@@ -46,3 +46,7 @@ Solid arrows are data flows. The dashed arrow is a control flow.
 | Clean | Output | Data | Cleaner | Yes | Yes |
 
 Level 0 introduces no flows, Data Stores, or internal processes beyond the Context Diagram.
+
+## Initialization and output semantics
+
+Before the first Tick, all four sensor readings are available (C12). Power On initializes state only and emits neither Direction nor Clean (C13); it is not a new external flow. Clean Start/Stop jointly enables/disables suction and mopping, and Power Up strengthens suction while mopping stays normal (C14). Dust detections retained for later use (C15) are internal state, not a new external event.

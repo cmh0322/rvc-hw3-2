@@ -20,9 +20,9 @@ MovementCommand movement_controller(SituationSignal situation_signal);
 
 /*
  * Reset Movement Controller: FSM transition T0. Sets the state to Forward,
- * resets the step timer, and returns the initial Movement Command (Forward).
+ * resets the step timer without returning or issuing a command (C13).
  */
-MovementCommand reset_movement_controller(void);
+void reset_movement_controller(void);
 
 /*
  * Read-only query for unit tests and the simulator. No production module

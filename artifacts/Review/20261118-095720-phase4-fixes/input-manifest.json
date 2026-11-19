@@ -1,0 +1,68 @@
+{
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "1273bfa6e53a7eea842b2531ca82aa01de2d231dac4322ed62691b720956fe5d"
+    },
+    {
+      "path": "docs/preliminary_requirements.md",
+      "sha256": "f6a3dc81879211c8bb4cf9516b0e29e5fe436bef7ad88fe649529958653d5d78"
+    },
+    {
+      "path": "docs/requirements_clarifications.md",
+      "sha256": "f29bb5d4070c5b4c89ab1be70e3e64cc04f3c87c25314374bc3b5490a2a2a3aa"
+    },
+    {
+      "path": "docs/verification/review-contract.md",
+      "sha256": "c6638216bbf117e0f424189149d5ded55bb06a62e6d951b493901acc5f94f613"
+    },
+    {
+      "path": "docs/verification/bmad-lenses.md",
+      "sha256": "9f2333048e2cf96952a2174e6ae96678598ef6d4dcb061625871f9e94b39ec53"
+    },
+    {
+      "path": "artifacts/SA/context_diagram.md",
+      "sha256": "e05db0fc6edb358d464b22c1966513d4fcb40e734363cda8462ee90683cf09fd"
+    },
+    {
+      "path": "artifacts/SA/data_dictionary.md",
+      "sha256": "df0d1043443b5558c85c9434e3082d092671bbb7fc1bb6e1ed58474e584281d2"
+    },
+    {
+      "path": "artifacts/SA/event_list.md",
+      "sha256": "7932a8807f98ac8969fc83f17d33edfc208b59f5d4e04b8074a44dd316558917"
+    },
+    {
+      "path": "artifacts/SA/process_specification.md",
+      "sha256": "86fab05241983673218c8603bf38221881bea7eb1df0f124473887e5ca3cfec0"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_0.md",
+      "sha256": "5e717679317eb300a89335932a7b27848e35f09530cdd53d09f58c6298daf36d"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_1.md",
+      "sha256": "6076db308d3502e51296d9deb4877114fa34496abe8c54679874093bf064d41b"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_2.md",
+      "sha256": "ec5e96d5323d52117fecdba7a1091f0703af1bae7886522ea656b81fc7bb0d86"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_3.md",
+      "sha256": "0f90827ff408bb5783012f3f846b64d9748a2f7705705b00395f5dfdb64e0f07"
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+      "sha256": "cb970c6ede93cb8b550479f2316b4f7797c82b581191a916abed93e06c71e1f5"
+    },
+    {
+      "path": "artifacts/SD/structure_chart.md",
+      "sha256": "ff1510b9cde94663fe244e9d0e3ad95fdbd6bc96b0f17e558bae69eb2379179b"
+    },
+    {
+      "path": "artifacts/SD/transform_analysis.md",
+      "sha256": "5e12f7ccc2343267d0f562a72091d418081b01acbd24f4ab25da59dff263a47f"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+flowchart TB
+    M13["Get Dust Existence"]
+    M14["Clear Pending Dust"]
+    M22["Track Power-Up"]
+    M22 -->|"1 before power-up decision"| M13
+    M22 -->|"Forward only, after evaluating current/pending; before returning"| M14

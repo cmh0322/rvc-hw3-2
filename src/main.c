@@ -1,6 +1,7 @@
 #include "controller.h"
 #include "hw_interface.h"
 #include "initialize_rvc.h"
+#include "input_events.h"
 
 /*
  * Module: Main (root of the Structure Chart).
@@ -12,7 +13,6 @@ int main(void)
     initialize_rvc();
 
     for (;;) {
-        wait_for_tick();
-        controller();
+        dispatch_input_event(receive_input_event(INPUT_RUNNING));
     }
 }

@@ -1,4 +1,5 @@
 #include "power_up_timer.h"
+#include "sensor_store.h"
 
 /*
  * Power-Up Timer group (SA Process 4.1).
@@ -7,15 +8,17 @@
 static int remaining_power_up_ticks = 0;
 
 /* Module: Track Power-Up (Process 4.1). */
-bool track_power_up(MovementStatus movement_status, bool dust_existence)
+bool track_power_up(MovementStatus movement_status)
 {
     bool power_up_active = false;
+    const DustExistence dust = get_dust_existence();
 
     if (movement_status == MOVEMENT_STATUS_FORWARD) {
         /* B5, C3. Dust during a running power-up restarts the 5 ticks (C10). */
-        if (dust_existence) {
+        if (dust.current || dust.pending) {
             remaining_power_up_ticks = POWER_UP_DURATION_TICKS;
         }
+        clear_pending_dust();
         if (remaining_power_up_ticks > 0) {
             power_up_active = true;
             remaining_power_up_ticks--;

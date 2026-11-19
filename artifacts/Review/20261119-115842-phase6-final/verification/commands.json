@@ -1,0 +1,83 @@
+[
+  {
+    "name": "gcc-version",
+    "args": [
+      "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+      "--version"
+    ],
+    "started_at": "2026-11-19T11:59:23.533076+09:00",
+    "exit_code": 0
+  },
+  {
+    "name": "cmake-version",
+    "args": [
+      "cmake",
+      "--version"
+    ],
+    "started_at": "2026-11-19T11:59:23.646081+09:00",
+    "exit_code": 0
+  },
+  {
+    "name": "node-version",
+    "args": [
+      "node",
+      "--version"
+    ],
+    "started_at": "2026-11-19T11:59:23.769675+09:00",
+    "exit_code": 0
+  },
+  {
+    "name": "build",
+    "args": [
+      "cmake",
+      "--build",
+      "build"
+    ],
+    "started_at": "2026-11-19T11:59:23.984718+09:00",
+    "exit_code": 0
+  },
+  {
+    "name": "ctest",
+    "args": [
+      "ctest",
+      "--test-dir",
+      "build",
+      "--output-on-failure"
+    ],
+    "started_at": "2026-11-19T11:59:33.269672+09:00",
+    "exit_code": 0
+  },
+  {
+    "name": "coverage",
+    "args": [
+      "cmake",
+      "--build",
+      "build",
+      "--target",
+      "coverage"
+    ],
+    "started_at": "2026-11-19T11:59:36.830087+09:00",
+    "exit_code": 0
+  },
+  {
+    "name": "simulator-build",
+    "args": [
+      "cmake",
+      "--build",
+      "build",
+      "--target",
+      "rvc_sim_host"
+    ],
+    "started_at": "2026-11-19T11:59:44.187040+09:00",
+    "exit_code": 0
+  },
+  {
+    "name": "scenarios",
+    "args": [
+      "node",
+      "simulator/run_scenarios.js"
+    ],
+    "started_at": "2026-11-19T11:59:44.386303+09:00",
+    "exit_code": 0
+  }
+]

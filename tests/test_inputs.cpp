@@ -1,146 +1,50 @@
-// Input branch: Detect Obstacle (SA Process 1), Detect Dust (SA Process 2),
-// Get Inputs (afferent coordinator)
-// Source: Process Specifications 1 and 2; Structure Chart sections 3.4 and 5;
-// requirements B3, B4, B5, C1.
-#include <algorithm>
-#include <string>
-#include <vector>
-
-#include <gtest/gtest.h>
-
-#include "detect_dust.h"
-#include "detect_obstacle.h"
+#include "test_input_helpers.h"
 #include "fake_hw.h"
-#include "situations.h"
 #include "get_inputs.h"
-
-namespace {
-
+#include "movement_controller.h"
+#include "step_timer.h"
+#include <gtest/gtest.h>
 class InputsTest : public ::testing::Test {
-protected:
-    void SetUp() override { ResetFakeHw(); }
-
-    static void SetObstacleSensors(bool front, bool left, bool right) {
-        fake_hw.front = front;
-        fake_hw.left = left;
-        fake_hw.right = right;
-    }
+protected: void SetUp() override {ResetFakeHw(); reset_sensor_data();}
 };
-
-// ---- Detect Obstacle --------------------------------------------------------
-
-TEST_F(InputsTest, DetectObstacle_ReportsNoObstacleWhenNoSensorDetectsOne) {
-    SetObstacleSensors(false, false, false);
-    const ObstacleLocation location = detect_obstacle();
-    EXPECT_FALSE(location.front_obstacle);
-    EXPECT_FALSE(location.left_obstacle);
-    EXPECT_FALSE(location.right_obstacle);
+TEST_F(InputsTest, ActualFalseRequiredForEverySensor) {
+    EXPECT_FALSE(inputs_ready());
+    dispatch_sensor_input({INPUT_FRONT,false}); EXPECT_FALSE(inputs_ready());
+    dispatch_sensor_input({INPUT_LEFT,false}); EXPECT_FALSE(inputs_ready());
+    dispatch_sensor_input({INPUT_RIGHT,false}); EXPECT_FALSE(inputs_ready());
+    dispatch_sensor_input({INPUT_DUST,false}); EXPECT_TRUE(inputs_ready());
+    reset_sensor_data(); EXPECT_FALSE(inputs_ready());
 }
-
-TEST_F(InputsTest, DetectObstacle_CopiesTheFrontSensorToTheFrontField) {
-    SetObstacleSensors(true, false, false);
-    const ObstacleLocation location = detect_obstacle();
-    EXPECT_TRUE(location.front_obstacle);
-    EXPECT_FALSE(location.left_obstacle);
-    EXPECT_FALSE(location.right_obstacle);
-}
-
-TEST_F(InputsTest, DetectObstacle_CopiesTheLeftSensorToTheLeftField) {
-    SetObstacleSensors(false, true, false);
-    const ObstacleLocation location = detect_obstacle();
-    EXPECT_FALSE(location.front_obstacle);
-    EXPECT_TRUE(location.left_obstacle);
-    EXPECT_FALSE(location.right_obstacle);
-}
-
-TEST_F(InputsTest, DetectObstacle_CopiesTheRightSensorToTheRightField) {
-    SetObstacleSensors(false, false, true);
-    const ObstacleLocation location = detect_obstacle();
-    EXPECT_FALSE(location.front_obstacle);
-    EXPECT_FALSE(location.left_obstacle);
+TEST_F(InputsTest, SingleObstacleUpdatePreservesOtherFields) {
+    Observe(true,true,true,false);
+    dispatch_sensor_input({INPUT_LEFT,false});
+    auto location=get_obstacle_location();
+    EXPECT_TRUE(location.front_obstacle); EXPECT_FALSE(location.left_obstacle);
     EXPECT_TRUE(location.right_obstacle);
+    location.front_obstacle=false;
+    EXPECT_TRUE(get_obstacle_location().front_obstacle);
+    dispatch_sensor_input({INPUT_FRONT,false});
+    dispatch_sensor_input({INPUT_RIGHT,false});
+    EXPECT_FALSE(get_obstacle_location().front_obstacle);
+    EXPECT_FALSE(get_obstacle_location().right_obstacle);
 }
-
-TEST_F(InputsTest, DetectObstacle_ReadsEachObstacleSensorOnceAndNotTheDustSensor) {
-    detect_obstacle();
-    EXPECT_EQ(1, fake_hw.front_reads);
-    EXPECT_EQ(1, fake_hw.left_reads);
-    EXPECT_EQ(1, fake_hw.right_reads);
-    EXPECT_EQ(0, fake_hw.dust_reads);
+TEST_F(InputsTest, TrueFalseDustIsRetainedAndGetterDoesNotConsume) {
+    detect_dust(true); detect_dust(false);
+    EXPECT_FALSE(get_dust_existence().current); EXPECT_TRUE(get_dust_existence().pending);
+    auto copy=get_dust_existence(); copy.pending=false;
+    EXPECT_FALSE(copy.pending); EXPECT_TRUE(get_dust_existence().pending);
+    clear_pending_dust(); EXPECT_FALSE(get_dust_existence().pending);
+    detect_dust(true); clear_pending_dust(); EXPECT_TRUE(get_dust_existence().current);
 }
-
-// ---- Detect Dust ------------------------------------------------------------
-
-TEST_F(InputsTest, DetectDust_ReportsDustWhenTheSensorDetectsIt) {
-    fake_hw.dust = true;
-    EXPECT_TRUE(detect_dust());
+TEST_F(InputsTest, StoredInputsAreClassifiedWithoutHardwarePolling) {
+    Observe(true,false,true,true);
+    EXPECT_EQ(SIDE_SITUATION_LEFT_OPEN,get_inputs().side_situation);
+    EXPECT_TRUE(get_inputs().front_blocked); EXPECT_TRUE(fake_hw.calls.empty());
 }
-
-TEST_F(InputsTest, DetectDust_ReportsNoDustWhenTheSensorDetectsNone) {
-    fake_hw.dust = false;
-    EXPECT_FALSE(detect_dust());
+TEST_F(InputsTest, SensorEventsDoNotAdvanceTimersOrOutput) {
+    reset_movement_controller(); reset_power_up_timer(); start_step_timer();
+    Observe(true,true,true,true);
+    EXPECT_EQ(0,get_step_ticks_elapsed()); EXPECT_EQ(0,get_remaining_power_up_ticks());
+    EXPECT_EQ(CONTROLLER_STATE_FORWARD,get_controller_state());
+    EXPECT_TRUE(fake_hw.motor.empty()); EXPECT_TRUE(fake_hw.cleaner.empty());
 }
-
-TEST_F(InputsTest, DetectDust_ReadsOnlyTheDustSensorOnce) {
-    detect_dust();
-    EXPECT_EQ(1, fake_hw.dust_reads);
-    EXPECT_EQ(0, fake_hw.front_reads + fake_hw.left_reads + fake_hw.right_reads);
-}
-
-// ---- Get Inputs -------------------------------------------------------------
-
-TEST_F(InputsTest, GetInputs_ClearPathAndNoDust) {
-    SetObstacleSensors(false, false, false);
-    fake_hw.dust = false;
-    const Inputs inputs = get_inputs();
-    EXPECT_EQ(kClear, inputs.obstacle_situation);
-    EXPECT_FALSE(inputs.dust_existence);
-}
-
-TEST_F(InputsTest, GetInputs_ReturnsTheSituationAssessedFromTheSensors) {
-    SetObstacleSensors(true, true, false);
-    EXPECT_EQ(kRightOpen, get_inputs().obstacle_situation);
-
-    SetObstacleSensors(true, false, true);
-    EXPECT_EQ(kLeftOpen, get_inputs().obstacle_situation);
-
-    SetObstacleSensors(true, true, true);
-    EXPECT_EQ(kAllBlocked, get_inputs().obstacle_situation);
-
-    SetObstacleSensors(false, true, true);
-    EXPECT_EQ(kFrontClearSidesBlocked, get_inputs().obstacle_situation);
-}
-
-TEST_F(InputsTest, GetInputs_ReturnsTheDustExistence) {
-    fake_hw.dust = true;
-    EXPECT_TRUE(get_inputs().dust_existence);
-}
-
-TEST_F(InputsTest, GetInputs_DustAndObstaclesAreReportedIndependently) {
-    SetObstacleSensors(true, true, true);
-    fake_hw.dust = true;
-    const Inputs inputs = get_inputs();
-    EXPECT_EQ(kAllBlocked, inputs.obstacle_situation);
-    EXPECT_TRUE(inputs.dust_existence);
-}
-
-// Structure Chart, design decision 1: every sensor is read once per cycle.
-TEST_F(InputsTest, GetInputs_ReadsEverySensorExactlyOnce) {
-    get_inputs();
-    EXPECT_EQ(1, fake_hw.front_reads);
-    EXPECT_EQ(1, fake_hw.left_reads);
-    EXPECT_EQ(1, fake_hw.right_reads);
-    EXPECT_EQ(1, fake_hw.dust_reads);
-}
-
-// Structure Chart 3.1: Detect Obstacle is called before Detect Dust.
-TEST_F(InputsTest, GetInputs_ReadsTheObstacleSensorsBeforeTheDustSensor) {
-    get_inputs();
-    ASSERT_EQ(4u, fake_hw.calls.size());
-    EXPECT_EQ("dust", fake_hw.calls.back());
-    std::vector<std::string> first_three(fake_hw.calls.begin(), fake_hw.calls.begin() + 3);
-    std::sort(first_three.begin(), first_three.end());
-    EXPECT_EQ((std::vector<std::string>{"front", "left", "right"}), first_three);
-}
-
-}  // namespace

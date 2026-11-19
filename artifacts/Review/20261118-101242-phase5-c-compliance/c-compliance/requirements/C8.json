@@ -1,0 +1,66 @@
+{
+  "id": "C8",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 16,
+      "end": 16
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/movement_controller.c",
+      "start": 24,
+      "end": 60
+    },
+    {
+      "path": "src/step_timer.c",
+      "start": 10,
+      "end": 29
+    },
+    {
+      "path": "src/derive_movement_status.c",
+      "start": 8,
+      "end": 12
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Both turn paths share same timer",
+      "verdict": "implemented",
+      "evidence": "movement_controller.c:33–35 returns Forward on Done for either turning state"
+    },
+    {
+      "claim": "Side sensors do not cut turn short",
+      "verdict": "implemented",
+      "evidence": "movement_controller.c:32–54 ignores situation while turn timer notDone"
+    }
+  ],
+  "paths_walked": [
+    "Stop/Backing Done → choose turn/start0; turn t..t+4; t+5 Done → Forward, D4 Idle. Inputs during turn do not change selected duration."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/movement_controller.c",
+        "src/step_timer.c",
+        "src/derive_movement_status.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_movement_controller.cpp",
+    "tests/test_step_timer.cpp",
+    "tests/test_requirements.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

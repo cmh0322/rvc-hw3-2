@@ -1,20 +1,13 @@
-/*
- * Simulator host: the hardware interface for the web simulator.
- *
- * This file implements the seven library modules of include/hw_interface.h
- * and links with the unchanged production code, including main(). It makes
- * no control decision. It only carries values between the production code and
- * the simulator, one line per Tick:
- *
- *   stdout  one JSON line with the outputs and the internal state, written
- *           each time main() waits for a Tick (the first line is the state
- *           after power on)
- *   stdin   one line "front left right dust" (each 0 or 1) per Tick
- *
- * End of input ends the program.
+/* Simulator boundary for approved SD. stdin supplies actual initial sensor
+ * events (all four kinds) before any Tick. Running sensor events and Tick are
+ * handled in pipe receipt order; queued lines survive Controller execution.
+ * stdout reports initial readiness then acknowledges every running event.
+ * Sensor-only reports have no movement/cleaning command. EOF ends this adapter.
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "sensor_store.h"
 
 #include "hw_interface.h"
 #include "movement_controller.h"
@@ -76,51 +69,43 @@ static void report_cycle(void)
     printf("\"state\":\"%s\",", state_names[get_controller_state()]);
     printf("\"step_ticks_elapsed\":%d,", get_step_ticks_elapsed());
     printf("\"remaining_power_up_ticks\":%d,", get_remaining_power_up_ticks());
+    printf("\"pending_dust\":%s,", get_dust_existence().pending ? "true" : "false");
     printf("\"sensors\":{\"front\":%d,\"left\":%d,\"right\":%d,\"dust\":%d}}\n",
            front_sensor, left_sensor, right_sensor, dust_sensor);
     fflush(stdout);
 }
 
-/* Library module: Wait For Tick. */
-void wait_for_tick(void)
+/* Ordered stdin event stream. Initial mode never enables Tick delivery.
+ * Each line is front/left/right/dust <0|1>, or tick. The pipe retains lines
+ * while Controller runs. One report acknowledges each running event. */
+InputEvent receive_input_event(InputMode mode)
 {
-    char line[64];
-
-    report_cycle();
-
-    if (fgets(line, sizeof line, stdin) == NULL) {
-        exit(EXIT_SUCCESS);
+    char line[128], name[16], extra;
+    int value;
+    if (mode == INPUT_RUNNING) report_cycle();
+    if (fgets(line, sizeof line, stdin) == NULL) exit(EXIT_SUCCESS);
+    InputEvent event;
+    if (sscanf(line, " %15s %c", name, &extra) == 1 && strcmp(name,"tick") == 0) {
+        if (mode != INPUT_RUNNING) {
+            fprintf(stderr,"Tick before initial samples\n"); exit(EXIT_FAILURE);
+        }
+        event.kind = INPUT_TICK; event.value = false;
+        tick++;
+        state_before_cycle = get_controller_state();
+    } else {
+        if (sscanf(line," %15s %d %c",name,&value,&extra) != 2 || (value != 0 && value != 1)) {
+            fprintf(stderr,"Invalid sensor event\n"); exit(EXIT_FAILURE);
+        }
+        if (strcmp(name,"front") == 0) {event.kind=INPUT_FRONT; front_sensor=value;}
+        else if (strcmp(name,"left") == 0) {event.kind=INPUT_LEFT; left_sensor=value;}
+        else if (strcmp(name,"right") == 0) {event.kind=INPUT_RIGHT; right_sensor=value;}
+        else if (strcmp(name,"dust") == 0) {event.kind=INPUT_DUST; dust_sensor=value;}
+        else {fprintf(stderr,"Invalid sensor kind\n"); exit(EXIT_FAILURE);}
+        event.value = value != 0;
     }
-    if (sscanf(line, "%d %d %d %d", &front_sensor, &left_sensor, &right_sensor, &dust_sensor) != 4) {
-        fprintf(stderr, "sim_host: expected \"front left right dust\", got: %s", line);
-        exit(EXIT_FAILURE);
-    }
-
-    tick++;
-    state_before_cycle = get_controller_state();
     direction_issued = NOT_ISSUED;
     clean_issued = NOT_ISSUED;
-}
-
-/* Library modules: the four sensors. */
-bool read_front_sensor(void)
-{
-    return front_sensor != 0;
-}
-
-bool read_left_sensor(void)
-{
-    return left_sensor != 0;
-}
-
-bool read_right_sensor(void)
-{
-    return right_sensor != 0;
-}
-
-bool read_dust_sensor(void)
-{
-    return dust_sensor != 0;
+    return event;
 }
 
 /* Library module: Drive Motor. */

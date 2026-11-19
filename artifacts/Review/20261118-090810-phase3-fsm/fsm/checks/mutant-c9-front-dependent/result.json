@@ -1,0 +1,88 @@
+{
+  "status": "failed",
+  "started_utc": "2026-11-18T00:11:34.183924+00:00",
+  "commands": [
+    {
+      "stage": "spin-version",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-V"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler-version",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+      "exit_code": 0
+    },
+    {
+      "stage": "generate",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-a",
+        "model.pml"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+      "exit_code": 0
+    },
+    {
+      "stage": "compile",
+      "argv": [
+        "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+        "-O2",
+        "-o",
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent\\pan.exe",
+        "pan.c"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+      "exit_code": 0
+    },
+    {
+      "stage": "search",
+      "argv": [
+        "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent\\pan.exe",
+        "-m100000"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+      "exit_code": 0
+    },
+    {
+      "stage": "replay",
+      "argv": [
+        "C:\\Users\\james\\.local\\bin\\spin.exe",
+        "-t",
+        "-p",
+        "-g",
+        "-l",
+        "-k",
+        "model.pml.trail",
+        "model.pml"
+      ],
+      "cwd": "C:\\Users\\james\\AppData\\Local\\Temp\\rvc-phase3-20261118-090810\\mutant-c9-front-dependent",
+      "exit_code": 0
+    }
+  ],
+  "scope": "one property/check on the supplied model only",
+  "ltl": null,
+  "depth": 100000,
+  "fairness": "none",
+  "search": "full-state",
+  "model_source": "D:\\SCHOOL\\2026_3-2\\소프트웨어공학\\HW3-2\\artifacts\\Review\\20261118-090810-phase3-fsm\\fsm\\variants\\mutant-c9-front-dependent.pml",
+  "model_sha256": "5748953aff2876b88e55e86a6bc85f44823e22cfaaac374994900595e412b745",
+  "spin": "C:\\Users\\james\\.local\\bin\\spin.exe",
+  "compiler": "D:\\MSYS2\\mingw64\\bin\\cc.exe",
+  "errors": 1,
+  "stored_states": "49",
+  "transitions": "175",
+  "reason": "SPIN found a counterexample; classify against model and source requirements",
+  "trails": [
+    "model.pml.trail"
+  ],
+  "replay_ok": true,
+  "finished_utc": "2026-11-18T00:11:40.823370+00:00"
+}

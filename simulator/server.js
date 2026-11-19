@@ -68,7 +68,9 @@ function serveFile(req, res) {
 async function handleApi(req, res) {
     const body = await readBody(req);
     if (req.url === '/api/reset') {
-        sendJson(res, 200, await controller.start());
+        sendJson(res, 200, await controller.start(body));
+    } else if (req.url === '/api/event') {
+        sendJson(res, 200, await controller.event(body.kind, body.value));
     } else if (req.url === '/api/step') {
         sendJson(res, 200, await controller.step(body));
     } else if (req.url === '/api/save-result') {

@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-18T20:56:05.632401+09:00",
+  "protected_files_unchanged": 77,
+  "requirement_records": 23,
+  "raw_verdict_counts": {
+    "partial": 6,
+    "implemented": 15,
+    "undecidable": 1,
+    "contradicted": 1
+  },
+  "SD_interface_rows": 31,
+  "independent_refutation_files": 3,
+  "independently_refuted_findings": 6,
+  "existing_relative_links": 129,
+  "git_diff_check_exit": 0,
+  "scope": "Evidence completeness and input preservation; implementation noncompliance remains.",
+  "production_modified": false,
+  "browser_system_test": "notRun",
+  "SPIN": "notRun"
+}

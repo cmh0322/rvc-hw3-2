@@ -16,9 +16,9 @@ typedef struct {
 
 /*
  * Decides the Movement Command and the Clean command for this cycle from the
- * Obstacle Situation and the Dust Existence. Call it exactly once per Tick.
+ * Obstacle Situation using the Sensor Store for dust. Call it exactly once per Tick.
  */
-Actions decide_actions(ObstacleSituation obstacle_situation, bool dust_existence);
+Actions decide_actions(ObstacleSituation obstacle_situation);
 
 #ifdef __cplusplus
 }

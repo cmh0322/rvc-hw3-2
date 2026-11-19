@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-11-17T21:07:59.222447+09:00",
+  "scope": "Review file integrity, links, citation ranges and unchanged input hashes only",
+  "canonical_findings": 12,
+  "lens_counts": {
+    "adversarial": 6,
+    "edge-case-hunter": 2,
+    "sasd": 4
+  },
+  "input_files": 11,
+  "errors": []
+}

@@ -2,9 +2,28 @@
 
 로봇청소기(RVC)의 자동 이동과 청소 동작을 요구사항에서 출발해 구조적 분석(SA), 구조적 설계(SD), C11 구현과 테스트로 연결하는 소프트웨어공학 프로젝트입니다. [요구사항](docs/preliminary_requirements.md) · [요구사항 보완 결정](docs/requirements_clarifications.md) · [Claude 작업 지침](.claude/skills/)
 
+## 동료 검토 시작점
+
+- [QA.md](QA.md): Phase 1–6 계획, 지적 처리와 현재 상태.
+- [최신 정리·시나리오 평가](artifacts/Review/20261119-130006-closeout/verification/report.md): 문서 참조 정리 완료, 실제 웹 21개 시나리오×100틱의 Codex 자동 평가 결과와 trace.
+- [Phase 6 종합 검증](artifacts/Review/20261119-115842-phase6-final/verification/report.md): 빌드·테스트·호출 계층·커버리지 근거.
+- [시뮬레이터 실행 방법](simulator/README.md): 로컬 실행과 평가 방법. GitHub에서는 소스·보고서·저장된 trace를 볼 수 있으며, 동작은 로컬에서 실행합니다.
+
+현재 미해결 수정 항목은 없습니다. 시나리오 PASS는 Codex 자동 평가이며 독립 사람 평가·최종 승인은 별도 대기입니다. 아래 진행 기록은 최신 항목부터 읽으면 됩니다.
+
 ## 진행 상황
 
+**잔여 정리 완료(2026-11-19):** P2-I01 문서 참조를 보완했고,21개 시나리오를 실제 웹에서100틱씩 실행해 **Codex 자동 평가21 PASS/0 FAIL**로 저장했습니다. 미해결 수정 항목은 없습니다. [정리·평가 보고서](artifacts/Review/20261119-130006-closeout/verification/report.md). 평가자는 Codex이며 독립 사람 평가와 사용자 최종 승인은 별도 대기입니다. 아래 “선택적 정리 남음”은 이전 이력입니다.
+
+**최신 종합 검증(2026-11-19): Phase 6 자동 검증 완료.** 새 빌드·CTest121/121·승인31호출·C 줄/분기 커버리지100%를 확인했습니다. 21개×100틱 새 trace와21개 시나리오의 실제 웹 초기화/첫 Tick, 먼지 회귀를 검사했고 새 필수 수정은 발견하지 못했습니다. [Phase 6 보고서](artifacts/Review/20261119-115842-phase6-final/verification/report.md). 남은 일은 [사람의 시뮬레이터 평가·최종 승인](artifacts/Review/20261119-115842-phase6-final/system/human-evaluation.md)과 선택적 P2-I01 참조 정리입니다. 아래 단계 대기 표시는 이전 이력입니다.
+
+**최신 수정 상태(2026-11-18):** Phase 5 지적 P5-01–P5-06을 C와 테스트·시뮬레이터에 반영했습니다. 초기 무출력/네 실제 센서 확보, 입력 이벤트 순서 보존, 먼지 감지 저장과 복귀 파워업을 구현했습니다. CTest121/121(단위120+승인31호출 검사1), C 커버리지140/140줄·62/62분기, 실제 브라우저/API 회귀 검사가 통과했습니다. 21개 시나리오×100틱 새 trace도 남겼습니다. [수정·검증 보고서](artifacts/Review/20261118-213657-phase5-fixes/verification/report.md). 다음은 Phase 6 종합 검토와 사람의 시나리오 평가입니다. 아래 최초 감사의 미수정 표시는 당시 이력입니다.
+
+**최신 검증 상태(2026-11-18):** 사용자가 개정 SD를 승인했고, [Phase 5 C 준수 감사](artifacts/Review/20261118-101242-phase5-c-compliance/c-compliance/report.md)를 완료했습니다. 초기 Forward 출력·초기 센서 준비·먼지 감지 보존과 새 입력/저장 인터페이스에 수정이 필요합니다. 기존 테스트 130개 및 커버리지 100%는 통과했지만, 개정 계약을 적용한 별도 assertion 6개와 승인 호출 계층 검사는 실패했습니다. C 수정과 Phase 6는 아직 진행하지 않았습니다. [현재 계획·결과](QA.md)를 확인하세요. 아래 모듈 수·호출 그림·완료 표시는 개정 전 구현의 이력입니다.
+
 2026년 11월 16일 기준입니다.
+
+아래 완료·승인 표시는 개정 전 작업 이력입니다. **2026-11-17 Phase 1 답변(C12–C15)을 요구사항과 SA에 반영했으며, SD·C·테스트·시뮬레이터의 후속 반영은 아직 진행하지 않았습니다.** 현재 검증 상태는 [QA.md](QA.md)를 참고하세요.
 
 | 단계 | 상태 | 산출물 |
 |---|---|---|
@@ -105,9 +124,128 @@ node simulator/server.js          # http://localhost:8765
 
 | 항목 | 내용 | 현재 동작 |
 |---|---|---|
-| Q6 | 전방은 비었고 좌우에만 장애물이 있는 경우 | 무시하고 전진 (가정) |
+| Q6 | 전방은 비었고 좌우에만 장애물이 있는 경우 | 전진·청소 유지 (C16으로 확정, 전방 장애물만 회피 시작) |
 
 요구사항이 정하지 않은 상황도 시뮬레이터에서 드러납니다. 좌우가 계속 막힌 통로(ST-06)나 사방이 막힌 칸(ST-21)에서는 C5에 따라 후진 명령을 5틱씩 계속 반복합니다.
+
+## Codex를 이용한 독립 검증과 보강
+
+2026년 11월 17일부터 Claude로 작성한 RVC 산출물을 Codex에서 다시 검토하는 절차를 준비합니다. 요구사항과 승인된 산출물을 기준으로 오류·누락·모순을 찾아 보강하며, 기존 SASD-Guided SDD 절차와 [AGENTS.md](AGENTS.md)의 단계별 사람 승인 규칙을 유지합니다.
+
+**2026-11-17: Phase 1 리뷰의 7개 항목에 대해 사용자 답변과 SA 수정을 반영하고 문서 재점검을 마쳤습니다.** [QA 계획·진행 기록](QA.md), [최초 Phase 1 보고서](artifacts/Review/20261117-210003-phase1-sa/bmad/report.md), [수정·재검증 기록](artifacts/Review/20261117-211457-phase1-fixes/verification/report.md)을 참고하세요. 독립 재검토자 실행은 한도로 완료되지 않아 주 검토자가 순차 검토했습니다. 기존 테스트 수치와 승인 이력은 개정된 SA의 구현·실행 검증 결과가 아닙니다.
+
+### 도구별 역할
+
+**Q6 후속 확정:** 사용자 답변을 C16으로 기록했습니다. 전진 중에는 전방 장애물만 회피를 시작하며, 좌우만 막히면 전진·청소를 유지합니다. 기존 SA 동작은 같고 C9도 유지합니다. 최신 결정·검증 기록은 [QA.md](QA.md#q6-확정--2026-11-17)를 참고하세요.
+
+**Phase 4 SD 수정·재검토 완료 (2026-11-18):** 초기 무출력·초기 샘플 확보·D2 먼지 감지 보존 및 입력 수신 계약·C16 상태와 D3 근거를 반영했습니다. 세 독립 재검토에서 추가 지적은 없었고 다이어그램 5개와 문서 구조를 점검했습니다. 개정 SD 사람 승인은 대기이며 C/테스트 구현은 아직 이전 기준입니다. [수정·검증 기록](artifacts/Review/20261118-095720-phase4-fixes/verification/report.md) · [최신 추적표](artifacts/Review/20261118-095720-phase4-fixes/traceability/matrix.md).
+
+**Phase 4 SA↔SD 검토 완료 (2026-11-18):** BMAD 3개 독립 관점과 RVC-adapted Spec Kit으로 검토했습니다. 초기 출력·초기 샘플·먼지 보존/수신·C16 상태의 필수 정리 5개와 선택적 문구 정리 1개를 기록했습니다. 이 최초 검토 당시에는 SD 원문 수정 전이었으며, 이후 반영 결과는 위의 수정·재검토 기록을 참고하세요. [Phase 4 보고서](artifacts/Review/20261118-093338-phase4-sd/bmad/report.md) · [추적표](artifacts/Review/20261118-093338-phase4-sd/traceability/matrix.md).
+
+**Phase 3 이동 FSM 검증 완료 (2026-11-18):** SPIN으로 안전성·활성성 4개를 완전 탐색했고 T0–T14와 5개 상태의 도달 경로를 확인했습니다. 반복 후진은 C5/C9의 허용 동작입니다. 기존 SD 초기 출력 설명은 C13과 달라 Phase 4에서 정리해야 합니다. 청소 모델·실제 C·웹 시스템 검증은 별도입니다. [Phase 3 보고서](artifacts/Review/20261118-090810-phase3-fsm/fsm/report.md) · [진행 기록](QA.md).
+
+**Phase 2 추적성 검토도 완료했습니다.** B1–B7/C1–C15의 22개 항목 모두 SA 근거에 연결되며, 당시 Q6는 가정으로 유지하고 요약 참조의 LOW 선택적 개선 1개를 기록했습니다. [Phase 2 보고서](artifacts/Review/20261117-212640-phase2-traceability/traceability/report.md) · [추적 매트릭스](artifacts/Review/20261117-212640-phase2-traceability/traceability/matrix.md). 문서 연결 확인이며 SD·C 준수, 테스트·SPIN 성공을 뜻하지 않습니다.
+
+| 도구 | Codex에 맡길 검토 | RVC 적용 대상 | 적용 범위와 한계 |
+|---|---|---|---|
+| [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) — `bmad-review` | 반론 중심 검토, 경계조건 탐색, 문서 구조 검토. 코드 검토에는 검증 누락 관점도 적용 | 요구사항, Event List, Context, DFD, Data Dictionary, Process Specifications, Transform Analysis, Structure Chart | SASD 체크리스트를 함께 전달한다. 일반 문서 구조 검토만으로 DFD balancing이나 모듈 설계의 타당성을 검증했다고 판단하지 않는다. |
+| [GitHub Spec Kit](https://github.com/github/spec-kit) — `speckit-analyze`, `speckit-checklist` | 문서 간 모순·중복·모호함·누락 및 요구사항 추적성 분석 | 요구사항 ↔ SA ↔ SD | 원본은 `spec.md`, `plan.md`, `tasks.md`를 요구한다. RVC에서는 `rvc-speckit-review`가 프로젝트 매핑을 통해 원본 산출물에 분석 방법을 적용한다. 원본 명령 실행과 구분한다. |
+| [Superpowers](https://github.com/obra/superpowers) — `receiving-code-review`, `verification-before-completion` | 리뷰 의견을 실제 근거와 대조한 뒤 수정하고, 실행 결과를 확인한 뒤 완료 판정 | 검토에서 발견한 문제의 보강 및 재검증 | 코드 중심 지침을 문서 검토에 맞게 적용한다. Codex가 제시한 비판도 재확인 대상이다. |
+| [Trail of Bits](https://github.com/trailofbits/skills) — `spec-to-code-compliance` | 명세의 각 요구사항과 실제 구현을 대조하고 근거 위치 제시 | 승인된 SA·SD ↔ `src/`, `include/`, `tests/` | 구현됨·부분 구현·명세와 모순·미구현·판단 불가 등을 구분한다. 함수 이름이나 테스트 존재만으로 준수를 판정하지 않는다. |
+| [SPIN](https://github.com/nimble-code/Spin) | Promela 모델의 상태 탐색으로 교착 및 명시한 조건 위반 확인 | Controller FSM | 별도 실행 도구이다. Mermaid FSM에서 검증 모델과 환경 가정을 명시적으로 작성해야 하며, 모델 검증이 실제 C 코드나 시뮬레이터 검증을 대체하지 않는다. |
+
+### 검증 순서와 판정 기준
+
+상세 범위·산출물·진행 상태는 [QA.md](QA.md)를 기준으로 한다. 최초 요구사항, 보완 결정, 승인된 산출물과 `AGENTS.md`를 함께 읽으며 미정 사항을 임의로 확정하지 않는다.
+
+1. **BMAD:** 요구사항과 SA 전체를 반론·경계조건·SASD 일관성 관점에서 검토한다.
+2. **Spec Kit:** 요구사항 ↔ SA의 추적성, 누락·중복·모호함을 검토한다.
+3. **FSM Verify:** SA를 바탕으로 SPIN 모델·속성·환경 가정을 작성하고 실행 결과와 반례를 기록한다.
+4. **BMAD + Spec Kit:** SA → Transform Analysis → Structure Chart의 설계 타당성과 추적성을 검토한다.
+5. **C Compliance:** Trail of Bits 기준으로 승인된 SA·SD와 C11 구현을 대조한다.
+6. **Superpowers:** 전체 지적 처리 상태를 종합하고 승인되어 반영된 수정 및 필요한 테스트를 실행·검증한다.
+
+**각 Phase 마지막에도 Superpowers를 적용**해 지적의 근거를 다시 확인하고 실제 실행/미실행 검사를 기록한다. 문서 검토와 코드 테스트·모델 검증을 구별하며 기존 단계별 사람 승인 규칙을 유지한다.
+
+검토 결과는 **확정 결함 / 요구사항 모호함 / 선택적 개선**으로 구분한다. 각 지적에는 다음 정보를 남긴다.
+
+| 항목 | 기록 내용 |
+|---|---|
+| 식별 및 위치 | 이슈 ID, 심각도, 대상 파일·절·줄 |
+| 근거 | 해당 요구사항 또는 프로젝트 규칙, 서로 충돌하는 산출물 위치 |
+| 재현 | 구체적 반례·입력·상태 경로 또는 실행 명령과 결과 |
+| 영향과 수정 | 영향받는 산출물, 최소 수정안, 사람의 결정이 필요한 사항 |
+| 상태 | 미확인 / 확인됨 / 수정됨 / 재검증됨 / 보류와 사유 |
+
+도구가 제안한 지적 수를 채우기 위해 결함을 만들어 내지 않는다. 검토하지 못한 범위는 명시하며, 테스트·모델 검사 미실행 상태에서 통과를 선언하지 않는다. 검토 보고서는 `artifacts/Review/<run-id>/` 아래에 실행별로 저장한다. 승인된 SA·SD의 공식 저장 위치는 각각 `artifacts/SA/`, `artifacts/SD/`를 유지한다.
+
+### 설치 상태와 팀원 준비
+
+2026년 11월 17일 작업 PC 기준 설치 상태입니다. 저장소의 프로젝트 파일과 개인 PC에 설치되는 도구를 구분합니다.
+
+| 도구 | 설치 버전·위치 | 확인 범위 |
+|---|---|---|
+| BMAD | v6.12.4, `_bmad/`와 `.agents/skills/bmad-*` 29개 | Codex 연동 설치 완료, `bmad-review` 설정 해석 스크립트 실행 확인 |
+| Spec Kit | v1.4.1, `.specify/`와 `.agents/skills/speckit-*` 9개. `specify` CLI는 사용자 PC에 설치 | Codex용 스킬과 PowerShell 지원 파일 설치. RVC 입력 매핑과 `rvc-speckit-review` 어댑터 준비 완료 |
+| Superpowers | Codex의 `superpowers@openai-curated` 플러그인 | 설치·활성화 상태 확인 |
+| Trail of Bits | `spec-to-code-compliance@trailofbits` v2.0.2 | 플러그인 설치·활성화 상태와 스킬 파일 확인 |
+| SPIN | v6.5.1, 사용자 폴더의 `.local/bin/spin.exe` | 작은 예제의 모델 생성 → GCC 컴파일 → 상태 탐색 실행, `errors: 0`. 생성된 검증기 컴파일에서 포인터 크기 변환 경고 1건 발생 |
+| uv | v0.13.8, 사용자 폴더의 `.local/bin/` | BMAD 스크립트 실행 및 Spec Kit CLI 설치 확인 |
+
+BMAD·Spec Kit 프로젝트 파일과 아래 RVC 전용 설정은 팀이 공유하고, `uv`, `specify`, SPIN 실행 파일 및 Codex 플러그인은 각 팀원 PC에 설치한다. `.specify/memory/constitution.md`는 원본 Spec Kit 기능을 위한 미작성 템플릿이다. RVC 어댑터는 `AGENTS.md`와 공통 규약을 기준으로 사용하며 이 템플릿을 승인된 프로젝트 원칙으로 취급하지 않는다. 별도 feature/tasks를 준비하지 않은 상태에서 원본 `speckit-analyze`를 직접 실행하는 대신 `rvc-speckit-review`를 사용한다.
+
+각 PC에서 필요한 설치 명령은 다음과 같다. Node.js, Python, GCC 등 실행 환경은 각 도구의 공식 문서를 따른다.
+
+```powershell
+# uv: https://docs.astral.sh/uv/getting-started/installation/
+# 설치 후 새 터미널에서 실행한다.
+uv tool install --from git+https://github.com/github/spec-kit.git@v1.4.1 specify-cli
+
+# Codex 플러그인 (이미 설치되어 있으면 생략)
+codex plugin add superpowers@openai-curated
+codex plugin marketplace add trailofbits/skills
+codex plugin add spec-to-code-compliance@trailofbits
+```
+
+BMAD와 Spec Kit 프로젝트 파일이 없는 새 작업 폴더에서는 다음 공식 설치 명령으로 Codex 연동을 만들 수 있다. 기존 설치 파일이 있는 저장소에서는 재초기화하지 않는다.
+
+```powershell
+npx bmad-method@6.12.4 install --modules bmm --tools codex --communication-language Korean --document-output-language Korean --no-shims --yes
+specify init --here --integration codex --integration-options="--skills" --script ps
+```
+
+SPIN은 [공식 Windows 바이너리](https://github.com/nimble-code/Spin/tree/master/Bin)의 `spin651_windows64.exe.gz`를 풀어 `spin.exe`로 설치하고 `spin -V`로 확인한다. 작업 PC에서는 `.local/bin/`에 설치했다. 이 바이너리는 MinGW 런타임이 필요하므로 팀원 PC에서도 `spin -V`와 예제 모델 컴파일·실행까지 확인한다. RVC의 GCC 환경은 위의 빌드 절차를 따른다.
+
+### RVC 프로젝트 전용 진입 스킬
+
+외부 도구의 원본 스킬을 유지하고, 이 저장소의 `.agents/skills/rvc-*`에 역할별 어댑터 5개를 둔다. 모든 어댑터는 [공통 검증 규약](docs/verification/review-contract.md)의 근거·판정·승인 규칙을 따른다.
+
+| 스킬 | 프로젝트에 맞춘 설정 | 요청 예시 |
+|---|---|---|
+| [rvc-bmad-review](.agents/skills/rvc-bmad-review/SKILL.md) | BMAD 팀 override와 SASD lens. 부모별 balancing, PSPEC 완전성, 변환 경계, 모듈 인터페이스 검사. 지적 최소 개수 강제 제거 | `$rvc-bmad-review SA와 SD를 전반적으로 review해 줘.` |
+| [rvc-speckit-review](.agents/skills/rvc-speckit-review/SKILL.md) | B/C/Q → 이벤트 → 프로세스 → FSM → 모듈 → 코드·테스트 추적. 새 spec/plan/tasks를 만들지 않고 기존 파일을 직접 읽음 | `$rvc-speckit-review C9~C11이 SA·SD·테스트 추적표에 일관되게 반영됐는지 검토해 줘.` |
+| [rvc-superpowers-verify](.agents/skills/rvc-superpowers-verify/SKILL.md) | 지적 반증, 승인된 수정의 Red-Green-Refactor, 실제 빌드·CTest·호출 계층·coverage 증거 기록 | `$rvc-superpowers-verify 이 보고서의 지적이 타당한지 먼저 확인해 줘. 아직 수정하지 마.` |
+| [rvc-c-compliance](.agents/skills/rvc-c-compliance/SKILL.md) | SA·SD의 동작·모듈·인터페이스를 C11 코드에 대조. C++ 테스트·가짜 하드웨어 구분. 요구사항별 판정과 반증 | `$rvc-c-compliance 승인된 SASD가 C 코드에 구현됐는지 검토해 줘.` |
+| [rvc-fsm-verify](.agents/skills/rvc-fsm-verify/SKILL.md) | T0~T14, D4의 5틱 경계, C4/C9/C16(Q6 해결), 후진 반복을 반영한 모델 작성·검사. 청소 D3는 별도 범위 | `$rvc-fsm-verify 이동 FSM과 5틱 타이머를 SPIN으로 검증해 줘.` |
+
+설정의 실제 위치는 [BMAD 팀 override](_bmad/custom/bmad-review.toml), [SASD 검토 관점](docs/verification/bmad-lenses.md), [Spec Kit 입력 매핑](.specify/rvc-review-map.toml), [FSM 모델 규약](.agents/skills/rvc-fsm-verify/references/model-contract.md)이다. 결과는 실행별 `artifacts/Review/<run-id>/`에 저장한다. SPIN 어댑터에는 명령·로그·모델 해시·반례를 보존하고 불완전 탐색을 통과로 처리하지 않는 실행 도우미가 포함된다.
+
+Trail of Bits의 네이티브 Workflow 실행 기능이 현재 호스트에서 제공되지 않으면, 어댑터가 그 제한을 밝히고 Codex의 요구사항별 검토·독립 반증 방식으로 적용한다. 대체 실행을 원본 Workflow 실행으로 보고하지 않는다. 모든 어댑터는 스킬 설정 완료와 실제 검증 성공을 구분한다.
+
+### Codex에 전달할 첫 검토 요청
+
+다음 턴부터 설치된 스킬을 사용할 수 있다. 팀원은 프로젝트 폴더에서 Codex를 열고 아래와 같이 요청한다.
+
+```text
+$rvc-bmad-review를 사용해 RVC의 SA 산출물을 review해 줘.
+AGENTS.md, docs/preliminary_requirements.md,
+docs/requirements_clarifications.md를 기준으로 삼고,
+README의 'Codex를 이용한 독립 검증과 보강' 절차를 따라 줘.
+우선 Event List와 Context Diagram부터 검토하고 원본 산출물은 수정하지 마.
+지적마다 파일 위치, 요구사항 근거, 반례, 영향, 최소 수정안을 제시해 줘.
+확정 결함·요구사항 모호함·선택적 개선을 구분하고,
+보고서는 artifacts/Review/<이번 실행 ID>/bmad/에 저장해 줘.
+```
 
 ## Claude Code 단계별 토큰 사용량
 

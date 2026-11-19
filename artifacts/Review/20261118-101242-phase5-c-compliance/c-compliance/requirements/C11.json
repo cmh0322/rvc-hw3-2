@@ -1,0 +1,65 @@
+{
+  "id": "C11",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 19,
+      "end": 19
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/power_up_timer.c",
+      "start": 10,
+      "end": 30
+    },
+    {
+      "path": "src/decide_actions.c",
+      "start": 17,
+      "end": 22
+    },
+    {
+      "path": "src/derive_movement_status.c",
+      "start": 8,
+      "end": 12
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Avoiding preserves residual",
+      "verdict": "implemented",
+      "evidence": "power_up_timer.c:14–28 has no count assignment outside Forward"
+    },
+    {
+      "claim": "Forward resumes residual when dust false",
+      "verdict": "implemented",
+      "evidence": "power_up_timer.c:16–21 decrements preserved positive count and reports active"
+    }
+  ],
+  "paths_walked": [
+    "Movement decision precedes status and boost, so the first Stop already pauses D3. First Forward resumes when current=false. New avoidance detection precedence fails C15; C11 no-new-detection case passes audit control."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/power_up_timer.c",
+        "src/decide_actions.c",
+        "src/derive_movement_status.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_power_up_timer.cpp",
+    "tests/test_requirements.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

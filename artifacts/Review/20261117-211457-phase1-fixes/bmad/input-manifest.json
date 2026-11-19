@@ -1,0 +1,59 @@
+{
+  "inputs": [
+    {
+      "path": "docs/preliminary_requirements.md",
+      "sha256": "f6a3dc81879211c8bb4cf9516b0e29e5fe436bef7ad88fe649529958653d5d78",
+      "lines": 7
+    },
+    {
+      "path": "docs/requirements_clarifications.md",
+      "sha256": "625a70524d404e452bf15efc26ff1f2cdb2b780bc132b841f3d9becc4ecad4a1",
+      "lines": 42
+    },
+    {
+      "path": "artifacts/SA/context_diagram.md",
+      "sha256": "e05db0fc6edb358d464b22c1966513d4fcb40e734363cda8462ee90683cf09fd",
+      "lines": 37
+    },
+    {
+      "path": "artifacts/SA/data_dictionary.md",
+      "sha256": "4f1b785ffc9939b36f29b0bce28071cd79d0d4cfdd321618f73cb077dad21024",
+      "lines": 277
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_0.md",
+      "sha256": "5e717679317eb300a89335932a7b27848e35f09530cdd53d09f58c6298daf36d",
+      "lines": 52
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_1.md",
+      "sha256": "770d1f471bf3607282d94ae1af7bd18b2bc13874c2beb198cdf16ba60723d12d",
+      "lines": 106
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_2.md",
+      "sha256": "7977aafc9572a7fe77db7a8dc4b1b1d1aec0effd2fb34488bc35cd389d83a8fa",
+      "lines": 129
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_3.md",
+      "sha256": "42b269cf72b7554822cc6cb852e427ac609fe5e0c7e6ea142f9e0a355928b1f6",
+      "lines": 149
+    },
+    {
+      "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+      "sha256": "ac7c5bf0473d269edf6f3014b89a93063c718f37a24a6cdb0f48fc1bc4c8bf12",
+      "lines": 114
+    },
+    {
+      "path": "artifacts/SA/event_list.md",
+      "sha256": "87b41ca853cd6b3caf394642ed670eb4e7ddf1db775df4a707ec4e5c4c5906cb",
+      "lines": 38
+    },
+    {
+      "path": "artifacts/SA/process_specification.md",
+      "sha256": "ea8df2271ca50fb97072027691533f5a11f689f0aea87d4c4e06b9166a2276d0",
+      "lines": 640
+    }
+  ]
+}

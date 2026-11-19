@@ -1,0 +1,79 @@
+[
+  {
+    "lens": "adversarial",
+    "location": "artifacts/SD/structure_chart.md:68-71,257,265,386,404 ↔ docs/requirements_clarifications.md:21(C13; B1/B2), artifacts/SA/DFD/dfd_level_4_fsm.md:63(T0), artifacts/SA/DFD/dfd_level_3.md:134(3.2.2/3.2.3)",
+    "trigger_condition": "전원을 켜고 아직 첫 Tick을 처리하지 않은 경우. 특히 초기 전방 센서가 장애물을 보고하는 경우에도 SD의 Initialize RVC → Issue Movement Output 호출은 센서 판단 전에 실행된다.",
+    "guard_snippet": "SD는 Initialize RVC가 'issues the initial Forward command'라고 명시하고 T0의 Forward 반환값을 출력 모듈에 전달한다. 그러나 C13은 'No Direction or Clean command is emitted at Power On'이며, 최신 SA의 T0는 'Set state only; no Movement Command or Start Step Timer'이다.",
+    "potential_consequence": "SD대로 구현하면 첫 Tick 이전에 Direction=Forward를 출력하여 C13을 위반한다. 첫 Tick에서 전방 장애물 때문에 Stop을 선택하더라도 이미 발생한 초기 Forward 출력은 취소되지 않는다. 초기화 책임·호출선·인터페이스·T0 추적을 상태 초기화만 수행하도록 함께 수정해야 한다."
+  },
+  {
+    "lens": "adversarial",
+    "location": "artifacts/SD/structure_chart.md:64-83,286,399 ↔ docs/requirements_clarifications.md:20(C12; B2-B5), artifacts/SA/process_specification.md:38-40,51-54,92-100(0/1/2), artifacts/SA/DFD/dfd_level_3.md:127",
+    "trigger_condition": "초기화 직후 첫 Tick을 기다리는 동안 아직 네 센서의 초기 샘플을 확보하지 않은 경우.",
+    "guard_snippet": "SD의 순서는 Main → Initialize RVC → Wait For Tick → Controller → Get Inputs이고, 센서는 'once per cycle, at its start'에 읽는다. 반면 SA Process 0은 'BEFORE first Tick: ... obtain all four initial sensor samples'를 요구하며, Process 1은 'Tick does not run before the initial set is complete'라고 명시한다.",
+    "potential_consequence": "첫 Tick 전에 초기 센서 집합을 완성한다는 C12/SA 계약이 SD 호출 구조에 반영되지 않았다. 현재 설계는 첫 Tick 발생 뒤의 읽기를 초기 샘플로 사용하므로 SA가 정의한 초기 입력 확보 순서와 Tick 스냅샷 경계를 보존하지 못한다. 초기 샘플 확보와 그 완료 조건을 첫 Tick 처리 전에 명시해야 한다."
+  },
+  {
+    "lens": "adversarial",
+    "location": "artifacts/SD/structure_chart.md:262,290-298,327,375,399 및 artifacts/SD/transform_analysis.md:33,50,86-92,139-159 ↔ docs/requirements_clarifications.md:23,28-30(C15; B5/C3/C10/C11), artifacts/SA/process_specification.md:118-142,365-395(2/4.1), artifacts/SA/data_dictionary.md:159-176(D2)",
+    "trigger_condition": "회피 중 한 Tick에서 먼지를 감지한 뒤 Forward 복귀 전에 센서가 FALSE가 되는 경우, 또는 Tick 사이에 TRUE 입력과 FALSE 입력이 순서대로 수신되는 경우. 기존 파워업 잔여 틱이 있어도 동일하다.",
+    "guard_snippet": "SD는 D2를 'Not kept between cycles'라고 정의하고 지속 상태를 이동 상태·D4·D3 세 그룹으로 한정한다. Track Power-Up 인터페이스에는 Power-Up Active 반환만 있으며 pending 플래그 보존·소비 경로가 없다. Transform Analysis에도 최신 SA의 D2 → Process 2 읽기와 Process 4.1 → D2 Pending Dust Detection 갱신이 빠져 있다. 반면 SA는 TRUE 입력을 OR로 래치하고 FALSE에도 보존하며, Forward에서 이를 소비하여 5틱을 재시작하도록 명시한다.",
+    "potential_consequence": "현재 SD의 저장소 수명과 인터페이스로는 C15의 미처리 감지를 보존할 수 없다. Forward 복귀 시 5틱 파워업을 시작하지 않거나, 새 감지가 있었는데도 C11의 예전 잔여 틱만 재개할 수 있다. Dust Existence의 타입을 Data Dictionary에서 참조한다는 일반 문구만으로 지속 상태와 갱신 경로의 부재가 해소되지는 않는다. D2의 보존 책임, 입력 수신 시 래치, Forward 소비 및 초기화 계약을 양쪽 SD 산출물에 전파해야 한다."
+  },
+  {
+    "lens": "edge-case-hunter",
+    "location": "artifacts/SD/structure_chart.md:71; artifacts/SD/structure_chart.md:257; artifacts/SD/structure_chart.md:386; artifacts/SA/DFD/dfd_level_4_fsm.md:63; docs/requirements_clarifications.md:21",
+    "trigger_condition": "C13: 전방 장애물이 있는 상태에서 전원을 켠다.",
+    "guard_snippet": "Initialize RVC는 상태와 타이머만 초기화하고 Issue Movement Output을 호출하지 않는다; 첫 Tick의 T1/T2만 출력한다.",
+    "potential_consequence": "센서 평가 전 Forward 명령이 발생하여 C13의 초기 출력 금지를 위반한다."
+  },
+  {
+    "lens": "edge-case-hunter",
+    "location": "artifacts/SD/structure_chart.md:64-75; artifacts/SD/structure_chart.md:285; artifacts/SA/process_specification.md:38-40; artifacts/SA/DFD/dfd_level_3.md:127; docs/requirements_clarifications.md:20",
+    "trigger_condition": "C12: 초기화 후 첫 Tick이 도착하지만 초기 센서 샘플은 아직 수집되지 않았다.",
+    "guard_snippet": "Initialize RVC → 네 실제 센서 샘플 수집 완료 → Wait For Tick → 유효 스냅샷으로 Controller 실행.",
+    "potential_consequence": "첫 Tick 뒤에야 센서를 읽으므로 SA의 초기 샘플 완료 경계를 보장하지 못한다."
+  },
+  {
+    "lens": "edge-case-hunter",
+    "location": "artifacts/SD/structure_chart.md:399; artifacts/SD/structure_chart.md:262; artifacts/SA/process_specification.md:128-142; artifacts/SA/process_specification.md:372; docs/requirements_clarifications.md:30",
+    "trigger_condition": "B5/C10/C15: 두 Tick 사이에 먼지 입력이 TRUE였다가 FALSE가 된다.",
+    "guard_snippet": "센서 입력 수신 시 current = input; pending |= input; 입력 수신과 Tick 소비를 논리적으로 직렬화한다.",
+    "potential_consequence": "Tick당 한 번의 현재값 읽기는 감지를 놓쳐 필요한 파워업 시작·재시작을 누락한다."
+  },
+  {
+    "lens": "edge-case-hunter",
+    "location": "artifacts/SD/structure_chart.md:298; artifacts/SD/structure_chart.md:327; artifacts/SD/structure_chart.md:375; artifacts/SD/transform_analysis.md:33; artifacts/SD/transform_analysis.md:50; artifacts/SA/process_specification.md:367-392; docs/requirements_clarifications.md:23",
+    "trigger_condition": "C15: 회피 중 먼지를 읽었지만 Forward 복귀 전 센서가 FALSE로 바뀐다.",
+    "guard_snippet": "D2를 영속 숨김 상태로 유지한다; Detect Dust가 pending을 설정하고 Track Power-Up이 Forward에서만 소비하도록 갱신 인터페이스와 반환 흐름을 정의한다.",
+    "potential_consequence": "기억할 저장소와 소비 경로가 없어 복귀 시 5틱 재시작 대신 잔여량만 재개하거나 정상 청소한다."
+  },
+  {
+    "lens": "sasd",
+    "location": "artifacts/SD/structure_chart.md:71,123,257,265,309,312,386,404",
+    "trigger_condition": "전원을 켜고 첫 Tick이 아직 발생하지 않은 경우. C13은 Forward 상태만 초기화하도록 확정했으나 SD는 초기화 경로에서 Forward 명령을 반환하고 Motor로 전달한다.",
+    "guard_snippet": "SD artifacts/SD/structure_chart.md:71 `Init -->|\"3\"| IssueMove`; :265 `Sets the controller state to Forward and returns the initial Movement Command, Forward (T0).`; :386 `Reset Movement Controller` sets the state and returns Forward. `Initialize RVC` passes it to `Issue Movement Output`.; :404 `at power on, only Direction = Forward is issued (T0).` ↔ 요구사항 docs/requirements_clarifications.md:21 `No Direction or Clean command is emitted at Power On`; SA artifacts/SA/DFD/dfd_level_4_fsm.md:63 `| T0 | [*] | Internal initialization | Before first Tick | Set state only; no Movement Command or Start Step Timer | Forward | C13 |`; artifacts/SA/DFD/dfd_level_3.md:134 `No Movement Command, Direction or Clean is emitted on initialization (C13).`",
+    "potential_consequence": "이 설계를 따르면 센서를 평가하기 전에 Forward가 출력된다. 최초 전방 센서가 장애물을 보고하는 경우에도 첫 Tick의 Stop보다 먼저 Forward를 출력하여 C13 및 최신 SA의 T0 계약을 위반한다."
+  },
+  {
+    "lens": "sasd",
+    "location": "artifacts/SD/structure_chart.md:64-79,98,256-262,399",
+    "trigger_condition": "시작 후 첫 Tick을 준비할 때. SD의 Main은 초기화 후 Wait For Tick을 호출하고, Tick 반환 후 Controller/Get Inputs에서 처음 센서를 읽는다. 초기 샘플 네 개를 Tick 전에 확보하는 호출 단계가 없다.",
+    "guard_snippet": "SD artifacts/SD/structure_chart.md:64-66 `Main -->|\"1 (once)\"| Init`, `Main -->|\"2 (every cycle)\"| WaitTick`, `Main -->|\"3 (every cycle)\"| Ctrl`; :73 `Ctrl -->|\"1\"| GetIn`; :98 `It then repeats Wait For Tick followed by Controller`; :286 `Wait For Tick ... Returns when the next Tick occurs`; :399 `The sensors are read once per cycle, at its start. D1 and D2 therefore need no storage between cycles.` ↔ 요구사항 docs/requirements_clarifications.md:20 `Read all four sensors (front, left, right, dust) before processing the first Tick. Unreceived sensor values must not be treated as FALSE.`; SA artifacts/SA/process_specification.md:51-54 `BEFORE first Tick: ... obtain all four initial sensor samples through Processes 1 and 2 ... ON Tick:`; artifacts/SA/event_list.md:26 `First Tick occurs after all initial sensor samples`; artifacts/SA/DFD/dfd_level_3.md:127 `Complete initial sampling before the first Tick (C12).`",
+    "potential_consequence": "C12를 실현하는 초기 입력 확보 단계가 모듈 계층·호출 순서에 추적되지 않는다. 네 센서를 결정 로직보다 먼저 읽는다는 사실만으로는 최신 SA가 정한 첫 Tick 이전 초기 샘플 확보 계약을 충족하지 못하며, 초기 샘플 시점과 첫 Tick의 입력 경계가 달라진다."
+  },
+  {
+    "lens": "sasd",
+    "location": "artifacts/SD/structure_chart.md:262,290-298,327,375,399; artifacts/SD/transform_analysis.md:33,50,140-143",
+    "trigger_condition": "회피 중 Dust Sensor Input이 TRUE였다가 Forward 복귀 전에 FALSE가 되거나, 두 Tick 사이 TRUE 입력 뒤 FALSE가 수신되는 경우. C15는 해당 검출을 보존하고 첫 Forward Tick에서 5틱을 재시작하도록 요구한다.",
+    "guard_snippet": "SD artifacts/SD/structure_chart.md:262 `Reads the dust sensor and returns Dust Existence.`; :298 Power-Up Timer의 숨긴 데이터는 `Remaining Power-Up Ticks: 0-5`; :327 `| Decide Actions | Track Power-Up | Movement Status, Dust Existence | Power-Up Active | — |`; :375 `D2 Dust Existence ... Not kept between cycles.`; :399 `The sensors are read once per cycle ... Reading at each Tick gives the same latest reading.`; artifacts/SD/transform_analysis.md:33 Process 2 입력은 `Dust Sensor Input`만, :50 Process 4.1 출력은 `Power-Up Active, Remaining Power-Up Ticks (to D3)`만 정의한다. ↔ 요구사항 docs/requirements_clarifications.md:23 `Remember dust detected during avoidance even if the sensor becomes clear before Forward resumes.`; :30 `A dust detection is recorded when a TRUE sensor input is received, so a later FALSE before the next Tick must not erase it.`; SA artifacts/SA/data_dictionary.md:43 `D2 Dust Existence ... Dust Detected, Pending Dust Detection ... Record of 2 Booleans`; :163 `Process 2 writes the current reading and ORs TRUE detections into the pending flag; Process 4 (L1), 4.1 (L2/L3) writes only the pending flag after Tick processing.`; artifacts/SA/process_specification.md:368-370 회피 중 pending 보존, Forward에서 pending/current dust가 TRUE이면 5로 재설정하고 pending을 소비하도록 규정한다.",
+    "potential_consequence": "SD에는 pending 검출의 지속 저장소 소유자, 입력 수신 시 누적 경로, Forward 소비 후 갱신 인터페이스가 없다. 데이터 사전의 타입을 참조한다는 :333의 설명으로는 명시적인 D2 비영속 설계를 해소할 수 없다. 이 설계를 따르면 검출이 유실되어 복귀 시 일반 청소를 하거나 이전 잔여 틱만 재개할 수 있고, B5/C10/C11을 구체화한 C15의 전체 5틱 재시작을 보장하지 못한다."
+  },
+  {
+    "lens": "sasd",
+    "location": "artifacts/SD/structure_chart.md:431-433",
+    "trigger_condition": "최신 요구사항 및 SA와 SD의 결정 상태를 대조하거나 후속 구현·검증 기준을 선정할 때. 확정된 C16을 SD가 여전히 Q6 가정으로 분류한다.",
+    "guard_snippet": "SD artifacts/SD/structure_chart.md:431 `| Q6 | Movement Controller | Assumption kept: while going forward only Front Blocked is used. |`; :433 `Q6 remains an assumption.` ↔ 요구사항 docs/requirements_clarifications.md:24 `C16 ... While Forward, only a front obstacle initiates avoidance. When the front is clear, continue moving forward and cleaning even if the left, right, or both sides are blocked.`; :47 `C16 replaces the former Q6 assumption with a confirmed requirement.`; SA artifacts/SA/DFD/dfd_level_4_fsm.md:64-65는 T1/T2의 근거에 C16을 명시하며 :111은 `C16 resolves Q6`라고 명시한다.",
+    "potential_consequence": "현재 전이 동작 자체는 C16과 일치하지만, SD가 소유자 확정 요구사항을 미확정 가정으로 잘못 전달한다. 이는 AGENTS.md:68,86의 SA–SD 일관성·추적성 요구를 충족하지 못하며, 후속 단계가 해당 동작을 선택 가능한 설계 가정으로 취급하게 할 수 있다."
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "P2-A01",
+    "category": "Ambiguity",
+    "severity": "MEDIUM",
+    "classification": "요구사항 모호함",
+    "new_finding": false,
+    "status": "existing-open-assumption",
+    "requirements": [
+      "B3",
+      "Q6"
+    ],
+    "locations": [
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 3,
+        "end": 3
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 42,
+        "end": 42
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 175,
+        "end": 175
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 64,
+        "end": 65
+      }
+    ],
+    "condition": "Forward이고 front는 비어 있지만 측면에 장애물이 있음",
+    "impact": "회피하지 않는 동작은 Q6에 조건부이며 확정 결정으로 승격할 수 없음",
+    "recommendation": "Phase 3에 Q6 가정을 명시; 사용자 결정이 바뀌면 관련 매핑 재검토",
+    "verification": "source-rechecked-no-source-change"
+  },
+  {
+    "id": "P2-I01",
+    "category": "Inconsistency",
+    "severity": "LOW",
+    "classification": "선택적 개선",
+    "new_finding": true,
+    "status": "proposed-not-applied",
+    "requirements": [
+      "C9",
+      "C12",
+      "C13"
+    ],
+    "locations": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 516,
+        "end": 538
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 482,
+        "end": 486
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_3.md",
+        "start": 55,
+        "end": 56
+      }
+    ],
+    "condition": "요약 Requirements 목록만 추출해 추적표를 구성함",
+    "impact": "본문의 C9/C12/C13 연결을 일부 놓칠 수 있으나 실제 원문 동작은 존재",
+    "recommendation": "요약 참조를 본문과 동기화하거나 대표 근거 목록임을 명시",
+    "verification": "source-rechecked-functional-omission-refuted"
+  }
+]

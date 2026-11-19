@@ -1,0 +1,340 @@
+[
+  {
+    "id": "P1-01",
+    "status": "resolved",
+    "reason": "C9 record and sides-only postback",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 535,
+        "end": 535
+      }
+    ]
+  },
+  {
+    "id": "P1-02",
+    "status": "resolved",
+    "reason": "C10/C11/C15 resolved question propagation",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_2.md",
+        "start": 125,
+        "end": 125
+      }
+    ]
+  },
+  {
+    "id": "P1-03",
+    "status": "resolved",
+    "reason": "D3 initial0",
+    "evidence": [
+      {
+        "path": "src/power_up_timer.c",
+        "start": 8,
+        "end": 8
+      }
+    ]
+  },
+  {
+    "id": "P1-04",
+    "status": "resolved",
+    "reason": "C12 readiness",
+    "evidence": [
+      {
+        "path": "src/input_events.c",
+        "start": 8,
+        "end": 8
+      }
+    ]
+  },
+  {
+    "id": "P1-05",
+    "status": "resolved",
+    "reason": "C13 no initial output",
+    "evidence": [
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 14,
+        "end": 14
+      }
+    ]
+  },
+  {
+    "id": "P1-06",
+    "status": "resolved",
+    "reason": "C14 abstract cleaner meaning",
+    "evidence": [
+      {
+        "path": "include/hw_interface.h",
+        "start": 14,
+        "end": 14
+      }
+    ]
+  },
+  {
+    "id": "P1-07",
+    "status": "resolved",
+    "reason": "C15 pending OR",
+    "evidence": [
+      {
+        "path": "src/sensor_store.c",
+        "start": 28,
+        "end": 28
+      }
+    ]
+  },
+  {
+    "id": "R1-SASD-01",
+    "status": "resolved",
+    "reason": "Pending Dust flow crosses P4 but is internal to P0; corrected balancing text retained.",
+    "evidence": [
+      {
+        "path": "artifacts/SA/DFD/dfd_level_2.md",
+        "start": 121,
+        "end": 121
+      }
+    ]
+  },
+  {
+    "id": "P2-A01",
+    "status": "resolved-by-owner",
+    "reason": "Q6 resolved by C16; Forward entry uses only front.",
+    "evidence": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 24,
+        "end": 24
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 28,
+        "end": 28
+      }
+    ]
+  },
+  {
+    "id": "P2-I01",
+    "status": "resolved",
+    "reason": "C12/C13 added to PSPEC3.2.2 summary and C9 to DFD3 P3.2.1 summary; body/diagrams/behavior unchanged.",
+    "evidence": [
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 538,
+        "end": 538
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_3.md",
+        "start": 55,
+        "end": 55
+      }
+    ]
+  },
+  {
+    "id": "P3-D01",
+    "status": "resolved",
+    "reason": "Initial-output mismatch resolved through P4-01/P5-01.",
+    "evidence": [
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 11,
+        "end": 11
+      }
+    ]
+  },
+  {
+    "id": "P3-N01",
+    "status": "not-a-defect",
+    "reason": "Unconditional eventual Forward is unsupported; repeated Backing allowed under C5/C9.",
+    "evidence": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 13,
+        "end": 13
+      }
+    ]
+  },
+  {
+    "id": "P4-01",
+    "status": "resolved",
+    "reason": "초기 Forward 출력이 C13/T0와 충돌; SD corrected and later owner approved; C propagation checked below.",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 23,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 151,
+        "end": 151
+      }
+    ]
+  },
+  {
+    "id": "P4-02",
+    "status": "resolved",
+    "reason": "첫 Tick 전 초기 센서 샘플 확보 단계 누락; SD corrected and later owner approved; C propagation checked below.",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 17,
+        "end": 17
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 136,
+        "end": 136
+      }
+    ]
+  },
+  {
+    "id": "P4-03",
+    "status": "resolved",
+    "reason": "D2의 pending 감지 수명·소유자·소비 경로 누락; SD corrected and later owner approved; C propagation checked below.",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 172,
+        "end": 172
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 233,
+        "end": 233
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 146,
+        "end": 146
+      }
+    ]
+  },
+  {
+    "id": "P4-04",
+    "status": "resolved",
+    "reason": "Tick당 현재값 polling만으로 Tick 사이 감지 보존 불가; SD corrected and later owner approved; C propagation checked below.",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 19,
+        "end": 19
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 21,
+        "end": 21
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 228,
+        "end": 228
+      }
+    ]
+  },
+  {
+    "id": "P4-05",
+    "status": "resolved",
+    "reason": "확정 C16을 Q6 가정으로 표시; SD corrected and later owner approved; C propagation checked below.",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 5,
+        "end": 5
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 301,
+        "end": 301
+      }
+    ]
+  },
+  {
+    "id": "P4-06",
+    "status": "resolved",
+    "reason": "D3 초기값이 SA에 없다는 설명이 오래됨; SD corrected and later owner approved; C propagation checked below.",
+    "evidence": [
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 298,
+        "end": 298
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 179,
+        "end": 179
+      }
+    ]
+  },
+  {
+    "id": "P5-01",
+    "status": "resolved",
+    "reason": "전원 초기화가 첫 Tick 전에 Forward 명령 출력; current source and fresh tests/web/call graph inspected.",
+    "evidence": [
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 14,
+        "end": 14
+      }
+    ]
+  },
+  {
+    "id": "P5-02",
+    "status": "resolved",
+    "reason": "첫 Tick 전 실제 센서 확보·준비 완료 단계 누락; current source and fresh tests/web/call graph inspected.",
+    "evidence": [
+      {
+        "path": "src/input_events.c",
+        "start": 8,
+        "end": 8
+      }
+    ]
+  },
+  {
+    "id": "P5-03",
+    "status": "resolved",
+    "reason": "회피 중 먼지 감지 유실 및 복귀 파워업 재시작 누락; current source and fresh tests/web/call graph inspected.",
+    "evidence": [
+      {
+        "path": "src/power_up_timer.c",
+        "start": 18,
+        "end": 18
+      }
+    ]
+  },
+  {
+    "id": "P5-04",
+    "status": "resolved",
+    "reason": "승인된 입력 이벤트·Sensor Store 인터페이스 미구현; current source and fresh tests/web/call graph inspected.",
+    "evidence": [
+      {
+        "path": "src/main.c",
+        "start": 16,
+        "end": 16
+      }
+    ]
+  },
+  {
+    "id": "P5-05",
+    "status": "resolved",
+    "reason": "기존 테스트와 호출 기준이 이전 동작을 정답으로 기대; current source and fresh tests/web/call graph inspected.",
+    "evidence": [
+      {
+        "path": "tests/test_main.cpp",
+        "start": 25,
+        "end": 25
+      }
+    ]
+  },
+  {
+    "id": "P5-06",
+    "status": "resolved",
+    "reason": "확정 C16을 구현 근거에서 여전히 Q6 가정으로 표시; current source and fresh tests/web/call graph inspected.",
+    "evidence": [
+      {
+        "path": "tests/test_requirements.cpp",
+        "start": 169,
+        "end": 169
+      }
+    ]
+  }
+]

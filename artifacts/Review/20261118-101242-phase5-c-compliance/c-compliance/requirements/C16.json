@@ -1,0 +1,70 @@
+{
+  "id": "C16",
+  "verdict": "implemented",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 24,
+      "end": 24
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/movement_controller.c",
+      "start": 27,
+      "end": 50
+    },
+    {
+      "path": "src/decide_actions.c",
+      "start": 17,
+      "end": 22
+    },
+    {
+      "path": "src/decide_cleaning.c",
+      "start": 8,
+      "end": 13
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Forward front-only branch",
+      "verdict": "implemented",
+      "evidence": "movement_controller.c:27–31 ignores side_situation at entry"
+    },
+    {
+      "claim": "Side-only forward produces clean command",
+      "verdict": "implemented",
+      "evidence": "decide_actions.c:17–22 uses returned Forward status; decide_cleaning.c:10–13 chooses Start/PowerUp"
+    },
+    {
+      "claim": "Postback still side-only",
+      "verdict": "implemented",
+      "evidence": "movement_controller.c:43–48 consults sides after Done"
+    }
+  ],
+  "paths_walked": [
+    "Front clear with left/right/both blocked → Forward → statusForward → normal/boost clean. Existing Q6-labelled tests cover cases; label stale but code correct. Audit both-sides-blocked controls pass."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/movement_controller.c",
+        "src/decide_actions.c",
+        "src/decide_cleaning.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_movement_controller.cpp",
+    "tests/test_requirements.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

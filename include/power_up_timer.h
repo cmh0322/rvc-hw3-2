@@ -14,10 +14,10 @@ extern "C" {
 
 /*
  * Track Power-Up: starts a POWER_UP_DURATION_TICKS power-up when dust is
- * detected while moving forward, counts it down, and returns whether
+ * current or pending in D2, consumes pending only on Forward, and returns whether
  * powered-up cleaning applies on this tick. Call it exactly once per Tick.
  */
-bool track_power_up(MovementStatus movement_status, bool dust_existence);
+bool track_power_up(MovementStatus movement_status);
 
 /* Reset Power-Up Timer: sets the remaining count to 0 (its power-on value). */
 void reset_power_up_timer(void);

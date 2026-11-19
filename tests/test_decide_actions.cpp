@@ -1,3 +1,4 @@
+#include "test_input_helpers.h"
 // Module: Decide Actions (central coordinator)
 // Source: Structure Chart sections 3.5 and 5; Process Specifications 3.2.2,
 // 3.2.3, 4.1, 4.2; requirements B1-B5, C2, C3.
@@ -19,6 +20,7 @@ class DecideActionsTest : public ::testing::Test {
 protected:
     void SetUp() override {
         ResetFakeHw();
+        reset_sensor_data(); detect_dust(false);
         reset_movement_controller();
         reset_power_up_timer();
     }
@@ -27,7 +29,7 @@ protected:
     static void ExpectCycles(int count, ObstacleSituation situation, bool dust,
                              MovementCommand command, Clean clean) {
         for (int cycle = 1; cycle <= count; ++cycle) {
-            const Actions actions = decide_actions(situation, dust);
+            const Actions actions = TestActions(situation, dust);
             EXPECT_EQ(command, actions.movement_command) << "cycle " << cycle << " of " << count;
             EXPECT_EQ(clean, actions.clean) << "cycle " << cycle << " of " << count;
         }
@@ -72,21 +74,21 @@ TEST_F(DecideActionsTest, DustWhileAvoidingDoesNotPowerUp) {
 
 // Structure Chart 3.1: each callee is called once per cycle.
 TEST_F(DecideActionsTest, AdvancesTheControllerAndThePowerUpByOneTickPerCall) {
-    decide_actions(kClear, kDust);
+    TestActions(kClear, kDust);
     EXPECT_EQ(4, get_remaining_power_up_ticks());
 
-    decide_actions(kAllBlocked, kNoDust);
+    TestActions(kAllBlocked, kNoDust);
     EXPECT_EQ(CONTROLLER_STATE_STOPPING, get_controller_state());
     EXPECT_EQ(0, get_step_ticks_elapsed());
 
-    decide_actions(kAllBlocked, kNoDust);
+    TestActions(kAllBlocked, kNoDust);
     EXPECT_EQ(1, get_step_ticks_elapsed());
 }
 
 // The central branch decides only; it reads no sensor and drives no output.
 TEST_F(DecideActionsTest, DoesNotTouchTheHardware) {
-    decide_actions(kClear, kDust);
-    decide_actions(kAllBlocked, kNoDust);
+    TestActions(kClear, kDust);
+    TestActions(kAllBlocked, kNoDust);
     EXPECT_TRUE(fake_hw.calls.empty());
 }
 

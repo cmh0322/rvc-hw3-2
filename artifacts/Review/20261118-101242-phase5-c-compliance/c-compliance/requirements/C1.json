@@ -1,0 +1,104 @@
+﻿{
+    "id":  "C1",
+    "verdict":  "implemented",
+    "confidence":  "high",
+    "spec_refs":  [
+                      {
+                          "path":  "docs/requirements_clarifications.md",
+                          "end":  9,
+                          "start":  9
+                      },
+                      {
+                          "path":  "artifacts/SA/process_specification.md",
+                          "end":  290,
+                          "start":  268
+                      },
+                      {
+                          "path":  "artifacts/SA/DFD/dfd_level_4_fsm.md",
+                          "end":  67,
+                          "start":  67
+                      },
+                      {
+                          "path":  "artifacts/SD/structure_chart.md",
+                          "end":  221,
+                          "start":  221
+                      }
+                  ],
+    "code_refs":  [
+                      {
+                          "path":  "src/assess_obstacle_situation.c",
+                          "end":  16,
+                          "start":  8
+                      },
+                      {
+                          "path":  "src/movement_controller.c",
+                          "end":  60,
+                          "start":  24
+                      },
+                      {
+                          "path":  "src/issue_movement_output.c",
+                          "end":  17,
+                          "start":  6
+                      },
+                      {
+                          "path":  "src/step_timer.c",
+                          "end":  35,
+                          "start":  10
+                      }
+                  ],
+    "subclaims":  [
+                      {
+                          "claim":  "Both-clear classification gives right priority",
+                          "evidence":  "src/assess_obstacle_situation.c:10-16 tests right-clear first",
+                          "verdict":  "implemented"
+                      },
+                      {
+                          "claim":  "Front obstacle and clear sides lead through Stop to TurningRight",
+                          "evidence":  "src/movement_controller.c:27-50; step_timer.c:14-18,26-29",
+                          "verdict":  "implemented"
+                      },
+                      {
+                          "claim":  "Right command reaches motor interface unchanged",
+                          "evidence":  "src/controller.c:13; src/put_outputs.c:9; src/issue_movement_output.c:9,17",
+                          "verdict":  "implemented"
+                      }
+                  ],
+    "paths_walked":  [
+                         "main -\u003e initialize_rvc -\u003e reset_movement_controller -\u003e reset_step_timer",
+                         "main Tick loop -\u003e controller -\u003e get_inputs -\u003e detect_obstacle -\u003e assess_obstacle_situation",
+                         "controller -\u003e decide_actions -\u003e movement_controller -\u003e advance_step_timer/start_step_timer",
+                         "controller -\u003e put_outputs -\u003e issue_movement_output -\u003e drive_motor",
+                         "FSM alternatives: Forward clear, unfinished step, completed turn, left-open and both-blocked selections, Backing completion"
+                     ],
+    "searched":  [
+                     {
+                         "scope":  "src include tests artifacts/SA artifacts/SD simulator/host/sim_host.c",
+                         "pattern":  "right|Right|Stopping|C1|T3",
+                         "result":  "Found classification, transitions, definitions and C1 tests"
+                     },
+                     {
+                         "scope":  "src CMakeLists.txt",
+                         "pattern":  "assess_obstacle_situation|movement_controller|issue_movement_output|detect_obstacle",
+                         "result":  "Located actual callers and reset path; inspected build source inclusion"
+                     },
+                     {
+                         "scope":  "src include/hw_interface.h",
+                         "pattern":  "direction|movement_command",
+                         "result":  "Located output mapping and drive_motor declaration"
+                     }
+                 ],
+    "divergence":  null,
+    "tests_reviewed":  [
+                           "tests/test_assess_obstacle_situation.cpp:25-28",
+                           "tests/test_requirements.cpp:30-36",
+                           "tests/rvc_system_fixture.h:15-18,36-44"
+                       ],
+    "test_execution":  "notRun-by-reviewer",
+    "open_questions":  [
+
+                       ],
+    "limitations":  [
+                        "Runtime/build success not established by this independent static review",
+                        "Physical motor implementation excluded under B6"
+                    ]
+}

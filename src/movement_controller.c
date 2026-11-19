@@ -61,11 +61,10 @@ MovementCommand movement_controller(SituationSignal situation_signal)
 }
 
 /* Module: Reset Movement Controller (FSM transition T0). */
-MovementCommand reset_movement_controller(void)
+void reset_movement_controller(void)
 {
     controller_state = CONTROLLER_STATE_FORWARD;
     reset_step_timer();
-    return command_in_state[controller_state];
 }
 
 /* Read-only query for unit tests and the simulator. */

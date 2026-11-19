@@ -1,0 +1,11 @@
+flowchart LR
+    Detect["Detect Dust"]
+    D2[["D2 current + pending"]]
+    Get["Get Dust Existence"]
+    Track["Track Power-Up"]
+    Clear["Clear Pending Dust"]
+    Detect -.->|"data: current=value, pending OR value"| D2
+    D2 -.->|"data: value copy"| Get
+    Get -.->|"data: Dust Existence"| Track
+    Track -->|"call: Forward only"| Clear
+    Clear -.->|"data: pending=false only"| D2

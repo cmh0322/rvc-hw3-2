@@ -1,0 +1,72 @@
+{
+  "id": "C4",
+  "verdict": "undecidable",
+  "confidence": "bounded-by-environment",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 12,
+      "end": 12
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/movement_controller.c",
+      "start": 38,
+      "end": 48
+    },
+    {
+      "path": "simulator/public/world.js",
+      "start": 67,
+      "end": 87
+    },
+    {
+      "path": "simulator/public/world.js",
+      "start": 93,
+      "end": 136
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Production preserves the external-world assumption",
+      "verdict": "implemented",
+      "evidence": "src/movement_controller.c:38–41 documents fixed obstacle versus changing front reading"
+    },
+    {
+      "claim": "Simulator obstacle set remains unchanged by movement",
+      "verdict": "implemented",
+      "evidence": "simulator/public/world.js:67–80 constructs obstacle Set; apply changes robot/dust/cleaned, not obstacles"
+    },
+    {
+      "claim": "Real physical obstacle persistence",
+      "verdict": "undecidable",
+      "evidence": "B6 excludes physical world implementation; C cannot enforce persistence of furniture"
+    }
+  ],
+  "paths_walked": [
+    "Main → Controller → Get Inputs → Detect Obstacle → current sensor readings",
+    "Simulator create → sense → apply changes position/heading, leaving obstacle Set fixed."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/movement_controller.c",
+        "simulator/public/world.js",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": null,
+  "tests_reviewed": [
+    "tests/test_movement_controller.cpp",
+    "simulator/public/world.js"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [
+    "Real-world environment/physical actuator realization is outside audited software scope."
+  ],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

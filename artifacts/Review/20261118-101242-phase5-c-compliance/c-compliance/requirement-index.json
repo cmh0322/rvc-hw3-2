@@ -1,0 +1,2634 @@
+[
+  {
+    "id": "B1",
+    "verdict": "partial",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 1,
+        "end": 1
+      },
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 6,
+        "end": 6
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 21,
+        "end": 22
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 425,
+        "end": 439
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 109,
+        "end": 117
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 63,
+        "end": 63
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 23,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 158,
+        "end": 170
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 247,
+        "end": 247
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 190,
+        "end": 192
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/main.c",
+        "start": 10,
+        "end": 17
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 22,
+        "end": 68
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 17,
+        "end": 22
+      },
+      {
+        "path": "src/derive_movement_status.c",
+        "start": 8,
+        "end": 12
+      },
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 4,
+        "end": 16
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 10
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 6,
+        "end": 17
+      },
+      {
+        "path": "include/rvc_types.h",
+        "start": 61,
+        "end": 66
+      },
+      {
+        "path": "include/hw_interface.h",
+        "start": 5,
+        "end": 36
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 126,
+        "end": 135
+      },
+      {
+        "path": "simulator/public/world.js",
+        "start": 93,
+        "end": 103
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 31,
+        "end": 59
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 97,
+        "end": 101
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Automatic Tick-driven abstract cleaning commands",
+        "verdict": "implemented",
+        "evidence": "main.c:14-16 -> controller.c:10-13 -> decide_actions.c:17-22 -> decide_cleaning.c:8-16 -> put_outputs.c:7-10."
+      },
+      {
+        "claim": "C14 suction/mopping combinations represented at the approved Clean hardware boundary",
+        "verdict": "implemented",
+        "evidence": "SA data_dictionary.md:112 and SD structure_chart.md:168,247 define semantics of the three enum values at include/rvc_types.h:61-66, delivered unchanged by src/put_outputs.c:10. Physical actuation excluded by B6; not claimed verified."
+      },
+      {
+        "claim": "Forward/timer initialization emits no Clean",
+        "verdict": "implemented",
+        "evidence": "initialize_rvc.c:10-13 resets state/timers and only reaches Issue Movement Output, not Drive Cleaner."
+      },
+      {
+        "claim": "C13 initialization emits no Direction before first Tick",
+        "verdict": "contradicted",
+        "evidence": "initialize_rvc.c:10-13 receives Forward from movement_controller.c:64-68 and calls issue_movement_output.c:15-17 before main.c:15 Wait For Tick."
+      }
+    ],
+    "paths_walked": [
+      "Main -> Initialize RVC -> Reset Movement Controller -> Reset Step Timer; Reset Power-Up Timer; Issue Movement Output -> Drive Motor (fresh and repeated initialization)",
+      "Main -> Wait For Tick -> Controller -> Get Inputs -> Detect Obstacle/read three sensors + Assess Obstacle Situation + Detect Dust/read dust sensor",
+      "Controller -> Decide Actions -> Movement Controller/step timer -> Derive Movement Status -> Track Power-Up -> Decide Cleaning -> Put Outputs -> Drive Cleaner",
+      "Forward normal -> Start; Forward power-up -> Power Up; Stop/Backward/either Turn -> Avoiding -> Stop; completed Turn -> Forward -> cleaning resumes",
+      "CMake control library / renamed-main tests / simulator host use same production source; simulator Drive Cleaner records enum and world applies generic cleaned marker"
+    ],
+    "searched": [
+      {
+        "pattern": "B1|C13|C14|Clean|clean|mop|Mop|Power On|initialize",
+        "scope": "SA process_specification/data_dictionary/FSM and SD structure_chart/transform_analysis",
+        "result": "Found exact startup and Clean suction/mopping contract."
+      },
+      {
+        "pattern": "initialize_rvc|drive_cleaner|CLEAN_START|CLEAN_STOP|CLEAN_POWER_UP|reset_movement_controller",
+        "scope": "src include CMakeLists.txt",
+        "result": "One initializer; Drive Cleaner reached by Put Outputs; three Clean enum values; movement reset returns command."
+      },
+      {
+        "pattern": "mop|suction (case-insensitive)",
+        "scope": "src include tests simulator",
+        "result": "No matches; no separate actuator code/tests found. B6 excludes hardware detail, so no absent verdict inferred."
+      },
+      {
+        "pattern": "RVC_SOURCES|rvc_control|rvc_main|rvc_sim_host|C_STANDARD|RVC_TEST_SOURCES",
+        "scope": "CMakeLists.txt",
+        "result": "C11; same production source used in library, tests and simulator; no alternative startup selection."
+      }
+    ],
+    "divergence": {
+      "consequence": "Forward motor command occurs before initial sensor evaluation and before first Tick; physical movement is not asserted.",
+      "scenario": "Start Main and deliver zero Ticks: initialize_rvc calls issue_movement_output(Forward).",
+      "minimal_fix": "Remove initialization output, make movement reset state-only per approved SD, and update startup tests. Deduplicate with C13 finding.",
+      "severity": "medium"
+    },
+    "tests_reviewed": [
+      "tests/test_requirements.cpp:15-19 (20 Forward/Start cycles); tests/rvc_system_fixture.h:14-18 erases startup output",
+      "tests/test_decide_cleaning.cpp:10-26 (all status/power combinations)",
+      "tests/test_outputs.cpp:63-80 (enum delivery and ordering)",
+      "tests/test_controller.cpp:19-56 (one pair, sensor reads, current sensor decisions)",
+      "tests/test_initialize_rvc.cpp:24-56 and tests/test_main.cpp:33-80 (obsolete Forward-at-start expectations, reset, Tick loop)",
+      "tests/fake_hw.cpp:59-66 (enum-only recorder)"
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": [
+      "No unresolved interpretation for the C13 contradiction. Root owns fresh runtime execution.",
+      "Physical suction/mopping effects are outside B6 scope; simulator does not independently observe these effects. Command-boundary implementation only is concluded."
+    ]
+  },
+  {
+    "id": "B2",
+    "verdict": "partial",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 2,
+        "end": 2
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 20,
+        "end": 24
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 37,
+        "end": 59
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 319,
+        "end": 334
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 63,
+        "end": 77
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 99,
+        "end": 117
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 17,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 134,
+        "end": 159
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 190,
+        "end": 192
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/main.c",
+        "start": 10,
+        "end": 17
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 27,
+        "end": 68
+      },
+      {
+        "path": "src/assess_obstacle_situation.c",
+        "start": 8,
+        "end": 16
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 16
+      },
+      {
+        "path": "src/detect_obstacle.c",
+        "start": 10,
+        "end": 12
+      },
+      {
+        "path": "src/detect_dust.c",
+        "start": 6,
+        "end": 8
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 17,
+        "end": 22
+      },
+      {
+        "path": "src/derive_movement_status.c",
+        "start": 8,
+        "end": 12
+      },
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 10
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 6,
+        "end": 17
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 85,
+        "end": 135
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 31,
+        "end": 42
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 97,
+        "end": 101
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Forward Ticks emit Direction Forward together with enabled cleaning.",
+        "verdict": "implemented",
+        "evidence": "src/movement_controller.c:27-31,60; src/decide_actions.c:17-22; src/derive_movement_status.c:8-12; src/decide_cleaning.c:8-13; src/put_outputs.c:7-10; src/issue_movement_output.c:6-17"
+      },
+      {
+        "claim": "C16: a clear front keeps Forward regardless of either side being blocked.",
+        "verdict": "implemented",
+        "evidence": "src/assess_obstacle_situation.c:8-16; src/movement_controller.c:27-31; side classification is consulted only in other state branches."
+      },
+      {
+        "claim": "C13: Power On emits no Direction command.",
+        "verdict": "contradicted",
+        "evidence": "src/main.c:12-16 calls initialization before first Tick; src/initialize_rvc.c:10-13 sends Forward returned by src/movement_controller.c:64-68 through src/issue_movement_output.c:17."
+      },
+      {
+        "claim": "C13: Power On emits no Clean command.",
+        "verdict": "implemented",
+        "evidence": "src/initialize_rvc.c:8-14 invokes state/timer resets and motor output only; drive_cleaner is reached through src/put_outputs.c:10 on controller cycles."
+      },
+      {
+        "claim": "C12 and approved SD: obtain four actual initial samples before first Tick delivery/processing.",
+        "verdict": "contradicted",
+        "evidence": "src/initialize_rvc.c:8-14 contains no acquisition; src/main.c:15 waits for Tick before controller/get_inputs reads sensors. All locals are read before per-cycle decisions, but approved initial-acquisition/readiness boundary is missing."
+      }
+    ],
+    "paths_walked": [
+      "main -> initialize_rvc -> reset_movement_controller -> reset_step_timer; reset_power_up_timer; issue_movement_output -> drive_motor",
+      "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle/detect_dust -> read_*",
+      "controller -> decide_actions -> movement_controller -> derive_movement_status -> track_power_up -> decide_cleaning -> put_outputs -> drive_motor/drive_cleaner",
+      "Forward front clear/blocked; both turn completion branches; Stopping/Backing side branches; reset after activity",
+      "CMake control library, Main test object and simulator target; simulator host initial report/read cycle and world Forward mapping"
+    ],
+    "searched": [
+      {
+        "pattern": "initialize_rvc|reset_movement_controller|drive_motor|read_front_sensor|read_left_sensor|read_right_sensor|read_dust_sensor|wait_for_tick|receive_input|acquire_initial|inputs_ready|sensor_valid",
+        "scope": "src include simulator/host CMakeLists.txt",
+        "result": "Single startup/polling path; no initial event acquisition/readiness alternate path."
+      },
+      {
+        "pattern": "FORWARD|CLEAN_START|CLEAN_POWER_UP|front_blocked|side_situation",
+        "scope": "movement, assessment, decision, status, cleaning and movement-output source files",
+        "result": "Front-only Forward guard and paired Forward/cleaning output mapping."
+      },
+      {
+        "pattern": "B2|SideObstacles|T1_|Forward|initial|power on",
+        "scope": "tests/test_requirements.cpp tests/test_movement_controller.cpp tests/test_main.cpp tests/test_initialize_rvc.cpp",
+        "result": "Steady Forward/side blocker coverage plus obsolete startup Forward expectations."
+      },
+      {
+        "pattern": "RVC_SOURCES|rvc_control|rvc_main|rvc_sim_host|C_STANDARD|GLOB|FILTER",
+        "scope": "CMakeLists.txt",
+        "result": "Relevant targets compile same production sources; no alternate startup implementation."
+      },
+      {
+        "pattern": "Direction|direction|Forward|clean|power",
+        "scope": "simulator/public/world.js simulator/public/scenarios.js simulator/controller_process.js",
+        "result": "Forward heading movement and Start/Power Up cleaning interpretation; startup protocol found."
+      }
+    ],
+    "divergence": {
+      "consequence": "A Forward command escapes before sensor evaluation and before the first Tick; initial acquisition contract is not implemented. No physical collision claim is made.",
+      "scenario": "Power on with an obstacle already in front: initialize_rvc sends Forward immediately; sensors and Stop/Clean Stop are evaluated only after wait_for_tick returns.",
+      "minimal_fix": "Implement approved state-only reset and initial actual-sample acquisition/readiness before running Tick delivery; update startup tests and simulator adapter to the approved event contract.",
+      "severity": "high"
+    },
+    "tests_reviewed": [
+      "tests/test_requirements.cpp:16-19,169-175",
+      "tests/test_controller.cpp:18-56",
+      "tests/test_decide_cleaning.cpp:9-26",
+      "tests/test_main.cpp:33-80",
+      "tests/test_initialize_rvc.cpp:24-56",
+      "tests/rvc_system_fixture.h:14-18"
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": [
+      "No unresolved requirement ambiguity for B2. Runtime execution and physical motor straightness were not measured; detailed hardware is excluded by B6. Full B5/C15 cleaning-power compliance belongs to its independent record."
+    ]
+  },
+  {
+    "id": "B3",
+    "verdict": "implemented",
+    "confidence": "high for the B3 Tick-level command sequence; not a blanket verdict on related refinements or revised SD",
+    "spec_refs": [
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 3,
+        "end": 3
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 9,
+        "end": 24
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 425,
+        "end": 440
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 516,
+        "end": 577
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 65,
+        "end": 91
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 102,
+        "end": 147
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 149,
+        "end": 159
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 247,
+        "end": 288
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 179,
+        "end": 192
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/movement_controller.c",
+        "start": 13,
+        "end": 68
+      },
+      {
+        "path": "src/step_timer.c",
+        "start": 10,
+        "end": 35
+      },
+      {
+        "path": "src/assess_obstacle_situation.c",
+        "start": 8,
+        "end": 16
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 17,
+        "end": 22
+      },
+      {
+        "path": "src/derive_movement_status.c",
+        "start": 8,
+        "end": 12
+      },
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 10
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 6,
+        "end": 17
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Front-only obstacle entry while Forward, as resolved by C16",
+        "verdict": "implemented",
+        "evidence": "src/assess_obstacle_situation.c:8-16; src/movement_controller.c:27-31"
+      },
+      {
+        "claim": "Stop moving and cleaning on entry and keep cleaning stopped throughout avoidance",
+        "verdict": "implemented",
+        "evidence": "src/movement_controller.c:13-18; src/derive_movement_status.c:8-12; src/decide_cleaning.c:8-13; src/put_outputs.c:9-10"
+      },
+      {
+        "claim": "Turn toward the selected open side after five stopped ticks, with right priority and five turn ticks",
+        "verdict": "implemented",
+        "evidence": "src/assess_obstacle_situation.c:10-16; src/movement_controller.c:24-58; src/step_timer.c:10-29; include/rvc_types.h:77-81"
+      },
+      {
+        "claim": "Either completed turn resumes Forward and cleaning in the same Tick",
+        "verdict": "implemented",
+        "evidence": "src/movement_controller.c:33-35; src/decide_actions.c:17-22; src/decide_cleaning.c:10-13; src/issue_movement_output.c:6-17"
+      }
+    ],
+    "paths_walked": [
+      "main -> initialize_rvc -> reset_movement_controller -> reset_step_timer; initialization also issues a Forward output (related C13 deviation)",
+      "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle -> assess_obstacle_situation",
+      "controller -> decide_actions -> movement_controller -> advance_step_timer/start_step_timer; front/side branches, turn completion, backing/repeated backing, reset",
+      "decide_actions -> derive_movement_status -> track_power_up -> decide_cleaning -> put_outputs -> issue_movement_output -> drive_motor; put_outputs -> drive_cleaner",
+      "simulator/host/sim_host.c:85-136 supplies sensor tuples and records output; CMakeLists.txt:31-36,97-99 includes the same production sources"
+    ],
+    "searched": [
+      {
+        "pattern": "B3|Stopping|Turning|Turn|T2|T4|T5|T12|T14|Avoiding",
+        "scope": "artifacts/SA, relevant tests and simulator/host/sim_host.c",
+        "result": "Located movement transitions, cleaning contracts, timing and both-turn/recovery assertions."
+      },
+      {
+        "pattern": "reset_movement_controller|movement_controller\\(|decide_cleaning\\(|drive_cleaner|drive_motor|wait_for_tick|receive_input|dispatch",
+        "scope": "src, include, simulator/host, tests/test_main.cpp",
+        "result": "Confirmed callers, reset and output paths; no alternate ordered-event dispatcher found."
+      },
+      {
+        "pattern": "GLOB RVC_SOURCES|add_library\\(rvc_control|add_executable\\(rvc_sim_host|C_STANDARD|add_executable\\(rvc_tests",
+        "scope": "CMakeLists.txt",
+        "result": "C11 source library and simulator include the same production implementations; no alternate B3 movement source selection."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_requirements.cpp:21-59,120-125,154-176",
+      "tests/test_movement_controller.cpp:68-136,176-261",
+      "tests/test_decide_cleaning.cpp:9-26",
+      "tests/test_outputs.cpp:31-80",
+      "tests/test_controller.cpp:17-70",
+      "tests/rvc_system_fixture.h:14-18 (discards initialization outputs)"
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": [],
+    "limitations": [
+      "B3 command sequence only: initialization output and first-sample/ordered-event defects are explicitly identified for C12/C13/SD reviews and are not certified by this verdict.",
+      "C15 remembered-dust restart is separate and not established by this B3 verdict.",
+      "Physical actuator behavior is outside B6. Tests were read, not executed; no build or model checking was run.",
+      "Q6 test comments are historical; C16 resolves the requirement."
+    ],
+    "reviewed_at": "2026-11-18T10:14:26+09:00",
+    "git_head": "dea14b590b5246e1889119fc9040c5df496bd987",
+    "working_tree": "dirty; inspected current working requirements/SA/SD and production/test files"
+  },
+  {
+    "id": "B4",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 4,
+        "end": 4
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 13,
+        "end": 17
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 263,
+        "end": 329
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 474,
+        "end": 637
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 63,
+        "end": 107
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 221,
+        "end": 275
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 149,
+        "end": 160
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 208,
+        "end": 221
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 47,
+        "end": 80
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/assess_obstacle_situation.c",
+        "start": 4,
+        "end": 19
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 9,
+        "end": 69
+      },
+      {
+        "path": "src/step_timer.c",
+        "start": 7,
+        "end": 35
+      },
+      {
+        "path": "include/rvc_types.h",
+        "start": 21,
+        "end": 81
+      },
+      {
+        "path": "src/main.c",
+        "start": 10,
+        "end": 17
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 16
+      },
+      {
+        "path": "src/detect_obstacle.c",
+        "start": 6,
+        "end": 14
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 9,
+        "end": 24
+      },
+      {
+        "path": "src/derive_movement_status.c",
+        "start": 4,
+        "end": 15
+      },
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 4,
+        "end": 16
+      },
+      {
+        "path": "src/power_up_timer.c",
+        "start": 10,
+        "end": 30
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 10
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 6,
+        "end": 17
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 31,
+        "end": 101
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 85,
+        "end": 130
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Front obstacle initiates Stop; blocked sides at stop completion cause Backward.",
+        "verdict": "implemented",
+        "evidence": [
+          "src/assess_obstacle_situation.c:8-16",
+          "src/movement_controller.c:27-50"
+        ]
+      },
+      {
+        "claim": "Stop and Backward each last five command ticks.",
+        "verdict": "implemented",
+        "evidence": [
+          "src/movement_controller.c:24-60",
+          "src/step_timer.c:10-35",
+          "include/rvc_types.h:77-81"
+        ]
+      },
+      {
+        "claim": "After Backing only sides decide: right clear wins, left clear is fallback, otherwise Backward repeats.",
+        "verdict": "implemented",
+        "evidence": [
+          "src/assess_obstacle_situation.c:10-16",
+          "src/movement_controller.c:32-50"
+        ]
+      },
+      {
+        "claim": "Either turn lasts five command ticks then returns Forward.",
+        "verdict": "implemented",
+        "evidence": [
+          "src/movement_controller.c:32-60",
+          "src/step_timer.c:10-29"
+        ]
+      },
+      {
+        "claim": "Commands reach motor and avoiding stops cleaning using the split SD output modules.",
+        "verdict": "implemented",
+        "evidence": [
+          "src/decide_actions.c:17-22",
+          "src/derive_movement_status.c:8-13",
+          "src/decide_cleaning.c:8-14",
+          "src/controller.c:10-13",
+          "src/put_outputs.c:7-10",
+          "src/issue_movement_output.c:6-17"
+        ]
+      }
+    ],
+    "paths_walked": [
+      "main -> initialize_rvc -> reset_movement_controller -> reset_step_timer; initial state and timer reset read. Extra power-on output is a separate C13 divergence.",
+      "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle -> read_front/left/right_sensor -> assess_obstacle_situation; legacy polling differs from revised acquisition contract reviewed separately.",
+      "controller -> decide_actions -> movement_controller -> advance_step_timer -> conditional start_step_timer; all five states, all side classes, done/not-done, repeated step and reset inspected.",
+      "decide_actions -> derive_movement_status -> track_power_up -> decide_cleaning; power path does not modify movement.",
+      "controller -> put_outputs -> issue_movement_output -> drive_motor; put_outputs also calls drive_cleaner.",
+      "CMake control library and simulator use the same production sources; host provides sensor values and records outputs."
+    ],
+    "searched": [
+      {
+        "pattern": "B4|3\\.2|Step|Backing|Turn|five|5 ticks|decide_movement|movement_controller",
+        "scope": "SA Data Dictionary/FSM and SD documents",
+        "result": "Located backing, timing and module obligations. Initial plural PSPEC path was missing; actual singular path subsequently read."
+      },
+      {
+        "pattern": "Process 3.2|Process 3.1|Step Ticks Elapsed",
+        "scope": "artifacts/SA/process_specification.md",
+        "result": "Located classification, complete transition table, output rules and timer ordering."
+      },
+      {
+        "pattern": "movement_controller\\(|reset_movement_controller\\(|start_step_timer\\(|advance_step_timer\\(|drive_motor\\(",
+        "scope": "src include simulator/host",
+        "result": "Production caller paths are Decide Actions to movement, Movement Controller to timing, Initialize RVC to reset, Issue Movement Output to motor; headers and simulator implementation distinguished."
+      },
+      {
+        "pattern": "B4|C5",
+        "scope": "tests/test_requirements.cpp",
+        "result": "Located backward, right/left turn, return-forward and repeated-backward assertions at lines 61-100."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      {
+        "path": "tests/test_requirements.cpp",
+        "start": 61,
+        "end": 100
+      },
+      {
+        "path": "tests/test_movement_controller.cpp",
+        "start": 124,
+        "end": 218
+      },
+      {
+        "path": "tests/test_movement_controller.cpp",
+        "start": 232,
+        "end": 280
+      },
+      {
+        "path": "tests/test_step_timer.cpp",
+        "start": 26,
+        "end": 89
+      },
+      {
+        "path": "tests/rvc_system_fixture.h",
+        "start": 14,
+        "end": 18
+      }
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": [
+      "No unresolved B4 source-level question. Physical motor effectiveness is outside B6 and no test/build/model-check execution is claimed.",
+      "Verdict covers B4 movement sequence, not overall revised SD conformance. Legacy input acquisition and power-on output require separate C12/C13/C15/interface findings."
+    ]
+  },
+  {
+    "id": "B5",
+    "verdict": "partial",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 5,
+        "end": 5
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 11,
+        "end": 30
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 392
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 159,
+        "end": 178
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 17,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 143,
+        "end": 158
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 50,
+        "end": 57
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/main.c",
+        "start": 12,
+        "end": 16
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 16
+      },
+      {
+        "path": "src/detect_dust.c",
+        "start": 6,
+        "end": 8
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 9,
+        "end": 24
+      },
+      {
+        "path": "src/power_up_timer.c",
+        "start": 7,
+        "end": 42
+      },
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 10
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 84,
+        "end": 135
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Current Forward dust starts/restarts five active Forward ticks inclusive of triggering Tick",
+        "verdict": "implemented",
+        "evidence": "src/power_up_timer.c:14-21; include/rvc_types.h:83-84; src/decide_cleaning.c:8-13"
+      },
+      {
+        "claim": "Avoidance pauses D3 and no-dust Forward resumes saved ticks",
+        "verdict": "implemented",
+        "evidence": "src/power_up_timer.c:14-28; src/decide_actions.c:17-22"
+      },
+      {
+        "claim": "Avoidance dust is retained and causes full restart on Forward",
+        "verdict": "contradicted",
+        "evidence": "src/detect_dust.c:6-8; src/power_up_timer.c:23-28 discards detection; tests/test_power_up_timer.cpp:74-77 expects forgetting"
+      },
+      {
+        "claim": "Retain intermediate dust inputs and acquire initial samples before first Tick",
+        "verdict": "absent",
+        "evidence": "src/main.c:12-16; src/initialize_rvc.c:8-14; src/get_inputs.c:11-14; no pending/event storage found"
+      },
+      {
+        "claim": "Power Up command and suction-only physical semantics",
+        "verdict": "partial",
+        "evidence": "src/put_outputs.c:10 forwards abstract command; include/hw_interface.h:35-36 lacks semantics; physical actuation outside B6"
+      }
+    ],
+    "paths_walked": [
+      "main -> initialize_rvc -> reset_power_up_timer",
+      "main -> wait_for_tick -> controller -> get_inputs -> detect_dust -> read_dust_sensor",
+      "controller -> decide_actions -> movement_controller -> derive_movement_status -> track_power_up -> decide_cleaning",
+      "controller -> put_outputs -> drive_cleaner; Forward/avoidance/turn completion/reset/expired and active count branches"
+    ],
+    "searched": [
+      {
+        "pattern": "dust|Dust|power|Power|pending|remaining",
+        "scope": "src include tests simulator/host artifacts/SA artifacts/SD",
+        "result": "Current scalar dust path and D3 timer; approved pending semantics; stale opposite-C15 test"
+      },
+      {
+        "pattern": "Pending Dust|pending|receive_input|event|suction|mop|POWER_UP",
+        "scope": "src include CMakeLists.txt and relevant SA",
+        "result": "No production pending/event store; only enum/timer machinery"
+      },
+      {
+        "pattern": "rg --files; CMake source selection",
+        "scope": "src include tests simulator/host artifacts/SA artifacts/SD; CMakeLists.txt",
+        "result": "No alternate dust implementation; same production source set linked for simulator"
+      }
+    ],
+    "divergence": {
+      "consequence": "Avoidance dust is forgotten; Forward emits normal cleaning or resumes too few powered ticks; intermediate input pulses cannot be retained",
+      "scenario": "D3=0, dust TRUE during avoidance, dust FALSE before Forward: CLEAN_START instead of five CLEAN_POWER_UP ticks. Paused D3=2 resumes two instead of restarting five.",
+      "minimal_fix": "Implement approved ordered input adapter and private current/pending dust storage; retain TRUE, preserve pending during avoidance, consume on Forward with five-tick restart precedence; replace stale tests.",
+      "severity": "high"
+    },
+    "tests_reviewed": [
+      "tests/test_power_up_timer.cpp:27-120",
+      "tests/test_requirements.cpp:102-125,140-162",
+      "tests/fake_hw.cpp:42-56,64-66"
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": [
+      "Real hardware suction/mop mapping is outside B6; physical behavior is not established by abstract enum output."
+    ]
+  },
+  {
+    "id": "B6",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 6,
+        "end": 6
+      },
+      {
+        "path": "artifacts/SA/context_diagram.md",
+        "start": 9,
+        "end": 9
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 428,
+        "end": 428
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 163,
+        "end": 170
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 188,
+        "end": 190
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "include/hw_interface.h",
+        "start": 5,
+        "end": 36
+      },
+      {
+        "path": "src/detect_obstacle.c",
+        "start": 6,
+        "end": 14
+      },
+      {
+        "path": "src/detect_dust.c",
+        "start": 6,
+        "end": 8
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 6,
+        "end": 17
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 10
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "tests/fake_hw.cpp",
+        "start": 5,
+        "end": 66
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 85,
+        "end": 135
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 26,
+        "end": 59
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 92,
+        "end": 102
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Physical sensor, clock and actuator implementation remains outside controller production code.",
+        "verdict": "implemented",
+        "evidence": "Declarations in include/hw_interface.h:17-36; production calls in src/detect_obstacle.c:10-12, src/detect_dust.c:8, src/issue_movement_output.c:17 and src/put_outputs.c:10; CMakeLists.txt:31-42 packages production without a hardware executable."
+      },
+      {
+        "claim": "Fake and simulator adapters are separate implementations of the abstract boundary rather than physical drivers.",
+        "verdict": "implemented",
+        "evidence": "tests/fake_hw.cpp:24-66 supplies fields/records commands; simulator/host/sim_host.c:85-135 supplies stdin readings and stores enums; CMakeLists.txt:57-59,97-102 selects adapter per executable."
+      }
+    ],
+    "paths_walked": [
+      "main -> initialize_rvc -> reset_movement_controller/reset_power_up_timer/issue_movement_output -> drive_motor",
+      "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle/detect_dust -> read_*",
+      "controller -> put_outputs -> issue_movement_output -> drive_motor; put_outputs -> drive_cleaner",
+      "Fake reset and Tick callback/termination; simulator Tick EOF/malformed-input/normal branches and command resets",
+      "CMake production static/object libraries, test executable and simulator executable adapter selection"
+    ],
+    "searched": [
+      {
+        "pattern": "rg --files",
+        "scope": "src include tests simulator artifacts/SA",
+        "result": "Enumerated production, interfaces, tests, simulator and SA files."
+      },
+      {
+        "pattern": "read_front_sensor|read_left_sensor|read_right_sensor|read_dust_sensor|wait_for_tick|drive_motor|drive_cleaner|GPIO|PWM|I2C|SPI|UART|volatile|ioctl|receive_input_event",
+        "scope": "src include tests simulator/host CMakeLists.txt",
+        "result": "Boundary declarations/calls found; boundary implementations only fake/host; no listed device primitive or receive_input_event hit."
+      },
+      {
+        "pattern": "B6|HW|Hardware|hardware|Motor|Cleaner|Direction|Clean|Receive Input Event",
+        "scope": "requirements, SA context/data dictionary/PSPEC, SD structure/transform, CMakeLists.txt",
+        "result": "B6 explicitly excludes hardware implementation; SD separately requires ordered software input delivery."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_inputs.cpp:32-143",
+      "tests/test_outputs.cpp:32-80",
+      "tests/fake_hw.cpp:5-66"
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": [],
+    "limitations": "B6 scope verdict does not certify ordered-event SD/C12/C15 conformance or C13 initialization behavior. Hardware outside the repository is excluded and untested."
+  },
+  {
+    "id": "B7",
+    "verdict": "implemented",
+    "confidence": "high for scope constraint only",
+    "spec_refs": [
+      {
+        "path": "docs/preliminary_requirements.md",
+        "start": 7,
+        "end": 7
+      },
+      {
+        "path": "artifacts/SA/context_diagram.md",
+        "start": 6,
+        "end": 9
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 20,
+        "end": 35
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 9,
+        "end": 15
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 9,
+        "end": 35
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 13,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 24,
+        "end": 69
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/main.c",
+        "start": 10,
+        "end": 18
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 9,
+        "end": 25
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 22,
+        "end": 68
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 11
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 15,
+        "end": 18
+      },
+      {
+        "path": "include/hw_interface.h",
+        "start": 17,
+        "end": 36
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 84,
+        "end": 135
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 31,
+        "end": 40
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 97,
+        "end": 99
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Movement and cleaning are automatically selected from sensor inputs and controller state.",
+        "verdict": "implemented",
+        "evidence": "src/main.c:14-16 runs each Tick; src/controller.c:10-13 and src/decide_actions.c:17-22 form the automatic decision/output path; all movement branches inspected at src/movement_controller.c:27-60."
+      },
+      {
+        "claim": "Production functionality stays within the B7 automatic-cleaning boundary.",
+        "verdict": "implemented",
+        "evidence": "include/hw_interface.h:17-36 declares sensors/Tick/Direction/Clean only; src/put_outputs.c:9-10 emits movement and cleaning. Full src inventory, reset paths and CMake build targets inspected; no additional product-function path identified."
+      },
+      {
+        "claim": "Simulator reset and sensor stepping are harness controls, not production manual-driving functionality.",
+        "verdict": "implemented",
+        "evidence": "simulator/host/sim_host.c:94,106-135 accepts sensor values and records production commands; simulator/server.js:70-73 exposes reset/step harness routes; CMakeLists.txt:97 links the same production sources."
+      }
+    ],
+    "paths_walked": [
+      "main -> initialize_rvc -> reset_movement_controller/reset_step_timer, reset_power_up_timer, issue_movement_output/drive_motor",
+      "main -> wait_for_tick -> controller -> get_inputs -> detect_obstacle/read_front_sensor/read_left_sensor/read_right_sensor, assess_obstacle_situation, detect_dust/read_dust_sensor",
+      "controller -> decide_actions -> movement_controller/advance_step_timer/start_step_timer, derive_movement_status, track_power_up, decide_cleaning -> put_outputs -> issue_movement_output/drive_motor, drive_cleaner",
+      "All production C files; Forward/avoidance, running/completed steps, left/right/backing, reset and power-up alternate branches",
+      "CMake core/main/test/simulator target definitions -> simulator host sensor and output boundary"
+    ],
+    "searched": [
+      {
+        "pattern": "rg --files",
+        "scope": "src include tests simulator artifacts/SA artifacts/SD",
+        "result": "Inventoried production, artifacts and harness files; all production .c files read through call-path walk."
+      },
+      {
+        "pattern": "battery|charging|manual|remote|slam|wifi|bluetooth|docking",
+        "scope": "src include CMakeLists.txt (case-insensitive)",
+        "result": "No matches; full source and target inspection also found no out-of-scope product functionality."
+      },
+      {
+        "pattern": "reset|step|sensors|controller\\.tick|host\\.tick",
+        "scope": "simulator/controller_process.js simulator/server.js",
+        "result": "Found reset and sensor-step harness routes; inspected C host boundary."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      {
+        "path": "tests/test_main.cpp",
+        "start": 40,
+        "end": 80,
+        "notes": "Automatic Tick cycles and dust-driven cleaning; historical assertions are not a revised-SD proof."
+      },
+      {
+        "path": "tests/test_controller.cpp",
+        "start": 19,
+        "end": 70,
+        "notes": "Per-cycle input/output and automatic reactions; source reviewed only."
+      }
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": []
+  },
+  {
+    "id": "C1",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "end": 9,
+        "start": 9
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "end": 290,
+        "start": 268
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "end": 67,
+        "start": 67
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "end": 221,
+        "start": 221
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/assess_obstacle_situation.c",
+        "end": 16,
+        "start": 8
+      },
+      {
+        "path": "src/movement_controller.c",
+        "end": 60,
+        "start": 24
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "end": 17,
+        "start": 6
+      },
+      {
+        "path": "src/step_timer.c",
+        "end": 35,
+        "start": 10
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Both-clear classification gives right priority",
+        "evidence": "src/assess_obstacle_situation.c:10-16 tests right-clear first",
+        "verdict": "implemented"
+      },
+      {
+        "claim": "Front obstacle and clear sides lead through Stop to TurningRight",
+        "evidence": "src/movement_controller.c:27-50; step_timer.c:14-18,26-29",
+        "verdict": "implemented"
+      },
+      {
+        "claim": "Right command reaches motor interface unchanged",
+        "evidence": "src/controller.c:13; src/put_outputs.c:9; src/issue_movement_output.c:9,17",
+        "verdict": "implemented"
+      }
+    ],
+    "paths_walked": [
+      "main -> initialize_rvc -> reset_movement_controller -> reset_step_timer",
+      "main Tick loop -> controller -> get_inputs -> detect_obstacle -> assess_obstacle_situation",
+      "controller -> decide_actions -> movement_controller -> advance_step_timer/start_step_timer",
+      "controller -> put_outputs -> issue_movement_output -> drive_motor",
+      "FSM alternatives: Forward clear, unfinished step, completed turn, left-open and both-blocked selections, Backing completion"
+    ],
+    "searched": [
+      {
+        "scope": "src include tests artifacts/SA artifacts/SD simulator/host/sim_host.c",
+        "pattern": "right|Right|Stopping|C1|T3",
+        "result": "Found classification, transitions, definitions and C1 tests"
+      },
+      {
+        "scope": "src CMakeLists.txt",
+        "pattern": "assess_obstacle_situation|movement_controller|issue_movement_output|detect_obstacle",
+        "result": "Located actual callers and reset path; inspected build source inclusion"
+      },
+      {
+        "scope": "src include/hw_interface.h",
+        "pattern": "direction|movement_command",
+        "result": "Located output mapping and drive_motor declaration"
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_assess_obstacle_situation.cpp:25-28",
+      "tests/test_requirements.cpp:30-36",
+      "tests/rvc_system_fixture.h:15-18,36-44"
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": [],
+    "limitations": [
+      "Runtime/build success not established by this independent static review",
+      "Physical motor implementation excluded under B6"
+    ]
+  },
+  {
+    "id": "C2",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 10,
+        "end": 10
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 15,
+        "end": 15
+      },
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 24,
+        "end": 24
+      },
+      {
+        "path": "artifacts/SA/DFD/dfd_level_4_fsm.md",
+        "start": 65,
+        "end": 75
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 516,
+        "end": 535
+      },
+      {
+        "path": "artifacts/SA/data_dictionary.md",
+        "start": 231,
+        "end": 238
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 149,
+        "end": 160
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 288,
+        "end": 288
+      },
+      {
+        "path": "artifacts/SD/transform_analysis.md",
+        "start": 65,
+        "end": 68
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/movement_controller.c",
+        "start": 13,
+        "end": 68
+      },
+      {
+        "path": "src/step_timer.c",
+        "start": 10,
+        "end": 35
+      },
+      {
+        "path": "src/controller.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 16
+      },
+      {
+        "path": "src/detect_obstacle.c",
+        "start": 6,
+        "end": 14
+      },
+      {
+        "path": "src/assess_obstacle_situation.c",
+        "start": 4,
+        "end": 19
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 9,
+        "end": 24
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 10
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 6,
+        "end": 17
+      },
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "src/main.c",
+        "start": 10,
+        "end": 17
+      },
+      {
+        "path": "include/hw_interface.h",
+        "start": 32,
+        "end": 33
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 85,
+        "end": 129
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 31,
+        "end": 42
+      },
+      {
+        "path": "CMakeLists.txt",
+        "start": 97,
+        "end": 101
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Forward plus blocked front selects Stop regardless of side availability (C16-qualified C2)",
+        "verdict": "implemented",
+        "evidence": "src/movement_controller.c:27-31 and 13-18,60; front flag carried by src/assess_obstacle_situation.c:8"
+      },
+      {
+        "claim": "Stop precedes either turn or backing and is delivered to the Motor boundary",
+        "verdict": "implemented",
+        "evidence": "src/movement_controller.c:32-60; src/step_timer.c:10-35; src/put_outputs.c:7-10; src/issue_movement_output.c:6-17"
+      }
+    ],
+    "paths_walked": [
+      "main -> controller -> get_inputs -> detect_obstacle -> assess_obstacle_situation -> decide_actions -> movement_controller -> put_outputs -> issue_movement_output -> drive_motor",
+      "Forward blocked front with each side classification -> Stopping -> held Stop -> right/left/backward",
+      "Backing repeated or side-selected turn -> Forward -> next obstacle Stop",
+      "initialize_rvc -> reset_movement_controller -> reset_step_timer; initial Forward output separately belongs to C13",
+      "CMake library, test and simulator source selection; simulator sensor/motor boundary"
+    ],
+    "searched": [
+      {
+        "pattern": "movement_controller\\(|reset_movement_controller\\(|issue_movement_output\\(|drive_motor\\(|DIRECTION_STOP|MOVEMENT_COMMAND_STOP",
+        "scope": "src include simulator tests",
+        "result": "Located single production decision/output chain, initialization reset/output caller, fake/host boundary and tests; no second movement decision path."
+      },
+      {
+        "pattern": "C2|C7|C16|Stopping|STOP|Stop|T2|T3|T4|T5|stop",
+        "scope": "relevant SA/SD and movement/controller/requirements tests",
+        "result": "Located normative stopped phase and branch/sequence test assertions."
+      },
+      {
+        "pattern": "RVC_SOURCES|rvc_control|rvc_main|rvc_sim_host",
+        "scope": "CMakeLists.txt",
+        "result": "Production library/tests and simulator include reviewed C sources without alternate C2 branch."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_movement_controller.cpp:70-134,225-257",
+      "tests/test_controller.cpp:50-70",
+      "tests/test_requirements.cpp:21-67"
+    ],
+    "test_execution": "notRun-by-reviewer",
+    "open_questions": []
+  },
+  {
+    "id": "C3",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 11,
+        "end": 11
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/power_up_timer.c",
+        "start": 7,
+        "end": 36
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 17,
+        "end": 22
+      },
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 8,
+        "end": 13
+      },
+      {
+        "path": "include/rvc_types.h",
+        "start": 83,
+        "end": 84
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Duration constant is five",
+        "verdict": "implemented",
+        "evidence": "include/rvc_types.h:83–84"
+      },
+      {
+        "claim": "Count includes activation Tick",
+        "verdict": "implemented",
+        "evidence": "src/power_up_timer.c:16–21 sets5, returns active, decrements to4"
+      },
+      {
+        "claim": "Avoidance does not consume boost duration",
+        "verdict": "implemented",
+        "evidence": "src/power_up_timer.c:14–28 leaves count unchanged outside Forward"
+      }
+    ],
+    "paths_walked": [
+      "Controller → Decide Actions → Movement Controller → Derive Movement Status → Track Power-Up → Decide Cleaning → Put Outputs",
+      "After activation: stored counts4,3,2,1,0 with active=true, then false at0. TRUE current restarts under C10; Avoiding pauses under C11."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/power_up_timer.c",
+          "src/decide_actions.c",
+          "src/decide_cleaning.c",
+          "include/rvc_types.h",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_power_up_timer.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C4",
+    "verdict": "undecidable",
+    "confidence": "bounded-by-environment",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 12,
+        "end": 12
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/movement_controller.c",
+        "start": 38,
+        "end": 48
+      },
+      {
+        "path": "simulator/public/world.js",
+        "start": 67,
+        "end": 87
+      },
+      {
+        "path": "simulator/public/world.js",
+        "start": 93,
+        "end": 136
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Production preserves the external-world assumption",
+        "verdict": "implemented",
+        "evidence": "src/movement_controller.c:38–41 documents fixed obstacle versus changing front reading"
+      },
+      {
+        "claim": "Simulator obstacle set remains unchanged by movement",
+        "verdict": "implemented",
+        "evidence": "simulator/public/world.js:67–80 constructs obstacle Set; apply changes robot/dust/cleaned, not obstacles"
+      },
+      {
+        "claim": "Real physical obstacle persistence",
+        "verdict": "undecidable",
+        "evidence": "B6 excludes physical world implementation; C cannot enforce persistence of furniture"
+      }
+    ],
+    "paths_walked": [
+      "Main → Controller → Get Inputs → Detect Obstacle → current sensor readings",
+      "Simulator create → sense → apply changes position/heading, leaving obstacle Set fixed."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/movement_controller.c",
+          "simulator/public/world.js",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_movement_controller.cpp",
+      "simulator/public/world.js"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [
+      "Real-world environment/physical actuator realization is outside audited software scope."
+    ],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C5",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 13,
+        "end": 13
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/assess_obstacle_situation.c",
+        "start": 8,
+        "end": 19
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 24,
+        "end": 60
+      },
+      {
+        "path": "src/step_timer.c",
+        "start": 10,
+        "end": 29
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Right-open priority",
+        "verdict": "implemented",
+        "evidence": "assess_obstacle_situation.c:10–16 selects RightOpen before LeftOpen"
+      },
+      {
+        "claim": "Three postback branches and timer restart",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:32–57 chooses right/left/back after Done and starts a new timed step"
+      }
+    ],
+    "paths_walked": [
+      "get_inputs → assess_obstacle_situation → decide_actions → movement_controller; Backing with notDone keeps Backing; Done evaluates sides; repeated Backing resets elapsed0."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/assess_obstacle_situation.c",
+          "src/movement_controller.c",
+          "src/step_timer.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_movement_controller.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C6",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 14,
+        "end": 14
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/movement_controller.c",
+        "start": 24,
+        "end": 60
+      },
+      {
+        "path": "src/step_timer.c",
+        "start": 10,
+        "end": 35
+      },
+      {
+        "path": "include/rvc_types.h",
+        "start": 77,
+        "end": 81
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Five-tick boundary",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:24 advances prior timer before transition; :56–57 starts new timer after selection; step_timer.c:14–18 ends at5"
+      },
+      {
+        "claim": "Repeat receives new full step",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:45–50 sets Backing and step_begins for repeated Backing"
+      }
+    ],
+    "paths_walked": [
+      "Backing entered at t with elapsed0; t+1..t+4 retain Backing; t+5 selects next step using sides. All repeat/turn branches checked."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/movement_controller.c",
+          "src/step_timer.c",
+          "include/rvc_types.h",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_step_timer.cpp",
+      "tests/test_movement_controller.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C7",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 15,
+        "end": 15
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/movement_controller.c",
+        "start": 24,
+        "end": 60
+      },
+      {
+        "path": "src/step_timer.c",
+        "start": 10,
+        "end": 29
+      },
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 8,
+        "end": 13
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Start Stop on front obstacle",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:27–30 sets Stopping and step_begins"
+      },
+      {
+        "claim": "Advance before transition and wait until Done",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:24,32,52–57 and step_timer.c:14–18"
+      }
+    ],
+    "paths_walked": [
+      "Forward/frontBlocked → Stopping/start0 → four notDone Stop cycles → fifth advance Done → side-selected turn or Backing."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/movement_controller.c",
+          "src/step_timer.c",
+          "src/decide_cleaning.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_movement_controller.cpp",
+      "tests/test_step_timer.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C8",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 16,
+        "end": 16
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/movement_controller.c",
+        "start": 24,
+        "end": 60
+      },
+      {
+        "path": "src/step_timer.c",
+        "start": 10,
+        "end": 29
+      },
+      {
+        "path": "src/derive_movement_status.c",
+        "start": 8,
+        "end": 12
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Both turn paths share same timer",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:33–35 returns Forward on Done for either turning state"
+      },
+      {
+        "claim": "Side sensors do not cut turn short",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:32–54 ignores situation while turn timer notDone"
+      }
+    ],
+    "paths_walked": [
+      "Stop/Backing Done → choose turn/start0; turn t..t+4; t+5 Done → Forward, D4 Idle. Inputs during turn do not change selected duration."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/movement_controller.c",
+          "src/step_timer.c",
+          "src/derive_movement_status.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_movement_controller.cpp",
+      "tests/test_step_timer.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C9",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 17,
+        "end": 17
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/assess_obstacle_situation.c",
+        "start": 8,
+        "end": 19
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 27,
+        "end": 50
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Classification keeps side information even if front clear",
+        "verdict": "implemented",
+        "evidence": "assess_obstacle_situation.c:8–16 computes front and side separately"
+      },
+      {
+        "claim": "Only Forward entry checks front",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:27–48 checks front only in Forward and side_situation after Backing"
+      }
+    ],
+    "paths_walked": [
+      "Backing Done with front clear + RightOpen → right; LeftOpen → left; BothBlocked → repeat. Same outcomes with front blocked."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/assess_obstacle_situation.c",
+          "src/movement_controller.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_movement_controller.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C10",
+    "verdict": "partial",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 18,
+        "end": 18
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 395
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 226,
+        "end": 247
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/power_up_timer.c",
+        "start": 10,
+        "end": 30
+      },
+      {
+        "path": "src/detect_dust.c",
+        "start": 6,
+        "end": 8
+      },
+      {
+        "path": "src/main.c",
+        "start": 12,
+        "end": 16
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 16
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Current TRUE at Forward Tick restarts",
+        "verdict": "implemented",
+        "evidence": "power_up_timer.c:16–21 resets5 even if an earlier count remains"
+      },
+      {
+        "claim": "TRUE then FALSE between Ticks is retained for restart",
+        "verdict": "absent",
+        "evidence": "detect_dust.c:6–8 returns only current bool; no latch/accessor; main.c:15–16 only polls once per Tick"
+      }
+    ],
+    "paths_walked": [
+      "Controller → Get Inputs current dust → Decide Actions → Track Power-Up; TRUE overwrites saved count; no TRUE observed at Tick means no restart, even if prior observation was TRUE."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/power_up_timer.c",
+          "src/detect_dust.c",
+          "src/main.c",
+          "src/get_inputs.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      },
+      {
+        "pattern": "pending|receive_input|InputEvent|InputMode|dispatch|inputs_ready|sensor_store|reset_sensor|get_dust|get_obstacle",
+        "scope": [
+          "src",
+          "include",
+          "tests",
+          "simulator/host"
+        ],
+        "result": "See c-compliance/absence-searches.json; no production event/readiness/pending enforcement. Input path read in full, including current Boolean forwarding."
+      }
+    ],
+    "divergence": {
+      "severity": "HIGH",
+      "scenario": "Receive/observe TRUE then FALSE before a Forward Tick while power-up runs. Current-only polling retains no new detection.",
+      "consequence": "A received redetection can fail to restart five ticks. Shared root cause P5-04, not a separate issue count.",
+      "minimal_fix": "Approved event delivery and D2 current/pending store consumed by Track Power-Up."
+    },
+    "tests_reviewed": [
+      "tests/test_power_up_timer.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C11",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 19,
+        "end": 19
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/power_up_timer.c",
+        "start": 10,
+        "end": 30
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 17,
+        "end": 22
+      },
+      {
+        "path": "src/derive_movement_status.c",
+        "start": 8,
+        "end": 12
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Avoiding preserves residual",
+        "verdict": "implemented",
+        "evidence": "power_up_timer.c:14–28 has no count assignment outside Forward"
+      },
+      {
+        "claim": "Forward resumes residual when dust false",
+        "verdict": "implemented",
+        "evidence": "power_up_timer.c:16–21 decrements preserved positive count and reports active"
+      }
+    ],
+    "paths_walked": [
+      "Movement decision precedes status and boost, so the first Stop already pauses D3. First Forward resumes when current=false. New avoidance detection precedence fails C15; C11 no-new-detection case passes audit control."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/power_up_timer.c",
+          "src/decide_actions.c",
+          "src/derive_movement_status.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_power_up_timer.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C12",
+    "verdict": "partial",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 20,
+        "end": 20
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 38,
+        "end": 40
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 13,
+        "end": 23
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/main.c",
+        "start": 12,
+        "end": 17
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 8,
+        "end": 16
+      },
+      {
+        "path": "src/detect_obstacle.c",
+        "start": 6,
+        "end": 14
+      },
+      {
+        "path": "src/detect_dust.c",
+        "start": 6,
+        "end": 8
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Every Controller invocation reads all four before decision",
+        "verdict": "implemented",
+        "evidence": "get_inputs.c:11–14 and detect_obstacle.c:10–12; no uninitialized automatic input fields used"
+      },
+      {
+        "claim": "Approved initial readiness before first Tick delivery",
+        "verdict": "absent",
+        "evidence": "initialize_rvc.c:8–13 performs no reads; main.c:15 waits for first Tick before polling"
+      },
+      {
+        "claim": "Distinguish actual initial sample from unreceived field",
+        "verdict": "absent",
+        "evidence": "No validity/readiness/initial acquisition API exists in src/include; reviewed polling path and absence-searches.json"
+      }
+    ],
+    "paths_walked": [
+      "main → initialize_rvc(no reads) → wait_for_tick → controller → get_inputs → four reads → decide_actions. Reads before decision do not implement pre-Tick readiness. Audit probe records0 pre-wait reads vs4."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/initialize_rvc.c",
+          "src/main.c",
+          "src/get_inputs.c",
+          "src/detect_obstacle.c",
+          "src/detect_dust.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      },
+      {
+        "pattern": "pending|receive_input|InputEvent|InputMode|dispatch|inputs_ready|sensor_store|reset_sensor|get_dust|get_obstacle",
+        "scope": [
+          "src",
+          "include",
+          "tests",
+          "simulator/host"
+        ],
+        "result": "See c-compliance/absence-searches.json; no production event/readiness/pending enforcement. Input path read in full, including current Boolean forwarding."
+      }
+    ],
+    "divergence": {
+      "severity": "MEDIUM",
+      "scenario": "At entry to first wait_for_tick, no actual initial sample has been acquired.",
+      "consequence": "Approved initialization boundary/readiness contract is absent. Do not allege uninitialized local values in Controller.",
+      "minimal_fix": "Acquire Initial Inputs + Inputs Ready with four valid flags and initial boundary mode."
+    },
+    "tests_reviewed": [
+      "tests/test_main.cpp",
+      "tests/test_initialize_rvc.cpp",
+      "tests/test_controller.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C13",
+    "verdict": "contradicted",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 21,
+        "end": 21
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 38,
+        "end": 40
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 13,
+        "end": 23
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/initialize_rvc.c",
+        "start": 8,
+        "end": 14
+      },
+      {
+        "path": "src/movement_controller.c",
+        "start": 64,
+        "end": 68
+      },
+      {
+        "path": "src/issue_movement_output.c",
+        "start": 15,
+        "end": 17
+      },
+      {
+        "path": "src/main.c",
+        "start": 12,
+        "end": 16
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Forward/D4/D3 reset",
+        "verdict": "implemented",
+        "evidence": "initialize_rvc.c:10–12 and movement_controller.c:64–68"
+      },
+      {
+        "claim": "No Direction during Power On",
+        "verdict": "contradicted",
+        "evidence": "initialize_rvc.c:13 emits reset result through issue_movement_output.c:17"
+      },
+      {
+        "claim": "No Clean during Power On",
+        "verdict": "implemented",
+        "evidence": "No cleaner call reachable from initialize_rvc; probe sees0"
+      }
+    ],
+    "paths_walked": [
+      "main → initialize_rvc → reset_movement_controller returns Forward → issue_movement_output → drive_motor before first wait. Probe observes1 motor call vs expected0."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/initialize_rvc.c",
+          "src/movement_controller.c",
+          "src/issue_movement_output.c",
+          "src/main.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": {
+      "severity": "HIGH",
+      "scenario": "Power on with front blocked; Forward command emitted before any sensor read.",
+      "consequence": "Unsupported early motor command; no physical collision claim.",
+      "minimal_fix": "Void state-only reset and no initialization output; first Tick emits decision."
+    },
+    "tests_reviewed": [
+      "tests/test_initialize_rvc.cpp",
+      "tests/test_main.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C14",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 22,
+        "end": 22
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 4,
+        "end": 16
+      },
+      {
+        "path": "src/put_outputs.c",
+        "start": 7,
+        "end": 10
+      },
+      {
+        "path": "include/rvc_types.h",
+        "start": 61,
+        "end": 66
+      },
+      {
+        "path": "include/hw_interface.h",
+        "start": 35,
+        "end": 36
+      },
+      {
+        "path": "simulator/host/sim_host.c",
+        "start": 131,
+        "end": 135
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Select Start/Stop/PowerUp abstract commands",
+        "verdict": "implemented",
+        "evidence": "decide_cleaning.c:8–13 maps Avoiding/active/normal to the three commands"
+      },
+      {
+        "claim": "Forward exact command to boundary",
+        "verdict": "implemented",
+        "evidence": "put_outputs.c:9–10 forwards Clean unchanged; hw_interface.h:35–36 declares abstract Cleaner"
+      },
+      {
+        "claim": "Physical suction/mop intensity realization",
+        "verdict": "undecidable",
+        "evidence": "B6 excludes hardware implementation. Simulator records Clean enum and cleaned cells, not separate actuator intensity."
+      }
+    ],
+    "paths_walked": [
+      "Derive Movement Status → Track Power-Up → Decide Cleaning → Put Outputs → drive_cleaner(Clean). No physical mopping driver inferred; semantics inherited from DD/approved SD."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/decide_cleaning.c",
+          "src/put_outputs.c",
+          "include/rvc_types.h",
+          "include/hw_interface.h",
+          "simulator/host/sim_host.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_decide_cleaning.cpp",
+      "tests/test_outputs.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [
+      "Real-world environment/physical actuator realization is outside audited software scope."
+    ],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C15",
+    "verdict": "partial",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 23,
+        "end": 23
+      },
+      {
+        "path": "artifacts/SA/process_specification.md",
+        "start": 365,
+        "end": 395
+      },
+      {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 226,
+        "end": 247
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/detect_dust.c",
+        "start": 6,
+        "end": 8
+      },
+      {
+        "path": "src/get_inputs.c",
+        "start": 11,
+        "end": 14
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 17,
+        "end": 22
+      },
+      {
+        "path": "src/power_up_timer.c",
+        "start": 7,
+        "end": 30
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Resume saved count without new detection",
+        "verdict": "implemented",
+        "evidence": "power_up_timer.c:14–28 preserves then resumes count"
+      },
+      {
+        "claim": "Remember received TRUE through later FALSE",
+        "verdict": "absent",
+        "evidence": "detect_dust.c:6–8 only returns current bool, no pending state anywhere in input path"
+      },
+      {
+        "claim": "Pending overrides residual on Forward",
+        "verdict": "contradicted",
+        "evidence": "power_up_timer.c:16 tests current bool only; probe returns residual2 instead of4 after new avoidance detection"
+      }
+    ],
+    "paths_walked": [
+      "During avoidance controller reads TRUE and passes it to track_power_up, but its Avoiding branch discards it. Later FALSE and Forward produce Start or saved residual instead of full5. Separate pulse probe explicitly observes TRUE/FALSE via detect_dust and loses it; not claimed to be nonexistent asynchronous production delivery."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/detect_dust.c",
+          "src/get_inputs.c",
+          "src/decide_actions.c",
+          "src/power_up_timer.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      },
+      {
+        "pattern": "pending|receive_input|InputEvent|InputMode|dispatch|inputs_ready|sensor_store|reset_sensor|get_dust|get_obstacle",
+        "scope": [
+          "src",
+          "include",
+          "tests",
+          "simulator/host"
+        ],
+        "result": "See c-compliance/absence-searches.json; no production event/readiness/pending enforcement. Input path read in full, including current Boolean forwarding."
+      }
+    ],
+    "divergence": {
+      "severity": "HIGH",
+      "scenario": "TRUE on Stop entry, FALSE during remaining Stop/Turn, then Forward.",
+      "consequence": "No boost after avoidance-only detection; paused boost fails to restart full5. Executed probes show both.",
+      "minimal_fix": "D2 current+pending OR latch, Forward-only consume, pending/current restart precedence."
+    },
+    "tests_reviewed": [
+      "tests/test_power_up_timer.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  },
+  {
+    "id": "C16",
+    "verdict": "implemented",
+    "confidence": "high",
+    "spec_refs": [
+      {
+        "path": "docs/requirements_clarifications.md",
+        "start": 24,
+        "end": 24
+      }
+    ],
+    "code_refs": [
+      {
+        "path": "src/movement_controller.c",
+        "start": 27,
+        "end": 50
+      },
+      {
+        "path": "src/decide_actions.c",
+        "start": 17,
+        "end": 22
+      },
+      {
+        "path": "src/decide_cleaning.c",
+        "start": 8,
+        "end": 13
+      }
+    ],
+    "subclaims": [
+      {
+        "claim": "Forward front-only branch",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:27–31 ignores side_situation at entry"
+      },
+      {
+        "claim": "Side-only forward produces clean command",
+        "verdict": "implemented",
+        "evidence": "decide_actions.c:17–22 uses returned Forward status; decide_cleaning.c:10–13 chooses Start/PowerUp"
+      },
+      {
+        "claim": "Postback still side-only",
+        "verdict": "implemented",
+        "evidence": "movement_controller.c:43–48 consults sides after Done"
+      }
+    ],
+    "paths_walked": [
+      "Front clear with left/right/both blocked → Forward → statusForward → normal/boost clean. Existing Q6-labelled tests cover cases; label stale but code correct. Audit both-sides-blocked controls pass."
+    ],
+    "searched": [
+      {
+        "pattern": "actual branches, callers and build selection",
+        "scope": [
+          "src/movement_controller.c",
+          "src/decide_actions.c",
+          "src/decide_cleaning.c",
+          "CMakeLists.txt"
+        ],
+        "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+      }
+    ],
+    "divergence": null,
+    "tests_reviewed": [
+      "tests/test_movement_controller.cpp",
+      "tests/test_requirements.cpp"
+    ],
+    "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+    "open_questions": [],
+    "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+    "independent_refutation": "see final report and refutations/; not implied by this record"
+  }
+]

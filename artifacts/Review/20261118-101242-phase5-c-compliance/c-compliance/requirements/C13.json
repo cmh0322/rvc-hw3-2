@@ -1,0 +1,91 @@
+{
+  "id": "C13",
+  "verdict": "contradicted",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 21,
+      "end": 21
+    },
+    {
+      "path": "artifacts/SA/process_specification.md",
+      "start": 38,
+      "end": 40
+    },
+    {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 13,
+      "end": 23
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/initialize_rvc.c",
+      "start": 8,
+      "end": 14
+    },
+    {
+      "path": "src/movement_controller.c",
+      "start": 64,
+      "end": 68
+    },
+    {
+      "path": "src/issue_movement_output.c",
+      "start": 15,
+      "end": 17
+    },
+    {
+      "path": "src/main.c",
+      "start": 12,
+      "end": 16
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Forward/D4/D3 reset",
+      "verdict": "implemented",
+      "evidence": "initialize_rvc.c:10–12 and movement_controller.c:64–68"
+    },
+    {
+      "claim": "No Direction during Power On",
+      "verdict": "contradicted",
+      "evidence": "initialize_rvc.c:13 emits reset result through issue_movement_output.c:17"
+    },
+    {
+      "claim": "No Clean during Power On",
+      "verdict": "implemented",
+      "evidence": "No cleaner call reachable from initialize_rvc; probe sees0"
+    }
+  ],
+  "paths_walked": [
+    "main → initialize_rvc → reset_movement_controller returns Forward → issue_movement_output → drive_motor before first wait. Probe observes1 motor call vs expected0."
+  ],
+  "searched": [
+    {
+      "pattern": "actual branches, callers and build selection",
+      "scope": [
+        "src/initialize_rvc.c",
+        "src/movement_controller.c",
+        "src/issue_movement_output.c",
+        "src/main.c",
+        "CMakeLists.txt"
+      ],
+      "result": "Read cited enforcement and relevant callers/callees; production C path is shared by tests and simulator."
+    }
+  ],
+  "divergence": {
+    "severity": "HIGH",
+    "scenario": "Power on with front blocked; Forward command emitted before any sensor read.",
+    "consequence": "Unsupported early motor command; no physical collision claim.",
+    "minimal_fix": "Void state-only reset and no initialization output; first Tick emits decision."
+  },
+  "tests_reviewed": [
+    "tests/test_initialize_rvc.cpp",
+    "tests/test_main.cpp"
+  ],
+  "test_execution": "See run verification/execution-record.md; source reviewer did not run a separate per-requirement suite.",
+  "open_questions": [],
+  "reviewer": "primary Codex reviewer; per-requirement independent dispatch unavailable after usage-limit errors",
+  "independent_refutation": "see final report and refutations/; not implied by this record"
+}

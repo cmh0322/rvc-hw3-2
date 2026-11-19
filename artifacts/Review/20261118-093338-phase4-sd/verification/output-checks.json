@@ -1,0 +1,29 @@
+{
+  "executed_at": "2026-11-18T09:43:09.765385+09:00",
+  "scope": "review evidence consistency; not SD approval or product test success",
+  "requirements_reviewed": 23,
+  "status_counts": {
+    "mapped": 15,
+    "partial": 2,
+    "scope-justified": 3,
+    "conflict": 2,
+    "stale-status": 1
+  },
+  "independent_lenses": 3,
+  "raw_findings_preserved": 11,
+  "triaged_required_items": 5,
+  "optional_items": 1,
+  "modules_and_interfaces": 26,
+  "process_maps": 13,
+  "primitive_region_maps": 9,
+  "checklist_questions": 15,
+  "protected_files_unchanged": 74,
+  "mapped_paths_exist": 21,
+  "git_diff_check_exit": 0,
+  "structure_check_exit": 0,
+  "C_tests": "notRun",
+  "SPIN": "notRun",
+  "web_simulator": "notRun",
+  "coverage": "notMeasured",
+  "source_fixes": "notApplied"
+}

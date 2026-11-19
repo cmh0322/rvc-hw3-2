@@ -1,0 +1,526 @@
+{
+  "modules": [
+    {
+      "module": "Main",
+      "origin": "P0; event loop",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "module": "Initialize RVC",
+      "origin": "P0/T0/C12/C13 and initial stores",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "module": "Acquire Initial Inputs",
+      "origin": "P0/P1/P2/C12 readiness",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "module": "Dispatch Input Event",
+      "origin": "P0 serial sensor/Tick triggers",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "module": "Dispatch Sensor Input",
+      "origin": "P1/P2 sensor event triggers",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "module": "Controller",
+      "origin": "P0 Tick",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "module": "Get Inputs",
+      "origin": "TA afferent coordinator",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "module": "Detect Obstacle",
+      "origin": "P1/D1",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "module": "Assess Obstacle Situation",
+      "origin": "P3.1",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "module": "Detect Dust",
+      "origin": "P2/D2/C15",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "module": "Reset Sensor Data",
+      "origin": "D1/D2 initial validity/C12/C15",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 144,
+        "end": 144
+      }
+    },
+    {
+      "module": "Inputs Ready",
+      "origin": "P0/C12 first-Tick barrier",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 145,
+        "end": 145
+      }
+    },
+    {
+      "module": "Get Obstacle Location",
+      "origin": "D1 copy accessor",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 146,
+        "end": 146
+      }
+    },
+    {
+      "module": "Get Dust Existence",
+      "origin": "D2 copy accessor/P4.1 input",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 147,
+        "end": 147
+      }
+    },
+    {
+      "module": "Clear Pending Dust",
+      "origin": "P4.1 pending-only D2 write",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 148,
+        "end": 148
+      }
+    },
+    {
+      "module": "Decide Actions",
+      "origin": "TA central coordinator/P3.2.1 parameter passing",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "module": "Movement Controller",
+      "origin": "P3.2.2/T1-T14",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 150,
+        "end": 150
+      }
+    },
+    {
+      "module": "Reset Movement Controller",
+      "origin": "P3.2.2/T0",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "module": "Advance Step Timer",
+      "origin": "P3.2.4 Tick",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "module": "Start Step Timer",
+      "origin": "P3.2.4 Start",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 153,
+        "end": 153
+      }
+    },
+    {
+      "module": "Reset Step Timer",
+      "origin": "D4 Idle",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "module": "Derive Movement Status",
+      "origin": "P3.2.3 central",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "module": "Track Power-Up",
+      "origin": "P4.1/C10/C11/C15",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 156,
+        "end": 156
+      }
+    },
+    {
+      "module": "Reset Power-Up Timer",
+      "origin": "D3=0",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 157,
+        "end": 157
+      }
+    },
+    {
+      "module": "Decide Cleaning",
+      "origin": "P4.2/C14",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 158,
+        "end": 158
+      }
+    },
+    {
+      "module": "Put Outputs",
+      "origin": "TA efferent coordinator",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 159,
+        "end": 159
+      }
+    },
+    {
+      "module": "Issue Movement Output",
+      "origin": "P3.2.3 efferent",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 160,
+        "end": 160
+      }
+    },
+    {
+      "module": "Receive Input Event",
+      "origin": "4 sensor + Tick Context flows; C12/C15 boundary contract",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "module": "Drive Motor",
+      "origin": "Direction Context output/B6",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 160,
+        "end": 160
+      }
+    },
+    {
+      "module": "Drive Cleaner",
+      "origin": "Clean Context output/C14/B6",
+      "evidence": {
+        "path": "artifacts/SD/structure_chart.md",
+        "start": 168,
+        "end": 168
+      }
+    }
+  ],
+  "calls": [
+    {
+      "caller": "Main",
+      "callee": "Initialize RVC",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once before event loop"
+    },
+    {
+      "caller": "Main",
+      "callee": "Receive Input Event",
+      "input": "Input Mode=Running",
+      "output": "Input Event",
+      "control": "—",
+      "when": "each event-loop iteration, after initialization"
+    },
+    {
+      "caller": "Main",
+      "callee": "Dispatch Input Event",
+      "input": "Input Event",
+      "output": "—",
+      "control": "—",
+      "when": "after Receive Input Event returns"
+    },
+    {
+      "caller": "Initialize RVC",
+      "callee": "Reset Movement Controller",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once, in listed order"
+    },
+    {
+      "caller": "Initialize RVC",
+      "callee": "Reset Power-Up Timer",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once, in listed order"
+    },
+    {
+      "caller": "Initialize RVC",
+      "callee": "Reset Sensor Data",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once, in listed order"
+    },
+    {
+      "caller": "Initialize RVC",
+      "callee": "Acquire Initial Inputs",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "once, in listed order"
+    },
+    {
+      "caller": "Acquire Initial Inputs",
+      "callee": "Inputs Ready",
+      "input": "—",
+      "output": "Ready",
+      "control": "—",
+      "when": "before each acquisition iteration"
+    },
+    {
+      "caller": "Acquire Initial Inputs",
+      "callee": "Receive Input Event",
+      "input": "Input Mode=InitialSensors",
+      "output": "Sensor Input Event",
+      "control": "—",
+      "when": "while not Ready"
+    },
+    {
+      "caller": "Acquire Initial Inputs",
+      "callee": "Dispatch Sensor Input",
+      "input": "Sensor Input Event",
+      "output": "—",
+      "control": "—",
+      "when": "after each initial sensor event"
+    },
+    {
+      "caller": "Dispatch Input Event",
+      "callee": "Dispatch Sensor Input",
+      "input": "Sensor Input Event",
+      "output": "—",
+      "control": "—",
+      "when": "event kind is a sensor"
+    },
+    {
+      "caller": "Dispatch Input Event",
+      "callee": "Controller",
+      "input": "—",
+      "output": "—",
+      "control": "Tick occurrence",
+      "when": "event kind is Tick"
+    },
+    {
+      "caller": "Dispatch Sensor Input",
+      "callee": "Detect Obstacle",
+      "input": "Sensor ID, Boolean value",
+      "output": "—",
+      "control": "—",
+      "when": "front, left or right event"
+    },
+    {
+      "caller": "Dispatch Sensor Input",
+      "callee": "Detect Dust",
+      "input": "Dust Sensor Input",
+      "output": "—",
+      "control": "—",
+      "when": "dust event"
+    },
+    {
+      "caller": "Controller",
+      "callee": "Get Inputs",
+      "input": "—",
+      "output": "Obstacle Situation",
+      "control": "—",
+      "when": "1 per Tick"
+    },
+    {
+      "caller": "Controller",
+      "callee": "Decide Actions",
+      "input": "Obstacle Situation",
+      "output": "Clean",
+      "control": "↑ Movement Command",
+      "when": "2 per Tick"
+    },
+    {
+      "caller": "Controller",
+      "callee": "Put Outputs",
+      "input": "Clean",
+      "output": "—",
+      "control": "↓ Movement Command",
+      "when": "3 per Tick"
+    },
+    {
+      "caller": "Get Inputs",
+      "callee": "Get Obstacle Location",
+      "input": "—",
+      "output": "Obstacle Location",
+      "control": "—",
+      "when": "1"
+    },
+    {
+      "caller": "Get Inputs",
+      "callee": "Assess Obstacle Situation",
+      "input": "Obstacle Location",
+      "output": "Obstacle Situation",
+      "control": "—",
+      "when": "2"
+    },
+    {
+      "caller": "Decide Actions",
+      "callee": "Movement Controller",
+      "input": "—",
+      "output": "—",
+      "control": "↓ Situation Signal, ↑ Movement Command",
+      "when": "1"
+    },
+    {
+      "caller": "Decide Actions",
+      "callee": "Derive Movement Status",
+      "input": "—",
+      "output": "Movement Status",
+      "control": "↓ Movement Command",
+      "when": "2"
+    },
+    {
+      "caller": "Decide Actions",
+      "callee": "Track Power-Up",
+      "input": "Movement Status",
+      "output": "Power-Up Active",
+      "control": "—",
+      "when": "3"
+    },
+    {
+      "caller": "Decide Actions",
+      "callee": "Decide Cleaning",
+      "input": "Movement Status, Power-Up Active",
+      "output": "Clean",
+      "control": "—",
+      "when": "4"
+    },
+    {
+      "caller": "Movement Controller",
+      "callee": "Advance Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "↑ Step Done",
+      "when": "before transition"
+    },
+    {
+      "caller": "Movement Controller",
+      "callee": "Start Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "T2/T4/T5/T6/T8/T9/T10 only, after selection"
+    },
+    {
+      "caller": "Reset Movement Controller",
+      "callee": "Reset Step Timer",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "always"
+    },
+    {
+      "caller": "Track Power-Up",
+      "callee": "Get Dust Existence",
+      "input": "—",
+      "output": "Dust Existence",
+      "control": "—",
+      "when": "1 before power-up decision"
+    },
+    {
+      "caller": "Track Power-Up",
+      "callee": "Clear Pending Dust",
+      "input": "—",
+      "output": "—",
+      "control": "—",
+      "when": "Forward only, after evaluating current/pending; before returning"
+    },
+    {
+      "caller": "Put Outputs",
+      "callee": "Issue Movement Output",
+      "input": "—",
+      "output": "—",
+      "control": "↓ Movement Command",
+      "when": "1"
+    },
+    {
+      "caller": "Put Outputs",
+      "callee": "Drive Cleaner",
+      "input": "Clean",
+      "output": "—",
+      "control": "—",
+      "when": "2"
+    },
+    {
+      "caller": "Issue Movement Output",
+      "callee": "Drive Motor",
+      "input": "Direction",
+      "output": "—",
+      "control": "—",
+      "when": "always"
+    }
+  ],
+  "external_flow_count": 7,
+  "unsupported_modules_found": 0
+}

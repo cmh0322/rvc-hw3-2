@@ -1,0 +1,1 @@
+ltl turn_progress: [] ((! ((stable) && (((state==TurningRight)) || ((state==TurningLeft))))) || (<> ((stable) && ((state==Forward)))))

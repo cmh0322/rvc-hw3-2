@@ -40,8 +40,8 @@ protected:
 
 // ---- T0: Power On / Forward -------------------------------------------------
 
-TEST_F(MovementControllerTest, T0_ResetReturnsForwardAndEntersForward) {
-    EXPECT_EQ(MOVEMENT_COMMAND_FORWARD, reset_movement_controller());
+TEST_F(MovementControllerTest, T0_ResetEntersForwardWithoutACommand) {
+    reset_movement_controller();
     EXPECT_EQ(CONTROLLER_STATE_FORWARD, get_controller_state());
     EXPECT_EQ(STEP_TIMER_IDLE, get_step_ticks_elapsed());
 }
@@ -52,7 +52,7 @@ TEST_F(MovementControllerTest, T0_ResetLeavesAnyStateAndStopsTheStepTimer) {
     ASSERT_EQ(CONTROLLER_STATE_STOPPING, get_controller_state());
     ASSERT_NE(STEP_TIMER_IDLE, get_step_ticks_elapsed());
 
-    EXPECT_EQ(MOVEMENT_COMMAND_FORWARD, reset_movement_controller());
+    reset_movement_controller();
     EXPECT_EQ(CONTROLLER_STATE_FORWARD, get_controller_state());
     EXPECT_EQ(STEP_TIMER_IDLE, get_step_ticks_elapsed());
 }
@@ -280,7 +280,7 @@ TEST_F(MovementControllerTest, T8_C9_AfterBackingMovesBackwardAgainWhenBothSides
     EXPECT_EQ(0, get_step_ticks_elapsed());
 }
 
-// Q6 assumption: while going forward, obstacles on the sides alone do not stop the RVC.
+// Confirmed C16: while going forward, obstacles on the sides alone do not stop the RVC.
 TEST_F(MovementControllerTest, T1_SidesAreIgnoredWhileGoingForward) {
     ExpectTicks(3, kFrontClearLeftOpen, MOVEMENT_COMMAND_FORWARD);
     ExpectTicks(3, kFrontClearSidesBlocked, MOVEMENT_COMMAND_FORWARD);

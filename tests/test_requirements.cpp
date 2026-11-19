@@ -1,7 +1,7 @@
 // Requirement-level tests. Each test drives the whole system through
 // Controller, one call per Tick, and checks what reaches the Motor and Cleaner.
 // Source: docs/preliminary_requirements.md (B1-B7),
-// docs/requirements_clarifications.md (C1-C11, Q6).
+// docs/requirements_clarifications.md (C1-C16).
 #include "rvc_system_fixture.h"
 
 namespace {
@@ -162,11 +162,11 @@ TEST_F(RequirementsTest, C11_PowerUpContinuesAfterAnAvoidance) {
     ExpectCycles(2, DIRECTION_FORWARD, CLEAN_START);
 }
 
-// ---- Assumption, not a requirement ------------------------------------------
+// ---- C16 confirmed requirement ---------------------------------------------
 
-// Q6 (open): this analysis assumes that obstacles on the left or right do not
+// C16: obstacles on the left or right do not
 // trigger avoidance while the front is clear.
-TEST_F(RequirementsTest, Assumption_Q6_SideObstaclesAloneDoNotTriggerAvoidance) {
+TEST_F(RequirementsTest, C16_SideObstaclesAloneDoNotTriggerAvoidance) {
     SetObstacles(false, true, true);
     ExpectCycles(5, DIRECTION_FORWARD, CLEAN_START);
     SetObstacles(false, true, false);

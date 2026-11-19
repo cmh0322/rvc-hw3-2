@@ -1,0 +1,154 @@
+{
+  "id": "B5",
+  "verdict": "partial",
+  "confidence": "high",
+  "spec_refs": [
+    {
+      "path": "docs/preliminary_requirements.md",
+      "start": 5,
+      "end": 5
+    },
+    {
+      "path": "docs/requirements_clarifications.md",
+      "start": 11,
+      "end": 30
+    },
+    {
+      "path": "artifacts/SA/process_specification.md",
+      "start": 365,
+      "end": 392
+    },
+    {
+      "path": "artifacts/SA/data_dictionary.md",
+      "start": 159,
+      "end": 178
+    },
+    {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 17,
+      "end": 23
+    },
+    {
+      "path": "artifacts/SD/structure_chart.md",
+      "start": 143,
+      "end": 158
+    },
+    {
+      "path": "artifacts/SD/transform_analysis.md",
+      "start": 50,
+      "end": 57
+    }
+  ],
+  "code_refs": [
+    {
+      "path": "src/main.c",
+      "start": 12,
+      "end": 16
+    },
+    {
+      "path": "src/initialize_rvc.c",
+      "start": 8,
+      "end": 14
+    },
+    {
+      "path": "src/get_inputs.c",
+      "start": 8,
+      "end": 16
+    },
+    {
+      "path": "src/detect_dust.c",
+      "start": 6,
+      "end": 8
+    },
+    {
+      "path": "src/decide_actions.c",
+      "start": 9,
+      "end": 24
+    },
+    {
+      "path": "src/power_up_timer.c",
+      "start": 7,
+      "end": 42
+    },
+    {
+      "path": "src/decide_cleaning.c",
+      "start": 8,
+      "end": 13
+    },
+    {
+      "path": "src/put_outputs.c",
+      "start": 7,
+      "end": 10
+    },
+    {
+      "path": "simulator/host/sim_host.c",
+      "start": 84,
+      "end": 135
+    }
+  ],
+  "subclaims": [
+    {
+      "claim": "Current Forward dust starts/restarts five active Forward ticks inclusive of triggering Tick",
+      "verdict": "implemented",
+      "evidence": "src/power_up_timer.c:14-21; include/rvc_types.h:83-84; src/decide_cleaning.c:8-13"
+    },
+    {
+      "claim": "Avoidance pauses D3 and no-dust Forward resumes saved ticks",
+      "verdict": "implemented",
+      "evidence": "src/power_up_timer.c:14-28; src/decide_actions.c:17-22"
+    },
+    {
+      "claim": "Avoidance dust is retained and causes full restart on Forward",
+      "verdict": "contradicted",
+      "evidence": "src/detect_dust.c:6-8; src/power_up_timer.c:23-28 discards detection; tests/test_power_up_timer.cpp:74-77 expects forgetting"
+    },
+    {
+      "claim": "Retain intermediate dust inputs and acquire initial samples before first Tick",
+      "verdict": "absent",
+      "evidence": "src/main.c:12-16; src/initialize_rvc.c:8-14; src/get_inputs.c:11-14; no pending/event storage found"
+    },
+    {
+      "claim": "Power Up command and suction-only physical semantics",
+      "verdict": "partial",
+      "evidence": "src/put_outputs.c:10 forwards abstract command; include/hw_interface.h:35-36 lacks semantics; physical actuation outside B6"
+    }
+  ],
+  "paths_walked": [
+    "main -> initialize_rvc -> reset_power_up_timer",
+    "main -> wait_for_tick -> controller -> get_inputs -> detect_dust -> read_dust_sensor",
+    "controller -> decide_actions -> movement_controller -> derive_movement_status -> track_power_up -> decide_cleaning",
+    "controller -> put_outputs -> drive_cleaner; Forward/avoidance/turn completion/reset/expired and active count branches"
+  ],
+  "searched": [
+    {
+      "pattern": "dust|Dust|power|Power|pending|remaining",
+      "scope": "src include tests simulator/host artifacts/SA artifacts/SD",
+      "result": "Current scalar dust path and D3 timer; approved pending semantics; stale opposite-C15 test"
+    },
+    {
+      "pattern": "Pending Dust|pending|receive_input|event|suction|mop|POWER_UP",
+      "scope": "src include CMakeLists.txt and relevant SA",
+      "result": "No production pending/event store; only enum/timer machinery"
+    },
+    {
+      "pattern": "rg --files; CMake source selection",
+      "scope": "src include tests simulator/host artifacts/SA artifacts/SD; CMakeLists.txt",
+      "result": "No alternate dust implementation; same production source set linked for simulator"
+    }
+  ],
+  "divergence": {
+    "consequence": "Avoidance dust is forgotten; Forward emits normal cleaning or resumes too few powered ticks; intermediate input pulses cannot be retained",
+    "scenario": "D3=0, dust TRUE during avoidance, dust FALSE before Forward: CLEAN_START instead of five CLEAN_POWER_UP ticks. Paused D3=2 resumes two instead of restarting five.",
+    "minimal_fix": "Implement approved ordered input adapter and private current/pending dust storage; retain TRUE, preserve pending during avoidance, consume on Forward with five-tick restart precedence; replace stale tests.",
+    "severity": "high"
+  },
+  "tests_reviewed": [
+    "tests/test_power_up_timer.cpp:27-120",
+    "tests/test_requirements.cpp:102-125,140-162",
+    "tests/fake_hw.cpp:42-56,64-66"
+  ],
+  "test_execution": "notRun-by-reviewer",
+  "open_questions": [
+    "Real hardware suction/mop mapping is outside B6; physical behavior is not established by abstract enum output."
+  ]
+}

@@ -1,0 +1,16 @@
+[0/2] Re-checking globbed directories...
+[1/16] Building C object CMakeFiles/rvc_sim_host.dir/src/initialize_rvc.c.obj
+[2/16] Building C object CMakeFiles/rvc_sim_host.dir/src/decide_actions.c.obj
+[3/16] Building C object CMakeFiles/rvc_sim_host.dir/src/movement_controller.c.obj
+[4/16] Building C object CMakeFiles/rvc_control.dir/src/decide_actions.c.obj
+[5/16] Building C object CMakeFiles/rvc_control.dir/src/initialize_rvc.c.obj
+[6/16] Building C object CMakeFiles/rvc_control.dir/src/movement_controller.c.obj
+[7/16] Building C object CMakeFiles/rvc_sim_host.dir/simulator/host/sim_host.c.obj
+[8/16] Linking C static library librvc_control.a
+[9/16] Linking C executable rvc_sim_host.exe
+[10/16] Building CXX object CMakeFiles/rvc_tests.dir/tests/test_inputs.cpp.obj
+[11/16] Building CXX object CMakeFiles/rvc_tests.dir/tests/test_decide_actions.cpp.obj
+[12/16] Building CXX object CMakeFiles/rvc_tests.dir/tests/test_initialize_rvc.cpp.obj
+[13/16] Building CXX object CMakeFiles/rvc_tests.dir/tests/test_main.cpp.obj
+[14/16] Building CXX object CMakeFiles/rvc_tests.dir/tests/test_movement_controller.cpp.obj
+[15/16] Linking CXX executable rvc_tests.exe

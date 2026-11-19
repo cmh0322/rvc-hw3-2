@@ -1,0 +1,51 @@
+  1:	proc  0 (Controller:1) model.pml:51 (state 1)	[state = Forward]
+		state = Forward
+  1:	proc  0 (Controller:1) model.pml:52 (state 2)	[previous = Forward]
+		state = Forward
+		previous = Forward
+  1:	proc  0 (Controller:1) model.pml:53 (state 3)	[assert(((state==Forward)&&(elapsed==6)))]
+		state = Forward
+		previous = Forward
+  1:	proc  0 (Controller:1) model.pml:54 (state 4)	[assert(((command==NoCommand)&&(direction==NoCommand)))]
+		state = Forward
+		previous = Forward
+  1:	proc  0 (Controller:1) model.pml:55 (state 5)	[assert(((!(clean_emitted)&&!(start_timer))&&(emitted==0)))]
+		state = Forward
+		previous = Forward
+      INIT T0 state=Forward command=NoCommand elapsed=6
+  1:	proc  0 (Controller:1) model.pml:56 (state 6)	[printf('INIT T0 state=%e command=%e elapsed=%d\\n',state,command,elapsed)]
+		state = Forward
+		previous = Forward
+spin: model.pml:57, Error: assertion violated
+spin: text of failed assertion: assert((transition!=0))
+  1:	proc  0 (Controller:1) model.pml:57 (state 7)	[assert((transition!=0))]
+		state = Forward
+		previous = Forward
+  1:	proc  0 (Controller:1) model.pml:58 (state 8)	[assert((state!=0))]
+		state = Forward
+		previous = Forward
+spin: trail ends after 1 steps
+#processes: 1
+		state = Forward
+		previous = Forward
+		command = NoCommand
+		direction = NoCommand
+		side = 0
+		front = 0
+		left = 0
+		right = 0
+		dust = 0
+		done = 0
+		start_timer = 0
+		stable = 0
+		avoiding = 0
+		first_tick = 1
+		clean_emitted = 0
+		sampled = 0
+		elapsed = 6
+		remaining = 0
+		transition = 0
+		emitted = 0
+		guards = 0
+  1:	proc  0 (Controller:1) model.pml:24 (state 35)
+1 process created

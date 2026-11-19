@@ -1,0 +1,80 @@
+docs/preliminary_requirements.md:1: • An RVC automatically cleans and mops household surface.
+docs/preliminary_requirements.md:2: • It goes straight forward while cleaning.
+docs/preliminary_requirements.md:3: • If its sensors found an obstacle, it stops cleaning, turns aside left or right, and goes forward with cleaning.
+docs/preliminary_requirements.md:4: • If there are obstacles in both front, left and right, it move backward and turn aside left or right, and goes forward.
+docs/preliminary_requirements.md:5: • If it detects dust, power up the cleaning for a while.
+docs/preliminary_requirements.md:6: • We do not consider the detail design and implementation on HW controls.
+docs/preliminary_requirements.md:7: • We only focus on the automatic cleaning function.
+docs/requirements_clarifications.md:17: | C9 | B4, C5 | After moving backward, only left and right decide (as C5 states); the front sensor is not consulted. Moving backward takes the RVC away from the obstacle, so the front may read clear. (Decided 2026-11-16.) |
+docs/requirements_clarifications.md:18: | C10 | B5, C3, Q4 | Dust detected again during a running power-up restarts the 5 ticks. (Decided 2026-11-16.) |
+docs/requirements_clarifications.md:19: | C11 | B3, C3, Q5 | A power-up interrupted by an avoidance keeps its remaining ticks and continues when the RVC moves forward again. (Decided 2026-11-16.) |
+docs/requirements_clarifications.md:28: | Q4 | B5, C3 | If dust is detected again during the 5 ticks, does the count restart or continue? **Resolved by C10.** |
+docs/requirements_clarifications.md:29: | Q5 | B3, C3 | If an obstacle interrupts powered-up cleaning, is the remaining count kept or cancelled? **Resolved by C11.** |
+docs/requirements_clarifications.md:30: | Q6 | B3 | Does an obstacle on the left or right trigger avoidance when the front is clear? This analysis assumes it does not. |
+artifacts/SA/process_specification.md:45: The stop, backward, and turn steps span several ticks. Their sequencing is refined at lower DFD levels and in the Controller FSM. Q1-Q6 remain open and limit that refinement.
+artifacts/SA/process_specification.md:50: ON Tick:
+artifacts/SA/process_specification.md:196: ON Tick:
+artifacts/SA/process_specification.md:217: - Resolved later: Q1 (C5), Q2 (C6), Q3 (C7). Open: Q6 (assumed)
+artifacts/SA/process_specification.md:253: ON Tick:
+artifacts/SA/process_specification.md:272: - Open: Q4, Q5
+artifacts/SA/process_specification.md:303: Revised 2026-11-16 for C9: the sides are classified whether or not the front is blocked.
+artifacts/SA/process_specification.md:307: 3. Side Situation is Right Open when the right is clear (C1: right has priority).
+artifacts/SA/process_specification.md:308: 4. Otherwise it is Left Open when the left is clear.
+artifacts/SA/process_specification.md:316: ON Tick:
+artifacts/SA/process_specification.md:320:         Obstacle Situation.Side Situation = Right Open        (C1)
+artifacts/SA/process_specification.md:322:         Obstacle Situation.Side Situation = Left Open
+artifacts/SA/process_specification.md:358: 1. While moving forward with situation Clear, keep going forward and report Forward (B2).
+artifacts/SA/process_specification.md:359: 2. When the situation becomes non-Clear while moving forward, stop first and report Avoiding (B3, C2).
+artifacts/SA/process_specification.md:360: 3. After stopping: if Right Open, turn right (C1); if Left Open, turn left; if All Blocked, move backward (B4).
+artifacts/SA/process_specification.md:364: The current avoidance step (Forward, Stopping, Turning, Backing) persists across ticks. Its durations are open (Q2, Q3). Obstacles do not disappear (C4), so the situation that caused the stop stays non-Clear until the turn. Level 3 separates this sequencing into the Controller.
+artifacts/SA/process_specification.md:369: ON Tick:
+artifacts/SA/process_specification.md:372:         IF Obstacle Situation == Clear THEN
+artifacts/SA/process_specification.md:379:         IF Obstacle Situation == Right Open THEN  Direction = Turn Right; step = Turning   (C1)
+artifacts/SA/process_specification.md:380:         ELSE IF Obstacle Situation == Left Open THEN  Direction = Turn Left; step = Turning
+artifacts/SA/process_specification.md:382:         (Clear is not possible here: obstacles do not disappear, C4)
+artifacts/SA/process_specification.md:426: Revised 2026-11-16 for C10 and C11.
+artifacts/SA/process_specification.md:431: 4. Otherwise report Power-Up Active = FALSE. While avoiding, the count is kept (C11).
+artifacts/SA/process_specification.md:439: ON Tick:
+artifacts/SA/process_specification.md:444:             Remaining Power-Up Ticks = 5               (C3, C10)
+artifacts/SA/process_specification.md:450:             Power-Up Active = FALSE
+artifacts/SA/process_specification.md:453:         Power-Up Active = FALSE                        (count kept, C11)
+artifacts/SA/process_specification.md:542:     Situation Signal = Obstacle Situation     (Clear | Right Open | Left Open | All Blocked)
+artifacts/SA/process_specification.md:576: The Controller has five states: Forward (initial), Stopping, Backing, Turning Right, Turning Left. On each Tick it takes one transition and issues one Movement Command.
+artifacts/SA/process_specification.md:583: | Stopping | Step Done and Right Open | Turn Right, Start Step Timer | Turning Right | C1, C8 |
+artifacts/SA/process_specification.md:584: | Stopping | Step Done and Left Open | Turn Left, Start Step Timer | Turning Left | B3, C8 |
+artifacts/SA/process_specification.md:588: | Backing | Step Done and Right Open | Turn Right, Start Step Timer | Turning Right | C5, C8 |
+artifacts/SA/process_specification.md:589: | Backing | Step Done and Left Open | Turn Left, Start Step Timer | Turning Left | C5, C8 |
+artifacts/SA/process_specification.md:685: ON Tick:                                   (before 3.2.2)
+artifacts/SA/process_specification.md:697: Initial value of D4: Idle.
+artifacts/SA/DFD/dfd_level_2.md:42: | 3.1 | Assess Obstacle Situation | On each Tick, reads D1 and classifies the obstacles into one Obstacle Situation. Applies the right-first rule (C1) and uses left/right only when the front is blocked (Q6 assumption). | B3, B4, C1, Q6 |
+artifacts/SA/DFD/dfd_level_2.md:51: | Obstacle Location (from D1) | Input | Data | 3.1 | Yes |
+artifacts/SA/DFD/dfd_level_2.md:130: | Q4 | 4.1 | Whether dust detected while Remaining Power-Up Ticks > 0 resets the count to 5 or is ignored. |
+artifacts/SA/DFD/dfd_level_2.md:131: | Q5 | 4.1 | Whether D3 is cleared or kept when Movement Status becomes Avoiding. |
+artifacts/SA/DFD/dfd_level_2.md:132: | Q6 | 3.1 | Assumed: left/right obstacles are ignored while the front is clear. |
+artifacts/SA/DFD/dfd_level_2.md:133: | C4 | 3.2 | Resolved: obstacles do not disappear, so the Situation seen when stopping does not become Clear before the avoidance completes. 3.2 has no "front cleared while stopped" branch. |
+artifacts/SA/DFD/dfd_level_2.md:134: | — | 4.1 | B5 does not say whether dust detected while Avoiding starts a power-up. Level 1 (Process 4) already limits it to moving forward; Level 2 keeps that. |
+artifacts/SA/DFD/dfd_level_4_fsm.md:25:     [*] --> Forward : Power On / Forward
+artifacts/SA/DFD/dfd_level_4_fsm.md:51: | Forward | Moving forward with cleaning. Initial state. | Forward | Forward |
+artifacts/SA/DFD/dfd_level_4_fsm.md:63: | T0 | [*] | Power On | — | Forward | Forward | B1, B2 |
+artifacts/SA/DFD/dfd_level_4_fsm.md:100: | Input events from DFD | Tick (Digital Clock), Situation Signal (3.2.1), Step Done (3.2.4), all in Level 3. |
+artifacts/SA/data_dictionary.md:108: ### Clean
+artifacts/SA/data_dictionary.md:111: - Possible Values: Start, Stop, Power Up
+artifacts/SA/data_dictionary.md:148: ### D1 Obstacle Location (Data Store)
+artifacts/SA/data_dictionary.md:157: ### D2 Dust Existence (Data Store)
+artifacts/SA/data_dictionary.md:168: - Format / Type: Record = Front Blocked (Boolean) + Side Situation (Enum)
+artifacts/SA/data_dictionary.md:196: ### D3 Power-Up Timer (Data Store)
+artifacts/SA/data_dictionary.md:207: - Format / Type: Record = Front Blocked (Boolean) + Side Situation (Enum)
+artifacts/SA/data_dictionary.md:255: ### D4 Step Timer (Data Store)
+
+SEARCH requirements + artifacts/SA: initial|initialize|startup|power.on|before.*tick
+docs/requirements_clarifications.md:15: | C7 | C2, Q3 | The stop before avoidance lasts 5 ticks. (Decided 2026-11-08.) |
+artifacts/SA/DFD/dfd_level_3.md:75: | Controller states | Internal | Forward (initial), Stopping, Backing, Turning Right, Turning Left |
+artifacts/SA/DFD/dfd_level_4_fsm.md:25:     [*] --> Forward : Power On / Forward
+artifacts/SA/DFD/dfd_level_4_fsm.md:51: | Forward | Moving forward with cleaning. Initial state. | Forward | Forward |
+artifacts/SA/DFD/dfd_level_4_fsm.md:63: | T0 | [*] | Power On | — | Forward | Forward | B1, B2 |
+artifacts/SA/DFD/dfd_level_4_fsm.md:98: | Initial state | Forward. |
+artifacts/SA/process_specification.md:576: The Controller has five states: Forward (initial), Stopping, Backing, Turning Right, Turning Left. On each Tick it takes one transition and issues one Movement Command.
+artifacts/SA/process_specification.md:697: Initial value of D4: Idle.
+
+SEARCH requirements + artifacts/SA: mop|mopp
+docs/preliminary_requirements.md:1: • An RVC automatically cleans and mops household surface.
